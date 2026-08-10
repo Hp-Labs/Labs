@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { VULNERABILITIES, XP_TO_RANK } from "@/lib/data/vulnerabilities";
 import Navbar from "@/components/Navbar";
+import { useAuth, getUserBadgesAndRank } from "@/lib/auth";
 
 const USER = {
   username: "h4cker_v1j4y",
@@ -64,13 +65,35 @@ const ACTIVITY = Array.from({ length: 28 }, (_, i) => {
 });
 
 export default function ProfilePage() {
-  // const [editing, setEditing] = useState(false);
+  const { user, claimDailyBonus, dismissStreakNotice } = useAuth();
+  const username = user?.username ?? USER.username;
+  const xp = user?.xp ?? USER.xp;
+  const streak = user?.loginStreak ?? USER.streakDays;
+  const { primaryTag, rankColor, badgeList } = getUserBadgesAndRank(user ?? {
+    id: "demo", username, email: "", phone: "", xp, completedLabs: USER.completedLabs, completedLevels: {}, joinedAt: USER.joinedDate, loginStreak: streak, lastLoginDate: "", badges: [], certifications: []
+  });
 
   return (
-    <div className="min-h-screen bg-[#06030c]">
+    <div className="min-h-screen bg-[var(--hp-bg)]" suppressHydrationWarning>
       <Navbar />
 
-      <div className="pt-24 pb-20 px-4 max-w-6xl mx-auto">
+      <div className="pt-24 pb-20 px-6 lg:px-12 max-w-[1440px] mx-auto">
+        {/* Streak Penalty Warning Notice (if applicable) */}
+        {user?.streakPenaltyNotice && (
+          <div className="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">⚠️</span>
+              <p className="text-xs text-red-300 font-mono leading-relaxed">{user.streakPenaltyNotice}</p>
+            </div>
+            <button
+              onClick={dismissStreakNotice}
+              className="px-3 py-1 text-xs font-mono text-[var(--hp-text)] bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 rounded-lg"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
           {/* Left: Profile card */}
@@ -80,59 +103,64 @@ export default function ProfilePage() {
             <div className="lab-card rounded-2xl p-6 text-center">
               {/* Avatar */}
               <div className="relative inline-block mb-4">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#bf5fff] to-[#00e5ff] flex items-center justify-center mx-auto">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--hp-primary)] to-[var(--hp-cyan)] flex items-center justify-center mx-auto">
                   <span className="font-mono text-3xl font-black text-black">
-                    {USER.displayName[0]}
+                    {username[0]?.toUpperCase()}
                   </span>
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#bf5fff] border-2 border-[#06030c] flex items-center justify-center">
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[var(--hp-primary)] border-2 border-[#06030c] flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-black" />
                 </div>
               </div>
 
-              <h1 className="text-xl font-bold text-white mb-0.5">{USER.displayName}</h1>
-              <p className="font-mono text-sm text-[#bf5fff] mb-1">@{USER.username}</p>
-              <p className="text-xs text-gray-500 mb-3">{USER.country}</p>
-              <p className="text-xs text-gray-400 leading-relaxed mb-4">{USER.bio}</p>
+              <h1 className="text-xl font-bold text-[var(--hp-text)] mb-0.5">{username}</h1>
+              <p className="font-mono text-sm text-[var(--hp-primary)] mb-1">@{username}</p>
+              <p className="text-xs text-[var(--hp-text-muted)] mb-3">{USER.country}</p>
 
-              {/* Rank badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[rgba(191, 95, 255,0.2)] bg-[rgba(191, 95, 255,0.05)] mb-4">
-                <span className="text-base">{CURRENT_RANK.icon}</span>
-                <span className="font-mono text-xs text-[#bf5fff] font-bold">{CURRENT_RANK.rank}</span>
+              {/* Primary Rank Tag Badge */}
+              <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border font-mono text-xs font-bold ${rankColor} mb-4`}>
+                <span>{primaryTag}</span>
               </div>
 
-              {/* Social links */}
-              <div className="flex items-center justify-center gap-3">
-                <a href={USER.links.website} target="_blank" rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/10 bg-white/5 hover:border-[rgba(191, 95, 255,0.2)] transition-all">
-                  <Globe size={13} className="text-gray-400" />
-                </a>
-                <a href={`https://twitter.com/${USER.links.twitter}`} target="_blank" rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/10 bg-white/5 hover:border-[rgba(0,229,255,0.2)] transition-all">
-                  <AtSign size={13} className="text-gray-400" />
-                </a>
-                <a href={`https://linkedin.com/in/${USER.links.linkedin}`} target="_blank" rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/10 bg-white/5 hover:border-[rgba(0,229,255,0.2)] transition-all">
-                  <Link2 size={13} className="text-gray-400" />
-                </a>
+              {/* Badges List */}
+              <div className="mb-4">
+                <p className="text-[10px] font-mono text-[var(--hp-text-muted)] uppercase mb-2">Unlocked Badges & Titles</p>
+                <div className="flex flex-wrap gap-1.5 justify-center">
+                  {badgeList.map((b: { name: string; icon: string; color: string }) => (
+                    <span key={b.name} className={`px-2.5 py-1 rounded-lg border font-mono text-[11px] ${b.color}`}>
+                      {b.icon} {b.name}
+                    </span>
+                  ))}
+                </div>
               </div>
+
+              {/* Daily Claim Bonus CTA */}
+              <button
+                onClick={() => {
+                  const res = claimDailyBonus();
+                  alert(res.message);
+                }}
+                className="w-full py-2.5 px-4 rounded-xl border border-yellow-500/40 bg-yellow-500/10 text-yellow-300 hover:bg-yellow-500/20 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
+              >
+                <span>🎁 Claim Daily +100 XP Bonus</span>
+              </button>
             </div>
 
             {/* Stats */}
             <div className="lab-card rounded-2xl p-5">
-              <h3 className="text-xs font-mono text-gray-400 uppercase mb-4">Stats</h3>
+              <h3 className="text-xs font-mono text-[var(--hp-text-muted)] uppercase mb-4">Stats</h3>
               <div className="space-y-3">
                 {[
-                  { icon: Zap, label: "Total XP", value: USER.xp.toLocaleString(), color: "text-[#bf5fff]" },
-                  { icon: Target, label: "Labs Done", value: `${USER.completedLabs.length}`, color: "text-[#00e5ff]" },
+                  { icon: Zap, label: "Total XP", value: xp.toLocaleString(), color: "text-[var(--hp-primary)]" },
+                  { icon: Target, label: "Labs Done", value: `${user?.completedLabs?.length ?? USER.completedLabs.length}`, color: "text-[#00e5ff]" },
                   { icon: Trophy, label: "Global Rank", value: `#${USER.globalRank}`, color: "text-yellow-400" },
-                  { icon: BarChart2, label: "Day Streak", value: `🔥 ${USER.streakDays}d`, color: "text-orange-400" },
-                  { icon: Calendar, label: "Member Since", value: USER.joinedDate, color: "text-gray-300" },
+                  { icon: BarChart2, label: "Day Streak", value: `🔥 ${streak}d`, color: "text-orange-400" },
+                  { icon: Calendar, label: "Member Since", value: user?.joinedAt ?? USER.joinedDate, color: "text-[var(--hp-text-muted)]" },
                 ].map(({ icon: Icon, label, value, color }) => (
                   <div key={label} className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Icon size={12} className="text-gray-600" />
-                      <span className="text-xs text-gray-500">{label}</span>
+                      <Icon size={12} className="text-[var(--hp-text-muted)]" />
+                      <span className="text-xs text-[var(--hp-text-muted)]">{label}</span>
                     </div>
                     <span className={`font-mono text-xs font-bold ${color}`}>{value}</span>
                   </div>
@@ -143,30 +171,30 @@ export default function ProfilePage() {
             {/* Certifications */}
             <div className="lab-card rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xs font-mono text-gray-400 uppercase flex items-center gap-2">
+                <h3 className="text-xs font-mono text-[var(--hp-text-muted)] uppercase flex items-center gap-2">
                   <Shield size={11} />
                   Certifications
                 </h3>
-                <Link href="/certifications" className="text-[10px] text-[#bf5fff] hover:opacity-80">
+                <Link href="/certifications" className="text-[10px] text-[var(--hp-primary)] hover:opacity-80">
                   + Add
                 </Link>
               </div>
               {USER.certs.length === 0 ? (
-                <p className="text-xs text-gray-600 text-center py-3">No certs linked yet</p>
+                <p className="text-xs text-[var(--hp-text-muted)] text-center py-3">No certs linked yet</p>
               ) : (
                 <div className="space-y-2">
                   {USER.certs.map((cert) => (
                     <div key={cert.name}
-                      className="flex items-center gap-3 p-2.5 rounded-xl border border-[rgba(191, 95, 255,0.1)] bg-[rgba(191, 95, 255,0.03)]">
-                      <Award size={14} className="text-[#bf5fff] shrink-0" />
+                      className="flex items-center gap-3 p-2.5 rounded-xl border border-[var(--hp-primary)] bg-[var(--hp-primary)]/10">
+                      <Award size={14} className="text-[var(--hp-primary)] shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-medium text-white">{cert.name}</span>
+                          <span className="text-xs font-medium text-[var(--hp-text)]">{cert.name}</span>
                           <span className="badge-active text-[8px] font-mono px-1 py-0.5 rounded-full">✓</span>
                         </div>
-                        <span className="text-[10px] text-gray-500">{cert.provider}</span>
+                        <span className="text-[10px] text-[var(--hp-text-muted)]">{cert.provider}</span>
                       </div>
-                      <div className="flex items-center gap-0.5 text-[#bf5fff]">
+                      <div className="flex items-center gap-0.5 text-[var(--hp-primary)]">
                         <Zap size={9} />
                         <span className="font-mono text-[10px]">+{cert.xp}</span>
                       </div>
@@ -183,15 +211,15 @@ export default function ProfilePage() {
             {/* XP Progress */}
             <div className="lab-card rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-white text-sm flex items-center gap-2">
-                  <TrendingUp size={14} className="text-[#bf5fff]" />
+                <h2 className="font-semibold text-[var(--hp-text)] text-sm flex items-center gap-2">
+                  <TrendingUp size={14} className="text-[var(--hp-primary)]" />
                   XP Progression
                 </h2>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">{CURRENT_RANK.icon}</span>
                   <div className="text-right">
-                    <div className="font-mono text-xs text-[#bf5fff] font-bold">{USER.xp} XP</div>
-                    <div className="text-[10px] text-gray-500">
+                    <div className="font-mono text-xs text-[var(--hp-primary)] font-bold">{USER.xp} XP</div>
+                    <div className="text-[10px] text-[var(--hp-text-muted)]">
                       {NEXT_RANK.minXP - USER.xp} to {NEXT_RANK.icon} {NEXT_RANK.rank}
                     </div>
                   </div>
@@ -199,7 +227,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Bar */}
-              <div className="h-2.5 bg-white/5 rounded-full overflow-hidden mb-4">
+              <div className="h-2.5 bg-[var(--hp-border)] rounded-full overflow-hidden mb-4">
                 <div className="xp-bar h-full rounded-full" style={{ width: `${xpProgress}%` }} />
               </div>
 
@@ -210,10 +238,10 @@ export default function ProfilePage() {
                     <span className={`text-base ${USER.xp >= r.minXP ? "opacity-100" : "opacity-20"}`}>
                       {r.icon}
                     </span>
-                    <span className={`text-[9px] font-mono ${USER.xp >= r.minXP ? "text-[#bf5fff]" : "text-gray-700"}`}>
+                    <span className={`text-[9px] font-mono ${USER.xp >= r.minXP ? "text-[var(--hp-primary)]" : "text-[var(--hp-text-muted)] opacity-70"}`}>
                       {r.rank.split(" ")[0]}
                     </span>
-                    <span className={`text-[8px] font-mono ${USER.xp >= r.minXP ? "text-gray-500" : "text-gray-800"}`}>
+                    <span className={`text-[8px] font-mono ${USER.xp >= r.minXP ? "text-[var(--hp-text-muted)]" : "text-[var(--hp-text-muted)] opacity-40"}`}>
                       {r.minXP >= 1000 ? `${r.minXP / 1000}k` : r.minXP}
                     </span>
                   </div>
@@ -223,14 +251,14 @@ export default function ProfilePage() {
 
             {/* Domain XP breakdown */}
             <div className="lab-card rounded-2xl p-6">
-              <h2 className="font-semibold text-white text-sm mb-5 flex items-center gap-2">
+              <h2 className="font-semibold text-[var(--hp-text)] text-sm mb-5 flex items-center gap-2">
                 <Star size={14} className="text-yellow-400" />
                 Domain XP Breakdown
               </h2>
               <div className="space-y-3">
                 {[
-                  { domain: "Web Pentesting", xp: 1800, total: 5000, color: "#bf5fff" },
-                  { domain: "Network Pentesting", xp: 650, total: 4000, color: "#00e5ff" },
+                  { domain: "Web Pentesting", xp: 1800, total: 5000, color: "var(--hp-primary)" },
+                  { domain: "Network Pentesting", xp: 650, total: 4000, color: "var(--hp-cyan)" },
                   { domain: "API Security", xp: 0, total: 3000, color: "#7c3aed", locked: true },
                   { domain: "Cloud Security", xp: 0, total: 3500, color: "#ff6b00", locked: true },
                   { domain: "SOC & Blue Team", xp: 0, total: 4500, color: "#ff2d2d", locked: true },
@@ -238,7 +266,7 @@ export default function ProfilePage() {
                   <div key={domain}>
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-300">{domain}</span>
+                        <span className="text-xs text-[var(--hp-text-muted)]">{domain}</span>
                         {locked && (
                           <span className="badge-upcoming text-[8px] font-mono px-1.5 py-0.5 rounded-full">SOON</span>
                         )}
@@ -247,12 +275,12 @@ export default function ProfilePage() {
                         {xp} XP
                       </span>
                     </div>
-                    <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-[var(--hp-border)] rounded-full overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-500"
                         style={{
                           width: `${(xp / total) * 100}%`,
-                          background: locked ? "rgba(255,255,255,0.05)" : `linear-gradient(90deg, ${color}, ${color}99)`,
+                          background: locked ? "var(--hp-border)" : `linear-gradient(90deg, ${color}, ${color}99)`,
                           boxShadow: locked ? "none" : `0 0 8px ${color}40`,
                         }}
                       />
@@ -264,7 +292,7 @@ export default function ProfilePage() {
 
             {/* Activity heatmap */}
             <div className="lab-card rounded-2xl p-6">
-              <h2 className="font-semibold text-white text-sm mb-5 flex items-center gap-2">
+              <h2 className="font-semibold text-[var(--hp-text)] text-sm mb-5 flex items-center gap-2">
                 <BarChart2 size={14} className="text-[#00e5ff]" />
                 Lab Activity (Last 28 Days)
               </h2>
@@ -277,22 +305,18 @@ export default function ProfilePage() {
                     style={{
                       backgroundColor:
                         count === 0
-                          ? "rgba(255,255,255,0.04)"
-                          : count === 1
-                          ? "rgba(191, 95, 255,0.15)"
-                          : count === 2
-                          ? "rgba(191, 95, 255,0.35)"
-                          : "rgba(191, 95, 255,0.6)",
+                          ? "var(--hp-bg-3)"
+                          : "var(--hp-primary)",
                       border:
                         count > 0
-                          ? "1px solid rgba(191, 95, 255,0.3)"
-                          : "1px solid rgba(255,255,255,0.05)",
+                          ? "1px solid var(--hp-primary)"
+                          : "1px solid var(--hp-border)",
                     }}
                   />
                 ))}
               </div>
               <div className="flex items-center gap-2 mt-3">
-                <span className="text-[10px] text-gray-600">Less</span>
+                <span className="text-[10px] text-[var(--hp-text-muted)]">Less</span>
                 {[0, 1, 2, 3].map((level) => (
                   <div
                     key={level}
@@ -300,36 +324,32 @@ export default function ProfilePage() {
                     style={{
                       backgroundColor:
                         level === 0
-                          ? "rgba(255,255,255,0.04)"
-                          : level === 1
-                          ? "rgba(191, 95, 255,0.15)"
-                          : level === 2
-                          ? "rgba(191, 95, 255,0.35)"
-                          : "rgba(191, 95, 255,0.6)",
+                          ? "var(--hp-bg-3)"
+                          : "var(--hp-primary)",
                     }}
                   />
                 ))}
-                <span className="text-[10px] text-gray-600">More</span>
+                <span className="text-[10px] text-[var(--hp-text-muted)]">More</span>
               </div>
             </div>
 
             {/* Completed Labs */}
             <div className="lab-card rounded-2xl p-6">
               <div className="flex items-center justify-between mb-5">
-                <h2 className="font-semibold text-white text-sm flex items-center gap-2">
-                  <CheckCircle size={14} className="text-[#bf5fff]" />
+                <h2 className="font-semibold text-[var(--hp-text)] text-sm flex items-center gap-2">
+                  <CheckCircle size={14} className="text-[var(--hp-primary)]" />
                   Completed Labs
                 </h2>
-                <span className="font-mono text-xs text-gray-500">
+                <span className="font-mono text-xs text-[var(--hp-text-muted)]">
                   {USER.completedLabs.length} / {VULNERABILITIES.filter((v) => v.status !== "upcoming").length}
                 </span>
               </div>
 
               {completedVulns.length === 0 ? (
                 <div className="text-center py-8">
-                  <Target size={28} className="text-gray-700 mx-auto mb-2" />
-                  <p className="text-xs text-gray-600 mb-3">No labs completed yet</p>
-                  <Link href="/labs" className="text-xs text-[#bf5fff] hover:opacity-80">
+                  <Target size={28} className="text-[var(--hp-text-muted)] opacity-70 mx-auto mb-2" />
+                  <p className="text-xs text-[var(--hp-text-muted)] mb-3">No labs completed yet</p>
+                  <Link href="/red-team/pentesting" className="text-xs text-[var(--hp-primary)] hover:opacity-80">
                     Start hacking →
                   </Link>
                 </div>
@@ -338,23 +358,23 @@ export default function ProfilePage() {
                   {completedVulns.map((vuln) => (
                     <Link
                       key={vuln.id}
-                      href={`/labs/${vuln.id}`}
-                      className="flex items-center gap-4 p-3.5 rounded-xl border border-[rgba(191, 95, 255,0.1)] bg-[rgba(191, 95, 255,0.02)] hover:border-[rgba(191, 95, 255,0.2)] transition-all group"
+                      href={`/red-team/pentesting/web/information/${vuln.level}`}
+                      className="flex items-center gap-4 p-3.5 rounded-xl border border-[var(--hp-primary)] bg-[var(--hp-primary)]/10 hover:border-[var(--hp-primary)] transition-all group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[rgba(191, 95, 255,0.1)] border border-[rgba(191, 95, 255,0.2)] flex items-center justify-center shrink-0">
-                        <CheckCircle size={14} className="text-[#bf5fff]" />
+                      <div className="w-8 h-8 rounded-lg bg-[var(--hp-primary)]/20 border border-[var(--hp-primary)] flex items-center justify-center shrink-0">
+                        <CheckCircle size={14} className="text-[var(--hp-primary)]" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
+                        <div className="text-sm font-medium text-[var(--hp-text)] group-hover:text-[var(--hp-primary)] transition-colors">
                           {vuln.shortName}
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
                           <span className="font-mono text-[10px] text-[#00e5ff]">{vuln.year}</span>
-                          <span className="text-gray-700">•</span>
-                          <span className="text-[10px] text-gray-500">Level {vuln.level}</span>
+                          <span className="text-[var(--hp-text-muted)] opacity-70">•</span>
+                          <span className="text-[10px] text-[var(--hp-text-muted)]">Level {vuln.level}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 text-[#bf5fff] shrink-0">
+                      <div className="flex items-center gap-1 text-[var(--hp-primary)] shrink-0">
                         <Zap size={11} />
                         <span className="font-mono text-xs font-bold">+{vuln.xpReward} XP</span>
                       </div>

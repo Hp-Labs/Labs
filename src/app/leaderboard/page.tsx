@@ -65,7 +65,7 @@ function XpBar({ xp }: { xp: number }) {
           flex: 1,
           height: "4px",
           borderRadius: "99px",
-          backgroundColor: "rgba(255,255,255,0.06)",
+          backgroundColor: "var(--hp-bg-3)",
           overflow: "hidden",
         }}
       >
@@ -74,11 +74,11 @@ function XpBar({ xp }: { xp: number }) {
             height: "100%",
             width: `${progress}%`,
             borderRadius: "99px",
-            background: "linear-gradient(90deg, #bf5fff, #00e5ff)",
+            background: "linear-gradient(90deg, var(--hp-primary), var(--hp-cyan))",
           }}
         />
       </div>
-      <span style={{ fontSize: "10px", color: "#4b5563", fontFamily: "monospace", whiteSpace: "nowrap" }}>
+      <span style={{ fontSize: "10px", color: "var(--hp-text-muted)", fontFamily: "monospace", whiteSpace: "nowrap" }}>
         {nextRank ? `${xp.toLocaleString()} / ${nextRank.minXP.toLocaleString()}` : "MAX"}
       </span>
     </div>
@@ -94,8 +94,8 @@ export default function LeaderboardPage() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#06030c",
-        color: "#e2e8f0",
+        backgroundColor: "var(--hp-bg)",
+        color: "var(--hp-text)",
         fontFamily: "Inter, system-ui, sans-serif",
       }}
     >
@@ -108,7 +108,7 @@ export default function LeaderboardPage() {
           inset: 0,
           pointerEvents: "none",
           background:
-            "radial-gradient(ellipse 60% 30% at 50% 0%, rgba(191, 95, 255,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 30% at 50% 0%, var(--hp-primary) 0%, transparent 70%)",
           zIndex: 0,
         }}
       />
@@ -125,12 +125,12 @@ export default function LeaderboardPage() {
                 marginBottom: "12px",
               }}
             >
-              <Trophy size={13} style={{ color: "#bf5fff" }} />
+              <Trophy size={13} style={{ color: "var(--hp-primary)" }} />
               <span
                 style={{
                   fontFamily: "monospace",
                   fontSize: "11px",
-                  color: "#bf5fff",
+                  color: "var(--hp-primary)",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                 }}
@@ -144,7 +144,7 @@ export default function LeaderboardPage() {
                 fontWeight: 800,
                 lineHeight: 1.1,
                 marginBottom: "12px",
-                background: "linear-gradient(135deg, #ffffff 0%, #bf5fff 55%, #fbbf24 100%)",
+                background: "linear-gradient(135deg, var(--hp-text) 0%, #bf5fff 55%, #fbbf24 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -152,7 +152,7 @@ export default function LeaderboardPage() {
             >
               Leaderboard
             </h1>
-            <p style={{ color: "#6b7280", fontSize: "14px" }}>
+            <p style={{ color: "var(--hp-text-muted)", fontSize: "14px" }}>
               Top hackers ranked by XP earned across all labs. Updated in real-time.
             </p>
           </div>
@@ -211,7 +211,7 @@ export default function LeaderboardPage() {
                   <div
                     style={{
                       fontSize: "11px",
-                      color: "#6b7280",
+                      color: "var(--hp-text-muted)",
                       marginBottom: "10px",
                     }}
                   >
@@ -226,7 +226,7 @@ export default function LeaderboardPage() {
                     }}
                   >
                     {user.xp.toLocaleString()}
-                    <span style={{ fontSize: "11px", fontWeight: 400, marginLeft: "4px", color: "#6b7280" }}>
+                    <span style={{ fontSize: "11px", fontWeight: 400, marginLeft: "4px", color: "var(--hp-text-muted)" }}>
                       XP
                     </span>
                   </div>
@@ -241,8 +241,8 @@ export default function LeaderboardPage() {
               style={{
                 padding: "16px 20px",
                 borderRadius: "10px",
-                border: "1px solid rgba(191, 95, 255,0.3)",
-                backgroundColor: "rgba(191, 95, 255,0.05)",
+                border: "1px solid var(--hp-primary)",
+                backgroundColor: "var(--hp-primary)",
                 marginBottom: "32px",
                 display: "flex",
                 alignItems: "center",
@@ -254,11 +254,11 @@ export default function LeaderboardPage() {
                 style={{
                   fontFamily: "monospace",
                   fontSize: "11px",
-                  color: "#bf5fff",
+                  color: "var(--hp-primary)",
                   padding: "4px 10px",
                   borderRadius: "4px",
-                  border: "1px solid rgba(191, 95, 255,0.3)",
-                  backgroundColor: "rgba(191, 95, 255,0.1)",
+                  border: "1px solid var(--hp-primary)",
+                  backgroundColor: "var(--hp-primary)",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -271,12 +271,12 @@ export default function LeaderboardPage() {
                     fontFamily: "monospace",
                     fontSize: "14px",
                     fontWeight: 700,
-                    color: "#bf5fff",
+                    color: "var(--hp-primary)",
                   }}
                 >
                   {currentUserData.username}
                 </div>
-                <div style={{ fontSize: "12px", color: "#6b7280" }}>
+                <div style={{ fontSize: "12px", color: "var(--hp-text-muted)" }}>
                   {getRank(currentUserData.xp).icon} {getRank(currentUserData.xp).rank}
                 </div>
               </div>
@@ -286,12 +286,12 @@ export default function LeaderboardPage() {
                     fontFamily: "monospace",
                     fontSize: "20px",
                     fontWeight: 700,
-                    color: "#bf5fff",
+                    color: "var(--hp-primary)",
                   }}
                 >
                   #{currentUserData.rank}
                 </div>
-                <div style={{ fontSize: "11px", color: "#4b5563" }}>Global Rank</div>
+                <div style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}>Global Rank</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <div
@@ -299,12 +299,12 @@ export default function LeaderboardPage() {
                     fontFamily: "monospace",
                     fontSize: "20px",
                     fontWeight: 700,
-                    color: "#e2e8f0",
+                    color: "var(--hp-text)",
                   }}
                 >
                   {currentUserData.xp.toLocaleString()}
                 </div>
-                <div style={{ fontSize: "11px", color: "#4b5563" }}>XP Earned</div>
+                <div style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}>XP Earned</div>
               </div>
             </div>
           )}
@@ -313,7 +313,7 @@ export default function LeaderboardPage() {
           <div
             style={{
               borderRadius: "12px",
-              border: "1px solid rgba(255,255,255,0.06)",
+              border: "1px solid var(--hp-border)",
               overflow: "hidden",
             }}
           >
@@ -324,8 +324,8 @@ export default function LeaderboardPage() {
                 gridTemplateColumns: "48px 1fr 120px 80px 90px 90px",
                 gap: "0",
                 padding: "12px 20px",
-                backgroundColor: "rgba(255,255,255,0.03)",
-                borderBottom: "1px solid rgba(255,255,255,0.05)",
+                backgroundColor: "var(--hp-bg-3)",
+                borderBottom: "1px solid var(--hp-border)",
               }}
             >
               {["#", "Hacker", "Rank Title", "Labs", "Streak", "XP"].map((col, i) => (
@@ -334,7 +334,7 @@ export default function LeaderboardPage() {
                   style={{
                     fontSize: "10px",
                     fontFamily: "monospace",
-                    color: "#4b5563",
+                    color: "var(--hp-text-muted)",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     textAlign: i >= 2 ? "right" : "left",
@@ -362,15 +362,15 @@ export default function LeaderboardPage() {
                     gridTemplateColumns: "48px 1fr 120px 80px 90px 90px",
                     gap: "0",
                     padding: "14px 20px",
-                    borderBottom: "1px solid rgba(255,255,255,0.04)",
+                    borderBottom: "1px solid var(--hp-border)",
                     backgroundColor: isCurrentUser
-                      ? "rgba(191, 95, 255,0.04)"
+                      ? "var(--hp-card-bg)"
                       : isHovered
-                      ? "rgba(255,255,255,0.025)"
+                      ? "var(--hp-bg-3)"
                       : "transparent",
                     transition: "background-color 0.15s",
                     cursor: "default",
-                    borderLeft: isCurrentUser ? "2px solid rgba(191, 95, 255,0.5)" : "2px solid transparent",
+                    borderLeft: isCurrentUser ? "2px solid var(--hp-primary)" : "2px solid transparent",
                   }}
                 >
                   {/* Rank # */}
@@ -381,7 +381,7 @@ export default function LeaderboardPage() {
                       fontFamily: "monospace",
                       fontSize: "13px",
                       fontWeight: 700,
-                      color: medal ? medal.color : "#4b5563",
+                      color: medal ? medal.color : "var(--hp-text-muted)",
                     }}
                   >
                     {medal ? medal.label : `#${user.rank}`}
@@ -394,10 +394,10 @@ export default function LeaderboardPage() {
                         width: "34px",
                         height: "34px",
                         borderRadius: "8px",
-                        border: `1px solid ${isCurrentUser ? "rgba(191, 95, 255,0.3)" : "rgba(255,255,255,0.08)"}`,
+                        border: `1px solid ${isCurrentUser ? "var(--hp-primary)" : "var(--hp-border)"}`,
                         backgroundColor: isCurrentUser
-                          ? "rgba(191, 95, 255,0.08)"
-                          : "rgba(255,255,255,0.03)",
+                          ? "var(--hp-card-bg)"
+                          : "var(--hp-bg-3)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -413,7 +413,7 @@ export default function LeaderboardPage() {
                           fontFamily: "monospace",
                           fontSize: "13px",
                           fontWeight: 600,
-                          color: isCurrentUser ? "#bf5fff" : "#cbd5e1",
+                          color: isCurrentUser ? "var(--hp-primary)" : "var(--hp-text)",
                           display: "flex",
                           alignItems: "center",
                           gap: "6px",
@@ -424,11 +424,11 @@ export default function LeaderboardPage() {
                           <span
                             style={{
                               fontSize: "9px",
-                              color: "#bf5fff",
+                              color: "var(--hp-primary)",
                               padding: "1px 6px",
                               borderRadius: "3px",
-                              border: "1px solid rgba(191, 95, 255,0.3)",
-                              backgroundColor: "rgba(191, 95, 255,0.1)",
+                              border: "1px solid var(--hp-primary)",
+                              backgroundColor: "var(--hp-primary)",
                               letterSpacing: "0.06em",
                             }}
                           >
@@ -452,7 +452,7 @@ export default function LeaderboardPage() {
                     }}
                   >
                     <span style={{ fontSize: "13px" }}>{rankInfo.icon}</span>
-                    <span style={{ fontSize: "11px", color: "#6b7280" }}>{rankInfo.rank}</span>
+                    <span style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}>{rankInfo.rank}</span>
                   </div>
 
                   {/* Labs */}
@@ -464,12 +464,12 @@ export default function LeaderboardPage() {
                       gap: "5px",
                     }}
                   >
-                    <Target size={12} style={{ color: "#4b5563" }} />
+                    <Target size={12} style={{ color: "var(--hp-text-muted)" }} />
                     <span
                       style={{
                         fontFamily: "monospace",
                         fontSize: "13px",
-                        color: "#94a3b8",
+                        color: "var(--hp-text)",
                         fontWeight: 600,
                       }}
                     >
@@ -488,13 +488,13 @@ export default function LeaderboardPage() {
                   >
                     <Flame
                       size={12}
-                      style={{ color: user.streak >= 30 ? "#f87171" : user.streak >= 7 ? "#fb923c" : "#4b5563" }}
+                      style={{ color: user.streak >= 30 ? "#f87171" : user.streak >= 7 ? "#fb923c" : "var(--hp-text-muted)" }}
                     />
                     <span
                       style={{
                         fontFamily: "monospace",
                         fontSize: "13px",
-                        color: user.streak >= 30 ? "#f87171" : user.streak >= 7 ? "#fb923c" : "#6b7280",
+                        color: user.streak >= 30 ? "#f87171" : user.streak >= 7 ? "#fb923c" : "var(--hp-text-muted)",
                         fontWeight: 600,
                       }}
                     >
@@ -504,13 +504,13 @@ export default function LeaderboardPage() {
 
                   {/* XP */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "4px" }}>
-                    <Zap size={11} style={{ color: "#bf5fff", flexShrink: 0 }} />
+                    <Zap size={11} style={{ color: "var(--hp-primary)", flexShrink: 0 }} />
                     <span
                       style={{
                         fontFamily: "monospace",
                         fontSize: "13px",
                         fontWeight: 700,
-                        color: medal ? medal.color : isCurrentUser ? "#bf5fff" : "#94a3b8",
+                        color: medal ? medal.color : isCurrentUser ? "var(--hp-primary)" : "var(--hp-text)",
                       }}
                     >
                       {user.xp.toLocaleString()}
@@ -527,14 +527,14 @@ export default function LeaderboardPage() {
               marginTop: "32px",
               padding: "16px 20px",
               borderRadius: "10px",
-              border: "1px solid rgba(255,255,255,0.05)",
-              backgroundColor: "rgba(255,255,255,0.015)",
+              border: "1px solid var(--hp-border)",
+              backgroundColor: "var(--hp-card-bg)",
             }}
           >
             <div
               style={{
                 fontSize: "11px",
-                color: "#4b5563",
+                color: "var(--hp-text-muted)",
                 fontFamily: "monospace",
                 marginBottom: "12px",
                 letterSpacing: "0.08em",
@@ -553,16 +553,16 @@ export default function LeaderboardPage() {
                     gap: "6px",
                     padding: "6px 12px",
                     borderRadius: "6px",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    backgroundColor: "rgba(255,255,255,0.02)",
+                    border: "1px solid var(--hp-border)",
+                    backgroundColor: "var(--hp-bg-3)",
                   }}
                 >
                   <span style={{ fontSize: "14px" }}>{r.icon}</span>
                   <div>
-                    <div style={{ fontSize: "11px", fontWeight: 600, color: "#94a3b8" }}>
+                    <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--hp-text)" }}>
                       {r.rank}
                     </div>
-                    <div style={{ fontSize: "10px", color: "#374151", fontFamily: "monospace" }}>
+                    <div style={{ fontSize: "10px", color: "var(--hp-text-muted)", fontFamily: "monospace" }}>
                       {r.minXP.toLocaleString()}+ XP
                     </div>
                   </div>

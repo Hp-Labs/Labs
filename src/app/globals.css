@@ -1,28 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  /* ── Purple Team Palette ── */
-  --hp-primary:  #bf5fff;       /* vivid purple — primary accent */
-  --hp-primary-dim: #9333ea;    /* darker purple */
-  --hp-secondary: #e040fb;      /* magenta-purple — secondary */
-  --hp-cyan:     #00e5ff;       /* cyan — kept for contrast */
-  --hp-red:      #ff2d2d;
-  --hp-orange:   #ff6b00;
-
-  /* Legacy alias — anything still referencing --hp-green gets purple */
-  --hp-green:    #bf5fff;
+  /* ── Purple Team Palette (Shared/Adaptive) ── */
+  --hp-primary:  #9333ea;       /* Slightly darker purple for better contrast in light mode */
+  --hp-primary-dim: #7e22ce;    
+  --hp-secondary: #d946ef;      
+  --hp-cyan:     #0891b2;       
+  --hp-red:      #dc2626;
+  --hp-orange:   #ea580c;
+  --hp-green:    #9333ea;       
 
   /* Backgrounds */
-  --hp-bg:       #06030c;       /* very deep purple-black */
-  --hp-bg-2:     #0c0614;
-  --hp-bg-3:     #110820;
+  --hp-bg:       #f8fafc;       /* Light gray-blue background */
+  --hp-bg-2:     #ffffff;       /* Pure white for cards */
+  --hp-bg-3:     #f1f5f9;       /* Alternate light bg */
+  
+  /* Text */
+  --hp-text:     #0f172a;       /* Dark slate for main text */
+  --hp-text-muted: #334155;     /* Darker slate for secondary text */
 
-  /* Borders */
-  --hp-border:       rgba(191, 95, 255, 0.12);
-  --hp-border-hover: rgba(191, 95, 255, 0.35);
+  /* Borders & Glass */
+  --hp-border:       rgba(147, 51, 234, 0.15);
+  --hp-border-hover: rgba(147, 51, 234, 0.35);
+  --hp-card-bg:      rgba(255, 255, 255, 0.8);
+  --hp-card-bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 248, 0.9));
 
   --font-inter: var(--font-inter);
   --font-mono:  var(--font-mono);
+}
+
+.dark {
+  /* ── Purple Team Palette (Dark) ── */
+  --hp-primary:  #bf5fff;       
+  --hp-primary-dim: #9333ea;    
+  --hp-secondary: #e040fb;      
+  --hp-cyan:     #00e5ff;       
+  --hp-red:      #ff2d2d;
+  --hp-orange:   #ff6b00;
+  --hp-green:    #bf5fff;       
+
+  /* Backgrounds */
+  --hp-bg:       #06030c;       
+  --hp-bg-2:     #0c0614;
+  --hp-bg-3:     #110820;
+
+  /* Text */
+  --hp-text:     #ffffff;       
+  --hp-text-muted: #9ca3af;     
+
+  /* Borders & Glass */
+  --hp-border:       rgba(191, 95, 255, 0.12);
+  --hp-border-hover: rgba(191, 95, 255, 0.35);
+  --hp-card-bg:      rgba(17, 8, 32, 0.9);
+  --hp-card-bg-gradient: linear-gradient(135deg, rgba(17, 8, 32, 0.9), rgba(12, 6, 20, 0.9));
+}
+
+/* Global Transition for Hyprland-like smoothness */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow, background-image;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 * {
@@ -35,6 +72,7 @@ html {
 
 body {
   background: var(--hp-bg);
+  color: var(--hp-text);
   font-family: var(--font-inter), system-ui, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
@@ -125,7 +163,7 @@ body {
 .lab-card {
   transition: all 0.3s ease;
   border: 1px solid var(--hp-border);
-  background: linear-gradient(135deg, rgba(17, 8, 32, 0.9), rgba(12, 6, 20, 0.9));
+  background: var(--hp-card-bg-gradient);
 }
 .lab-card:hover {
   border-color: var(--hp-border-hover);
@@ -134,7 +172,7 @@ body {
 }
 .lab-card-active {
   border-color: rgba(191, 95, 255, 0.35);
-  background: linear-gradient(135deg, rgba(191, 95, 255, 0.04), rgba(12, 6, 20, 0.9));
+  background: var(--hp-card-bg-gradient);
 }
 
 /* ── Shimmer ── */

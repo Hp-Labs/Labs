@@ -93,28 +93,28 @@ export const SEVERITY_UNLOCK_REQUIREMENTS: Record<Severity, UnlockRequirement> =
     assessmentRequired: false,
   },
   low: {
-    previousSeverity: null,
-    minLabsCompleted: 0,
-    minXP: 0,
+    previousSeverity: "information",
+    minLabsCompleted: 1,
+    minXP: 500,
     assessmentRequired: false,
   },
   medium: {
     previousSeverity: "low",
-    minLabsCompleted: 30,
+    minLabsCompleted: 2,
     minXP: 2000,
     assessmentRequired: true,
     assessmentName: "Basic Web Pentesting Assessment",
   },
   high: {
     previousSeverity: "medium",
-    minLabsCompleted: 20,
+    minLabsCompleted: 2,
     minXP: 5000,
     assessmentRequired: true,
     assessmentName: "Intermediate Web Assessment",
   },
   critical: {
     previousSeverity: "high",
-    minLabsCompleted: 15,
+    minLabsCompleted: 2,
     minXP: 10000,
     assessmentRequired: true,
     assessmentName: "Advanced Web Assessment",
@@ -208,9 +208,9 @@ export function generateUniqueFlag(
 
 // XP to Rank mapping
 export const XP_TO_RANK = [
-  { rank: "Script Kiddie", minXP: 0,     icon: "💻", color: "text-gray-400" },
+  { rank: "Script Kiddie", minXP: 0,     icon: "💻", color: "text-[var(--hp-text-muted)]" },
   { rank: "Apprentice",    minXP: 500,   icon: "🔍", color: "text-violet-400" },
-  { rank: "Hacker",        minXP: 2000,  icon: "🎯", color: "text-[#bf5fff]" },
+  { rank: "Hacker",        minXP: 2000,  icon: "🎯", color: "text-[var(--hp-primary)]" },
   { rank: "Elite Hacker",  minXP: 5000,  icon: "⚡", color: "text-fuchsia-400" },
   { rank: "Red Teamer",    minXP: 10000, icon: "🔴", color: "text-orange-400" },
   { rank: "Legend",        minXP: 25000, icon: "💀", color: "text-red-400" },

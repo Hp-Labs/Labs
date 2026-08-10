@@ -38,7 +38,7 @@ const INTERNAL_CERTS = [
     xpRequired: 15000,
     currentXP: 18450,
     status: "in_progress" as const,
-    color: "#bf5fff",
+    color: "var(--hp-primary)",
     icon: "🌐",
   },
   {
@@ -60,7 +60,7 @@ const INTERNAL_CERTS = [
     xpRequired: 20000,
     currentXP: 0,
     status: "locked" as const,
-    color: "#00e5ff",
+    color: "var(--hp-cyan)",
     icon: "🕸️",
   },
   {
@@ -194,7 +194,7 @@ function ProgressBar({ value, color }: { value: number; color: string }) {
       style={{
         height: "6px",
         borderRadius: "99px",
-        backgroundColor: "rgba(255,255,255,0.06)",
+        backgroundColor: "var(--hp-bg-3)",
         overflow: "hidden",
         flex: 1,
       }}
@@ -229,10 +229,11 @@ export default function CertificationsPage() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#06030c",
-        color: "#e2e8f0",
+        backgroundColor: "var(--hp-bg)",
+        color: "var(--hp-text)",
         fontFamily: "Inter, system-ui, sans-serif",
       }}
+      suppressHydrationWarning
     >
       <Navbar />
 
@@ -243,14 +244,53 @@ export default function CertificationsPage() {
           inset: 0,
           pointerEvents: "none",
           background:
-            "radial-gradient(ellipse 70% 35% at 50% 0%, rgba(191, 95, 255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 35% at 50% 0%, var(--hp-primary) 0%, transparent 70%)",
           zIndex: 0,
         }}
       />
 
       <main style={{ position: "relative", zIndex: 1, paddingTop: "96px", paddingBottom: "80px" }}>
-        <div style={{ maxWidth: "1060px", margin: "0 auto", padding: "0 24px" }}>
-          {/* Header */}
+        {/* Header Container */}
+        <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 24px 32px" }}>
+          {/* Locked Notice Banner */}
+          <div
+            style={{
+              padding: "16px 20px",
+              borderRadius: "16px",
+              border: "1px solid rgba(234, 179, 8, 0.3)",
+              backgroundColor: "rgba(234, 179, 8, 0.06)",
+              display: "flex",
+              alignItems: "center",
+              gap: "14px",
+              marginBottom: "28px",
+            }}
+          >
+            <div
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "12px",
+                backgroundColor: "rgba(234, 179, 8, 0.15)",
+                border: "1px solid rgba(234, 179, 8, 0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#facc15",
+                flexShrink: 0,
+              }}
+            >
+              <Lock size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: "14px", fontWeight: 700, color: "#facc15", fontFamily: "monospace" }}>
+                🔒 CERTIFICATION ENGINE CURRENTLY LOCKED
+              </div>
+              <p style={{ fontSize: "12px", color: "var(--hp-text-muted)", marginTop: "2px", lineHeight: 1.5 }}>
+                Official HpLabs Certification exams unlock upon reaching 15,000 XP and completing all 5 severity tiers of your target domain. Practice labs remain available.
+              </p>
+            </div>
+          </div>
+
           <div style={{ marginBottom: "48px" }}>
             <div
               style={{
@@ -260,12 +300,12 @@ export default function CertificationsPage() {
                 marginBottom: "12px",
               }}
             >
-              <Award size={13} style={{ color: "#bf5fff" }} />
+              <Award size={13} style={{ color: "var(--hp-primary)" }} />
               <span
                 style={{
                   fontFamily: "monospace",
                   fontSize: "11px",
-                  color: "#bf5fff",
+                  color: "var(--hp-primary)",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                 }}
@@ -279,7 +319,7 @@ export default function CertificationsPage() {
                 fontWeight: 800,
                 lineHeight: 1.1,
                 marginBottom: "12px",
-                background: "linear-gradient(135deg, #ffffff 0%, #bf5fff 55%, #00e5ff 100%)",
+                background: "linear-gradient(135deg, var(--hp-text) 0%, #bf5fff 55%, #00e5ff 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -287,7 +327,7 @@ export default function CertificationsPage() {
             >
               Your Credentials
             </h1>
-            <p style={{ color: "#6b7280", fontSize: "14px", maxWidth: "560px", lineHeight: 1.7 }}>
+            <p style={{ color: "var(--hp-text-muted)", fontSize: "14px", maxWidth: "560px", lineHeight: 1.7 }}>
               Track your HpLabs certifications, verify external credentials, and stay ahead of
               upcoming integrations that will auto-verify industry certifications.
             </p>
@@ -303,12 +343,12 @@ export default function CertificationsPage() {
                 marginBottom: "24px",
               }}
             >
-              <Shield size={16} style={{ color: "#bf5fff" }} />
+              <Shield size={16} style={{ color: "var(--hp-primary)" }} />
               <h2
                 style={{
                   fontSize: "18px",
                   fontWeight: 700,
-                  color: "#ffffff",
+                  color: "var(--hp-text)",
                 }}
               >
                 HpLabs Internal Certifications
@@ -317,7 +357,7 @@ export default function CertificationsPage() {
                 style={{
                   flex: 1,
                   height: "1px",
-                  background: "linear-gradient(to right, rgba(191, 95, 255,0.2), transparent)",
+                  background: "linear-gradient(to right, var(--hp-primary), transparent)",
                   marginLeft: "8px",
                 }}
               />
@@ -336,9 +376,9 @@ export default function CertificationsPage() {
                     style={{
                       padding: "24px",
                       borderRadius: "14px",
-                      border: `1px solid ${isLocked ? "rgba(255,255,255,0.06)" : cert.color + "33"}`,
+                      border: `1px solid ${isLocked ? "var(--hp-border)" : cert.color + "33"}`,
                       backgroundColor: isLocked
-                        ? "rgba(255,255,255,0.015)"
+                        ? "var(--hp-card-bg)"
                         : `${cert.color}06`,
                       position: "relative",
                       overflow: "hidden",
@@ -408,10 +448,10 @@ export default function CertificationsPage() {
                                   alignItems: "center",
                                   gap: "4px",
                                   fontSize: "10px",
-                                  color: "#4b5563",
+                                  color: "var(--hp-text-muted)",
                                   padding: "2px 8px",
                                   borderRadius: "4px",
-                                  border: "1px solid rgba(255,255,255,0.08)",
+                                  border: "1px solid var(--hp-border)",
                                 }}
                               >
                                 <Lock size={9} />
@@ -421,24 +461,24 @@ export default function CertificationsPage() {
                               <span
                                 style={{
                                   fontSize: "10px",
-                                  color: "#bf5fff",
+                                  color: "var(--hp-primary)",
                                   padding: "2px 8px",
                                   borderRadius: "4px",
-                                  border: "1px solid rgba(191, 95, 255,0.3)",
-                                  backgroundColor: "rgba(191, 95, 255,0.08)",
+                                  border: "1px solid var(--hp-primary)",
+                                  backgroundColor: "var(--hp-primary)",
                                 }}
                               >
                                 In Progress
                               </span>
                             )}
                           </div>
-                          <div style={{ fontSize: "12px", color: "#6b7280", marginTop: "2px" }}>
+                          <div style={{ fontSize: "12px", color: "var(--hp-text-muted)", marginTop: "2px" }}>
                             {cert.fullName}
                           </div>
                           <p
                             style={{
                               fontSize: "13px",
-                              color: "#94a3b8",
+                              color: "var(--hp-text-muted)",
                               marginTop: "8px",
                               lineHeight: 1.6,
                               maxWidth: "500px",
@@ -456,13 +496,13 @@ export default function CertificationsPage() {
                             fontFamily: "monospace",
                             fontSize: "28px",
                             fontWeight: 800,
-                            color: isLocked ? "#374151" : cert.color,
+                            color: isLocked ? "var(--hp-text-muted)" : cert.color,
                             lineHeight: 1,
                           }}
                         >
                           {overallProgress}%
                         </div>
-                        <div style={{ fontSize: "11px", color: "#4b5563", marginTop: "4px" }}>
+                        <div style={{ fontSize: "11px", color: "var(--hp-text-muted)", marginTop: "4px" }}>
                           {cert.completedLabs} / {cert.totalLabs} labs
                         </div>
                         {!isLocked && (
@@ -475,12 +515,12 @@ export default function CertificationsPage() {
                               gap: "4px",
                             }}
                           >
-                            <Zap size={11} style={{ color: "#bf5fff" }} />
+                            <Zap size={11} style={{ color: "var(--hp-primary)" }} />
                             <span
                               style={{
                                 fontFamily: "monospace",
                                 fontSize: "11px",
-                                color: "#bf5fff",
+                                color: "var(--hp-primary)",
                               }}
                             >
                               {cert.currentXP.toLocaleString()} XP
@@ -507,7 +547,7 @@ export default function CertificationsPage() {
                             <div
                               style={{
                                 fontSize: "11px",
-                                color: "#6b7280",
+                                color: "var(--hp-text-muted)",
                                 width: "150px",
                                 flexShrink: 0,
                                 fontFamily: "monospace",
@@ -520,7 +560,7 @@ export default function CertificationsPage() {
                               style={{
                                 fontFamily: "monospace",
                                 fontSize: "11px",
-                                color: val === 100 ? cert.color : "#4b5563",
+                                color: val === 100 ? cert.color : "var(--hp-text-muted)",
                                 width: "36px",
                                 textAlign: "right",
                                 flexShrink: 0,
@@ -551,8 +591,8 @@ export default function CertificationsPage() {
                 marginBottom: "24px",
               }}
             >
-              <Globe size={16} style={{ color: "#00e5ff" }} />
-              <h2 style={{ fontSize: "18px", fontWeight: 700, color: "#ffffff" }}>
+              <Globe size={16} style={{ color: "var(--hp-cyan)" }} />
+              <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--hp-text)" }}>
                 External Certifications
               </h2>
               <div
@@ -577,8 +617,8 @@ export default function CertificationsPage() {
                 gap: "10px",
               }}
             >
-              <Info size={14} style={{ color: "#00e5ff", flexShrink: 0, marginTop: "2px" }} />
-              <p style={{ fontSize: "13px", color: "#6b7280", lineHeight: 1.6 }}>
+              <Info size={14} style={{ color: "var(--hp-cyan)", flexShrink: 0, marginTop: "2px" }} />
+              <p style={{ fontSize: "13px", color: "var(--hp-text-muted)", lineHeight: 1.6 }}>
                 Manually verify your external certifications by entering your certificate ID below.
                 Automatic API verification is coming soon — see Planned Integrations.
               </p>
@@ -593,8 +633,8 @@ export default function CertificationsPage() {
                     style={{
                       padding: "20px",
                       borderRadius: "12px",
-                      border: `1px solid ${result === "valid" ? cert.color + "44" : "rgba(255,255,255,0.06)"}`,
-                      backgroundColor: result === "valid" ? `${cert.color}06` : "rgba(255,255,255,0.015)",
+                      border: `1px solid ${result === "valid" ? cert.color + "44" : "var(--hp-border)"}`,
+                      backgroundColor: result === "valid" ? `${cert.color}06` : "var(--hp-card-bg)",
                       transition: "all 0.3s",
                     }}
                   >
@@ -637,7 +677,7 @@ export default function CertificationsPage() {
                           >
                             {cert.name}
                           </span>
-                          <span style={{ fontSize: "11px", color: "#4b5563" }}>— {cert.org}</span>
+                          <span style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}>— {cert.org}</span>
                           <span
                             style={{
                               fontSize: "10px",
@@ -650,14 +690,14 @@ export default function CertificationsPage() {
                           >
                             {cert.difficulty}
                           </span>
-                          <span style={{ fontSize: "10px", color: "#374151", marginLeft: "auto" }}>
+                          <span style={{ fontSize: "10px", color: "var(--hp-text-muted)", marginLeft: "auto" }}>
                             {cert.cost}
                           </span>
                         </div>
-                        <div style={{ fontSize: "11px", color: "#6b7280", marginBottom: "6px" }}>
+                        <div style={{ fontSize: "11px", color: "var(--hp-text-muted)", marginBottom: "6px" }}>
                           {cert.fullName}
                         </div>
-                        <p style={{ fontSize: "12px", color: "#4b5563", lineHeight: 1.6 }}>
+                        <p style={{ fontSize: "12px", color: "var(--hp-text-muted)", lineHeight: 1.6 }}>
                           {cert.description}
                         </p>
                       </div>
@@ -667,7 +707,7 @@ export default function CertificationsPage() {
                         <div
                           style={{
                             fontSize: "10px",
-                            color: "#4b5563",
+                            color: "var(--hp-text-muted)",
                             fontFamily: "monospace",
                             letterSpacing: "0.06em",
                             textTransform: "uppercase",
@@ -692,10 +732,10 @@ export default function CertificationsPage() {
                                   ? cert.color
                                   : result === "invalid"
                                   ? "#f87171"
-                                  : "rgba(255,255,255,0.1)"
+                                  : "var(--hp-border)"
                               }`,
-                              backgroundColor: "rgba(255,255,255,0.03)",
-                              color: "#e2e8f0",
+                              backgroundColor: "var(--hp-bg-3)",
+                              color: "var(--hp-text)",
                               fontSize: "12px",
                               fontFamily: "monospace",
                               outline: "none",
@@ -766,7 +806,7 @@ export default function CertificationsPage() {
               }}
             >
               <TrendingUp size={16} style={{ color: "#a78bfa" }} />
-              <h2 style={{ fontSize: "18px", fontWeight: 700, color: "#ffffff" }}>
+              <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--hp-text)" }}>
                 Planned Integrations
               </h2>
               <div
@@ -795,7 +835,7 @@ export default function CertificationsPage() {
             <p
               style={{
                 fontSize: "13px",
-                color: "#6b7280",
+                color: "var(--hp-text-muted)",
                 marginBottom: "20px",
                 lineHeight: 1.7,
                 maxWidth: "600px",
@@ -819,8 +859,8 @@ export default function CertificationsPage() {
                   style={{
                     padding: "20px",
                     borderRadius: "12px",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    backgroundColor: "rgba(255,255,255,0.015)",
+                    border: "1px solid var(--hp-border)",
+                    backgroundColor: "var(--hp-card-bg)",
                     position: "relative",
                     overflow: "hidden",
                   }}
@@ -872,13 +912,13 @@ export default function CertificationsPage() {
                   <div
                     style={{
                       fontSize: "11px",
-                      color: "#4b5563",
+                      color: "var(--hp-text-muted)",
                       marginBottom: "10px",
                     }}
                   >
                     {integration.org}
                   </div>
-                  <p style={{ fontSize: "12px", color: "#6b7280", lineHeight: 1.6 }}>
+                  <p style={{ fontSize: "12px", color: "var(--hp-text-muted)", lineHeight: 1.6 }}>
                     {integration.description}
                   </p>
 
@@ -889,7 +929,7 @@ export default function CertificationsPage() {
                       alignItems: "center",
                       gap: "6px",
                       fontSize: "12px",
-                      color: "#374151",
+                      color: "var(--hp-text-muted)",
                     }}
                   >
                     <BookOpen size={12} />

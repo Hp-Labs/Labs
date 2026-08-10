@@ -1,130 +1,24 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import { ALL_WEB_LABS } from "@/lib/data/redteam";
+import { HISTORICAL_VULNERABILITY_CATALOG } from "@/lib/data/historicalVulnerabilities";
+import { getCombinedVulnerabilityCatalog, getCurrentDynamicDate } from "@/lib/services/vulnerabilitySync";
 import {
-  Clock,
-  Shield,
-  Zap,
-  ChevronRight,
-  Target,
-  Globe,
-  Flag,
-  BookOpen,
+  Clock, Shield, Zap, ChevronRight, Target, Globe, Flag, BookOpen, RefreshCw, Sparkles
 } from "lucide-react";
 import Link from "next/link";
 
-const HISTORICAL_EVENTS = [
-  {
-    year: 1971,
-    name: "Creeper Worm",
-    cvss: undefined as number | undefined,
-    description:
-      "The first self-replicating program appeared on ARPANET, moving between DEC PDP-10 computers and displaying 'I'm the creeper, catch me if you can!'",
-    milestone: true,
-    domain: "network",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1983,
-    name: "First DNS Implementation",
-    cvss: undefined as number | undefined,
-    description:
-      "Paul Mockapetris introduced DNS (Domain Name System), creating the foundation for subdomain enumeration attacks used in recon today.",
-    milestone: false,
-    domain: "network",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1986,
-    name: "Brain Virus — First PC Virus",
-    cvss: undefined as number | undefined,
-    description:
-      "Two Pakistani brothers wrote the first IBM PC-compatible virus that spread via floppy disks, overwriting the boot sector — the precursor to modern malware.",
-    milestone: true,
-    domain: "malware",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1988,
-    name: "Morris Worm",
-    cvss: undefined as number | undefined,
-    description:
-      "Created by Robert Morris at Cornell, this worm exploited sendmail, fingerd, and rsh/rexec bugs, infecting ~6,000 machines (~10% of the internet) and becoming the first widely publicised internet worm.",
-    milestone: true,
-    domain: "network",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1993,
-    name: "First Web Application Attacks via CGI",
-    cvss: undefined as number | undefined,
-    description:
-      "With the birth of CGI scripts, the first web application attack vectors emerged — malformed input in web forms causing server-side crashes or unexpected behavior.",
-    milestone: false,
-    domain: "web",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1995,
-    name: "JavaScript Introduced — XSS Foundation",
-    cvss: undefined as number | undefined,
-    description:
-      "Brendan Eich created JavaScript for Netscape Navigator, which would soon become the primary vector for Cross-Site Scripting (XSS) attacks on the web.",
-    milestone: false,
-    domain: "web",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1996,
-    name: "HTTP Cookie Session Hijacking",
-    cvss: undefined as number | undefined,
-    description:
-      "Session cookies were introduced and almost immediately found to be vulnerable to theft via network sniffing and later via XSS. First documented session hijacking techniques emerged.",
-    milestone: false,
-    domain: "web",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1998,
-    name: "SQL Injection — First Documented",
-    cvss: 10.0,
-    description:
-      "Jeff Forristal (rain.forest.puppy) publicly documented SQL injection in Phrack magazine, showing how unsanitised database queries could be manipulated to dump data, bypass authentication, or execute OS commands.",
-    milestone: true,
-    domain: "web",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-  {
-    year: 1999,
-    name: "XSS (Cross-Site Scripting) Named",
-    cvss: 6.1,
-    description:
-      "Microsoft engineers formally named the Cross-Site Scripting attack vector after discovering that malicious scripts could be injected into trusted websites and executed in victims' browsers.",
-    milestone: true,
-    domain: "web",
-    labId: null as string | null,
-    severity: undefined as string | undefined,
-  },
-];
-
 function getDomainColor(domain: string): string {
   const map: Record<string, string> = {
-    web: "#bf5fff",
-    network: "#00e5ff",
+    web: "var(--hp-primary)",
+    network: "var(--hp-cyan)",
     malware: "#ff6b6b",
     api: "#a78bfa",
     cloud: "#60a5fa",
     mobile: "#f59e0b",
+    iot: "#10b981",
+    "active-directory": "#ec4899",
   };
   return map[domain] ?? "#9ca3af";
 }
@@ -145,76 +39,62 @@ function getCvssLabel(cvss?: number): string {
   return "Low";
 }
 
-type TimelineEntry = {
-  year: number;
-  name: string;
-  cvss?: number;
-  description: string;
-  milestone: boolean;
-  domain: string;
-  labId: string | null;
-  severity?: string;
-};
-
-function buildTimeline(): TimelineEntry[] {
-  const entries: TimelineEntry[] = HISTORICAL_EVENTS.map((e) => ({ ...e }));
-
-  for (const lab of ALL_WEB_LABS) {
-    const isDuplicate = entries.some(
-      (e) =>
-        e.year === lab.firstDiscoveredYear &&
-        e.name.toLowerCase().includes(lab.shortName.toLowerCase().slice(0, 6))
-    );
-    if (!isDuplicate) {
-      entries.push({
-        year: lab.firstDiscoveredYear,
-        name: lab.name,
-        cvss: lab.cvssScore,
-        description:
-          lab.description.slice(0, 200) + (lab.description.length > 200 ? "…" : ""),
-        milestone: (lab.cvssScore ?? 0) >= 9,
-        domain: lab.domain,
-        labId: lab.id,
-        severity: lab.severity,
-      });
-    }
-  }
-
-  return entries.sort((a, b) => a.year - b.year || a.name.localeCompare(b.name));
-}
-
 const DECADES = [
+  { label: "1940s", start: 1940, end: 1949 },
+  { label: "1950s", start: 1950, end: 1959 },
+  { label: "1960s", start: 1960, end: 1969 },
   { label: "1970s", start: 1970, end: 1979 },
   { label: "1980s", start: 1980, end: 1989 },
   { label: "1990s", start: 1990, end: 1999 },
   { label: "2000s", start: 2000, end: 2009 },
   { label: "2010s", start: 2010, end: 2019 },
-  { label: "2020s", start: 2020, end: 2029 },
+  { label: "2020s+", start: 2020, end: 2030 },
 ];
 
 export default function TimelinePage() {
   const [activeDecade, setActiveDecade] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [catalog, setCatalog] = useState(() => getCombinedVulnerabilityCatalog());
+  const [isSyncing, setIsSyncing] = useState(false);
+  const { year: currentYear, fullDate: currentDate } = useMemo(() => getCurrentDynamicDate(), []);
 
-  const allEntries = useMemo(() => buildTimeline(), []);
+  // Background silent synchronization without page reload
+  useEffect(() => {
+    async function triggerSilentSync() {
+      try {
+        setIsSyncing(true);
+        const res = await fetch("/api/vulnerabilities/sync");
+        if (res.ok) {
+          setCatalog(getCombinedVulnerabilityCatalog());
+        }
+      } catch {} finally {
+        setIsSyncing(false);
+      }
+    }
+    triggerSilentSync();
+  }, []);
 
   const filteredEntries = useMemo(() => {
-    if (!searchQuery) return allEntries;
-    const q = searchQuery.toLowerCase();
-    return allEntries.filter(
-      (e) =>
-        e.name.toLowerCase().includes(q) ||
-        e.description.toLowerCase().includes(q) ||
-        e.domain.toLowerCase().includes(q)
-    );
-  }, [allEntries, searchQuery]);
+    let result = catalog;
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(
+        (e) =>
+          e.name.toLowerCase().includes(q) ||
+          e.description.toLowerCase().includes(q) ||
+          e.domain.toLowerCase().includes(q) ||
+          (e.cve && e.cve.some((c) => c.toLowerCase().includes(q)))
+      );
+    }
+    return result.sort((a, b) => a.firstDiscoveredYear - b.firstDiscoveredYear || a.name.localeCompare(b.name));
+  }, [catalog, searchQuery]);
 
   const groupedByDecade = useMemo(
     () =>
       DECADES.map((decade) => ({
         ...decade,
         entries: filteredEntries.filter(
-          (e) => e.year >= decade.start && e.year <= decade.end
+          (e) => e.firstDiscoveredYear >= decade.start && e.firstDiscoveredYear <= decade.end
         ),
       })),
     [filteredEntries]
@@ -224,16 +104,15 @@ export default function TimelinePage() {
     ? groupedByDecade.filter((d) => d.label === activeDecade)
     : groupedByDecade;
 
-  const totalEntries = allEntries.length;
-  const milestones = allEntries.filter((e) => e.milestone).length;
-  const withLabs = allEntries.filter((e) => e.labId).length;
+  const totalEntries = catalog.length;
+  const milestones = catalog.filter((e) => e.severity === "critical" || e.severity === "high").length;
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#06030c",
-        color: "#e2e8f0",
+        backgroundColor: "var(--hp-bg)",
+        color: "var(--hp-text)",
         fontFamily: "Inter, system-ui, sans-serif",
       }}
     >
@@ -246,7 +125,7 @@ export default function TimelinePage() {
           inset: 0,
           pointerEvents: "none",
           background:
-            "radial-gradient(ellipse 80% 40% at 50% 0%, rgba(191, 95, 255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 40% at 50% 0%, var(--hp-primary) 0%, transparent 70%)",
           zIndex: 0,
         }}
       />
@@ -258,22 +137,32 @@ export default function TimelinePage() {
             style={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
               gap: "8px",
               marginBottom: "12px",
             }}
           >
-            <Clock size={13} style={{ color: "#bf5fff" }} />
-            <span
-              style={{
-                fontFamily: "monospace",
-                fontSize: "11px",
-                color: "#bf5fff",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-              }}
-            >
-              1971 → 2026
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Clock size={14} style={{ color: "var(--hp-primary)" }} />
+              <span
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: "12px",
+                  color: "var(--hp-primary)",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                }}
+              >
+                1940 → UPDATED TODAY
+              </span>
+            </div>
+
+            {/* Silent Sync Status Indicator */}
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", color: "var(--hp-text-muted)", fontFamily: "monospace" }}>
+              <RefreshCw size={12} style={{ animation: isSyncing ? "spin 2s linear infinite" : "none", color: "var(--hp-cyan)" }} />
+              <span>{isSyncing ? "Synchronizing Live Feed..." : "Updated Today"}</span>
+            </div>
           </div>
 
           <h1
@@ -282,36 +171,36 @@ export default function TimelinePage() {
               fontWeight: 800,
               lineHeight: 1.1,
               marginBottom: "16px",
-              background: "linear-gradient(135deg, #ffffff 0%, #bf5fff 60%, #00e5ff 100%)",
+              background: "linear-gradient(135deg, var(--hp-text) 0%, #bf5fff 60%, #00e5ff 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
           >
-            Attack Vector Timeline
+            Historical Vulnerability Research Catalog
           </h1>
           <p
             style={{
-              color: "#94a3b8",
-              maxWidth: "580px",
+              color: "var(--hp-text-muted)",
+              maxWidth: "680px",
               lineHeight: 1.7,
               fontSize: "15px",
               marginBottom: "32px",
             }}
           >
-            Every major vulnerability, hacking milestone, and web exploit — from the{" "}
-            <span style={{ color: "#bf5fff" }}>Morris Worm (1988)</span> to{" "}
-            <span style={{ color: "#bf5fff" }}>2026</span>. Entries with labs link directly
-            to hands-on exploitation practice.
+            Exhaustive, year-by-year security research from the{" "}
+            <span style={{ color: "var(--hp-primary)", fontWeight: 600 }}>1947 Harvard Relay Bug</span> to{" "}
+            <span style={{ color: "var(--hp-cyan)", fontWeight: 600 }}>Updated Today</span>.
+            Every documented vulnerability maps to hands-on practical or historical lab environments.
           </p>
 
           {/* Stats row */}
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
             {[
-              { label: "Total Events", value: String(totalEntries), icon: Globe },
-              { label: "Major Milestones", value: String(milestones), icon: Zap },
-              { label: "Live Labs", value: String(withLabs), icon: Target },
-              { label: "Years Covered", value: "55+", icon: Clock },
+              { label: "Total Vulnerabilities", value: String(totalEntries), icon: Globe },
+              { label: "High / Critical", value: String(milestones), icon: Zap },
+              { label: "Historical Catalog", value: String(HISTORICAL_VULNERABILITY_CATALOG.length), icon: Sparkles },
+              { label: "Years Covered", value: `${currentYear - 1940}+`, icon: Clock },
             ].map(({ label, value, icon: Icon }) => (
               <div
                 key={label}
@@ -321,24 +210,24 @@ export default function TimelinePage() {
                   gap: "10px",
                   padding: "12px 18px",
                   borderRadius: "10px",
-                  border: "1px solid rgba(191, 95, 255,0.12)",
-                  backgroundColor: "rgba(191, 95, 255,0.03)",
+                  border: "1px solid var(--hp-border)",
+                  backgroundColor: "var(--hp-card-bg)",
                 }}
               >
-                <Icon size={15} style={{ color: "#bf5fff", flexShrink: 0 }} />
+                <Icon size={15} style={{ color: "var(--hp-primary)", flexShrink: 0 }} />
                 <div>
                   <div
                     style={{
                       fontFamily: "monospace",
                       fontSize: "20px",
                       fontWeight: 700,
-                      color: "#bf5fff",
+                      color: "var(--hp-primary)",
                       lineHeight: 1,
                     }}
                   >
                     {value}
                   </div>
-                  <div style={{ fontSize: "11px", color: "#6b7280", marginTop: "2px" }}>
+                  <div style={{ fontSize: "11px", color: "var(--hp-text-muted)", marginTop: "2px" }}>
                     {label}
                   </div>
                 </div>
@@ -367,13 +256,13 @@ export default function TimelinePage() {
                 left: "12px",
                 top: "50%",
                 transform: "translateY(-50%)",
-                color: "#4b5563",
+                color: "var(--hp-text-muted)",
                 pointerEvents: "none",
               }}
             />
             <input
               type="text"
-              placeholder="Search vulnerabilities…"
+              placeholder="Search vulnerabilities, CVEs, or years…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -383,9 +272,9 @@ export default function TimelinePage() {
                 paddingTop: "9px",
                 paddingBottom: "9px",
                 borderRadius: "8px",
-                border: "1px solid rgba(191, 95, 255,0.15)",
-                backgroundColor: "rgba(255,255,255,0.03)",
-                color: "#e2e8f0",
+                border: "1px solid var(--hp-primary)",
+                backgroundColor: "var(--hp-bg-3)",
+                color: "var(--hp-text)",
                 fontSize: "13px",
                 outline: "none",
                 boxSizing: "border-box",
@@ -407,9 +296,9 @@ export default function TimelinePage() {
                   style={{
                     padding: "6px 14px",
                     borderRadius: "99px",
-                    border: `1px solid ${isActive ? "rgba(191, 95, 255,0.5)" : "rgba(255,255,255,0.08)"}`,
-                    backgroundColor: isActive ? "rgba(191, 95, 255,0.1)" : "transparent",
-                    color: isActive ? "#bf5fff" : "#9ca3af",
+                    border: `1px solid ${isActive ? "var(--hp-primary)" : "var(--hp-border)"}`,
+                    backgroundColor: isActive ? "var(--hp-primary)" : "transparent",
+                    color: isActive ? "#ffffff" : "var(--hp-text-muted)",
                     fontSize: "12px",
                     cursor: "pointer",
                     transition: "all 0.2s",
@@ -423,7 +312,7 @@ export default function TimelinePage() {
           </div>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline Entries */}
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
           {visibleDecades.map((decade) => {
             if (decade.entries.length === 0) return null;
@@ -443,12 +332,12 @@ export default function TimelinePage() {
                       fontFamily: "monospace",
                       fontSize: "12px",
                       fontWeight: 700,
-                      color: "#bf5fff",
+                      color: "var(--hp-primary)",
                       letterSpacing: "0.08em",
                       padding: "4px 12px",
-                      border: "1px solid rgba(191, 95, 255,0.3)",
+                      border: "1px solid var(--hp-primary)",
                       borderRadius: "4px",
-                      backgroundColor: "rgba(191, 95, 255,0.06)",
+                      backgroundColor: "var(--hp-primary)",
                       whiteSpace: "nowrap",
                     }}
                   >
@@ -459,17 +348,16 @@ export default function TimelinePage() {
                       flex: 1,
                       height: "1px",
                       background:
-                        "linear-gradient(to right, rgba(191, 95, 255,0.3), transparent)",
+                        "linear-gradient(to right, var(--hp-primary), transparent)",
                     }}
                   />
-                  <span style={{ fontSize: "11px", color: "#374151", whiteSpace: "nowrap" }}>
-                    {decade.entries.length} events
+                  <span style={{ fontSize: "11px", color: "var(--hp-text-muted)", whiteSpace: "nowrap" }}>
+                    {decade.entries.length} vulnerabilities
                   </span>
                 </div>
 
                 {/* Entries */}
                 <div style={{ position: "relative", paddingLeft: "32px" }}>
-                  {/* Vertical line */}
                   <div
                     style={{
                       position: "absolute",
@@ -478,17 +366,18 @@ export default function TimelinePage() {
                       bottom: 0,
                       width: "1px",
                       background:
-                        "linear-gradient(to bottom, rgba(191, 95, 255,0.35), rgba(191, 95, 255,0.04))",
+                        "linear-gradient(to bottom, var(--hp-primary), var(--hp-primary))",
                     }}
                   />
 
                   {decade.entries.map((entry, idx) => {
                     const domainColor = getDomainColor(entry.domain);
-                    const cvssColor = getCvssColor(entry.cvss);
+                    const cvssColor = getCvssColor(entry.cvssScore);
+                    const isMilestone = entry.severity === "critical" || entry.severity === "high";
 
                     return (
                       <div
-                        key={`${entry.year}-${entry.name}-${idx}`}
+                        key={`${entry.id}-${idx}`}
                         style={{ position: "relative", marginBottom: "20px" }}
                       >
                         {/* Dot */}
@@ -497,15 +386,15 @@ export default function TimelinePage() {
                             position: "absolute",
                             left: "-29px",
                             top: "18px",
-                            width: entry.milestone ? "14px" : "10px",
-                            height: entry.milestone ? "14px" : "10px",
+                            width: isMilestone ? "14px" : "10px",
+                            height: isMilestone ? "14px" : "10px",
                             borderRadius: "50%",
-                            backgroundColor: entry.milestone
-                              ? "#bf5fff"
-                              : "rgba(191, 95, 255,0.15)",
-                            border: `2px solid ${entry.milestone ? "#bf5fff" : "rgba(191, 95, 255,0.25)"}`,
-                            boxShadow: entry.milestone
-                              ? "0 0 14px rgba(191, 95, 255,0.7)"
+                            backgroundColor: isMilestone
+                              ? "var(--hp-primary)"
+                              : "var(--hp-primary)",
+                            border: `2px solid ${isMilestone ? "var(--hp-primary)" : "var(--hp-primary)"}`,
+                            boxShadow: isMilestone
+                              ? "0 0 14px var(--hp-primary)"
                               : "none",
                             transform: "translateX(50%)",
                             zIndex: 1,
@@ -518,13 +407,13 @@ export default function TimelinePage() {
                             padding: "16px 20px",
                             borderRadius: "10px",
                             border: `1px solid ${
-                              entry.milestone
-                                ? "rgba(191, 95, 255,0.2)"
-                                : "rgba(255,255,255,0.05)"
+                              isMilestone
+                                ? "var(--hp-primary)"
+                                : "var(--hp-border)"
                             }`,
-                            backgroundColor: entry.milestone
-                              ? "rgba(191, 95, 255,0.03)"
-                              : "rgba(255,255,255,0.015)",
+                            backgroundColor: isMilestone
+                              ? "var(--hp-card-bg)"
+                              : "var(--hp-card-bg)",
                           }}
                         >
                           {/* Top row */}
@@ -558,28 +447,23 @@ export default function TimelinePage() {
                                   backgroundColor: `${domainColor}11`,
                                 }}
                               >
-                                {entry.year}
+                                {entry.firstDiscoveredYear}
                               </span>
 
-                              {entry.milestone && (
+                              {entry.cve && entry.cve.length > 0 && (
                                 <span
                                   style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: "4px",
+                                    fontFamily: "monospace",
                                     fontSize: "10px",
-                                    color: "#bf5fff",
+                                    color: "var(--hp-cyan)",
                                     padding: "2px 8px",
                                     borderRadius: "4px",
-                                    border: "1px solid rgba(191, 95, 255,0.3)",
-                                    backgroundColor: "rgba(191, 95, 255,0.08)",
+                                    border: "1px solid rgba(0, 229, 255, 0.3)",
+                                    backgroundColor: "rgba(0, 229, 255, 0.08)",
                                     fontWeight: 600,
-                                    letterSpacing: "0.06em",
-                                    textTransform: "uppercase",
                                   }}
                                 >
-                                  <Zap size={9} />
-                                  Milestone
+                                  {entry.cve.join(", ")}
                                 </span>
                               )}
 
@@ -615,7 +499,7 @@ export default function TimelinePage() {
                               </span>
                             </div>
 
-                            {entry.cvss !== undefined && (
+                            {entry.cvssScore !== undefined && (
                               <div
                                 style={{
                                   display: "flex",
@@ -633,18 +517,7 @@ export default function TimelinePage() {
                                     fontWeight: 700,
                                   }}
                                 >
-                                  CVSS {entry.cvss.toFixed(1)}
-                                </span>
-                                <span
-                                  style={{
-                                    fontSize: "10px",
-                                    color: cvssColor,
-                                    padding: "1px 6px",
-                                    borderRadius: "3px",
-                                    backgroundColor: `${cvssColor}22`,
-                                  }}
-                                >
-                                  {getCvssLabel(entry.cvss)}
+                                  CVSS {entry.cvssScore.toFixed(1)}
                                 </span>
                               </div>
                             )}
@@ -652,9 +525,9 @@ export default function TimelinePage() {
 
                           <h3
                             style={{
-                              fontSize: "14px",
+                              fontSize: "15px",
                               fontWeight: 700,
-                              color: entry.milestone ? "#ffffff" : "#cbd5e1",
+                              color: "var(--hp-text)",
                               marginBottom: "6px",
                               lineHeight: 1.4,
                             }}
@@ -665,36 +538,48 @@ export default function TimelinePage() {
                           <p
                             style={{
                               fontSize: "13px",
-                              color: "#6b7280",
+                              color: "var(--hp-text-muted)",
                               lineHeight: 1.65,
-                              marginBottom: entry.labId ? "12px" : 0,
+                              marginBottom: "12px",
                             }}
                           >
                             {entry.description}
                           </p>
 
-                          {entry.labId && (
-                            <Link
-                              href={`/labs/${entry.labId}`}
+                          <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                            <span
                               style={{
                                 display: "inline-flex",
                                 alignItems: "center",
                                 gap: "6px",
-                                fontSize: "12px",
-                                color: "#bf5fff",
-                                textDecoration: "none",
-                                padding: "6px 12px",
+                                fontSize: "11px",
+                                color: "var(--hp-text-muted)",
+                                fontFamily: "monospace",
+                                padding: "4px 10px",
                                 borderRadius: "6px",
-                                border: "1px solid rgba(191, 95, 255,0.25)",
-                                backgroundColor: "rgba(191, 95, 255,0.05)",
-                                fontWeight: 600,
+                                border: "1px solid var(--hp-border)",
+                                backgroundColor: "var(--hp-bg-3)",
                               }}
                             >
-                              <Target size={11} />
-                              Practice Lab
-                              <ChevronRight size={11} />
-                            </Link>
-                          )}
+                              Domain: <strong style={{ color: "var(--hp-primary)" }}>{entry.domain}</strong>
+                            </span>
+
+                            {entry.references && entry.references.length > 0 && (
+                              <a
+                                href={entry.references[0]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  fontSize: "11px",
+                                  color: "var(--hp-text-muted)",
+                                  textDecoration: "none",
+                                  fontFamily: "monospace",
+                                }}
+                              >
+                                Reference ↗
+                              </a>
+                            )}
+                          </div>
                         </div>
                       </div>
                     );
@@ -709,11 +594,11 @@ export default function TimelinePage() {
               style={{
                 textAlign: "center",
                 padding: "80px 24px",
-                color: "#374151",
+                color: "var(--hp-text-muted)",
               }}
             >
               <Flag size={36} style={{ margin: "0 auto 16px", opacity: 0.3, display: "block" }} />
-              <p style={{ fontSize: "15px" }}>No vulnerabilities match your search.</p>
+              <p style={{ fontSize: "15px" }}>No vulnerabilities match your search query.</p>
             </div>
           )}
         </div>
