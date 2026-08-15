@@ -33,16 +33,33 @@ import { WEB_HIGH_EXT_LABS }        from "./pentesting/web/high_ext";
 // ─── API Pentesting ──────────────────────────────────────────
 export { API_INFORMATION_LABS }                                      from "./pentesting/api/information";
 export { API_LOW_LABS, API_MEDIUM_LABS, API_HIGH_LABS, API_CRITICAL_LABS } from "./pentesting/api/labs";
+export { API_EXT_LABS }                                              from "./pentesting/api/ext";
 
 import { API_INFORMATION_LABS }                                      from "./pentesting/api/information";
 import { API_LOW_LABS, API_MEDIUM_LABS, API_HIGH_LABS, API_CRITICAL_LABS } from "./pentesting/api/labs";
+import { API_EXT_LABS }                                              from "./pentesting/api/ext";
 
 // ─── Network Pentesting ──────────────────────────────────────
 export { NETWORK_INFORMATION_LABS }                                                            from "./pentesting/network/information";
 export { NETWORK_LOW_LABS, NETWORK_MEDIUM_LABS, NETWORK_HIGH_LABS, NETWORK_CRITICAL_LABS }    from "./pentesting/network/labs";
+export { NETWORK_EXT_LABS }                                                                    from "./pentesting/network/ext";
 
 import { NETWORK_INFORMATION_LABS }                                                            from "./pentesting/network/information";
 import { NETWORK_LOW_LABS, NETWORK_MEDIUM_LABS, NETWORK_HIGH_LABS, NETWORK_CRITICAL_LABS }    from "./pentesting/network/labs";
+import { NETWORK_EXT_LABS }                                                                    from "./pentesting/network/ext";
+
+// ─── Mobile Pentesting ───────────────────────────────────────
+export { MOBILE_INFORMATION_LABS } from "./pentesting/mobile/information";
+export { MOBILE_LOW_LABS }         from "./pentesting/mobile/low";
+export { MOBILE_MEDIUM_LABS }      from "./pentesting/mobile/medium";
+export { MOBILE_HIGH_LABS }        from "./pentesting/mobile/high";
+export { MOBILE_CRITICAL_LABS }    from "./pentesting/mobile/critical";
+
+import { MOBILE_INFORMATION_LABS } from "./pentesting/mobile/information";
+import { MOBILE_LOW_LABS }         from "./pentesting/mobile/low";
+import { MOBILE_MEDIUM_LABS }      from "./pentesting/mobile/medium";
+import { MOBILE_HIGH_LABS }        from "./pentesting/mobile/high";
+import { MOBILE_CRITICAL_LABS }    from "./pentesting/mobile/critical";
 
 // ─── Cloud Pentesting ────────────────────────────────────────
 export { CLOUD_INFORMATION_LABS, CLOUD_LOW_LABS, CLOUD_MEDIUM_LABS, CLOUD_HIGH_LABS, CLOUD_CRITICAL_LABS } from "./pentesting/cloud/labs";
@@ -73,6 +90,7 @@ export const ALL_API_LABS: Lab[] = [
   ...API_MEDIUM_LABS,
   ...API_HIGH_LABS,
   ...API_CRITICAL_LABS,
+  ...API_EXT_LABS,
 ];
 
 export const ALL_NETWORK_LABS: Lab[] = [
@@ -81,6 +99,15 @@ export const ALL_NETWORK_LABS: Lab[] = [
   ...NETWORK_MEDIUM_LABS,
   ...NETWORK_HIGH_LABS,
   ...NETWORK_CRITICAL_LABS,
+  ...NETWORK_EXT_LABS,
+];
+
+export const ALL_MOBILE_LABS: Lab[] = [
+  ...MOBILE_INFORMATION_LABS,
+  ...MOBILE_LOW_LABS,
+  ...MOBILE_MEDIUM_LABS,
+  ...MOBILE_HIGH_LABS,
+  ...MOBILE_CRITICAL_LABS,
 ];
 
 export const ALL_CLOUD_LABS: Lab[] = [
@@ -103,6 +130,7 @@ export const ALL_LABS: Lab[] = [
   ...ALL_WEB_LABS,
   ...ALL_API_LABS,
   ...ALL_NETWORK_LABS,
+  ...ALL_MOBILE_LABS,
   ...ALL_CLOUD_LABS,
   ...ALL_AD_LABS,
 ];
@@ -122,21 +150,32 @@ export function getLabsByDomainAndSeverity(
     }
   }
   if (domain === "api") {
+    const ext = API_EXT_LABS;
     switch (severity) {
-      case "information": return API_INFORMATION_LABS;
-      case "low":         return API_LOW_LABS;
-      case "medium":      return API_MEDIUM_LABS;
-      case "high":        return API_HIGH_LABS;
-      case "critical":    return API_CRITICAL_LABS;
+      case "information": return [...API_INFORMATION_LABS, ...ext.filter(l => l.severity === "information")];
+      case "low":         return [...API_LOW_LABS,         ...ext.filter(l => l.severity === "low")];
+      case "medium":      return [...API_MEDIUM_LABS,      ...ext.filter(l => l.severity === "medium")];
+      case "high":        return [...API_HIGH_LABS,        ...ext.filter(l => l.severity === "high")];
+      case "critical":    return [...API_CRITICAL_LABS,    ...ext.filter(l => l.severity === "critical")];
     }
   }
   if (domain === "network") {
+    const ext = NETWORK_EXT_LABS;
     switch (severity) {
-      case "information": return NETWORK_INFORMATION_LABS;
-      case "low":         return NETWORK_LOW_LABS;
-      case "medium":      return NETWORK_MEDIUM_LABS;
-      case "high":        return NETWORK_HIGH_LABS;
-      case "critical":    return NETWORK_CRITICAL_LABS;
+      case "information": return [...NETWORK_INFORMATION_LABS, ...ext.filter(l => l.severity === "information")];
+      case "low":         return [...NETWORK_LOW_LABS,         ...ext.filter(l => l.severity === "low")];
+      case "medium":      return [...NETWORK_MEDIUM_LABS,      ...ext.filter(l => l.severity === "medium")];
+      case "high":        return [...NETWORK_HIGH_LABS,        ...ext.filter(l => l.severity === "high")];
+      case "critical":    return [...NETWORK_CRITICAL_LABS,    ...ext.filter(l => l.severity === "critical")];
+    }
+  }
+  if (domain === "mobile") {
+    switch (severity) {
+      case "information": return MOBILE_INFORMATION_LABS;
+      case "low":         return MOBILE_LOW_LABS;
+      case "medium":      return MOBILE_MEDIUM_LABS;
+      case "high":        return MOBILE_HIGH_LABS;
+      case "critical":    return MOBILE_CRITICAL_LABS;
     }
   }
   if (domain === "cloud") {
@@ -189,11 +228,11 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
       "REST, GraphQL, SOAP, gRPC security. BOLA, mass assignment, JWT attacks, OAuth exploitation, SSRF via API endpoints.",
     status: "available",
     labCounts: {
-      information: API_INFORMATION_LABS.length,
-      low:         API_LOW_LABS.length,
-      medium:      API_MEDIUM_LABS.length,
-      high:        API_HIGH_LABS.length,
-      critical:    API_CRITICAL_LABS.length,
+      information: API_INFORMATION_LABS.length + API_EXT_LABS.filter(l => l.severity === "information").length,
+      low:         API_LOW_LABS.length         + API_EXT_LABS.filter(l => l.severity === "low").length,
+      medium:      API_MEDIUM_LABS.length      + API_EXT_LABS.filter(l => l.severity === "medium").length,
+      high:        API_HIGH_LABS.length        + API_EXT_LABS.filter(l => l.severity === "high").length,
+      critical:    API_CRITICAL_LABS.length    + API_EXT_LABS.filter(l => l.severity === "critical").length,
     },
   },
   {
@@ -204,11 +243,11 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
       "Layer 2–7 attacks. Port scanning, service enumeration, protocol attacks — from Morris Worm (1988) to EternalBlue (2017) to SMBGhost (2020).",
     status: "available",
     labCounts: {
-      information: NETWORK_INFORMATION_LABS.length,
-      low:         NETWORK_LOW_LABS.length,
-      medium:      NETWORK_MEDIUM_LABS.length,
-      high:        NETWORK_HIGH_LABS.length,
-      critical:    NETWORK_CRITICAL_LABS.length,
+      information: NETWORK_INFORMATION_LABS.length + NETWORK_EXT_LABS.filter(l => l.severity === "information").length,
+      low:         NETWORK_LOW_LABS.length         + NETWORK_EXT_LABS.filter(l => l.severity === "low").length,
+      medium:      NETWORK_MEDIUM_LABS.length      + NETWORK_EXT_LABS.filter(l => l.severity === "medium").length,
+      high:        NETWORK_HIGH_LABS.length        + NETWORK_EXT_LABS.filter(l => l.severity === "high").length,
+      critical:    NETWORK_CRITICAL_LABS.length    + NETWORK_EXT_LABS.filter(l => l.severity === "critical").length,
     },
   },
   {
@@ -246,9 +285,15 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
     name: "Mobile Pentesting",
     icon: "📱",
     description:
-      "Android and iOS application security. APK analysis, SSL pinning bypass, root detection bypass, insecure storage, Frida dynamic instrumentation.",
-    status: "coming_soon",
-    labCounts: {},
+      "Android and iOS application security. APK analysis, SSL pinning bypass, root detection bypass, insecure storage, Frida dynamic instrumentation. OWASP MASVS v2 complete coverage.",
+    status: "available",
+    labCounts: {
+      information: MOBILE_INFORMATION_LABS.length,
+      low:         MOBILE_LOW_LABS.length,
+      medium:      MOBILE_MEDIUM_LABS.length,
+      high:        MOBILE_HIGH_LABS.length,
+      critical:    MOBILE_CRITICAL_LABS.length,
+    },
   },
   {
     id: "wireless",
