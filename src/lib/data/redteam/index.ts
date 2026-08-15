@@ -13,11 +13,22 @@ export { WEB_MEDIUM_LABS }      from "./pentesting/web/medium";
 export { WEB_HIGH_LABS }        from "./pentesting/web/high";
 export { WEB_CRITICAL_LABS }    from "./pentesting/web/critical";
 
+// ─── Web Pentesting Extended (Burp Suite Catalogue) ──────────
+export { WEB_INFORMATION_EXT_LABS } from "./pentesting/web/information_ext";
+export { WEB_LOW_EXT_LABS }         from "./pentesting/web/low_ext";
+export { WEB_MEDIUM_EXT_LABS }      from "./pentesting/web/medium_ext";
+export { WEB_HIGH_EXT_LABS }        from "./pentesting/web/high_ext";
+
 import { WEB_INFORMATION_LABS } from "./pentesting/web/information";
 import { WEB_LOW_LABS }         from "./pentesting/web/low";
 import { WEB_MEDIUM_LABS }      from "./pentesting/web/medium";
 import { WEB_HIGH_LABS }        from "./pentesting/web/high";
 import { WEB_CRITICAL_LABS }    from "./pentesting/web/critical";
+
+import { WEB_INFORMATION_EXT_LABS } from "./pentesting/web/information_ext";
+import { WEB_LOW_EXT_LABS }         from "./pentesting/web/low_ext";
+import { WEB_MEDIUM_EXT_LABS }      from "./pentesting/web/medium_ext";
+import { WEB_HIGH_EXT_LABS }        from "./pentesting/web/high_ext";
 
 // ─── API Pentesting ──────────────────────────────────────────
 export { API_INFORMATION_LABS }                                      from "./pentesting/api/information";
@@ -46,9 +57,13 @@ import { AD_INFORMATION_LABS, AD_LOW_LABS, AD_MEDIUM_LABS, AD_HIGH_LABS, AD_CRIT
 // ─── Aggregated exports ──────────────────────────────────────
 export const ALL_WEB_LABS: Lab[] = [
   ...WEB_INFORMATION_LABS,
+  ...WEB_INFORMATION_EXT_LABS,
   ...WEB_LOW_LABS,
+  ...WEB_LOW_EXT_LABS,
   ...WEB_MEDIUM_LABS,
+  ...WEB_MEDIUM_EXT_LABS,
   ...WEB_HIGH_LABS,
+  ...WEB_HIGH_EXT_LABS,
   ...WEB_CRITICAL_LABS,
 ];
 
@@ -99,10 +114,10 @@ export function getLabsByDomainAndSeverity(
 ): Lab[] {
   if (domain === "web") {
     switch (severity) {
-      case "information": return WEB_INFORMATION_LABS;
-      case "low":         return WEB_LOW_LABS;
-      case "medium":      return WEB_MEDIUM_LABS;
-      case "high":        return WEB_HIGH_LABS;
+      case "information": return [...WEB_INFORMATION_LABS, ...WEB_INFORMATION_EXT_LABS];
+      case "low":         return [...WEB_LOW_LABS,         ...WEB_LOW_EXT_LABS];
+      case "medium":      return [...WEB_MEDIUM_LABS,      ...WEB_MEDIUM_EXT_LABS];
+      case "high":        return [...WEB_HIGH_LABS,        ...WEB_HIGH_EXT_LABS];
       case "critical":    return WEB_CRITICAL_LABS;
     }
   }
@@ -159,10 +174,10 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
       "Web application security from recon to critical RCE. Every vulnerability 1990–2026 — OWASP Top 10, logic flaws, injection, auth bypass, modern frameworks.",
     status: "available",
     labCounts: {
-      information: WEB_INFORMATION_LABS.length,
-      low:         WEB_LOW_LABS.length,
-      medium:      WEB_MEDIUM_LABS.length,
-      high:        WEB_HIGH_LABS.length,
+      information: WEB_INFORMATION_LABS.length + WEB_INFORMATION_EXT_LABS.length,
+      low:         WEB_LOW_LABS.length         + WEB_LOW_EXT_LABS.length,
+      medium:      WEB_MEDIUM_LABS.length      + WEB_MEDIUM_EXT_LABS.length,
+      high:        WEB_HIGH_LABS.length        + WEB_HIGH_EXT_LABS.length,
       critical:    WEB_CRITICAL_LABS.length,
     },
   },
