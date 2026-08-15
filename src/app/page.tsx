@@ -19,6 +19,16 @@ export default function LandingPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedDomain, setExpandedDomain] = useState<string | null>(null);
+  const [expandedModule, setExpandedModule] = useState<string | null>(null);
+
+  const toggleDomain = (id: string) => {
+    setExpandedDomain(prev => prev === id ? null : id);
+    setExpandedModule(null);
+  };
+  const toggleModule = (id: string) => {
+    setExpandedModule(prev => prev === id ? null : id);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -228,8 +238,8 @@ export default function LandingPage() {
               <span className="text-sm text-slate-400 font-mono">Labs</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-bold text-[var(--hp-text)] mb-1">60+</span>
-              <span className="text-sm text-slate-400 font-mono">Years Coverage</span>
+              <span className="text-3xl font-bold text-[var(--hp-text)] mb-1">79+</span>
+              <span className="text-sm text-slate-400 font-mono">Years (1947–Present)</span>
             </div>
             <div className="flex flex-col items-center">
               <span className="text-3xl font-bold text-[var(--hp-text)] mb-1">5</span>
@@ -256,7 +266,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: <Network className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Real IP Labs', desc: 'No sandboxed browser VMs. Activate a lab → get a real IP → hack with your own Kali/Parrot Linux.' },
-              { icon: <Activity className="text-[var(--hp-primary)] mb-4" size={36} />, title: '1947–2026 Timeline', desc: 'Every vulnerability discovered from early computer bugs to present. Grace Hopper bug → Log4Shell → present day exploits.' },
+              { icon: <Activity className="text-[var(--hp-primary)] mb-4" size={36} />, title: '1947–Present Timeline', desc: 'Every vulnerability discovered from early computer bugs to present day. Grace Hopper bug → Log4Shell → latest 2026 exploits.' },
               { icon: <Award className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Severity Progression', desc: 'Information → Low → Medium → High → Critical. XP gates ensure you master fundamentals before advanced exploits.' },
               { icon: <Lock className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Unique Flags', desc: 'Every user gets a different flag hash. Copy-paste writeups don\'t work here. You have to understand the exploit.' },
               { icon: <Search className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'CVE/CWE/MITRE Mapped', desc: 'Every lab has CVE references, CWE classification, and MITRE ATT&CK technique mapping for real-world context.' },
@@ -272,47 +282,153 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Domains Preview Section */}
-      <section id="domains" className="py-24 relative z-10 bg-[var(--hp-bg)] border-y border-[#bf5fff]/10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[var(--hp-primary)]/5 blur-[120px] rounded-full pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="text-center mb-16">
+      {/* Interactive Lab Structure Section */}
+      <section id="domains" className="py-24 relative z-10 bg-[var(--hp-bg)] border-y border-[var(--hp-primary)]/10">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[var(--hp-primary)]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 relative">
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold text-[var(--hp-text)] mb-4">
-              Security <span className="text-[var(--hp-primary)]">Domains</span>
+              What&apos;s <span className="text-[var(--hp-primary)]">Inside?</span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Master every aspect of offensive and defensive security.</p>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Click any domain to explore its modules and sub-topics.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="glass-panel p-6 rounded-2xl flex flex-col h-full">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-[var(--hp-text)] flex items-center gap-2">🎯 Red Team</h3>
-                <span className="px-3 py-1 bg-[var(--hp-primary)]/20 text-[var(--hp-primary)] text-xs font-bold rounded border border-[var(--hp-border)]">AVAILABLE</span>
-              </div>
-              <p className="text-slate-400 mb-6 flex-grow">Pentesting, Exploit Dev, Red Team Ops, Reverse Engineering.</p>
-              <Link href="/login" className="w-full py-3 bg-[var(--hp-primary)]/10 hover:bg-[var(--hp-primary)]/20 text-[var(--hp-primary)] border border-[var(--hp-border-hover)] rounded text-center font-bold transition-all">
-                Enter Domain
-              </Link>
-            </div>
-
+          <div className="space-y-2">
             {[
-              { icon: '🛡️', name: 'Blue Team', desc: 'SOC Analysis, Threat Hunting, Incident Response' },
-              { icon: '🔬', name: 'Forensics & DFIR', desc: 'Digital Forensics, Malware Analysis, Memory Forensics' },
-              { icon: '📋', name: 'GRC & Compliance', desc: 'ISO 27001, NIST, SOC 2, GDPR compliance' },
-              { icon: '🕵️', name: 'Threat Intelligence', desc: 'OSINT, Threat Hunting, Dark Web Monitoring' },
-              { icon: '☁️', name: 'Cloud Security', desc: 'AWS, GCP, Azure misconfig and exploitation' },
-            ].map((domain, i) => (
-              <div key={i} className="glass-panel p-6 rounded-2xl opacity-70 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-[var(--hp-text)] flex items-center gap-2">{domain.icon} {domain.name}</h3>
-                  <span className="px-3 py-1 bg-white/5 text-slate-400 text-xs font-bold rounded border border-white/10">COMING SOON</span>
+              {
+                id: 'red-team', icon: '🎯', name: 'Red Team',
+                modules: [
+                  {
+                    id: 'pentesting', icon: '🕵️', name: 'Pentesting',
+                    subs: [
+                      { icon: '🌐', name: 'Web Pentesting' },
+                      { icon: '🔌', name: 'API Security' },
+                      { icon: '🌐', name: 'Network Pentesting' },
+                      { icon: '📱', name: 'Mobile Pentesting' },
+                      { icon: '☁️', name: 'Cloud Pentesting' },
+                      { icon: '🐳', name: 'Container / Docker' },
+                      { icon: '⚓', name: 'Kubernetes' },
+                      { icon: '🏢', name: 'Active Directory' },
+                      { icon: '📡', name: 'Wireless Security' },
+                      { icon: '🏭', name: 'OT / ICS / SCADA' },
+                      { icon: '🔗', name: 'IoT Security' },
+                    ]
+                  },
+                  { id: 'exploit', icon: '💥', name: 'Exploit Development', subs: [] },
+                  { id: 'redops', icon: '🔴', name: 'Red Team Ops', subs: [] },
+                  { id: 'reverse', icon: '⚙️', name: 'Reverse Engineering', subs: [] },
+                  { id: 'social', icon: '🎭', name: 'Social Engineering', subs: [] },
+                ]
+              },
+              {
+                id: 'blue-team', icon: '🛡️', name: 'Blue Team',
+                modules: [
+                  { id: 'soc', icon: '📊', name: 'SOC Analysis', subs: [] },
+                  { id: 'threathunt', icon: '🔎', name: 'Threat Hunting', subs: [] },
+                  { id: 'incident', icon: '🚨', name: 'Incident Response', subs: [] },
+                  { id: 'siem', icon: '📈', name: 'SIEM & Log Analysis', subs: [] },
+                ]
+              },
+              {
+                id: 'forensics', icon: '🔬', name: 'Forensics & DFIR',
+                modules: [
+                  { id: 'dfir', icon: '💾', name: 'Digital Forensics', subs: [] },
+                  { id: 'malware', icon: '🦠', name: 'Malware Analysis', subs: [] },
+                  { id: 'memforen', icon: '🧠', name: 'Memory Forensics', subs: [] },
+                  { id: 'netforen', icon: '🌐', name: 'Network Forensics', subs: [] },
+                ]
+              },
+              {
+                id: 'grc', icon: '📋', name: 'GRC & Compliance',
+                modules: [
+                  { id: 'iso', icon: '📜', name: 'ISO 27001', subs: [] },
+                  { id: 'nist', icon: '🏛️', name: 'NIST CSF', subs: [] },
+                  { id: 'soc2', icon: '✅', name: 'SOC 2', subs: [] },
+                  { id: 'gdpr', icon: '🔐', name: 'GDPR / PCI-DSS', subs: [] },
+                ]
+              },
+              {
+                id: 'threat-intel', icon: '🕵️', name: 'Threat Intelligence',
+                modules: [
+                  { id: 'osint', icon: '🌍', name: 'OSINT', subs: [] },
+                  { id: 'cti', icon: '🧩', name: 'Cyber Threat Intelligence', subs: [] },
+                  { id: 'darkweb', icon: '🌑', name: 'Dark Web Monitoring', subs: [] },
+                  { id: 'ioc', icon: '🔍', name: 'IOC Analysis', subs: [] },
+                ]
+              },
+              {
+                id: 'cloud', icon: '☁️', name: 'Cloud Security',
+                modules: [
+                  { id: 'aws', icon: '🟠', name: 'AWS Security', subs: [] },
+                  { id: 'gcp', icon: '🔵', name: 'GCP Security', subs: [] },
+                  { id: 'azure', icon: '🔷', name: 'Azure Security', subs: [] },
+                ]
+              },
+            ].map((domain) => {
+              const isOpen = expandedDomain === domain.id;
+              return (
+                <div key={domain.id} className="rounded-xl overflow-hidden border border-[var(--hp-border)] bg-[var(--hp-card-bg)]">
+                  {/* Domain row — clickable */}
+                  <button
+                    type="button"
+                    onClick={() => toggleDomain(domain.id)}
+                    className="w-full flex items-center justify-between px-5 py-4 hover:bg-[var(--hp-primary)]/5 transition-colors text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{domain.icon}</span>
+                      <span className="font-bold text-[var(--hp-text)] text-base">{domain.name}</span>
+                      <span className="text-[11px] text-[var(--hp-text-muted)] font-mono">{domain.modules.length} modules</span>
+                    </div>
+                    <span className="text-[var(--hp-primary)] text-lg font-bold transition-transform duration-200" style={{ display: 'inline-block', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>›</span>
+                  </button>
+
+                  {/* Modules — shown when domain expanded */}
+                  {isOpen && (
+                    <div className="border-t border-[var(--hp-border)] divide-y divide-[var(--hp-border)]/50">
+                      {domain.modules.map((mod) => {
+                        const modOpen = expandedModule === mod.id;
+                        return (
+                          <div key={mod.id}>
+                            {/* Module row */}
+                            <button
+                              type="button"
+                              onClick={() => mod.subs.length > 0 ? toggleModule(mod.id) : undefined}
+                              className={`w-full flex items-center gap-3 px-6 py-3 text-left transition-colors ${mod.subs.length > 0 ? 'hover:bg-[var(--hp-primary)]/5 cursor-pointer' : 'cursor-default'}`}
+                            >
+                              <div className="w-4 h-px bg-[var(--hp-border)] shrink-0" />
+                              <span className="text-base shrink-0">{mod.icon}</span>
+                              <span className="text-sm font-medium text-[var(--hp-text)] flex-1">{mod.name}</span>
+                              {mod.subs.length > 0 && (
+                                <span className="text-[var(--hp-text-muted)] text-sm transition-transform duration-200" style={{ display: 'inline-block', transform: modOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>›</span>
+                              )}
+                            </button>
+
+                            {/* Sub-domains — shown when module expanded */}
+                            {mod.subs.length > 0 && modOpen && (
+                              <div className="pb-2">
+                                {mod.subs.map((sub, si) => (
+                                  <div key={si} className="flex items-center gap-3 px-8 py-1.5">
+                                    <div className="ml-6 w-3 h-px bg-[var(--hp-border)] opacity-50 shrink-0" />
+                                    <span className="text-base shrink-0">{sub.icon}</span>
+                                    <span className="text-xs text-[var(--hp-text-muted)]">{sub.name}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
-                <p className="text-slate-400 mb-6 flex-grow">{domain.desc}</p>
-                <button disabled className="w-full py-3 bg-white/5 text-slate-500 border border-white/10 rounded text-center font-bold cursor-not-allowed">
-                  Locked
-                </button>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/register" className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold text-white transition-all hover:scale-105" style={{ background: 'linear-gradient(135deg, #7c3aed, #bf5fff)', boxShadow: '0 0 30px rgba(191,95,255,0.3)' }}>
+              Start Hacking — It&apos;s Free
+            </Link>
           </div>
         </div>
       </section>

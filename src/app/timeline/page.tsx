@@ -154,7 +154,7 @@ export default function TimelinePage() {
                   fontWeight: 700,
                 }}
               >
-                1940 → UPDATED TODAY
+                1947 → PRESENT
               </span>
             </div>
 
@@ -200,7 +200,7 @@ export default function TimelinePage() {
               { label: "Total Vulnerabilities", value: String(totalEntries), icon: Globe },
               { label: "High / Critical", value: String(milestones), icon: Zap },
               { label: "Historical Catalog", value: String(HISTORICAL_VULNERABILITY_CATALOG.length), icon: Sparkles },
-              { label: "Years Covered", value: `${currentYear - 1940}+`, icon: Clock },
+              { label: "Years Covered", value: `${currentYear - 1947}+`, icon: Clock },
             ].map(({ label, value, icon: Icon }) => (
               <div
                 key={label}
@@ -332,7 +332,7 @@ export default function TimelinePage() {
                       fontFamily: "monospace",
                       fontSize: "12px",
                       fontWeight: 700,
-                      color: "var(--hp-primary)",
+                      color: "#ffffff",
                       letterSpacing: "0.08em",
                       padding: "4px 12px",
                       border: "1px solid var(--hp-primary)",
