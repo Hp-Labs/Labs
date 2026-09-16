@@ -1,11 +1,17 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+const SECRET_GATEWAY = '/hp-45641c95fa7157d2';
 const ADMIN_SECRET_PATH = '/hplabs';
 const ADMIN_LOGIN_PATH = '/hackerplus/login';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Immediately redirect any invalid paths under the secret gateway to home to hide the URL
+  if (pathname.startsWith(SECRET_GATEWAY + '/')) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
 
   // Decoy: anyone hitting /admin* gets a plain 404
   if (pathname.startsWith('/admin')) {
@@ -54,5 +60,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/hplabs/:path*', '/hackerplus/:path*', '/api/:path*'],
+  matcher: ['/admin/:path*', '/hplabs/:path*', '/hackerplus/:path*', '/api/:path*', '/hp-45641c95fa7157d2/:path*'],
 };
+
