@@ -69,7 +69,7 @@ export default function LeaderboardPage() {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    if (!isLoading && !user) router.push(/login);
+    if (!isLoading && !user) router.push('/login');
   }, [user, isLoading, router]);
   const CURRENT_USER = user?.username;
   const [rankedUsers, setRankedUsers] = useState<any[]>([]);
@@ -198,4 +198,5 @@ export default function LeaderboardPage() {
     </div>
   );
 }
+
 

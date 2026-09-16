@@ -222,7 +222,7 @@ export default function CertificationsPage() {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    if (!isLoading && !user) router.push(/login);
+    if (!isLoading && !user) router.push('/login');
   }, [user, isLoading, router]);
 
   if (isLoading || !user) return <div className="min-h-screen bg-[var(--hp-bg)] flex items-center justify-center"><div className="text-[var(--hp-primary)] font-mono animate-pulse">Verifying Identity...</div></div>;
@@ -958,4 +958,5 @@ export default function CertificationsPage() {
     </div>
   );
 }
+
 
