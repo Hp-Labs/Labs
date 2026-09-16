@@ -52,3 +52,7 @@ next-env.d.ts
 *.sqlite3
 
 
+
+# Sensitive MFA QR Code
+mfa-qr.png
+
