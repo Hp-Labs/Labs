@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Secure Data Directory
-data/
+/data/
 
 # Environment Variables
 .env.local
