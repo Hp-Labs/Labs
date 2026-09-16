@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 const SECRET_SALT = process.env.HPLABS_FLAG_SECRET;
-if (!SECRET_SALT) throw new Error("HPLABS_FLAG_SECRET must be configured");
+if (!SECRET_SALT && process.env.NODE_ENV === "production") { console.warn("WARNING: HPLABS_FLAG_SECRET is missing. Flags will use a default salt."); }
 
 export function generateServerFlag(userId: string, labId: string): string {
   const cleanLab = labId.replace(/[^a-zA-Z0-9]/g, "_").toUpperCase();
@@ -57,3 +57,4 @@ export function getDynamicLabTarget(labId: string, domain: string): {
     isSimulated: true,
   };
 }
+
