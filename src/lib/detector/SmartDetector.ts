@@ -1,5 +1,5 @@
 // ============================================================
-// HP Labs — Smart Detector Core Engine
+// HP Labs  Smart Detector Core Engine
 //
 // INTERNAL USE ONLY. Never expose to normal users.
 //
@@ -30,7 +30,7 @@ import type {
 } from "@/lib/detector/detectorTypes";
 import type { Lab, DomainId } from "@/lib/data/types";
 
-// ─── Adapter imports ──────────────────────────────────────────
+//  Adapter imports 
 // Add new adapters here when new domains launch.
 // The registry controls which ones are actually run.
 import { PortSwiggerAdapter } from "@/lib/detector/sourceAdapters/PortSwiggerAdapter";
@@ -39,8 +39,8 @@ import { OwaspMobileAdapter }  from "@/lib/detector/sourceAdapters/OwaspMobileAd
 import { NetworkAdvisoryAdapter } from "@/lib/detector/sourceAdapters/NetworkAdvisoryAdapter";
 import type { SourceAdapter } from "@/lib/detector/detectorTypes";
 
-// ─── Adapter registry (configuration-driven) ─────────────────
-// Maps adapterId → instantiated adapter.
+//  Adapter registry (configuration-driven) 
+// Maps adapterId  instantiated adapter.
 // SmartDetector loads only adapters whose domain is active.
 const ADAPTER_REGISTRY: Record<string, SourceAdapter> = {
   "portswigger-web":   new PortSwiggerAdapter(),
@@ -49,7 +49,7 @@ const ADAPTER_REGISTRY: Record<string, SourceAdapter> = {
   "cisa-kev":          new NetworkAdvisoryAdapter(),
 };
 
-// ─── Existing HP Labs catalogue aggregation ───────────────────
+//  Existing HP Labs catalogue aggregation 
 // As new domain lab arrays are created, add them here.
 // The deduplicator checks incoming vulnerabilities against this.
 function getAllExistingLabs(): Lab[] {
@@ -65,7 +65,7 @@ function getAllExistingLabs(): Lab[] {
   return [...(web ?? []), ...(api ?? []), ...(mob ?? []), ...(net ?? [])];
 }
 
-// ─── Normalization utility ────────────────────────────────────
+//  Normalization utility 
 function normalizeName(name: string): string {
   return name
     .toLowerCase()
@@ -74,7 +74,7 @@ function normalizeName(name: string): string {
     .trim();
 }
 
-// ─── Deduplication ────────────────────────────────────────────
+//  Deduplication 
 function deduplicateAgainstCatalogue(
   vuln: DetectorVulnerability,
   existingLabs: Lab[]
@@ -111,7 +111,7 @@ function deduplicateAgainstCatalogue(
     }
   }
 
-  // 3. Normalized name-only match (fuzzy — requires both CWE and name close)
+  // 3. Normalized name-only match (fuzzy  requires both CWE and name close)
   for (const lab of existingLabs) {
     const labNorm = normalizeName(lab.name);
     if (vNorm === labNorm) {
@@ -127,21 +127,21 @@ function deduplicateAgainstCatalogue(
   return { vulnerability: vuln, isDuplicate: false };
 }
 
-// ─── Run ID generator ─────────────────────────────────────────
+//  Run ID generator 
 function generateRunId(): string {
   const ts = Date.now().toString(36).toUpperCase();
   const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
   return `HPDET-${ts}-${rand}`;
 }
 
-// ─── Smart Detector ───────────────────────────────────────────
+//  Smart Detector 
 export class SmartDetector {
   /** Run a full detection cycle across all active domains */
   async run(): Promise<DetectorReport> {
     const runId = generateRunId();
     const startedAt = new Date().toISOString();
 
-    // 1. Read active domains from configuration — no hardcoding
+    // 1. Read active domains from configuration  no hardcoding
     const activeDomains = getActiveDomains();
     const domainsScanned: DomainId[] = activeDomains.map(d => d.domainId);
 
@@ -154,7 +154,7 @@ export class SmartDetector {
       const enabledAdapters = domain.sourceAdapters.filter(a => a.enabled);
       for (const adapterConfig of enabledAdapters) {
         const adapter = ADAPTER_REGISTRY[adapterConfig.adapterId];
-        if (!adapter) continue; // adapter not yet implemented — skip silently
+        if (!adapter) continue; // adapter not yet implemented  skip silently
         const result = await adapter.run();
         adapterResults.push(result);
       }
@@ -197,11 +197,11 @@ export class SmartDetector {
           timestamp: now,
         };
       }
-      // New verified vulnerability — mark as coming-soon (real lab infra required for active)
+      // New verified vulnerability  mark as coming-soon (real lab infra required for active)
       return {
         vulnerability: dr.vulnerability,
         action: "coming-soon-created",
-        reason: "New verified vulnerability — lab infrastructure pending",
+        reason: "New verified vulnerability  lab infrastructure pending",
         timestamp: now,
       };
     });
@@ -238,7 +238,7 @@ export class SmartDetector {
     };
   }
 
-  /** Idempotency check — running twice produces same result */
+  /** Idempotency check  running twice produces same result */
   async runIdempotent(): Promise<{ report: DetectorReport; idempotent: boolean }> {
     const r1 = await this.run();
     const r2 = await this.run();

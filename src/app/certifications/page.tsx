@@ -17,7 +17,7 @@ import {
   Info,
 } from "lucide-react";
 
-// ─── HpLabs Internal Certs ────────────────────────────────────
+//  HpLabs Internal Certs 
 const INTERNAL_CERTS = [
   {
     id: "HPL-WebPT",
@@ -39,7 +39,7 @@ const INTERNAL_CERTS = [
     currentXP: 18450,
     status: "in_progress" as const,
     color: "var(--hp-primary)",
-    icon: "🌐",
+    icon: "",
   },
   {
     id: "HPL-NetPT",
@@ -61,7 +61,7 @@ const INTERNAL_CERTS = [
     currentXP: 0,
     status: "locked" as const,
     color: "var(--hp-cyan)",
-    icon: "🕸️",
+    icon: "",
   },
   {
     id: "HPL-CloudPT",
@@ -83,11 +83,11 @@ const INTERNAL_CERTS = [
     currentXP: 0,
     status: "locked" as const,
     color: "#60a5fa",
-    icon: "☁️",
+    icon: "",
   },
 ];
 
-// ─── External Certs ───────────────────────────────────────────
+//  External Certs 
 const EXTERNAL_CERTS = [
   {
     id: "eJPT",
@@ -100,7 +100,7 @@ const EXTERNAL_CERTS = [
     difficultyColor: "#4ade80",
     cost: "$200",
     color: "#4ade80",
-    logo: "💚",
+    logo: "",
   },
   {
     id: "CEH",
@@ -113,7 +113,7 @@ const EXTERNAL_CERTS = [
     difficultyColor: "#facc15",
     cost: "$950",
     color: "#facc15",
-    logo: "⚡",
+    logo: "",
   },
   {
     id: "OSCP",
@@ -126,7 +126,7 @@ const EXTERNAL_CERTS = [
     difficultyColor: "#f87171",
     cost: "$1,499",
     color: "#f87171",
-    logo: "💀",
+    logo: "",
   },
   {
     id: "PNPT",
@@ -139,7 +139,7 @@ const EXTERNAL_CERTS = [
     difficultyColor: "#facc15",
     cost: "$399",
     color: "#a78bfa",
-    logo: "🎯",
+    logo: "",
   },
   {
     id: "eCPPT",
@@ -152,11 +152,11 @@ const EXTERNAL_CERTS = [
     difficultyColor: "#facc15",
     cost: "$400",
     color: "#fb923c",
-    logo: "🔴",
+    logo: "",
   },
 ];
 
-// ─── Planned Integrations ─────────────────────────────────────
+//  Planned Integrations 
 const PLANNED_INTEGRATIONS = [
   {
     name: "EC-Council API",
@@ -220,7 +220,7 @@ export default function CertificationsPage() {
   function handleVerify(certId: string) {
     const val = verifyInputs[certId] ?? "";
     if (!val.trim()) return;
-    // Simulate verification — accept IDs with length 8-16 and alphanumeric
+    // Simulate verification  accept IDs with length 8-16 and alphanumeric
     const isValid = /^[A-Za-z0-9\-]{8,20}$/.test(val.trim());
     setVerifyResults((prev) => ({ ...prev, [certId]: isValid ? "valid" : "invalid" }));
   }
@@ -283,7 +283,7 @@ export default function CertificationsPage() {
             </div>
             <div>
               <div style={{ fontSize: "14px", fontWeight: 700, color: "#facc15", fontFamily: "monospace" }}>
-                🔒 CERTIFICATION ENGINE CURRENTLY LOCKED
+                 CERTIFICATION ENGINE CURRENTLY LOCKED
               </div>
               <p style={{ fontSize: "12px", color: "var(--hp-text-muted)", marginTop: "2px", lineHeight: 1.5 }}>
                 Official HpLabs Certification exams unlock upon reaching 15,000 XP and completing all 5 severity tiers of your target domain. Practice labs remain available.
@@ -333,7 +333,7 @@ export default function CertificationsPage() {
             </p>
           </div>
 
-          {/* ─── Section 1: HpLabs Internal ─────────────────── */}
+          {/*  Section 1: HpLabs Internal  */}
           <div style={{ marginBottom: "56px" }}>
             <div
               style={{
@@ -581,7 +581,7 @@ export default function CertificationsPage() {
             </div>
           </div>
 
-          {/* ─── Section 2: External Certs ───────────────────── */}
+          {/*  Section 2: External Certs  */}
           <div style={{ marginBottom: "56px" }}>
             <div
               style={{
@@ -620,7 +620,7 @@ export default function CertificationsPage() {
               <Info size={14} style={{ color: "var(--hp-cyan)", flexShrink: 0, marginTop: "2px" }} />
               <p style={{ fontSize: "13px", color: "var(--hp-text-muted)", lineHeight: 1.6 }}>
                 Manually verify your external certifications by entering your certificate ID below.
-                Automatic API verification is coming soon — see Planned Integrations.
+                Automatic API verification is coming soon  see Planned Integrations.
               </p>
             </div>
 
@@ -677,7 +677,7 @@ export default function CertificationsPage() {
                           >
                             {cert.name}
                           </span>
-                          <span style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}>— {cert.org}</span>
+                          <span style={{ fontSize: "11px", color: "var(--hp-text-muted)" }}> {cert.org}</span>
                           <span
                             style={{
                               fontSize: "10px",
@@ -795,7 +795,7 @@ export default function CertificationsPage() {
             </div>
           </div>
 
-          {/* ─── Section 3: Planned Integrations ─────────────── */}
+          {/*  Section 3: Planned Integrations  */}
           <div>
             <div
               style={{
@@ -842,7 +842,7 @@ export default function CertificationsPage() {
               }}
             >
               These upcoming integrations will automatically verify and display your industry
-              certifications — no manual entry required. Connect your accounts once and your
+              certifications  no manual entry required. Connect your accounts once and your
               credentials will always stay up to date.
             </p>
 

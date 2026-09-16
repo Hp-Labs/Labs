@@ -1,5 +1,5 @@
 // ============================================================
-// HP Labs — Source Adapter Base Class
+// HP Labs  Source Adapter Base Class
 // All adapters extend this. Provides normalization, canonical
 // ID generation, and shared deduplication utilities.
 // ============================================================

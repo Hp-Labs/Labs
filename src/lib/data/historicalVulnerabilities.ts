@@ -1,6 +1,6 @@
 // ============================================================
-// HpLabs — Exhaustive Historical Vulnerability Catalog (1940 to Dynamic Today)
-// Rigorously researched, verified vulnerability database spanning 1940–Present.
+// HpLabs  Exhaustive Historical Vulnerability Catalog (1940 to Dynamic Today)
+// Rigorously researched, verified vulnerability database spanning 1940Present.
 // ============================================================
 
 import type { Lab, DomainId, Severity } from "./types";
@@ -18,9 +18,11 @@ export interface DetailedHistoricalLab extends Lab {
 }
 
 export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
-  // ─── 1940s ───────────────────────────────────────────────────
+  //  1940s 
   {
     id: "hist-1947-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1947-001",
     level: 1,
     severity: "information",
     domain: "iot", // Hardware / Embedded
@@ -71,6 +73,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-1949-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1949-001",
     level: 2,
     severity: "low",
     domain: "network",
@@ -110,9 +114,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 1950s ───────────────────────────────────────────────────
+  //  1950s 
   {
     id: "hist-1957-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1957-001",
     level: 1,
     severity: "medium",
     domain: "network",
@@ -162,9 +168,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 1960s ───────────────────────────────────────────────────
+  //  1960s 
   {
     id: "hist-1966-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1966-001",
     level: 1,
     severity: "medium",
     domain: "active-directory", // OS / Identity
@@ -207,9 +215,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 1970s ───────────────────────────────────────────────────
+  //  1970s 
   {
     id: "hist-1971-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1971-001",
     level: 1,
     severity: "high",
     domain: "network",
@@ -250,9 +260,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 1980s ───────────────────────────────────────────────────
+  //  1980s 
   {
     id: "hist-1988-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1988-001",
     level: 1,
     severity: "critical",
     domain: "network",
@@ -309,9 +321,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 1990s ───────────────────────────────────────────────────
+  //  1990s 
   {
     id: "hist-1998-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-1998-001",
     level: 1,
     severity: "high",
     domain: "web",
@@ -368,9 +382,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 2000s ───────────────────────────────────────────────────
+  //  2000s 
   {
     id: "hist-2008-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2008-001",
     level: 1,
     severity: "critical",
     domain: "network",
@@ -420,9 +436,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 2010s ───────────────────────────────────────────────────
+  //  2010s 
   {
     id: "hist-2014-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2014-001",
     level: 1,
     severity: "critical",
     domain: "web",
@@ -473,6 +491,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2017-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2017-001",
     level: 1,
     severity: "critical",
     domain: "network",
@@ -523,9 +543,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 2020s to Present Dynamic ────────────────────────────────
+  //  2020s to Present Dynamic 
   {
     id: "hist-2021-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2021-001",
     level: 1,
     severity: "critical",
     domain: "web",
@@ -576,6 +598,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2024-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2024-001",
     level: 1,
     severity: "critical",
     domain: "cloud", // Supply Chain / Linux
@@ -625,9 +649,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 2025 Vulnerabilities ────────────────────────────────────
+  //  2025 Vulnerabilities 
   {
     id: "hist-2025-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2025-001",
     level: 1,
     severity: "critical",
     domain: "network",
@@ -678,6 +704,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2025-002",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2025-002",
     level: 1,
     severity: "high",
     domain: "web",
@@ -728,6 +756,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2025-003",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2025-003",
     level: 1,
     severity: "critical",
     domain: "cloud", // AI Security / Cloud
@@ -777,9 +807,11 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
     }
   },
 
-  // ─── 2026 Vulnerabilities (Up to Present Date August 2026) ────
+  //  2026 Vulnerabilities (Up to Present Date August 2026) 
   {
     id: "hist-2026-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2026-001",
     level: 1,
     severity: "high",
     domain: "kubernetes", // Cloud / K8s
@@ -830,6 +862,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2026-002",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2026-002",
     level: 1,
     severity: "critical",
     domain: "network",
@@ -880,6 +914,8 @@ export const HISTORICAL_VULNERABILITY_CATALOG: DetailedHistoricalLab[] = [
   },
   {
     id: "hist-2026-003",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "hist-2026-003",
     level: 1,
     severity: "critical",
     domain: "web",

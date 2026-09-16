@@ -1,0 +1,148 @@
+﻿"use client";
+
+import Link from "next/link";
+import { ChevronRight, Lock, Zap, Shield, ArrowRight, Target } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import { PENTESTING_SUBDOMAINS } from "@/lib/data/redteam";
+import { SEVERITY_CONFIG } from "@/lib/data/types";
+
+export default function AdminLabsCatalogPage() {
+  const totalLabs = PENTESTING_SUBDOMAINS.reduce((acc, sd) => {
+    return acc + Object.values(sd.labCounts).reduce((a, b) => a + b, 0);
+  }, 0);
+
+  return (
+    <div className="min-h-screen bg-[var(--hp-bg)]">
+      <Navbar />
+
+      <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-xs font-mono text-[var(--hp-text-muted)] mb-8">
+          <Link href="/hp-45641c95fa7157d2" className="hover:text-[var(--hp-primary)] transition-colors">Admin Console</Link>
+          <ChevronRight size={12} />
+          <Link href="/hp-45641c95fa7157d2/labs-catalog" className="hover:text-[var(--hp-primary)] transition-colors">Labs Catalog</Link>
+          <ChevronRight size={12} />
+          <span className="text-[var(--hp-primary)]">Pentesting</span>
+        </div>
+
+        <div className="flex items-start gap-4 mb-10">
+          <div className="w-12 h-12 rounded-xl bg-[var(--hp-primary)]/10 border border-[var(--hp-primary)]/30 flex items-center justify-center shrink-0">
+            <Target size={22} className="text-[var(--hp-primary)]" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-[var(--hp-text)] mb-2">Pentesting</h1>
+            <p className="text-[var(--hp-text-muted)] text-sm max-w-2xl">
+              Select a domain to start pentesting. Each domain has 5 severity tiers 
+              Information, Low, Medium, High, and Critical. Progress through levels
+              sequentially within each severity.
+            </p>
+            <div className="flex items-center gap-4 mt-3">
+              <div className="flex items-center gap-1.5">
+                <Zap size={12} className="text-[var(--hp-primary)]" />
+                <span className="text-xs text-[var(--hp-text-muted)]">{totalLabs} labs live</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Shield size={12} className="text-[#00e5ff]" />
+                <span className="text-xs text-[var(--hp-text-muted)]">11 domains</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Severity legend */}
+        <div className="flex flex-wrap gap-3 mb-8 p-4 rounded-xl border border-[var(--hp-border)] bg-[var(--hp-bg-3)]">
+          <span className="text-[10px] font-mono text-[var(--hp-text-muted)] uppercase self-center mr-1">Severity Tiers:</span>
+          {(["information", "low", "medium", "high", "critical"] as const).map((sev) => {
+            const cfg = SEVERITY_CONFIG[sev];
+            return (
+              <div key={sev} className="flex items-center gap-1.5">
+                <div className={`w-2 h-2 rounded-full ${cfg.bg} border ${cfg.border}`} />
+                <span className={`text-[10px] font-mono ${cfg.color}`}>{cfg.label}</span>
+                <span className="text-[10px] text-[var(--hp-text-muted)] opacity-70">CVSS {cfg.cvssRange}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Subdomain grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {PENTESTING_SUBDOMAINS.map((domain) => {
+            const isAvailable = domain.status === "available";
+            const labTotal = Object.values(domain.labCounts).reduce((a, b) => a + b, 0);
+
+            const card = (
+              <div
+                className={`lab-card rounded-2xl p-5 transition-all duration-300 ${
+                  isAvailable
+                    ? "hover:border-[var(--hp-primary)] hover:-translate-y-0.5 cursor-pointer"
+                    : "opacity-50 cursor-not-allowed"
+                }`}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{domain.icon}</span>
+                    <div>
+                      <h2 className="text-sm font-bold text-[var(--hp-text)]">{domain.name}</h2>
+                      {isAvailable ? (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[var(--hp-primary)] animate-pulse" />
+                          <span className="text-[10px] font-mono text-[var(--hp-primary)]">ACTIVE</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <Lock size={9} className="text-[var(--hp-text-muted)] opacity-70" />
+                          <span className="text-[10px] font-mono text-[var(--hp-text-muted)] opacity-70">COMING SOON</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {isAvailable && (
+                    <ArrowRight size={16} className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-primary)] transition-colors mt-1" />
+                  )}
+                </div>
+
+                <p className="text-xs text-[var(--hp-text-muted)] leading-relaxed mb-4">{domain.description}</p>
+
+                {/* Severity bars */}
+                {isAvailable && labTotal > 0 ? (
+                  <div className="grid grid-cols-5 gap-1.5">
+                    {(["information", "low", "medium", "high", "critical"] as const).map((sev) => {
+                      const count = domain.labCounts[sev] ?? 0;
+                      const cfg = SEVERITY_CONFIG[sev];
+                      return (
+                        <div key={sev} className="text-center">
+                          <div className={`h-1 rounded-full mb-1 ${count > 0 ? cfg.bg : "bg-[var(--hp-border)]"}`}
+                            style={{ border: count > 0 ? `1px solid ${cfg.glow}` : "1px solid transparent" }} />
+                          <div className={`text-[9px] font-mono ${count > 0 ? cfg.color : "text-[var(--hp-text-muted)] opacity-50"}`}>
+                            {cfg.label.slice(0, 4).toUpperCase()}
+                          </div>
+                          <div className={`text-[9px] font-mono ${count > 0 ? "text-[var(--hp-text-muted)]" : "text-[var(--hp-text-muted)] opacity-50"}`}>
+                            {count}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <Lock size={10} className="text-[var(--hp-text-muted)] opacity-70" />
+                    <span className="text-[11px] text-[var(--hp-text-muted)] opacity-70 font-mono">Labs in development</span>
+                  </div>
+                )}
+              </div>
+            );
+
+            return isAvailable ? (
+              <Link key={domain.id} href={`/red-team/pentesting/${domain.id}`} className="group block">
+                {card}
+              </Link>
+            ) : (
+              <div key={domain.id}>{card}</div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}

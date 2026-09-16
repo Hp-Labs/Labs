@@ -279,3 +279,27 @@ body {
     radial-gradient(ellipse 50% 60% at 0% 50%, rgba(191, 95, 255, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 50% 60% at 100% 50%, rgba(224, 64, 251, 0.04) 0%, transparent 60%);
 }
+
+/* Admin Theme Overrides (God Mode) */
+.admin-theme {
+  --hp-primary: #f59e0b;
+  --hp-primary-dim: #d97706;
+  --hp-secondary: #f43f5e;
+  --hp-cyan: #06b6d4;
+  --hp-red: #e11d48;
+  --hp-orange: #f97316;
+  --hp-green: #10b981;
+
+  --hp-bg: #09090b;
+  --hp-bg-2: #18181b;
+  --hp-bg-3: #27272a;
+  
+  --hp-text: #fafafa;
+  --hp-text-muted: #a1a1aa;
+
+  --hp-border: rgba(245, 158, 11, 0.2);
+  --hp-border-hover: rgba(245, 158, 11, 0.5);
+  --hp-card-bg: rgba(24, 24, 27, 0.8);
+  --hp-card-bg-gradient: linear-gradient(135deg, rgba(24, 24, 27, 0.9), rgba(9, 9, 11, 0.9));
+}
+

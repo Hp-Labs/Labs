@@ -5,18 +5,24 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   Shield, Terminal, Trophy, Bell, User,
   ChevronRight, Zap, ExternalLink, LogOut, LogIn, Sparkles, Lock,
-} from "lucide-react";
+  Menu, X, Globe, Coffee } from "lucide-react";
 import { useAuth, getUserBadgesAndRank } from "@/lib/auth";
 import { ThemeToggle } from "./ThemeToggle";
+import { DailyBonusModal } from "./DailyBonusModal";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: Terminal, isLocked: false },
-  { href: "/timeline", label: "Timeline", icon: Zap, isLocked: false },
-  { href: "/leaderboard", label: "Leaderboard", icon: Trophy, isLocked: false },
-  { href: "/certifications", label: "Certifications", icon: Lock, isLocked: true },
+  { href: "/dashboard", label: "Dashboard", icon: Terminal, isLocked: false, public: false },
+  { href: "/timeline", label: "Timeline", icon: Zap, isLocked: false, public: true },
+  { href: "/public", label: "Public Hub", icon: Globe, isLocked: false, public: true },
+  { href: "/hardware", label: "Hardware Toolkit", icon: Zap, isLocked: false, public: true },
+  { href: "/leaderboard", label: "Leaderboard", icon: Trophy, isLocked: false, public: false },
+  { href: "/certifications", label: "Certifications", icon: Lock, isLocked: true, public: false },
 ];
 
+import { useState } from "react";
+
 export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout, claimDailyBonus } = useAuth();
@@ -27,12 +33,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--hp-border)] bg-[var(--hp-card-bg)] backdrop-blur-2xl" suppressHydrationWarning>
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16">
+    <>
+      <DailyBonusModal />
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--hp-border)] bg-[var(--hp-card-bg)] backdrop-blur-2xl" suppressHydrationWarning>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 w-full gap-4">
 
           {/* Logo */}
-          <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-3 group shrink-0">
+          <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-2 sm:gap-3 group flex-none shrink-0">
             <div className="relative">
               <img
                 src="/hplabs-logo.png"
@@ -47,9 +55,9 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Nav Links — only when logged in */}
-          {user && (
-            <div className="hidden lg:flex items-center gap-1.5 mx-4">
+          {/* Nav Links  only when logged in */}
+          {true && (
+            <div className="hidden xl:flex items-center justify-center gap-1 shrink-0 flex-1">
               {navItems.map(({ href, label, icon: Icon, isLocked }) => {
                 const isActive = pathname?.startsWith(href);
                 return (
@@ -77,40 +85,39 @@ export default function Navbar() {
             </div>
           )}
 
+          
+          
+
           {/* Right side toggles with ample breathing space */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center justify-end gap-2 sm:gap-3 flex-none shrink-0">
             {user ? (
               <>
-                {/* Daily Bonus Claim Button */}
-                {(!user.dailyBonusClaimedDate || user.dailyBonusClaimedDate !== new Date().toISOString().split("T")[0]) && (
-                  <button
-                    onClick={() => {
-                      const res = claimDailyBonus();
-                      alert(res.message);
-                    }}
-                    className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 transition-all font-mono text-xs font-bold"
-                    title="Claim Daily +100 XP Bonus"
+                
+
+                
+                {/* Upgrade / Premium Button */}
+                {user.plan === 'ADVANCED' ? (
+                  <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--hp-cyan)]/50 bg-[var(--hp-cyan)]/10 text-[var(--hp-cyan)] transition-all shadow-[0_0_10px_rgba(8,145,178,0.1)]">
+                    <Sparkles size={13} />
+                    <span className="text-xs font-bold tracking-wide">PREMIUM</span>
+                  </div>
+                ) : (
+                  <Link
+                    href="/pricing"
+                    className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--hp-primary)]/50 bg-[var(--hp-primary)]/10 hover:bg-[var(--hp-primary)]/20 hover:border-[var(--hp-primary)] text-[var(--hp-primary)] transition-all shadow-[0_0_10px_rgba(147,51,234,0.1)] hover:shadow-[0_0_15px_rgba(147,51,234,0.2)]"
                   >
-                    <Sparkles size={12} className="text-yellow-400 animate-pulse" />
-                    <span>Daily Login</span>
-                  </button>
+                    <Sparkles size={13} className="animate-pulse" />
+                    <span className="text-xs font-bold tracking-wide">UPGRADE</span>
+                  </Link>
                 )}
 
                 {/* Streak Counter */}
                 <div className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 font-mono text-xs font-bold text-orange-400" title="Daily Login Streak">
-                  <span>🔥</span>
+                  <span></span>
                   <span>{user.loginStreak || 1}d</span>
                 </div>
 
-                {/* Rank Tag Badge & Total XP */}
-                {(() => {
-                  const { primaryTag, rankColor } = getUserBadgesAndRank(user);
-                  return (
-                    <div className={`hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full border font-mono text-[11px] font-bold ${rankColor}`}>
-                      <span>{primaryTag} | {user.xp.toLocaleString()} XP</span>
-                    </div>
-                  );
-                })()}
+                
 
 
 
@@ -126,17 +133,17 @@ export default function Navbar() {
                   <ChevronRight size={12} className="text-[var(--hp-text-muted)]" />
                 </Link>
 
+                
+                {/* Mobile Menu Toggle */}
+                <button 
+                  className="xl:hidden flex items-center justify-center p-2 rounded-md text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] hover:bg-[var(--hp-border)]"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+
                 {/* Logout */}
                 <div className="flex items-center gap-1">
-                  <a
-                    href="https://hackerplus.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-[var(--hp-text-muted)] hover:text-[var(--hp-primary)] hover:bg-[var(--hp-primary)]/5 transition-all"
-                    title="Visit HackerPlus"
-                  >
-                    <ExternalLink size={15} />
-                  </a>
                   <button
                     onClick={handleLogout}
                     className="p-2 rounded-lg text-[var(--hp-text-muted)] hover:text-[var(--hp-red)] hover:bg-[var(--hp-red)]/5 transition-all"
@@ -148,15 +155,6 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <a
-                  href="https://hackerplus.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden sm:flex items-center gap-1.5 px-3 text-sm font-medium text-[var(--hp-text-muted)] hover:text-[var(--hp-primary)] transition-colors mr-2 border-r border-[var(--hp-border)] pr-5"
-                >
-                  <ExternalLink size={14} />
-                  hackerplus.in
-                </a>
                 <Link
                   href="/login"
                   className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] transition-colors"
@@ -182,6 +180,39 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+    
+      {/* Mobile Nav Dropdown */}
+      {mobileMenuOpen && (
+        <div className="xl:hidden absolute top-16 left-0 right-0 bg-[var(--hp-card-bg)] backdrop-blur-3xl border-b border-[var(--hp-border)] px-4 py-4 flex flex-col gap-2 shadow-2xl">
+          {navItems.map(({ href, label, icon: Icon, isLocked }) => {
+            const isActive = pathname?.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? "bg-[var(--hp-border)] text-[var(--hp-primary)] border border-[var(--hp-border-hover)]"
+                    : isLocked
+                    ? "text-[var(--hp-text-muted)] opacity-70"
+                    : "text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] hover:bg-[var(--hp-border)]"
+                }`}
+              >
+                <Icon size={16} className={isLocked ? "text-yellow-400/80" : ""} />
+                <span>{label}</span>
+                {isLocked && (
+                  <span className="ml-auto text-[9px] font-mono px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                    LOCKED
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
     </nav>
+    </>
   );
 }

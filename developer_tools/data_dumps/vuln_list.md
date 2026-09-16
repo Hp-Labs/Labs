@@ -1,0 +1,222 @@
+- **ACL Abuse (GenericAll / GenericWrite)** - *1 lab variant(s)*
+- **AD Trust Relationships Mapping** - *1 lab variant(s)*
+- **AD User Spray with Password Policy Awareness** - *1 lab variant(s)*
+- **ADCS ESC1 (Certificate Template Abuse)** - *1 lab variant(s)*
+- **ADCS ESC8 (NTLM Relay to AD CS)** - *1 lab variant(s)*
+- **API Gateway Key Exposure in Source** - *1 lab variant(s)*
+- **AS-REP Roasting (Hash Cracking)** - *1 lab variant(s)*
+- **AS-REP Roasting Enumeration (no pre-auth accounts)** - *1 lab variant(s)*
+- **AWS Asset Enumeration via CloudTrail** - *1 lab variant(s)*
+- **Anderson Report — First Documented Penetration Testing** - *1 lab variant(s)*
+- **Apache Struts RCE — Equifax Breach** - *1 lab variant(s)*
+- **Azure AD Connect Password Sync Abuse** - *1 lab variant(s)*
+- **Azure Blob Storage Anonymous Access** - *1 lab variant(s)*
+- **Azure Managed Identity Abuse** - *1 lab variant(s)*
+- **Azure Subscription & Tenant Enumeration** - *1 lab variant(s)*
+- **BloodHound AD Recon** - *1 lab variant(s)*
+- **Broken Authentication — JWT None Algorithm** - *1 lab variant(s)*
+- **CSRF — Cross-Site Request Forgery** - *1 lab variant(s)*
+- **CWE-1004, CWE-614** (Cookie Without Secure & HttpOnly Flags) - *1 lab variant(s)*
+- **CWE-1021** (Tapjacking — Overlay Attack) - *3 lab variant(s)*
+- **CWE-1021, CWE-319, CWE-693** (Missing Security Headers (X-Frame-Options, CSP, HSTS)) - *1 lab variant(s)*
+- **CWE-1035** (Vulnerable JavaScript Dependency) - *1 lab variant(s)*
+- **CWE-113** (HTTP Response Header Injection) - *1 lab variant(s)*
+- **CWE-116** (Suspicious Input Transformation (Reflected)) - *8 lab variant(s)*
+- **CWE-119** (MS08-067 NetAPI Remote Code Execution) - *4 lab variant(s)*
+- **CWE-119, CWE-522, CWE-269** (Full Network Compromise Chain — Scan to Domain Admin) - *1 lab variant(s)*
+- **CWE-122** (Stagefright — Android Media Framework RCE (CVE-2015-1538)) - *1 lab variant(s)*
+- **CWE-126** (Heartbleed OpenSSL Memory Exposure (2014)) - *1 lab variant(s)*
+- **CWE-1275** (Cookie Scoped to Parent Domain) - *1 lab variant(s)*
+- **CWE-1321** (Server-Side Prototype Pollution → RCE in Node.js API) - *3 lab variant(s)*
+- **CWE-16** (Improper Inventory Management — Staging API Exposure) - *4 lab variant(s)*
+- **CWE-16, CWE-200** (HTTP TRACE Method Enabled (Cross-Site Tracing - XST)) - *1 lab variant(s)*
+- **CWE-190** (SMBGhost Remote Code Execution) - *1 lab variant(s)*
+- **CWE-20** (Apache Struts OGNL Injection (Equifax Breach - 2017)) - *1 lab variant(s)*
+- **CWE-200** (API Rate Limit Header & Quota Enumeration) - *41 lab variant(s)*
+- **CWE-200, CWE-312** (JavaScript Source Code Analysis) - *1 lab variant(s)*
+- **CWE-200, CWE-319** (SNMP Enumeration & Community String Discovery) - *1 lab variant(s)*
+- **CWE-200, CWE-540** (HTML Source Code & Comment Analysis) - *1 lab variant(s)*
+- **CWE-204, CWE-200** (Username Enumeration via Login & Password Reset) - *1 lab variant(s)*
+- **CWE-209** (API Error Message Analysis & Stack Traces) - *2 lab variant(s)*
+- **CWE-209, CWE-200** (Verbose Error Messages & Stack Trace Leakage) - *1 lab variant(s)*
+- **CWE-215** (ASP.NET Tracing Enabled) - *2 lab variant(s)*
+- **CWE-22** (JWT kid Header Path Traversal to Known File) - *8 lab variant(s)*
+- **CWE-22, CWE-73** (File Path Manipulation) - *1 lab variant(s)*
+- **CWE-235** (JSON Parameter Pollution (JPP)) - *4 lab variant(s)*
+- **CWE-256** (Unencrypted API Credential Storage — Full Account Takeover) - *1 lab variant(s)*
+- **CWE-269** (Unrestricted API Key Scoping) - *4 lab variant(s)*
+- **CWE-276** (Android Manifest Permission Analysis) - *1 lab variant(s)*
+- **CWE-284** (VLAN Hopping via Switch Spoofing) - *1 lab variant(s)*
+- **CWE-284, CWE-285** (Broken Access Control (Detection)) - *1 lab variant(s)*
+- **CWE-285** (Broken Function Level Authorization (BFLA)) - *3 lab variant(s)*
+- **CWE-287** (API Authentication Fingerprinting) - *6 lab variant(s)*
+- **CWE-287, CWE-200** (FTP Anonymous Access Detection) - *1 lab variant(s)*
+- **CWE-290** (API Gateway Authentication Bypass via Header Injection) - *11 lab variant(s)*
+- **CWE-290, CWE-269** (NoPac — Sam-the-Admin Domain Escalation) - *1 lab variant(s)*
+- **CWE-290, CWE-330** (DNS Cache Poisoning (Kaminsky Attack)) - *1 lab variant(s)*
+- **CWE-294** (SMB Relay Attack (NTLMv2 Relay)) - *1 lab variant(s)*
+- **CWE-295** (Man-in-the-Middle via Custom TrustManager) - *2 lab variant(s)*
+- **CWE-295, CWE-326** (SSL/TLS Certificate & Configuration Analysis) - *1 lab variant(s)*
+- **CWE-295, CWE-327** (TLS Certificate Enumeration on Mobile API) - *1 lab variant(s)*
+- **CWE-297** (SSL Pinning Detection) - *2 lab variant(s)*
+- **CWE-306** (Cisco IOS XE Web UI Auth Bypass RCE (CVE-2023-20198)) - *4 lab variant(s)*
+- **CWE-307** (API Rate Limiting Header Bypass) - *1 lab variant(s)*
+- **CWE-311** (NFC Data Eavesdropping & Replay) - *2 lab variant(s)*
+- **CWE-311, CWE-319** (SSL Stripping Attack) - *1 lab variant(s)*
+- **CWE-312** (Side-Channel Attack via Auto-Complete Cache) - *10 lab variant(s)*
+- **CWE-316** (Memory Scraping for Cryptographic Secrets) - *1 lab variant(s)*
+- **CWE-319** (iOS App Transport Security (ATS) Bypass) - *10 lab variant(s)*
+- **CWE-319, CWE-312** (Telnet Cleartext Credential Interception) - *1 lab variant(s)*
+- **CWE-321** (JWT Private Key Disclosed) - *2 lab variant(s)*
+- **CWE-326** (JSON Web Encryption (JWE) Weak Key Exchange) - *1 lab variant(s)*
+- **CWE-327** (Weak Cryptographic Algorithm (MD5/SHA1 for Sensitive Data)) - *2 lab variant(s)*
+- **CWE-329** (Insecure Cryptography — Hardcoded IV in AES-CBC) - *1 lab variant(s)*
+- **CWE-330** (Zerologon — Netlogon Privilege Escalation (CVE-2020-1472)) - *2 lab variant(s)*
+- **CWE-346** (HTML5 Web Message Manipulation (DOM-Based)) - *6 lab variant(s)*
+- **CWE-347** (JWT Algorithm Confusion (None Algorithm)) - *9 lab variant(s)*
+- **CWE-352** (OAuth 2.0 State Parameter Omission (CSRF via API)) - *6 lab variant(s)*
+- **CWE-359** (Screenshot Capture Vulnerability (FLAG_SECURE Missing)) - *1 lab variant(s)*
+- **CWE-400** (GraphQL Query Depth Limit Bypass (Nested Introspection)) - *7 lab variant(s)*
+- **CWE-416** (BlueKeep RDP Remote Code Execution) - *1 lab variant(s)*
+- **CWE-434** (Unrestricted File Upload — Code Execution) - *2 lab variant(s)*
+- **CWE-436** (Content-Type Switching Attack) - *4 lab variant(s)*
+- **CWE-444** (HTTP Request Smuggling) - *2 lab variant(s)*
+- **CWE-494** (MITD — Man-in-the-Disk Attack (External Storage)) - *2 lab variant(s)*
+- **CWE-502** (REST to Internal RMI/JMX Deserialization) - *6 lab variant(s)*
+- **CWE-502, CWE-917** (Log4j Remote Code Execution (Log4Shell - 2021)) - *1 lab variant(s)*
+- **CWE-506** (XZ Utils Open Source Supply Chain Backdoor (2024)) - *1 lab variant(s)*
+- **CWE-521** (SNMP v1/v2c Community String Brute Force) - *3 lab variant(s)*
+- **CWE-521, CWE-1188** (Default Router Credential Access) - *1 lab variant(s)*
+- **CWE-521, CWE-200** (Default SNMP Community String Exploitation) - *1 lab variant(s)*
+- **CWE-522** (Keystore Key Extraction via Backup (Android)) - *4 lab variant(s)*
+- **CWE-522, CWE-294** (Pass-the-Hash via SMB) - *1 lab variant(s)*
+- **CWE-522, CWE-524** (Autocomplete Enabled on Sensitive Input Fields) - *1 lab variant(s)*
+- **CWE-524** (Cacheable HTTPS Response) - *2 lab variant(s)*
+- **CWE-530** (Android allowBackup — ADB Data Extraction) - *2 lab variant(s)*
+- **CWE-532** (Log Output Sensitive Data Leakage (Logcat)) - *1 lab variant(s)*
+- **CWE-539** (Duplicate Cookies Set) - *1 lab variant(s)*
+- **CWE-540** (Source Code Disclosure) - *1 lab variant(s)*
+- **CWE-548, CWE-200** (Directory Listing & robots.txt Enumeration) - *1 lab variant(s)*
+- **CWE-565** (Cookie Manipulation (DOM-Based)) - *3 lab variant(s)*
+- **CWE-598** (Insecure Session Token in Mobile API URL) - *3 lab variant(s)*
+- **CWE-598, CWE-200** (Sensitive Parameters Exposed in GET Request URLs) - *1 lab variant(s)*
+- **CWE-601** (OAuth 2.0 Authorization Code Interception) - *20 lab variant(s)*
+- **CWE-611** (XML External Entity (XXE) Processing) - *1 lab variant(s)*
+- **CWE-614** (TLS Cookie Without Secure Flag) - *1 lab variant(s)*
+- **CWE-639** (Broken Object Level Authorization (BOLA/IDOR)) - *2 lab variant(s)*
+- **CWE-639, CWE-284** (Insecure Direct Object Reference (IDOR)) - *1 lab variant(s)*
+- **CWE-643** (XPath Injection) - *4 lab variant(s)*
+- **CWE-650** (HTTP PUT Method Enabled) - *1 lab variant(s)*
+- **CWE-656** (Root/Jailbreak Detection Bypass) - *1 lab variant(s)*
+- **CWE-693** (Web Cache Poisoning) - *7 lab variant(s)*
+- **CWE-732** (Firebase Realtime Database Misconfiguration) - *1 lab variant(s)*
+- **CWE-732, CWE-284** (NFS Share Exposure & Unauthorized Mount) - *1 lab variant(s)*
+- **CWE-74** (Client-Side JSON Injection (DOM-Based)) - *5 lab variant(s)*
+- **CWE-749** (Remote Code Execution via WebView Universal File Access) - *3 lab variant(s)*
+- **CWE-776** (XML Entity Expansion (Billion Laughs)) - *1 lab variant(s)*
+- **CWE-78** (API Command Injection via Webhook Callbacks) - *4 lab variant(s)*
+- **CWE-79** (Client-Side Template Injection) - *17 lab variant(s)*
+- **CWE-798** (Hardcoded Credentials & API Keys in APK) - *2 lab variant(s)*
+- **CWE-799** (Rate Limiting & Throttling Reconnaissance) - *2 lab variant(s)*
+- **CWE-80** (HTML Injection) - *1 lab variant(s)*
+- **CWE-807** (Referer-Dependent Response) - *2 lab variant(s)*
+- **CWE-829** (Cross-Domain Script Include) - *1 lab variant(s)*
+- **CWE-89** (GraphQL SQL Injection via Filter Arguments) - *9 lab variant(s)*
+- **CWE-90** (LDAP Injection) - *1 lab variant(s)*
+- **CWE-91** (XML Injection) - *1 lab variant(s)*
+- **CWE-915** (Mass Assignment Property Discovery via GET/OPTIONS) - *2 lab variant(s)*
+- **CWE-917** (Log4Shell in Network Infrastructure (CVE-2021-44228)) - *2 lab variant(s)*
+- **CWE-918** (API SSRF to Cloud Metadata Service (AWS IMDSv1)) - *7 lab variant(s)*
+- **CWE-918, CWE-22** (Exchange Server Pre-Auth RCE Chain (ProxyLogon - 2021)) - *1 lab variant(s)*
+- **CWE-925** (Unprotected Broadcast Receiver (Intent Injection)) - *1 lab variant(s)*
+- **CWE-926** (Authentication Token Theft via Exported ContentProvider) - *3 lab variant(s)*
+- **CWE-93** (External Service Interaction (SMTP)) - *2 lab variant(s)*
+- **CWE-94** (Frida Runtime Injection for Credential Theft) - *3 lab variant(s)*
+- **CWE-942** (CORS Policy & Preflight Response Inspection) - *7 lab variant(s)*
+- **CWE-943** (NoSQL Injection via API JSON Parameters) - *2 lab variant(s)*
+- **CWE-95** (PHP Code Injection) - *7 lab variant(s)*
+- **CWE-97** (SSI Injection) - *1 lab variant(s)*
+- **CWE-98, CWE-22** (Local File Inclusion (LFI) to RCE) - *1 lab variant(s)*
+- **Capital One Breach Simulation (SSRF+IMDSv1)** - *1 lab variant(s)*
+- **Cloud Storage OSINT (public bucket search)** - *1 lab variant(s)*
+- **CloudFront Misconfiguration (origin access)** - *1 lab variant(s)*
+- **Cognito Identity Pool Misconfiguration** - *1 lab variant(s)*
+- **Confused Deputy Problem** - *1 lab variant(s)*
+- **Constrained Delegation Abuse (S4U2Proxy)** - *1 lab variant(s)*
+- **Creeper — First Self-Replicating Program** - *1 lab variant(s)*
+- **Cross-Account Role Assumption (confused deputy)** - *1 lab variant(s)*
+- **Cross-Forest Trust Abuse** - *1 lab variant(s)*
+- **Cross-Site Scripting (XSS) — Origins** - *1 lab variant(s)*
+- **DCSync Attack (Domain Replication Rights)** - *1 lab variant(s)*
+- **Default Domain Admin Passwords** - *1 lab variant(s)*
+- **Directory Traversal / Path Traversal** - *1 lab variant(s)*
+- **Domain Enumeration (users, groups, computers)** - *1 lab variant(s)*
+- **EC2 IMDSv1 Instance Metadata Exposure** - *1 lab variant(s)*
+- **EC2 Instance Metadata API Discovery (IMDSv1/v2)** - *1 lab variant(s)*
+- **EC2 User-Data Secrets Extraction** - *1 lab variant(s)*
+- **ECR Public Registry Image Pull** - *1 lab variant(s)*
+- **ECS Task Role Credential Theft** - *1 lab variant(s)*
+- **EKS Worker Node Credential Theft** - *1 lab variant(s)*
+- **Full Cloud Account Takeover Chain** - *1 lab variant(s)*
+- **Full Domain Takeover via DCSync** - *1 lab variant(s)*
+- **Full S3 Bucket Data Exfiltration** - *1 lab variant(s)*
+- **GCP Project Recon** - *1 lab variant(s)*
+- **GCP Service Account Key Exposure** - *1 lab variant(s)*
+- **GCS Public Bucket Listing** - *1 lab variant(s)*
+- **GPO Enumeration (Group Policy Objects)** - *1 lab variant(s)*
+- **Golden Ticket Attack (forged TGT)** - *1 lab variant(s)*
+- **Golden Ticket Persistence (Offline TGT)** - *1 lab variant(s)*
+- **HTTP Basic Authentication Bypass** - *1 lab variant(s)*
+- **Heartbleed — OpenSSL Memory Leak** - *1 lab variant(s)*
+- **IAM Policy Auditing** - *1 lab variant(s)*
+- **IAM Privilege Enumeration (enumerate own perms)** - *1 lab variant(s)*
+- **IAM Privilege Escalation to Admin** - *1 lab variant(s)*
+- **IDOR — Insecure Direct Object Reference** - *1 lab variant(s)*
+- **Insecure Deserialization** - *1 lab variant(s)*
+- **Kerberoasting (SPN Hash Cracking)** - *1 lab variant(s)*
+- **Kerberoasting Enumeration (SPN discovery)** - *1 lab variant(s)*
+- **Kubernetes Cluster Takeover (etcd exposure)** - *1 lab variant(s)*
+- **Kubernetes RBAC Misconfiguration** - *1 lab variant(s)*
+- **LDAP Anonymous Bind** - *1 lab variant(s)*
+- **LDAP Enumeration (ldapsearch)** - *1 lab variant(s)*
+- **LLMNR/NBT-NS Poisoning + Hash Capture** - *1 lab variant(s)*
+- **Lambda Function Environment Variable Leakage** - *1 lab variant(s)*
+- **Lambda RCE via Insecure Deserialization** - *1 lab variant(s)*
+- **Latest CVE — 2026** - *1 lab variant(s)*
+- **Local File Inclusion (LFI)** - *1 lab variant(s)*
+- **Log4Shell — Log4j RCE** - *1 lab variant(s)*
+- **MOVEit Transfer SQLi — Mass Data Breach** - *1 lab variant(s)*
+- **Morris Worm — First Major Internet Worm** - *1 lab variant(s)*
+- **NetBIOS Enumeration** - *1 lab variant(s)*
+- **NoPac Domain Privilege Escalation** - *1 lab variant(s)*
+- **Pass-the-Hash (lateral movement)** - *1 lab variant(s)*
+- **Pass-the-Ticket (Kerberos TGT abuse)** - *1 lab variant(s)*
+- **Password Cracking — Earliest UNIX /etc/passwd** - *1 lab variant(s)*
+- **Password Policy Enumeration** - *1 lab variant(s)*
+- **PrintNightmare RCE (Print Spooler)** - *1 lab variant(s)*
+- **ProxyLogon — Microsoft Exchange RCE** - *1 lab variant(s)*
+- **Public S3 Bucket Read Access** - *1 lab variant(s)*
+- **RDS Public Snapshot Exposure** - *1 lab variant(s)*
+- **RPC Null Session Enumeration** - *1 lab variant(s)*
+- **Resource-Based Constrained Delegation (RBCD)** - *1 lab variant(s)*
+- **Route53 Subdomain Takeover** - *1 lab variant(s)*
+- **S3 Bucket Discovery (via DNS, cert transparency)** - *1 lab variant(s)*
+- **S3 Bucket Write Access (file upload)** - *1 lab variant(s)*
+- **SMB Null Session** - *1 lab variant(s)*
+- **SPN Enumeration (Service Principal Names)** - *1 lab variant(s)*
+- **SQL Injection — The Classic** - *1 lab variant(s)*
+- **SQS/SNS Policy Misconfiguration** - *1 lab variant(s)*
+- **SSRF to IMDSv1 Credential Theft** - *1 lab variant(s)*
+- **SSRF to IMDSv1 Full AWS Credential Theft** - *1 lab variant(s)*
+- **SSRF — Server-Side Request Forgery** - *1 lab variant(s)*
+- **SYSVOL/NETLOGON GPP Password Discovery** - *1 lab variant(s)*
+- **Security Group Misconfiguration Detection** - *1 lab variant(s)*
+- **Shadow Credentials Attack (Key Credentials)** - *1 lab variant(s)*
+- **Shellshock — Bash Remote Code Execution** - *1 lab variant(s)*
+- **Silver Ticket Attack (forged service ticket)** - *1 lab variant(s)*
+- **Skeleton Key Implant (persistent backdoor)** - *1 lab variant(s)*
+- **Spring4Shell — Spring Framework RCE** - *1 lab variant(s)*
+- **Terraform State File Exposure (secrets in tfstate)** - *1 lab variant(s)*
+- **XXE — XML External Entity Injection** - *1 lab variant(s)*
+- **XZ Utils Backdoor — Supply Chain Attack** - *1 lab variant(s)*
+- **Zerologon Privilege Escalation** - *1 lab variant(s)*

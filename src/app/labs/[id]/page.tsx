@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -28,15 +28,20 @@ import {
   DollarSign,
   Eye,
   EyeOff,
+  Globe,
 } from "lucide-react";
 import { VULNERABILITIES } from "@/lib/data/vulnerabilities";
 import Navbar from "@/components/Navbar";
+import { SecurePoCUploader } from "@/components/SecurePoCUploader";
+import { TARGET_CONFIG } from "@/lib/config/targetConfig";
+import { useAuth } from "@/lib/auth";
 
-type TabType = "info" | "lab" | "steps" | "tools";
+type TabType = "info" | "lab" | "steps" | "tools" | "review";
 
 export default function LabPage() {
   const params = useParams();
   const labId = params?.id as string;
+  const { user, addXP, completeLegacyLab } = useAuth();
 
   const vuln = VULNERABILITIES.find((v) => v.id === labId);
 
@@ -52,7 +57,17 @@ export default function LabPage() {
   const [flagInput, setFlagInput] = useState("");
   const [flagResult, setFlagResult] = useState<"correct" | "wrong" | null>(null);
   const [flagSubmitting, setFlagSubmitting] = useState(false);
+  const [learningReview, setLearningReview] = useState<any>(null);
+  const [xpAward, setXpAward] = useState<{ total: number; base: number; firstBonus: number; noHintBonus: number } | null>(null);
+  
+  const alreadySolved = user?.completedLabs.includes(labId) || false;
+  const [solved, setSolved] = useState(alreadySolved);
+  
   const [copiedCmd, setCopiedCmd] = useState<string | null>(null);
+  const [unlockedHints, setUnlockedHints] = useState<string[]>([]);
+  const [hintLoading, setHintLoading] = useState(false);
+  const [hintError, setHintError] = useState<string | null>(null);
+  const [labSessionId, setLabSessionId] = useState<string | null>(null);
 
   // Timer countdown
   useEffect(() => {
@@ -77,7 +92,7 @@ export default function LabPage() {
           <AlertTriangle size={40} className="text-gray-600 mx-auto mb-3" />
           <p className="font-mono text-[var(--hp-text-muted)]">Lab not found</p>
           <Link href="/labs" className="text-[var(--hp-primary)] text-sm mt-3 block hover:opacity-80">
-            ← Back to Labs
+             Back to Labs
           </Link>
         </div>
       </div>
@@ -91,17 +106,36 @@ export default function LabPage() {
     return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   };
 
-  const handleActivate = () => {
+  const handleActivate = async () => {
     setActivating(true);
+    try {
+      const res = await fetch(`/api/labs/${vuln.id}/activity`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "start" })
+      });
+      const data = await res.json();
+      if (data.sessionId) setLabSessionId(data.sessionId);
+    } catch (e) { console.error(e); }
+
     setTimeout(() => {
-      // Simulate IP generation — in production this calls backend API
-      const ip = `10.13.${Math.floor(Math.random() * 200) + 10}.${Math.floor(Math.random() * 200) + 10}`;
+      // Use centralized target configuration
+      const ip = TARGET_CONFIG.ip;
       setLabIp(ip);
       setLabActive(true);
       setLabTimer(4 * 3600); // 4 hours
       setActivating(false);
-    }, 2000);
+    }, 1000);
   };
+
+  const logMeaningfulActivity = useCallback(() => {
+    if (!labSessionId || !labActive) return;
+    fetch(`/api/labs/${vuln.id}/activity`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "activity", sessionId: labSessionId })
+    }).catch(() => {});
+  }, [labSessionId, labActive, vuln.id]);
 
   const handleDeactivate = () => {
     setLabActive(false);
@@ -128,18 +162,50 @@ export default function LabPage() {
     setTimeout(() => setCopiedCmd(null), 2000);
   };
 
-  const handleFlagSubmit = () => {
+  const handleFlagSubmit = async (isPoC: boolean = false) => {
+    if (!isPoC && (!flagInput.trim() || flagSubmitting)) return;
+    logMeaningfulActivity();
     setFlagSubmitting(true);
-    setTimeout(() => {
-      const normalized = flagInput.trim().toUpperCase();
-      const expected = vuln.flagFormat.toUpperCase();
-      if (normalized === expected || normalized.startsWith("FLAG{")) {
+    setFlagResult(null);
+    setLearningReview(null);
+    try {
+      const res = await fetch("/api/labs/submit-flag", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          userId: user?.id ?? "guest", 
+          labId: vuln.id, 
+          flag: isPoC ? "POC_BYPASS_AUTHORIZED" : flagInput.trim(),
+          isRepeat: solved,
+          usedHints: unlockedHints.length,
+          labSessionId
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
         setFlagResult("correct");
+        if (data.xpAward) {
+          setXpAward(data.xpAward);
+        }
+        if (data.learningReview) {
+          setLearningReview(data.learningReview);
+        }
+        if (!solved) {
+          setSolved(true);
+          completeLegacyLab(vuln.id);
+          if (data.xpAward && data.xpAward.total > 0) {
+            addXP(data.xpAward.total);
+          }
+        }
       } else {
         setFlagResult("wrong");
       }
+    } catch (e) {
+      console.error(e);
+      setFlagResult("wrong");
+    } finally {
       setFlagSubmitting(false);
-    }, 800);
+    }
   };
 
   const toggleHint = (stepIndex: number) => {
@@ -151,11 +217,32 @@ export default function LabPage() {
     });
   };
 
+  const handleRequestHint = async () => {
+    if (unlockedHints.length >= 3 || hintLoading || !labSessionId) return;
+    setHintLoading(true);
+    setHintError(null);
+    try {
+      const res = await fetch(`/api/labs/${vuln.id}/hints?level=${unlockedHints.length + 1}&sessionId=${labSessionId}`);
+      const data = await res.json();
+      if (res.ok) {
+        setUnlockedHints((prev) => [...prev, data.hint]);
+      } else {
+        setHintError(data.error || "Hint not available yet.");
+      }
+    } catch (e) {
+      console.error(e);
+      setHintError("Failed to fetch intelligence. Ensure connection is stable.");
+    } finally {
+      setHintLoading(false);
+    }
+  };
+
   const TABS: { key: TabType; label: string; icon: React.ElementType }[] = [
     { key: "info", label: "Vulnerability Info", icon: BookOpen },
     { key: "lab", label: "Lab Console", icon: Terminal },
     { key: "steps", label: "Steps & Hints", icon: ChevronRight },
-    { key: "tools", label: "Tools", icon: Target },
+    { key: "tools", label: "Recommended Tools", icon: Shield },
+    { key: "review", label: "Learning Review", icon: Shield },
   ];
 
   const difficultyColor =
@@ -168,12 +255,186 @@ export default function LabPage() {
       : vuln.difficulty === "Hard"
       ? "text-orange-400 border-orange-400/30 bg-orange-400/5"
       : "text-red-400 border-red-400/30 bg-red-400/5";
+  if (labActive) {
+    const attackSurface = "External Network"; // Legacy labs default to web
+    const appTypes = "Web Applications, CMS, APIs"; // Legacy labs are all web labs
+
+    return (
+      <div className="min-h-screen bg-[var(--hp-bg)]" suppressHydrationWarning>
+        <Navbar />
+        <div className="pt-24 pb-24 px-6 md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           {/* Header */}
+           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 p-6 rounded-2xl border border-red-500/30 bg-red-500/5 shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+              <div>
+                 <div className="flex items-center gap-3 mb-3">
+                   <div className="flex items-center gap-2 px-2.5 py-1 rounded border border-red-500/50 bg-red-500/10">
+                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                     <span className="text-[10px] font-mono text-red-400 font-bold tracking-wider">LIVE ENGAGEMENT</span>
+                   </div>
+                   <span className={`text-[10px] font-mono px-2 py-1 rounded border ${difficultyColor}`}>{vuln.difficulty}</span>
+                 </div>
+                 <h1 className="text-2xl font-bold text-[var(--hp-text)]">{vuln.name}</h1>
+              </div>
+              <div className="md:text-right">
+                 <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">TIME REMAINING</div>
+                 <div className="font-mono text-3xl font-bold text-red-400" style={{ textShadow: "0 0 10px rgba(248,113,113,0.5)" }}>{formatTime(labTimer)}</div>
+              </div>
+           </div>
+
+           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Briefing */}
+              <div className="lg:col-span-2 space-y-6">
+                 {/* Objective */}
+                 <div className="p-6 rounded-2xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)]">
+                   <h3 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2 mb-3">
+                     <Target size={16} className="text-[#00e5ff]" /> Engagement Objective
+                   </h3>
+                   <p className="text-sm text-[var(--hp-text-muted)] leading-relaxed">
+                     Your objective is to identify and exploit the {vuln.name} vulnerability within the target environment.
+                     Successfully exploiting this vulnerability will allow you to retrieve the flag. The exact endpoint and parameter are unknownyou must enumerate the target to find the attack vector.
+                   </p>
+                 </div>
+                 {/* Threat Intel */}
+                 <div className="p-6 rounded-2xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)]">
+                   <h3 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2 mb-5">
+                     <Shield size={16} className="text-[var(--hp-primary)]" /> Threat Intelligence
+                   </h3>
+                   <div className="space-y-5">
+                      <div>
+                        <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">DESCRIPTION</div>
+                        <p className="text-xs text-[var(--hp-text)] leading-relaxed">{vuln.description}</p>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">IMPACT</div>
+                        <p className="text-xs text-[var(--hp-text)] leading-relaxed">{vuln.impact}</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[var(--hp-border)]">
+                        <div><div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">CWE</div><div className="text-xs font-mono text-[var(--hp-text-muted)]">{((vuln as any).cwe?.length ? (vuln as any).cwe.join(", ") : "") || "N/A"}</div></div>
+                        <div><div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">OWASP</div><div className="text-xs font-mono text-[var(--hp-text-muted)]">{((vuln as any).owaspMapping?.length ? (vuln as any).owaspMapping.join(", ") : "") || "N/A"}</div></div>
+                        <div><div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">ATTACK SURFACE</div><div className="text-xs text-[var(--hp-text-muted)]">{attackSurface}</div></div>
+                        <div><div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">COMMON TARGETS</div><div className="text-xs text-[var(--hp-text-muted)]">{appTypes}</div></div>
+                      </div>
+                   </div>
+                 </div>
+                 {/* Hints */}
+                 <div className="p-6 rounded-2xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)]">
+                   <div className="flex items-center justify-between mb-4">
+                     <h3 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2">
+                       <Info size={16} className="text-yellow-400" /> Intelligence / Hints
+                     </h3>
+                     <span className="text-xs font-mono text-[var(--hp-text-muted)]">{unlockedHints.length} / 3 Unlocked</span>
+                   </div>
+                   <div className="space-y-3">
+                     {unlockedHints.map((hint, i) => (
+                       <div key={i} className="p-3 rounded-xl bg-yellow-400/5 border border-yellow-400/20 text-xs text-yellow-200/80 leading-relaxed">
+                         <span className="font-bold text-yellow-400 mb-1 block">Hint {i + 1}:</span>
+                         {hint}
+                       </div>
+                     ))}
+                     {unlockedHints.length < 3 && (
+                       <div className="space-y-2">
+                         <button 
+                           onClick={handleRequestHint} 
+                           disabled={hintLoading}
+                           className="w-full py-3 rounded-xl border border-dashed border-[var(--hp-border-hover)] hover:border-yellow-400/50 hover:bg-yellow-400/5 text-xs text-[var(--hp-text-muted)] hover:text-yellow-400 transition-all disabled:opacity-50 flex justify-center items-center gap-2"
+                         >
+                           {hintLoading ? <><RefreshCw size={14} className="animate-spin" /> Requesting Intel...</> : "Request Intelligence Drop (+1 Hint)"}
+                         </button>
+                         {hintError && <p className="text-xs text-red-400/80 text-center">{hintError}</p>}
+                       </div>
+                     )}
+                   </div>
+                 </div>
+              </div>
+
+              {/* Right Column - Target & Actions */}
+              <div className="space-y-6">
+                 <div className="p-6 rounded-2xl bg-[#0a0a0f] border border-[var(--hp-primary)] relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[var(--hp-primary)]" />
+                    <h3 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2 mb-5">
+                      <Globe size={16} className="text-[var(--hp-primary)]" /> Target Configuration
+                    </h3>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">TARGET URL</div>
+                        <div className="flex items-center justify-between bg-[var(--hp-bg-2)] border border-[var(--hp-border)] rounded-xl p-3">
+                          <span className="font-mono text-sm text-[#00e5ff] truncate">{TARGET_CONFIG.domain}</span>
+                          <button onClick={() => navigator.clipboard.writeText(TARGET_CONFIG.domain)} className="text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] ml-2"><Copy size={14}/></button>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">TARGET IP</div>
+                        <div className="flex items-center justify-between bg-[var(--hp-bg-2)] border border-[var(--hp-border)] rounded-xl p-3">
+                          <span className="font-mono text-sm text-[var(--hp-primary)] font-bold">{TARGET_CONFIG.ip}</span>
+                          <button onClick={() => navigator.clipboard.writeText(TARGET_CONFIG.ip)} className="text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] ml-2"><Copy size={14}/></button>
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+                 
+                 <div className="p-6 rounded-2xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)]">
+                   <h3 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2 mb-4">
+                     <Flag size={16} className="text-[var(--hp-primary)]" /> Submit Flag
+                   </h3>
+                   {solved ? (
+                      <div className="text-center py-4">
+                        <CheckCircle size={32} className="text-[var(--hp-primary)] mx-auto mb-2" />
+                        <p className="text-sm font-bold text-[var(--hp-primary)]">Target Compromised! </p>
+
+                        {xpAward && xpAward.total > 0 && (
+                          <div className="mt-4 p-3 bg-[var(--hp-bg-3)] border border-[var(--hp-border)] rounded-xl text-left">
+                            <div className="text-xs font-mono text-[var(--hp-text-muted)] mb-2 uppercase tracking-wider">XP Awarded</div>
+                            <div className="flex justify-between items-center text-sm mb-1">
+                              <span className="text-[var(--hp-text)]">Base Reward:</span>
+                              <span className="font-mono text-[var(--hp-primary)]">+{xpAward.base} XP</span>
+                            </div>
+                            {xpAward.firstBonus > 0 && (
+                              <div className="flex justify-between items-center text-sm mb-1">
+                                <span className="text-[var(--hp-text)]">First Blood Bonus:</span>
+                                <span className="font-mono text-fuchsia-400">+{xpAward.firstBonus} XP</span>
+                              </div>
+                            )}
+                            {xpAward.noHintBonus > 0 && (
+                              <div className="flex justify-between items-center text-sm mb-2">
+                                <span className="text-[var(--hp-text)]">No Hints Bonus:</span>
+                                <span className="font-mono text-yellow-400">+{xpAward.noHintBonus} XP</span>
+                              </div>
+                            )}
+                            <div className="border-t border-[var(--hp-border)] pt-2 mt-2 flex justify-between items-center font-bold">
+                              <span className="text-[var(--hp-text)]">Total:</span>
+                              <span className="font-mono text-[var(--hp-primary)]">+{xpAward.total} XP</span>
+                            </div>
+                          </div>
+                        )}
+                        {xpAward && xpAward.total === 0 && (
+                          <p className="text-xs text-[var(--hp-text-muted)] mt-2 italic">0 XP (Repeat Completion)</p>
+                        )}
+                      </div>
+                   ) : (
+                      <div className="space-y-3 mt-4">
+                        <SecurePoCUploader onSuccess={() => handleFlagSubmit(true)} />
+                      </div>
+                   )}
+                 </div>
+
+                 <button
+                   onClick={handleDeactivate}
+                   className="w-full py-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-400 text-sm font-medium hover:bg-red-500/20 transition-all flex justify-center items-center gap-2"
+                 >
+                   <Square size={14} /> Terminate Engagement
+                 </button>
+              </div>
+           </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[var(--hp-bg)]">
       <Navbar />
 
-      <div className="pt-20 max-w-7xl mx-auto px-4 pb-20">
+      <div className="pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 py-5 text-xs text-[var(--hp-text-muted)]">
           <Link href="/labs" className="hover:text-[var(--hp-primary)] transition-colors flex items-center gap-1">
@@ -250,8 +511,8 @@ export default function LabPage() {
             {/* Tabs */}
             <div className="lab-card rounded-2xl overflow-hidden">
               {/* Tab headers */}
-              <div className="flex border-b border-[var(--hp-primary)]">
-                {TABS.map(({ key, label, icon: Icon }) => (
+              <div className="flex border-b border-[var(--hp-border)]">
+                {TABS.filter(t => t.key !== "review" || solved).map(({ key, label, icon: Icon }) => (
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
@@ -362,14 +623,35 @@ export default function LabPage() {
                           </button>
                         </div>
 
-                        {/* IP Display */}
+                        {/* Target Display */}
                         <div className="rounded-xl border border-[var(--hp-primary)] bg-[#0a0a0f] overflow-hidden">
                           <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--hp-primary)] bg-[var(--hp-primary)]">
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                             <div className="w-2.5 h-2.5 rounded-full bg-[var(--hp-primary)]/60" />
-                            <span className="ml-2 font-mono text-xs text-[var(--hp-text-muted)]">Target IP</span>
+                            <span className="ml-2 font-mono text-xs text-[var(--hp-text-muted)]">Target</span>
                           </div>
+                          
+                          <div className="p-4 flex items-center justify-between border-b border-[rgba(191,95,255,0.15)]">
+                            <div>
+                              <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">TARGET</div>
+                              <div className="font-mono text-lg font-bold text-[#00e5ff]">
+                                {TARGET_CONFIG.domain}
+                              </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                              <button
+                                onClick={() => {
+                                  navigator.clipboard.writeText(TARGET_CONFIG.domain);
+                                }}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.1)] bg-white/5 text-xs text-[var(--hp-text-muted)] hover:text-[var(--hp-text)] transition-all"
+                              >
+                                <Copy size={11} />
+                                Copy URL
+                              </button>
+                            </div>
+                          </div>
+
                           <div className="p-4 flex items-center justify-between">
                             <div>
                               <div className="text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">TARGET IP ADDRESS</div>
@@ -444,7 +726,7 @@ export default function LabPage() {
                               className="flex-1 px-4 py-2.5 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-xl text-sm font-mono text-[var(--hp-primary)] placeholder-gray-600 focus:outline-none focus:border-[var(--hp-primary)] transition-all"
                             />
                             <button
-                              onClick={handleFlagSubmit}
+                              onClick={() => handleFlagSubmit(false)}
                               disabled={flagSubmitting || !flagInput}
                               className="flex items-center gap-2 px-4 py-2.5 rounded-xl btn-primary text-sm disabled:opacity-40"
                             >
@@ -461,7 +743,7 @@ export default function LabPage() {
                             <div className="flex items-center gap-2 mt-3 p-3 rounded-lg bg-[var(--hp-primary)] border border-[var(--hp-primary)]">
                               <CheckCircle size={16} className="text-[var(--hp-primary)]" />
                               <div>
-                                <span className="text-xs font-bold text-[var(--hp-primary)]">🎉 Correct! Lab Complete!</span>
+                                <span className="text-xs font-bold text-[var(--hp-primary)]"> Correct! Lab Complete!</span>
                                 <p className="text-[10px] text-[var(--hp-text-muted)] mt-0.5">+{vuln.xpReward} XP credited to your account</p>
                               </div>
                             </div>
@@ -577,7 +859,7 @@ export default function LabPage() {
                                 {revealedHints.has(i) && (
                                   <div className="mt-2 p-3 rounded-lg bg-[rgba(255,193,7,0.05)] border border-[rgba(255,193,7,0.15)]">
                                     <p className="text-[11px] text-yellow-200/80 leading-relaxed">
-                                      💡 {step.hint}
+                                       {step.hint}
                                     </p>
                                   </div>
                                 )}
@@ -590,14 +872,14 @@ export default function LabPage() {
                                   onClick={() => setCurrentStep(i - 1)}
                                   className="text-[11px] text-[var(--hp-text-muted)] hover:text-[var(--hp-text-muted)] transition-colors"
                                 >
-                                  ← Back
+                                   Back
                                 </button>
                               )}
                               <button
                                 onClick={() => setCurrentStep(i + 1)}
                                 className="flex items-center gap-1 text-[11px] text-[var(--hp-primary)] hover:opacity-80 transition-opacity ml-auto"
                               >
-                                Mark Done & Next →
+                                Mark Done & Next 
                               </button>
                             </div>
                           </div>
@@ -647,11 +929,58 @@ export default function LabPage() {
                     </div>
                     <div className="mt-5 p-4 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.1)]">
                       <p className="text-[11px] text-[var(--hp-text-muted)] leading-relaxed">
-                        💡 All these tools are pre-installed on{" "}
+                         All these tools are pre-installed on{" "}
                         <span className="text-[#00e5ff]">Parrot OS Security Edition</span> and{" "}
                         <span className="text-[#00e5ff]">Kali Linux</span>.
-                        Use your own machine — no browser VM needed.
+                        Use your own machine  no browser VM needed.
                       </p>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "review" && solved && (
+                  <div className="space-y-4">
+                    <div className="border-[var(--hp-primary)]/30 border-2 rounded-2xl p-5 bg-[var(--hp-bg-2)]">
+                      <h3 className="text-lg font-semibold text-[var(--hp-text)] mb-2 flex items-center gap-2">
+                        <CheckCircle size={18} className="text-[var(--hp-primary)]" /> Post-Exploitation Learning Review
+                      </h3>
+                      <p className="text-sm text-[var(--hp-text-muted)] mb-6">
+                        Review the underlying concepts and secure implementation guidelines for this vulnerability.
+                      </p>
+                      
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-xs font-bold text-[var(--hp-text-muted)] uppercase tracking-wider mb-2">Vulnerability Explanation & Root Cause</h4>
+                          <p className="text-sm text-[var(--hp-text)] leading-relaxed bg-[var(--hp-bg-3)] p-4 rounded-xl border border-[var(--hp-border)]">
+                            {learningReview?.vulnerabilityExplanation || vuln.description}
+                            <br/><br/>
+                            <strong className="text-[var(--hp-primary)]">Root Cause:</strong> {learningReview?.rootCause || "Insufficient constraint on input/state validation."}
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <h4 className="text-xs font-bold text-[var(--hp-text-muted)] uppercase tracking-wider mb-2">Impact</h4>
+                            <p className="text-sm text-red-400 leading-relaxed bg-[var(--hp-bg-3)] p-4 rounded-xl border border-[var(--hp-border)]">
+                              {learningReview?.impact || vuln.impact}
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-bold text-[var(--hp-text-muted)] uppercase tracking-wider mb-2">Detection & Methodology</h4>
+                            <p className="text-sm text-yellow-400 leading-relaxed bg-[var(--hp-bg-3)] p-4 rounded-xl border border-[var(--hp-border)]">
+                              {learningReview?.detectionConsiderations || "Monitor access logs and configure SIEM alerts."}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xs font-bold text-[var(--hp-text-muted)] uppercase tracking-wider mb-2">Remediation & Secure Implementation</h4>
+                          <div className="text-sm text-emerald-400 leading-relaxed bg-[var(--hp-bg-3)] p-4 rounded-xl border border-emerald-500/30">
+                            <p className="mb-2"><strong className="text-emerald-300">Fix:</strong> {learningReview?.remediation || "Implement defense in depth and restrict permissions."}</p>
+                            <p><strong className="text-emerald-300">Secure Implementation:</strong> {learningReview?.secureImplementation || "Use parameterized abstractions and validate trust boundaries."}</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -746,7 +1075,7 @@ export default function LabPage() {
                       className="flex items-center justify-between p-3 rounded-lg border border-white/5 hover:border-[var(--hp-primary)] bg-white/2 transition-all group"
                     >
                       <div>
-                        <div className="text-[10px] text-[var(--hp-text-muted)] mb-0.5">← Previous</div>
+                        <div className="text-[10px] text-[var(--hp-text-muted)] mb-0.5"> Previous</div>
                         <div className="text-xs text-[var(--hp-text-muted)] group-hover:text-[var(--hp-text)] transition-colors">{prev.shortName}</div>
                       </div>
                       <span className="font-mono text-[10px] text-gray-600">LVL {prev.level}</span>
@@ -761,7 +1090,7 @@ export default function LabPage() {
                       className="flex items-center justify-between p-3 rounded-lg border border-white/5 hover:border-[var(--hp-primary)] bg-white/2 transition-all group"
                     >
                       <div>
-                        <div className="text-[10px] text-[var(--hp-text-muted)] mb-0.5">Next →</div>
+                        <div className="text-[10px] text-[var(--hp-text-muted)] mb-0.5">Next </div>
                         <div className="text-xs text-[var(--hp-text-muted)] group-hover:text-[var(--hp-text)] transition-colors">{next.shortName}</div>
                       </div>
                       <span className="font-mono text-[10px] text-gray-600">LVL {next.level}</span>

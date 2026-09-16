@@ -1,8 +1,10 @@
-"use client";
+﻿"use client";
+import { getRank } from "@/lib/data/types";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { SEVERITY_UNLOCK_REQUIREMENTS } from "@/lib/data/types";
 export interface User {
+  isAdmin?: boolean;
   id: string;
   username: string;
   email: string;
@@ -11,9 +13,9 @@ export interface User {
   completedLabs: string[];      // lab IDs completed
   completedLevels: Record<string, number[]>; // "web-information" -> [1,2,3]
   joinedAt: string;
-  loginStreak: number;             // e.g. 5 days streak 🔥
+  loginStreak: number;             // e.g. 5 days streak 
   lastLoginDate: string;           // e.g. "2026-08-10"
-  badges: string[];                // e.g. ["Script Kiddie", "Web Pentester"]
+  badges: string[]; isPremium?: boolean; premiumUntil?: string; plan?: string; hasExpiredCollab?: boolean;
   certifications: string[];        // e.g. ["HPL-WebPT", "HPL-NetPT"]
   streakPenaltyNotice?: string;   // Optional notification if streak was lost & XP deducted
   dailyBonusClaimedDate?: string;  // Track if today's bonus was claimed
@@ -35,16 +37,20 @@ interface AuthContextType {
   generateOTP: (emailOrPhone: string) => string;
   verifyLoginOTP: (emailOrUser: string, code: string) => boolean;
   completeLoginWithOTP: (user: User) => void;
-  register: (username: string, email: string, phone: string, password: string) => Promise<{ success: boolean; error?: string; user?: User }>;
+  register: (username: string, email: string, phone: string, password: string, emailOTP: string, phoneOTP: string) => Promise<{ success: boolean; error?: string; user?: User }>;
   logout: () => void;
   addXP: (amount: number) => void;
-  claimDailyBonus: () => { success: boolean; message: string; xpAdded: number };
+  claimDailyBonus: () => Promise<{ success: boolean; message: string; xpAdded: number }>;
+  checkDailyBonusAvailable: () => Promise<boolean>;
+  markModalSeen: () => void;
+  dailyModalSeen: boolean;
   dismissStreakNotice: () => void;
   unlockSeverityTier: (domain: string, severity: string) => { success: boolean; message: string };
   completeLevel: (domain: string, severity: string, level: number, labId: string) => void;
+  completeLegacyLab: (labId: string) => void;
   isLevelCompleted: (domain: string, severity: string, level: number) => boolean;
   isLevelUnlocked: (domain: string, severity: string, level: number) => boolean;
-  isSeverityUnlocked: (domain: string, severity: string) => boolean;
+  isSeverityUnlocked: (domain: string, severity: string) => boolean; upgradeToPremium: (tierId: string | number) => boolean;
   getSeverityXPRequirement: (severity: string) => number;
   getCompletedCount: (domain: string, severity: string) => number;
 }
@@ -76,34 +82,34 @@ export function getUserBadgesAndRank(user: User): {
   let rankColor = "text-[var(--hp-text-muted)] border-gray-500/30 bg-gray-500/10";
 
   if (xp >= 10000) {
-    primaryTag = "👑 Legendary Operator";
+    primaryTag = " Legendary Operator";
     rankColor = "text-red-400 border-red-500/40 bg-red-500/10 shadow-[0_0_15px_rgba(239,68,68,0.3)]";
   } else if (xp >= 5000) {
-    primaryTag = "💀 Elite Red Teamer";
+    primaryTag = " Elite Red Teamer";
     rankColor = "text-orange-400 border-orange-500/40 bg-orange-500/10 shadow-[0_0_15px_rgba(251,146,60,0.3)]";
   } else if (xp >= 2000) {
-    primaryTag = "🎯 Certified Pentester";
+    primaryTag = " Certified Pentester";
     rankColor = "text-[var(--hp-primary)] border-[var(--hp-border-hover)] bg-[var(--hp-primary)]/10 shadow-[0_0_15px_var(--hp-primary)]";
   } else if (xp >= 500) {
-    primaryTag = "⚡ Apprentice Hacker";
+    primaryTag = " Apprentice Hacker";
     rankColor = "text-[#00e5ff] border-[#00e5ff]/40 bg-[#00e5ff]/10 shadow-[0_0_15px_rgba(0,229,255,0.3)]";
   } else {
-    primaryTag = "🔰 Script Kiddie";
+    primaryTag = " Script Kiddie";
     rankColor = "text-[var(--hp-text-muted)] border-gray-500/30 bg-gray-500/10";
   }
 
   const badgeList = [
-    { name: primaryTag, icon: "🛡️", color: rankColor }
+    { name: primaryTag, icon: "", color: rankColor }
   ];
 
   if (user.certifications?.includes("HPL-WebPT") || xp >= 1500) {
-    badgeList.push({ name: "HPL-WebPT", icon: "🌐", color: "text-[var(--hp-primary)] border-[var(--hp-border)] bg-[var(--hp-primary)]/10" });
+    badgeList.push({ name: "HPL-WebPT", icon: "", color: "text-[var(--hp-primary)] border-[var(--hp-border)] bg-[var(--hp-primary)]/10" });
   }
   if (user.certifications?.includes("HPL-NetPT") || xp >= 3000) {
-    badgeList.push({ name: "HPL-NetPT", icon: "🕸️", color: "text-[#00e5ff] border-[#00e5ff]/30 bg-[#00e5ff]/10" });
+    badgeList.push({ name: "HPL-NetPT", icon: "", color: "text-[#00e5ff] border-[#00e5ff]/30 bg-[#00e5ff]/10" });
   }
   if (user.certifications?.includes("HPL-CloudPT") || xp >= 6000) {
-    badgeList.push({ name: "HPL-CloudPT", icon: "☁️", color: "text-blue-400 border-blue-500/30 bg-blue-500/10" });
+    badgeList.push({ name: "HPL-CloudPT", icon: "", color: "text-blue-400 border-blue-500/30 bg-blue-500/10" });
   }
 
   return { primaryTag, rankColor, badgeList };
@@ -133,7 +139,7 @@ function checkAndApplyDailyStreak(u: User): User {
     newStreak = 1;
     const penalty = 50;
     newXP = Math.max(0, u.xp - penalty);
-    notice = `⚠️ Inactivity Penalty Applied! You missed logging in yesterday. Your streak reset to 1 day and -${penalty} XP was deducted. Log in daily to maintain your streak & protect your XP!`;
+    notice = ` Inactivity Penalty Applied! You missed logging in yesterday. Your streak reset to 1 day and -${penalty} XP was deducted. Log in daily to maintain your streak & protect your XP!`;
   } else {
     newStreak = 1;
   }
@@ -151,25 +157,56 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [otpMap, setOtpMap] = useState<Record<string, string>>({});
+  const [progressionConfig, setProgressionConfig] = useState<any>(null);
 
-  useEffect(() => {
-    // Load persisted session & check daily streak / penalty
-    try {
-      const stored = localStorage.getItem("hplabs_user");
-      if (stored) {
-        const loadedUser: User = JSON.parse(stored);
-        const updatedUser = checkAndApplyDailyStreak(loadedUser);
-        setUser(updatedUser);
-        localStorage.setItem("hplabs_user", JSON.stringify(updatedUser));
-      }
-    } catch {}
-    setIsLoading(false);
-  }, []);
+    useEffect(() => {
+      fetch("/api/config/progression")
+        .then(res => res.json())
+        .then(data => setProgressionConfig(data.config))
+        .catch(() => {});
+  
+      // Load real session from server
+      fetch("/api/auth/session")
+        .then(res => res.json())
+        .then(data => {
+          if (data.authenticated && data.user) {
+            // Apply streak/daily bonus logic on top of server data if needed
+            let u: User = { ...data.user, hasExpiredCollab: data.hasExpiredCollab };
+            u = checkAndApplyDailyStreak(u);
+            setUser(u);
+            localStorage.setItem("hplabs_user", JSON.stringify(u));
+          } else {
+            if (data.mfaRequired && window.location.pathname !== "/mfa") {
+              window.location.href = "/mfa";
+            }
+            setUser(null);
+            localStorage.removeItem("hplabs_user");
+          }
+        })
+        .catch(() => {
+          // Fallback to local if offline or error
+          const stored = localStorage.getItem("hplabs_user");
+          if (stored) {
+            setUser(JSON.parse(stored));
+          } else {
+            setUser(null);
+          }
+        })
+        .finally(() => setIsLoading(false));
+    }, []);
 
-  const persistUser = (u: User) => {
+  function persistUser(u: User) {
     setUser(u);
     try {
       localStorage.setItem("hplabs_user", JSON.stringify(u));
+      
+      // Sync to backend (only initializes if missing, won't overwrite server state)
+      fetch("/api/users/sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: u.id, xp: u.xp, completedLabs: u.completedLabs })
+      }).catch(() => {});
+
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
         if (k && k.startsWith("hplabs_account_")) {
@@ -230,87 +267,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const verifyPasswordCredentials = async (emailOrUser: string, password: string) => {
-    await new Promise((r) => setTimeout(r, 600));
-
-    const idClean = emailOrUser.toLowerCase().trim();
-
-    const lockout = getLockoutStatus(idClean);
-    if (lockout.lockoutUntil && Date.now() < lockout.lockoutUntil) {
-      const hoursRemaining = Math.ceil((lockout.lockoutUntil - Date.now()) / (1000 * 60 * 60));
-      return {
-        success: false,
-        error: `Account locked due to ${MAX_FAILED_ATTEMPTS} failed attempts. Unlocks in ${hoursRemaining} hours.`
-      };
-    }
-
-    let matchedAccount: { password: string; user: User } | null = null;
-
     try {
-      for (let i = 0; i < localStorage.length; i++) {
-        const k = localStorage.key(i);
-        if (k && k.startsWith("hplabs_account_")) {
-          try {
-            const acc = JSON.parse(localStorage.getItem(k) || "");
-            if (
-              acc.user.email.toLowerCase() === idClean ||
-              acc.user.username.toLowerCase() === idClean
-            ) {
-              matchedAccount = acc;
-              break;
-            }
-          } catch {}
-        }
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emailOrUsername: emailOrUser, password })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        return { success: true, user: data.user };
       }
-    } catch (e) {}
-
-    if (!matchedAccount && (idClean === "demo@hplabs.io" || idClean === "v1j4y")) {
-      matchedAccount = {
-        password: "demo123",
-        user: {
-          id: "user-demo",
-          username: "v1j4y",
-          email: "demo@hplabs.io",
-          phone: "9876543210",
-          xp: 2450,
-          completedLabs: ["web-info-001", "web-info-002", "web-info-003"],
-          completedLevels: { "web-information": [1, 2, 3] },
-          joinedAt: "2026-01-15",
-          loginStreak: 4,
-          lastLoginDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0],
-          badges: ["Script Kiddie", "HPL-WebPT"],
-          certifications: ["HPL-WebPT"],
-        }
-      };
+      return { success: false, error: data.message || "Login failed" };
+    } catch (e) {
+      return { success: false, error: "Network error during login" };
     }
-
-    if (!matchedAccount) {
-      recordFailedAttempt(idClean);
-      return {
-        success: false,
-        error: "Account not registered. Please register a new account first."
-      };
-    }
-
-    if (matchedAccount.password !== password) {
-      const updated = recordFailedAttempt(idClean);
-      const remaining = MAX_FAILED_ATTEMPTS - updated.attempts;
-      if (remaining <= 0) {
-        return {
-          success: false,
-          error: "5 consecutive failed attempts! Account & IP locked for 24 hours."
-        };
-      }
-      return {
-        success: false,
-        error: `Invalid credentials. ${remaining} attempts remaining before 24-hour lockout.`
-      };
-    }
-
-    return { success: true, user: matchedAccount.user };
   };
 
   const generateOTP = (emailOrPhone: string): string => {
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const code = Math.random().toString(36).substring(2, 10).toUpperCase();
     setOtpMap((prev) => ({ ...prev, [emailOrPhone.toLowerCase().trim()]: code }));
     return code;
   };
@@ -332,40 +306,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     resetFailedAttempts(u.username);
   };
 
-  const register = async (username: string, email: string, phone: string, password: string) => {
-    await new Promise((r) => setTimeout(r, 600));
-
-    const emailClean = email.toLowerCase().trim();
-    const userClean = username.toLowerCase().trim();
-    const today = new Date().toISOString().split("T")[0];
-
+  const register = async (username: string, email: string, phone: string, password: string, emailOTP: string, phoneOTP: string) => {
     try {
-      const existing = localStorage.getItem(`hplabs_account_${emailClean}`);
-      if (existing) {
-        return { success: false, error: "An account with this email is already registered." };
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, phone, password, emailOTP, phoneOTP })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        return { success: true, user: data.user };
       }
-    } catch (e) {}
-
-    const newUser: User = {
-      id: `user-${Date.now()}`,
-      username: userClean,
-      email: emailClean,
-      phone: phone.trim(),
-      xp: 100, // Welcome signup bonus
-      completedLabs: [],
-      completedLevels: {},
-      joinedAt: today,
-      loginStreak: 1,
-      lastLoginDate: today,
-      badges: ["Script Kiddie"],
-      certifications: [],
-    };
-
-    try {
-      localStorage.setItem(`hplabs_account_${emailClean}`, JSON.stringify({ password, user: newUser }));
-    } catch {}
-    persistUser(newUser);
-    return { success: true, user: newUser };
+      return { success: false, error: data.message || "Registration failed" };
+    } catch (e) {
+      return { success: false, error: "Network error during registration" };
+    }
   };
 
   const logout = () => {
@@ -381,22 +336,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     persistUser(updated);
   };
 
-  const claimDailyBonus = () => {
-    if (!user) return { success: false, message: "Not logged in", xpAdded: 0 };
-    const today = new Date().toISOString().split("T")[0];
-    if (user.dailyBonusClaimedDate === today) {
-      return { success: false, message: "Today's daily bonus already claimed!", xpAdded: 0 };
+  
+  const checkDailyBonusAvailable = async () => {
+    if (!user) return false;
+    try {
+      const res = await fetch(`/api/users/daily-bonus?userId=${user.id}`);
+      const data = await res.json();
+      return data.available === true;
+    } catch {
+      return false;
     }
-
-    const bonusXP = 100;
-    const updated: User = {
-      ...user,
-      xp: user.xp + bonusXP,
-      dailyBonusClaimedDate: today,
-    };
-    persistUser(updated);
-    return { success: true, message: `🎉 Daily Login Bonus Claimed! +${bonusXP} XP Added!`, xpAdded: bonusXP };
   };
+
+  const claimDailyBonus = async () => {
+    if (!user) return { success: false, message: "Not logged in", xpAdded: 0 };
+    
+    try {
+      const res = await fetch("/api/users/daily-bonus", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id })
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        const today = new Date().toISOString().split("T")[0];
+        const updated: User = {
+          ...user,
+          xp: user.xp + data.xpAdded,
+          dailyBonusClaimedDate: today,
+        };
+        persistUser(updated);
+      }
+      return data;
+    } catch (error) {
+      return { success: false, message: "Network error", xpAdded: 0 };
+    }
+  };
+
+  const [dailyModalSeen, setDailyModalSeen] = useState(false);
+  const markModalSeen = () => setDailyModalSeen(true);
+
 
   const dismissStreakNotice = () => {
     if (!user) return;
@@ -407,7 +387,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const completeLevel = (domain: string, severity: string, level: number, labId: string) => {
     if (!user) return;
     const key = `${domain}-${severity}`;
-    const current = user.completedLevels[key] || [];
+    const current = user.completedLevels?.[key] || [];
     if (current.includes(level)) return;
     const updated: User = {
       ...user,
@@ -415,45 +395,72 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ? user.completedLabs
         : [...user.completedLabs, labId],
       completedLevels: {
-        ...user.completedLevels,
+        ...(user.completedLevels || {}),
         [key]: [...current, level].sort((a, b) => a - b),
       },
     };
     persistUser(updated);
   };
 
+  const completeLegacyLab = (labId: string) => {
+    if (!user) return;
+    if (user.completedLabs.includes(labId)) return;
+    const updated: User = {
+      ...user,
+      completedLabs: [...user.completedLabs, labId],
+    };
+    persistUser(updated);
+  };
+
   const isLevelCompleted = (domain: string, severity: string, level: number) => {
     if (!user) return false;
-    return (user.completedLevels[`${domain}-${severity}`] || []).includes(level);
+    return (user.completedLevels?.[`${domain}-${severity}`] || []).includes(level);
   };
 
   const isLevelUnlocked = (domain: string, severity: string, level: number) => {
+    if (user && user.isAdmin) return true; // Admins have all labs unlocked
     if (level === 1) return isSeverityUnlocked(domain, severity);
     return isLevelCompleted(domain, severity, level - 1) && isSeverityUnlocked(domain, severity);
   };
 
   const isSeverityUnlocked = (domain: string, severity: string): boolean => {
     if (!user) return false;
-    if (severity === "information") return true;
+    if (user.isAdmin) return true;
+    
+    // Check XP requirements first
+    const reqXP = SEVERITY_XP_GATES[severity] || 0;
+    const meetsXP = user.xp >= reqXP;
+    if (!meetsXP) return false;
+
+    // Evaluate plan-based entitlements
+    const isPremiumValid = user.premiumUntil ? Number(user.premiumUntil) > Date.now() : false;
+    const plan = (isPremiumValid && (user as any).plan) ? (user as any).plan : 'FREE';
+
+    if (plan === 'ADVANCED') return true; // Advanced gets everything
+    if (plan === 'INTERMEDIATE' && ['information', 'low', 'medium', 'high'].includes(severity)) return true;
+    if (plan === 'BASIC' && ['information', 'low'].includes(severity)) return true;
+    if (plan === 'FREE' && severity === 'information') return true;
+
+    // Fallback manual unlocks
     const userUnlocked = user.unlockedSeverities?.[domain] || [];
     if (userUnlocked.includes(severity)) return true;
-    // Fallback auto-unlock if requirement is met and already unlocked
+
     return false;
   };
 
   const unlockSeverityTier = (domain: string, severity: string) => {
     if (!user) return { success: false, message: "Not logged in" };
     
-    // Strict backend validation
-    const req = SEVERITY_UNLOCK_REQUIREMENTS[severity as keyof typeof SEVERITY_UNLOCK_REQUIREMENTS];
+    // Strict validation via fetched config
+    const req = progressionConfig?.[severity] || SEVERITY_UNLOCK_REQUIREMENTS[severity as keyof typeof SEVERITY_UNLOCK_REQUIREMENTS];
     if (req) {
       if (user.xp < req.minXP) {
         return { success: false, message: `Insufficient XP! You need ${req.minXP} XP to unlock this tier.` };
       }
       
       const prevSev = req.previousSeverity;
-      if (prevSev && req.minLabsCompleted > 0) {
-        const prevCompletedCount = (user.completedLevels[`${domain}-${prevSev}`] || []).length;
+      if (prevSev && req.minLabsCompleted && req.minLabsCompleted > 0) {
+        const prevCompletedCount = (user.completedLevels?.[`${domain}-${prevSev}`] || []).length;
         if (prevCompletedCount < req.minLabsCompleted) {
           return { success: false, message: `Must complete at least ${req.minLabsCompleted} lab(s) in the ${prevSev} tier first!` };
         }
@@ -473,22 +480,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       },
     };
     persistUser(updated);
-    return { success: true, message: `🎉 Congratulations! ${severity.toUpperCase()} Severity Tier is now Unlocked!` };
+    return { success: true, message: ` Congratulations! ${severity.toUpperCase()} Severity Tier is now Unlocked!` };
   };
 
-  const getSeverityXPRequirement = (severity: string) => SEVERITY_XP_GATES[severity] ?? 0;
+  const getSeverityXPRequirement = (severity: string) => SEVERITY_XP_GATES[severity] ?? 0; const upgradeToPremium = (tierId: string | number) => { return true; };
 
   const getCompletedCount = (domain: string, severity: string) =>
-    (user?.completedLevels[`${domain}-${severity}`] || []).length;
+    (user?.completedLevels?.[`${domain}-${severity}`] || []).length;
 
   return (
     <AuthContext.Provider value={{
       user, isLoading, getLockoutStatus, recordFailedAttempt, resetFailedAttempts,
       verifyPasswordCredentials, generateOTP, verifyLoginOTP, completeLoginWithOTP,
-      register, logout, addXP, claimDailyBonus, dismissStreakNotice,
+      register, logout, addXP, claimDailyBonus, checkDailyBonusAvailable, markModalSeen, dailyModalSeen, dismissStreakNotice,
       unlockSeverityTier,
-      completeLevel, isLevelCompleted, isLevelUnlocked,
-      isSeverityUnlocked, getSeverityXPRequirement, getCompletedCount,
+      completeLevel, completeLegacyLab, isLevelCompleted, isLevelUnlocked,
+      isSeverityUnlocked, getSeverityXPRequirement, getCompletedCount, upgradeToPremium,
     }}>
       {children}
     </AuthContext.Provider>
@@ -500,3 +507,4 @@ export function useAuth() {
   if (!ctx) throw new Error("useAuth must be used within AuthProvider");
   return ctx;
 }
+

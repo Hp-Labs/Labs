@@ -1,5 +1,5 @@
-// HpLabs — Vulnerability Database
-// 1970 → 2026 | Each vulnerability = one lab level
+// HpLabs  Vulnerability Database
+// 1970  2026 | Each vulnerability = one lab level
 
 export type Difficulty = "Beginner" | "Easy" | "Medium" | "Hard" | "Insane";
 export type Category =
@@ -16,6 +16,8 @@ export type Category =
 export type LabStatus = "active" | "upcoming" | "new" | "locked";
 
 export interface Vulnerability {
+  targetRequiredForHpVuln?: boolean;
+  hpVulnIntegrationId?: string;
   id: string;
   level: number;
   year: number;
@@ -48,9 +50,11 @@ export interface LabStep {
 export const VULNERABILITIES: Vulnerability[] = [
   {
     id: "SYS-1971-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "SYS-1971-001",
     level: 1,
     year: 1971,
-    name: "Creeper — First Self-Replicating Program",
+    name: "Creeper  First Self-Replicating Program",
     shortName: "Creeper Worm",
     category: "Network",
     difficulty: "Beginner",
@@ -59,10 +63,10 @@ export const VULNERABILITIES: Vulnerability[] = [
     description:
       "Creeper (1971) is considered the world's first computer worm. Written by Bob Thomas at BBN Technologies, it spread across ARPANET by copying itself between DEC PDP-10 computers running TENEX OS. It displayed the message 'I'M THE CREEPER: CATCH ME IF YOU CAN!' It exploited the open, trust-based nature of early ARPANET where systems had no authentication.",
     impact:
-      "Demonstrated that programs could self-replicate across networked systems without authorization. No malicious payload — but proved the concept that would later evolve into ransomware, botnets, and worms.",
+      "Demonstrated that programs could self-replicate across networked systems without authorization. No malicious payload  but proved the concept that would later evolve into ransomware, botnets, and worms.",
     realWorldExample:
-      "ARPANET (1971) — infected DEC PDP-10 systems. Led to creation of 'Reaper', the first antivirus program.",
-    loss: "No financial loss — historical significance is the payload.",
+      "ARPANET (1971)  infected DEC PDP-10 systems. Led to creation of 'Reaper', the first antivirus program.",
+    loss: "No financial loss  historical significance is the payload.",
     steps: [
       {
         step: 1,
@@ -76,7 +80,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Port Discovery",
         description: "Scan for open ports to understand the attack surface.",
         command: "nmap -sV -sC -p- <TARGET_IP>",
-        hint: "Look for a service running on an unusual port — that's your entry point.",
+        hint: "Look for a service running on an unusual port  that's your entry point.",
       },
       {
         step: 3,
@@ -91,7 +95,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Find the Propagation Mechanism",
         description:
           "The service accepts a command to 'copy itself'. Find the right command.",
-        hint: "Try: COPY, REPLICATE, SPREAD — the service understands simple commands.",
+        hint: "Try: COPY, REPLICATE, SPREAD  the service understands simple commands.",
       },
       {
         step: 5,
@@ -107,18 +111,20 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "SYS-1972-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "SYS-1972-001",
     level: 2,
     year: 1972,
-    name: "Anderson Report — First Documented Penetration Testing",
+    name: "Anderson Report  First Documented Penetration Testing",
     shortName: "Penetration Testing Origins",
     category: "System",
     difficulty: "Beginner",
     xpReward: 120,
     status: "active",
     description:
-      "The 1972 Anderson Report ('Computer Security Technology Planning Study') by James P. Anderson for the US Air Force formally defined the concept of 'penetration testing' and threat modeling. It introduced the idea that systems must be tested by attackers to find weaknesses — the foundation of all ethical hacking.",
+      "The 1972 Anderson Report ('Computer Security Technology Planning Study') by James P. Anderson for the US Air Force formally defined the concept of 'penetration testing' and threat modeling. It introduced the idea that systems must be tested by attackers to find weaknesses  the foundation of all ethical hacking.",
     impact:
-      "Established the formal methodology for attacking systems to find vulnerabilities. Introduced concepts: threat, vulnerability, countermeasure — still used in all security frameworks today.",
+      "Established the formal methodology for attacking systems to find vulnerabilities. Introduced concepts: threat, vulnerability, countermeasure  still used in all security frameworks today.",
     realWorldExample:
       "US Air Force ADPE systems. The report directly led to modern red team operations.",
     steps: [
@@ -135,7 +141,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Enumeration",
         description: "Enumerate services, versions, and OS information.",
         command: "nmap -sV -O <TARGET_IP>",
-        hint: "Look for the OS version — it reveals the era of the system.",
+        hint: "Look for the OS version  it reveals the era of the system.",
       },
       {
         step: 3,
@@ -159,6 +165,8 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "SYS-1974-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "SYS-1974-001",
     level: 3,
     year: 1974,
     name: "Confused Deputy Problem",
@@ -188,7 +196,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         description:
           "The service can read any file on the system. It accepts a 'filename' parameter.",
         command: "curl http://<TARGET_IP>/read?file=test.txt",
-        hint: "Try path traversal — the service trusts your input too much.",
+        hint: "Try path traversal  the service trusts your input too much.",
       },
       {
         step: 3,
@@ -201,7 +209,7 @@ export const VULNERABILITIES: Vulnerability[] = [
       {
         step: 4,
         title: "Find the Flag",
-        description: "The flag is stored in /root/flag.txt — only root can read it.",
+        description: "The flag is stored in /root/flag.txt  only root can read it.",
         command: "curl http://<TARGET_IP>/read?file=../../../../root/flag.txt",
         hint: "The confused deputy reads it for you!",
       },
@@ -212,9 +220,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "NET-1978-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "NET-1978-001",
     level: 4,
     year: 1978,
-    name: "Password Cracking — Earliest UNIX /etc/passwd",
+    name: "Password Cracking  Earliest UNIX /etc/passwd",
     shortName: "UNIX Password Crack",
     category: "System",
     difficulty: "Easy",
@@ -225,14 +235,14 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Entire account compromise. Credential reuse attacks. Birth of password policy requirements.",
     realWorldExample:
-      "Early ARPANET hosts, university UNIX systems — all compromised via weak passwords.",
+      "Early ARPANET hosts, university UNIX systems  all compromised via weak passwords.",
     steps: [
       {
         step: 1,
         title: "Find the Login Service",
         description: "Locate the authentication service on the target.",
         command: "nmap -p 22,23,513,514 <TARGET_IP>",
-        hint: "SSH, telnet, rlogin — which one is open?",
+        hint: "SSH, telnet, rlogin  which one is open?",
       },
       {
         step: 2,
@@ -254,7 +264,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Crack the Password",
         description: "Use John the Ripper with rockyou.txt to crack the hash.",
         command: "john --wordlist=/usr/share/wordlists/rockyou.txt passwd_hashes.txt",
-        hint: "The password is a common word from 1970s — think: 'password', 'system', 'root'",
+        hint: "The password is a common word from 1970s  think: 'password', 'system', 'root'",
       },
       {
         step: 5,
@@ -270,9 +280,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "NET-1988-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "NET-1988-001",
     level: 5,
     year: 1988,
-    name: "Morris Worm — First Major Internet Worm",
+    name: "Morris Worm  First Major Internet Worm",
     shortName: "Morris Worm",
     category: "Network",
     difficulty: "Easy",
@@ -283,8 +295,8 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Crashed thousands of machines. Led to the creation of CERT (Computer Emergency Response Team). First person convicted under the Computer Fraud and Abuse Act.",
     realWorldExample:
-      "November 2, 1988 — MIT, Berkeley, Stanford, NASA all affected. Estimated $96M in damages.",
-    loss: "$10M–$100M (1988 dollars)",
+      "November 2, 1988  MIT, Berkeley, Stanford, NASA all affected. Estimated $96M in damages.",
+    loss: "$10M$100M (1988 dollars)",
     steps: [
       {
         step: 1,
@@ -322,6 +334,8 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-1994-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-1994-001",
     level: 6,
     year: 1994,
     name: "HTTP Basic Authentication Bypass",
@@ -346,7 +360,7 @@ export const VULNERABILITIES: Vulnerability[] = [
       {
         step: 2,
         title: "Access the Protected Page",
-        description: "Try to access the admin panel — you'll get a 401.",
+        description: "Try to access the admin panel  you'll get a 401.",
         command: "curl -I http://<TARGET_IP>/admin",
         hint: "Look at the WWW-Authenticate header.",
       },
@@ -377,22 +391,24 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-1996-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-1996-001",
     level: 7,
     year: 1996,
-    name: "Cross-Site Scripting (XSS) — Origins",
-    shortName: "XSS — Reflected",
+    name: "Cross-Site Scripting (XSS)  Origins",
+    shortName: "XSS  Reflected",
     category: "Web",
     difficulty: "Easy",
     xpReward: 250,
     cvss: 6.1,
     status: "active",
     description:
-      "Cross-Site Scripting (XSS) was first documented around 1996 as web applications became dynamic. Reflected XSS occurs when user-supplied input is immediately echoed back in the HTTP response without sanitization, allowing JavaScript injection. Early web apps had zero input validation — the vulnerability was trivial to exploit.",
+      "Cross-Site Scripting (XSS) was first documented around 1996 as web applications became dynamic. Reflected XSS occurs when user-supplied input is immediately echoed back in the HTTP response without sanitization, allowing JavaScript injection. Early web apps had zero input validation  the vulnerability was trivial to exploit.",
     impact:
       "Session cookie theft, credential harvesting, keylogging, drive-by malware distribution, full account takeover.",
     realWorldExample:
-      "British Airways (2018) — Magecart XSS attack stole 380,000 credit cards. Fine: £183M.",
-    loss: "British Airways: £183M. Total XSS damages annually: $4.6B+",
+      "British Airways (2018)  Magecart XSS attack stole 380,000 credit cards. Fine: 183M.",
+    loss: "British Airways: 183M. Total XSS damages annually: $4.6B+",
     steps: [
       {
         step: 1,
@@ -414,7 +430,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Set Up Burp Suite",
         description:
           "Configure Burp Suite as a proxy and intercept all requests.",
-        hint: "Proxy → Options → set port 8080. Browser → use Burp as proxy.",
+        hint: "Proxy  Options  set port 8080. Browser  use Burp as proxy.",
       },
       {
         step: 4,
@@ -422,7 +438,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         description:
           "Try XSS payloads in every input field captured by Burp.",
         command: '<script>alert(1)</script>\n"><img src=x onerror=alert(1)>\n\'><svg onload=alert(1)>',
-        hint: "Try each input field — search box, comment box, username field.",
+        hint: "Try each input field  search box, comment box, username field.",
       },
       {
         step: 5,
@@ -445,9 +461,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-1998-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-1998-001",
     level: 8,
     year: 1998,
-    name: "SQL Injection — The Classic",
+    name: "SQL Injection  The Classic",
     shortName: "SQL Injection",
     category: "Web",
     difficulty: "Medium",
@@ -460,7 +478,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Authentication bypass, full database dump, data deletion, server takeover via xp_cmdshell (MSSQL).",
     realWorldExample:
-      "Heartland Payment Systems (2008) — 130M credit cards stolen. Yahoo (2012) — 450K credentials. Total damages: $1.8T+",
+      "Heartland Payment Systems (2008)  130M credit cards stolen. Yahoo (2012)  450K credentials. Total damages: $1.8T+",
     loss: "Heartland: $145M. Yahoo breach settlement: $117.5M",
     steps: [
       {
@@ -505,6 +523,8 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2000-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2000-001",
     level: 9,
     year: 2000,
     name: "Directory Traversal / Path Traversal",
@@ -519,7 +539,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Read sensitive files: /etc/passwd, /etc/shadow, SSH keys, source code, credentials, configuration files.",
     realWorldExample:
-      "Pulse Secure VPN (CVE-2019-11510) — path traversal leaked credentials of 900+ companies. Fortinet VPN similar.",
+      "Pulse Secure VPN (CVE-2019-11510)  path traversal leaked credentials of 900+ companies. Fortinet VPN similar.",
     steps: [
       {
         step: 1,
@@ -555,9 +575,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2004-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2004-001",
     level: 10,
     year: 2004,
-    name: "CSRF — Cross-Site Request Forgery",
+    name: "CSRF  Cross-Site Request Forgery",
     shortName: "CSRF",
     category: "Web",
     difficulty: "Medium",
@@ -569,7 +591,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Unauthorized fund transfers, account settings changes, admin actions, password reset, email change.",
     realWorldExample:
-      "Netflix (2006) CSRF — attackers could add DVDs to victims' queues, change email. ING Direct (2008) — account transfer CSRF.",
+      "Netflix (2006) CSRF  attackers could add DVDs to victims' queues, change email. ING Direct (2008)  account transfer CSRF.",
     steps: [
       {
         step: 1,
@@ -588,7 +610,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         step: 3,
         title: "Check for CSRF Token",
         description: "Check if the form includes a CSRF token.",
-        hint: "View page source — look for hidden input fields. If no token, it's vulnerable.",
+        hint: "View page source  look for hidden input fields. If no token, it's vulnerable.",
       },
       {
         step: 4,
@@ -612,9 +634,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2014-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2014-001",
     level: 15,
     year: 2014,
-    name: "Heartbleed — OpenSSL Memory Leak",
+    name: "Heartbleed  OpenSSL Memory Leak",
     shortName: "Heartbleed",
     category: "Network",
     difficulty: "Hard",
@@ -623,11 +647,11 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 600,
     status: "active",
     description:
-      "Heartbleed (CVE-2014-0160) is a critical buffer over-read in OpenSSL's TLS heartbeat extension. The server processes a 'heartbeat' request but fails to validate the payload length, leaking up to 64KB of memory per request — potentially containing private keys, passwords, session tokens.",
+      "Heartbleed (CVE-2014-0160) is a critical buffer over-read in OpenSSL's TLS heartbeat extension. The server processes a 'heartbeat' request but fails to validate the payload length, leaking up to 64KB of memory per request  potentially containing private keys, passwords, session tokens.",
     impact:
       "Private SSL key extraction, session token theft, credential leakage from memory. Affected 17% of all HTTPS servers (~500,000).",
     realWorldExample:
-      "Community Health Systems (2014) — 4.5M patient records stolen via Heartbleed. Canadian Revenue Agency — 900 SINs stolen.",
+      "Community Health Systems (2014)  4.5M patient records stolen via Heartbleed. Canadian Revenue Agency  900 SINs stolen.",
     loss: "Estimated $500M+ in remediation costs globally",
     steps: [
       {
@@ -635,7 +659,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Verify OpenSSL Version",
         description: "Connect to port 443 and identify the OpenSSL version.",
         command: "openssl s_client -connect <TARGET_IP>:443",
-        hint: "Look for 'OpenSSL 1.0.1' — versions 1.0.1 through 1.0.1f are vulnerable.",
+        hint: "Look for 'OpenSSL 1.0.1'  versions 1.0.1 through 1.0.1f are vulnerable.",
       },
       {
         step: 2,
@@ -649,7 +673,7 @@ export const VULNERABILITIES: Vulnerability[] = [
         title: "Exploit Heartbleed",
         description: "Use the heartbleed exploit script to dump memory.",
         command: "python3 heartbleed.py <TARGET_IP> 443",
-        hint: "Run multiple times — memory contents change. Look for FLAG{ in output.",
+        hint: "Run multiple times  memory contents change. Look for FLAG{ in output.",
       },
       {
         step: 4,
@@ -665,9 +689,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2021-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2021-001",
     level: 20,
     year: 2021,
-    name: "Log4Shell — Log4j RCE",
+    name: "Log4Shell  Log4j RCE",
     shortName: "Log4Shell",
     category: "Web",
     difficulty: "Insane",
@@ -676,7 +702,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 1000,
     status: "active",
     description:
-      "Log4Shell (CVE-2021-44228) is a critical RCE vulnerability in Apache Log4j 2 (JNDI injection). When an attacker-controlled string is logged by Log4j, it triggers a JNDI lookup (LDAP/RMI/DNS) loading attacker-controlled Java class — achieving unauthenticated RCE. CVSS score: 10.0 (maximum). Called 'the most severe vulnerability ever'.",
+      "Log4Shell (CVE-2021-44228) is a critical RCE vulnerability in Apache Log4j 2 (JNDI injection). When an attacker-controlled string is logged by Log4j, it triggers a JNDI lookup (LDAP/RMI/DNS) loading attacker-controlled Java class  achieving unauthenticated RCE. CVSS score: 10.0 (maximum). Called 'the most severe vulnerability ever'.",
     impact:
       "Unauthenticated Remote Code Execution. Full system compromise. Affected: Apple, Amazon, Tesla, Minecraft, Cloudflare, and millions more.",
     realWorldExample:
@@ -730,9 +756,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2024-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2024-001",
     level: 23,
     year: 2024,
-    name: "XZ Utils Backdoor — Supply Chain Attack",
+    name: "XZ Utils Backdoor  Supply Chain Attack",
     shortName: "XZ Backdoor",
     category: "System",
     difficulty: "Insane",
@@ -741,7 +769,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 1200,
     status: "new",
     description:
-      "CVE-2024-3094 is a backdoor inserted into XZ Utils 5.6.0/5.6.1 by a malicious maintainer (Jia Tan) over 2 years of social engineering. The backdoor modifies the RSA decryption process in sshd — allowing any attacker with the specific private key to authenticate as any user without credentials.",
+      "CVE-2024-3094 is a backdoor inserted into XZ Utils 5.6.0/5.6.1 by a malicious maintainer (Jia Tan) over 2 years of social engineering. The backdoor modifies the RSA decryption process in sshd  allowing any attacker with the specific private key to authenticate as any user without credentials.",
     impact:
       "Unauthenticated SSH access to any user on affected systems. Near-miss catastrophic compromise of Linux infrastructure worldwide.",
     realWorldExample:
@@ -780,16 +808,18 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2026-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2026-001",
     level: 25,
     year: 2026,
-    name: "Latest CVE — 2026",
+    name: "Latest CVE  2026",
     shortName: "2026 CVE",
     category: "Web",
     difficulty: "Insane",
     xpReward: 1500,
     status: "upcoming",
     description:
-      "New vulnerability lab in development. This level will feature the most recent critical CVE of 2026 as soon as it's published. Stay tuned — you'll receive a notification when this lab goes live.",
+      "New vulnerability lab in development. This level will feature the most recent critical CVE of 2026 as soon as it's published. Stay tuned  you'll receive a notification when this lab goes live.",
     impact: "TBA",
     realWorldExample: "TBA",
     steps: [],
@@ -799,10 +829,12 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2005-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2005-001",
     level: 11,
     year: 2005,
     name: "Local File Inclusion (LFI)",
-    shortName: "LFI — File Include",
+    shortName: "LFI  File Include",
     category: "Web",
     difficulty: "Medium",
     cvss: 7.5,
@@ -813,7 +845,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Reading /etc/passwd, /etc/shadow, SSH keys, application source code. With log poisoning: full Remote Code Execution.",
     realWorldExample:
-      "Joomla CMS (multiple CVEs), osCommerce, and thousands of PHP applications exposed via LFI throughout 2005–2015.",
+      "Joomla CMS (multiple CVEs), osCommerce, and thousands of PHP applications exposed via LFI throughout 20052015.",
     steps: [
       { step: 1, title: "Find the Include Parameter", description: "Scan for web parameters that load files.", command: "ffuf -u 'http://<TARGET_IP>/index.php?page=FUZZ' -w /usr/share/wordlists/dirb/common.txt", hint: "Try ?page=, ?file=, ?include=, ?view=" },
       { step: 2, title: "Test Basic LFI", description: "Try to include /etc/passwd.", command: "curl 'http://<TARGET_IP>/index.php?page=../../../../etc/passwd'", hint: "If you see root:x:0:0:, it's vulnerable!" },
@@ -826,9 +858,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2007-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2007-001",
     level: 12,
     year: 2007,
-    name: "XXE — XML External Entity Injection",
+    name: "XXE  XML External Entity Injection",
     shortName: "XXE Injection",
     category: "Web",
     difficulty: "Medium",
@@ -836,11 +870,11 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 380,
     status: "active",
     description:
-      "XML External Entity (XXE) injection exploits vulnerable XML parsers that process external entity references. When the parser resolves DOCTYPE declarations without restriction, attackers can read local files, perform SSRF, or cause DoS via billion laughs attack. First popularized as an attack vector around 2007–2012.",
+      "XML External Entity (XXE) injection exploits vulnerable XML parsers that process external entity references. When the parser resolves DOCTYPE declarations without restriction, attackers can read local files, perform SSRF, or cause DoS via billion laughs attack. First popularized as an attack vector around 20072012.",
     impact:
       "Read arbitrary files (/etc/passwd, SSH keys), SSRF to internal services, blind XXE for data exfiltration, DoS.",
     realWorldExample:
-      "Facebook (2014) — XXE gave read access to internal systems. PayPal (2013) — XXE in SOAP API. CVE-2021-44228 indirectly related.",
+      "Facebook (2014)  XXE gave read access to internal systems. PayPal (2013)  XXE in SOAP API. CVE-2021-44228 indirectly related.",
     steps: [
       { step: 1, title: "Find an XML Endpoint", description: "Look for endpoints that accept XML input.", command: "curl -X POST http://<TARGET_IP>/api/parse -H 'Content-Type: application/xml' -d '<test/>'", hint: "Check /api, /soap, /upload endpoints." },
       { step: 2, title: "Test Basic XXE", description: "Try injecting an external entity.", command: "curl -X POST http://<TARGET_IP>/api/parse -H 'Content-Type: application/xml' -d '<?xml version=\"1.0\"?><!DOCTYPE foo [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><root>&xxe;</root>'", hint: "If you see passwd contents in response, it's vulnerable." },
@@ -852,9 +886,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2008-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2008-001",
     level: 13,
     year: 2008,
-    name: "SSRF — Server-Side Request Forgery",
+    name: "SSRF  Server-Side Request Forgery",
     shortName: "SSRF",
     category: "Web",
     difficulty: "Medium",
@@ -862,11 +898,11 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 400,
     status: "active",
     description:
-      "Server-Side Request Forgery (SSRF) tricks the server into making requests to internal resources. The server acts as a proxy, allowing attackers to reach internal services (metadata APIs, databases, internal dashboards) that are otherwise inaccessible. Formally documented as a major threat around 2008–2012.",
+      "Server-Side Request Forgery (SSRF) tricks the server into making requests to internal resources. The server acts as a proxy, allowing attackers to reach internal services (metadata APIs, databases, internal dashboards) that are otherwise inaccessible. Formally documented as a major threat around 20082012.",
     impact:
       "Cloud metadata theft (AWS IMDSv1 credentials), internal port scanning, access to internal services, RCE via chained vulnerabilities.",
     realWorldExample:
-      "Capital One (2019) — SSRF on AWS IMDSv1 led to 106M customer records stolen. Cost: $190M in fines.",
+      "Capital One (2019)  SSRF on AWS IMDSv1 led to 106M customer records stolen. Cost: $190M in fines.",
     loss: "$190M+ (Capital One), total SSRF damages: billions",
     steps: [
       { step: 1, title: "Find URL Parameter", description: "Look for parameters that fetch remote URLs.", command: "ffuf -u 'http://<TARGET_IP>/FUZZ' -w wordlist.txt", hint: "Look for /fetch?url=, /proxy?target=, /image?src=" },
@@ -879,6 +915,8 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2010-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2010-001",
     level: 14,
     year: 2010,
     name: "Insecure Deserialization",
@@ -893,7 +931,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Remote Code Execution, authentication bypass, privilege escalation, DoS.",
     realWorldExample:
-      "Apache Struts (CVE-2017-5638) — Equifax breach: 147M records, $575M settlement. Jenkins RCE via Java deserialization.",
+      "Apache Struts (CVE-2017-5638)  Equifax breach: 147M records, $575M settlement. Jenkins RCE via Java deserialization.",
     loss: "Equifax: $700M+ total. Struts deserialization class of vulnerabilities: $1B+",
     steps: [
       { step: 1, title: "Identify Serialized Data", description: "Look for Base64 or hex-encoded data in cookies/params.", command: "curl -v http://<TARGET_IP>/app | grep -i cookie", hint: "Java serialized objects start with: rO0AB (Base64) or AC ED 00 05 (hex)" },
@@ -906,9 +944,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "NET-2014-002",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "NET-2014-002",
     level: 16,
     year: 2014,
-    name: "Shellshock — Bash Remote Code Execution",
+    name: "Shellshock  Bash Remote Code Execution",
     shortName: "Shellshock",
     category: "Network",
     difficulty: "Hard",
@@ -934,9 +974,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2016-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2016-001",
     level: 17,
     year: 2016,
-    name: "Broken Authentication — JWT None Algorithm",
+    name: "Broken Authentication  JWT None Algorithm",
     shortName: "JWT None Algorithm",
     category: "Web",
     difficulty: "Medium",
@@ -944,7 +986,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 420,
     status: "active",
     description:
-      "JSON Web Tokens (JWT) with the 'none' algorithm attack allows attackers to forge tokens without a valid signature. Some JWT libraries (pre-2016 versions) accept 'alg: none' tokens as valid, bypassing authentication entirely. Simple to exploit — just change the algorithm and strip the signature.",
+      "JSON Web Tokens (JWT) with the 'none' algorithm attack allows attackers to forge tokens without a valid signature. Some JWT libraries (pre-2016 versions) accept 'alg: none' tokens as valid, bypassing authentication entirely. Simple to exploit  just change the algorithm and strip the signature.",
     impact: "Complete authentication bypass. Impersonate any user including admins.",
     realWorldExample:
       "Auth0 library (2015), python-jwt (2017), several enterprise SSO systems affected. Still found in the wild today.",
@@ -960,9 +1002,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2017-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2017-001",
     level: 18,
     year: 2017,
-    name: "Apache Struts RCE — Equifax Breach",
+    name: "Apache Struts RCE  Equifax Breach",
     shortName: "Apache Struts RCE",
     category: "Web",
     difficulty: "Hard",
@@ -971,9 +1015,9 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 700,
     status: "active",
     description:
-      "CVE-2017-5638 is an RCE vulnerability in Apache Struts 2 via the Jakarta Multipart parser. A malicious Content-Type header triggers OGNL expression injection, executing arbitrary OS commands. This vulnerability was used in the Equifax breach — the largest credit bureau hack in history.",
+      "CVE-2017-5638 is an RCE vulnerability in Apache Struts 2 via the Jakarta Multipart parser. A malicious Content-Type header triggers OGNL expression injection, executing arbitrary OS commands. This vulnerability was used in the Equifax breach  the largest credit bureau hack in history.",
     impact: "Unauthenticated RCE. Used to compromise Equifax, exposing 147 million Americans' SSNs, DOBs, and credit history.",
-    realWorldExample: "Equifax (2017) — 147M records stolen. $700M+ settlement. CEO resigned.",
+    realWorldExample: "Equifax (2017)  147M records stolen. $700M+ settlement. CEO resigned.",
     loss: "$700M+ Equifax settlement. Estimated $4B+ total consumer harm.",
     steps: [
       { step: 1, title: "Identify Apache Struts", description: "Confirm the target runs Apache Struts.", command: "curl -I http://<TARGET_IP>/index.action", hint: "Look for .action extensions, Struts headers." },
@@ -986,9 +1030,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2018-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2018-001",
     level: 19,
     year: 2018,
-    name: "IDOR — Insecure Direct Object Reference",
+    name: "IDOR  Insecure Direct Object Reference",
     shortName: "IDOR",
     category: "Web",
     difficulty: "Medium",
@@ -996,11 +1042,11 @@ export const VULNERABILITIES: Vulnerability[] = [
     xpReward: 380,
     status: "active",
     description:
-      "Insecure Direct Object Reference (IDOR) occurs when an application uses user-controllable input to access objects directly without proper authorization checks. Attackers simply change an ID or reference to access other users' data. One of the most prevalent web vulnerabilities — found across every major platform.",
+      "Insecure Direct Object Reference (IDOR) occurs when an application uses user-controllable input to access objects directly without proper authorization checks. Attackers simply change an ID or reference to access other users' data. One of the most prevalent web vulnerabilities  found across every major platform.",
     impact:
       "Access to other users' private data, messages, transactions, PII. Account takeover, mass data breach.",
     realWorldExample:
-      "Instagram (2019) — IDOR exposed private photos. Uber (2016) — driver/rider data. HackerOne — disclosed to itself. Facebook, Twitter, LinkedIn all had IDOR bugs.",
+      "Instagram (2019)  IDOR exposed private photos. Uber (2016)  driver/rider data. HackerOne  disclosed to itself. Facebook, Twitter, LinkedIn all had IDOR bugs.",
     steps: [
       { step: 1, title: "Login and Find Object Reference", description: "Login and observe the user-specific URL/ID.", command: "curl -c cookies.txt -X POST http://<TARGET_IP>/login -d 'user=attacker&pass=attacker'", hint: "After login, visit /api/user/profile?id=YOUR_ID" },
       { step: 2, title: "Enumerate Other IDs", description: "Change the ID to access other users.", command: "for i in {1..20}; do curl -b cookies.txt http://<TARGET_IP>/api/user/profile?id=$i; done", hint: "ID 1 is usually admin. Try ID 1, 2, 3..." },
@@ -1012,9 +1058,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2021-002",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2021-002",
     level: 21,
     year: 2021,
-    name: "ProxyLogon — Microsoft Exchange RCE",
+    name: "ProxyLogon  Microsoft Exchange RCE",
     shortName: "ProxyLogon",
     category: "Web",
     difficulty: "Insane",
@@ -1027,7 +1075,7 @@ export const VULNERABILITIES: Vulnerability[] = [
     impact:
       "Unauthenticated RCE on Exchange servers. Full mailbox access, credential theft, lateral movement to entire organization.",
     realWorldExample:
-      "HAFNIUM APT (China-linked) — 250,000+ Exchange servers compromised globally in early 2021. US govt agencies, banks, defense contractors affected.",
+      "HAFNIUM APT (China-linked)  250,000+ Exchange servers compromised globally in early 2021. US govt agencies, banks, defense contractors affected.",
     loss: "Billions in incident response globally. US CISA emergency directive issued.",
     steps: [
       { step: 1, title: "Identify Exchange Server", description: "Confirm the target is Exchange.", command: "curl -k -I https://<TARGET_IP>/owa/", hint: "Look for X-OWA headers, /owa/, /ecp/ paths." },
@@ -1041,9 +1089,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2022-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2022-001",
     level: 22,
     year: 2022,
-    name: "Spring4Shell — Spring Framework RCE",
+    name: "Spring4Shell  Spring Framework RCE",
     shortName: "Spring4Shell",
     category: "Web",
     difficulty: "Insane",
@@ -1069,9 +1119,11 @@ export const VULNERABILITIES: Vulnerability[] = [
   },
   {
     id: "WEB-2023-001",
+    targetRequiredForHpVuln: true,
+    hpVulnIntegrationId: "WEB-2023-001",
     level: 24,
     year: 2023,
-    name: "MOVEit Transfer SQLi — Mass Data Breach",
+    name: "MOVEit Transfer SQLi  Mass Data Breach",
     shortName: "MOVEit Transfer SQLi",
     category: "Web",
     difficulty: "Insane",
@@ -1082,9 +1134,9 @@ export const VULNERABILITIES: Vulnerability[] = [
     description:
       "CVE-2023-34362 is a critical SQL injection in Progress MOVEit Transfer that allows unauthenticated attackers to gain elevated privileges and access data. Exploited by Cl0p ransomware group in a massive campaign targeting 2,500+ organizations. One of the largest breach campaigns in history.",
     impact:
-      "Unauthenticated SQLi → authentication bypass → data exfiltration. Mass exploitation by Cl0p ransomware gang.",
+      "Unauthenticated SQLi  authentication bypass  data exfiltration. Mass exploitation by Cl0p ransomware gang.",
     realWorldExample:
-      "Cl0p ransomware gang (2023) — 2,500+ organizations breached including BBC, British Airways, Shell, US govt agencies. 84M+ people affected.",
+      "Cl0p ransomware gang (2023)  2,500+ organizations breached including BBC, British Airways, Shell, US govt agencies. 84M+ people affected.",
     loss: "$9.9B+ estimated total damages (Emsisoft report 2023)",
     steps: [
       { step: 1, title: "Identify MOVEit Transfer", description: "Confirm the target is MOVEit Transfer.", command: "curl -k https://<TARGET_IP>/moveit/", hint: "Look for MOVEit in the page title or /human.aspx" },
@@ -1127,10 +1179,10 @@ export const DIFFICULTY_BG: Record<Difficulty, string> = {
 };
 
 export const XP_TO_RANK = [
-  { rank: "Script Kiddie", minXP: 0, icon: "💻" },
-  { rank: "Apprentice", minXP: 500, icon: "🔍" },
-  { rank: "Hacker", minXP: 2000, icon: "🎯" },
-  { rank: "Elite Hacker", minXP: 5000, icon: "⚡" },
-  { rank: "Red Teamer", minXP: 10000, icon: "🔴" },
-  { rank: "Legend", minXP: 25000, icon: "💀" },
+  { rank: "Script Kiddie", minXP: 0, icon: "" },
+  { rank: "Apprentice", minXP: 500, icon: "" },
+  { rank: "Hacker", minXP: 2000, icon: "" },
+  { rank: "Elite Hacker", minXP: 5000, icon: "" },
+  { rank: "Red Teamer", minXP: 10000, icon: "" },
+  { rank: "Legend", minXP: 25000, icon: "" },
 ];

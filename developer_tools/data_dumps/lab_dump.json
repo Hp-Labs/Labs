@@ -1,0 +1,6128 @@
+[
+  {
+    "id": "ad-info-001",
+    "name": "LDAP Enumeration (ldapsearch)",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-002",
+    "name": "BloodHound AD Recon",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-003",
+    "name": "Domain Enumeration (users, groups, computers)",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-004",
+    "name": "SPN Enumeration (Service Principal Names)",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-005",
+    "name": "GPO Enumeration (Group Policy Objects)",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-006",
+    "name": "AD Trust Relationships Mapping",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-007",
+    "name": "Password Policy Enumeration",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-info-008",
+    "name": "LDAP Anonymous Bind",
+    "domain": "active-directory",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-001",
+    "name": "Default Domain Admin Passwords",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-002",
+    "name": "SMB Null Session",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-003",
+    "name": "NetBIOS Enumeration",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-004",
+    "name": "AS-REP Roasting Enumeration (no pre-auth accounts)",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-005",
+    "name": "Kerberoasting Enumeration (SPN discovery)",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-006",
+    "name": "RPC Null Session Enumeration",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-007",
+    "name": "SYSVOL/NETLOGON GPP Password Discovery",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-low-008",
+    "name": "AD User Spray with Password Policy Awareness",
+    "domain": "active-directory",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-001",
+    "name": "Kerberoasting (SPN Hash Cracking)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-002",
+    "name": "AS-REP Roasting (Hash Cracking)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-003",
+    "name": "LLMNR/NBT-NS Poisoning + Hash Capture",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-004",
+    "name": "Pass-the-Hash (lateral movement)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-005",
+    "name": "Pass-the-Ticket (Kerberos TGT abuse)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-006",
+    "name": "Constrained Delegation Abuse (S4U2Proxy)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-007",
+    "name": "Shadow Credentials Attack (Key Credentials)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-med-008",
+    "name": "ACL Abuse (GenericAll / GenericWrite)",
+    "domain": "active-directory",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-001",
+    "name": "DCSync Attack (Domain Replication Rights)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-002",
+    "name": "Silver Ticket Attack (forged service ticket)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-003",
+    "name": "Golden Ticket Attack (forged TGT)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-004",
+    "name": "Zerologon Privilege Escalation",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-005",
+    "name": "PrintNightmare RCE (Print Spooler)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-006",
+    "name": "NoPac Domain Privilege Escalation",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-007",
+    "name": "ADCS ESC1 (Certificate Template Abuse)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-high-008",
+    "name": "Resource-Based Constrained Delegation (RBCD)",
+    "domain": "active-directory",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-001",
+    "name": "Full Domain Takeover via DCSync",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-002",
+    "name": "Golden Ticket Persistence (Offline TGT)",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-003",
+    "name": "ADCS ESC8 (NTLM Relay to AD CS)",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-004",
+    "name": "Skeleton Key Implant (persistent backdoor)",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-005",
+    "name": "Cross-Forest Trust Abuse",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "ad-crit-006",
+    "name": "Azure AD Connect Password Sync Abuse",
+    "domain": "active-directory",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\ad\\labs.ts"
+  },
+  {
+    "id": "api-ext-info-001",
+    "name": "API Rate Limit Header & Quota Enumeration",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-info-002",
+    "name": "GraphQL Schema Introspection & Field Enumeration",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-med-001",
+    "name": "GraphQL Query Depth Limit Bypass (Nested Introspection)",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-med-002",
+    "name": "Improper Inventory Management \u2014 Staging API Exposure",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-16"
+    ],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-med-003",
+    "name": "OAuth 2.0 State Parameter Omission (CSRF via API)",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-med-004",
+    "name": "NoSQL Injection via API JSON Parameters",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-943"
+    ],
+    "cve": [],
+    "xp": "400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-high-001",
+    "name": "JWT kid Header Path Traversal to Known File",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-high-002",
+    "name": "GraphQL SQL Injection via Filter Arguments",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "620",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-crit-001",
+    "name": "API SSRF to Cloud Metadata Service (AWS IMDSv1)",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [
+      "CVE-2019-10743"
+    ],
+    "xp": "900",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-ext-crit-002",
+    "name": "Server-Side Prototype Pollution \u2192 RCE in Node.js API",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-1321"
+    ],
+    "cve": [],
+    "xp": "950",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\ext.ts"
+  },
+  {
+    "id": "api-info-001",
+    "name": "API Discovery & Endpoint Enumeration",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-002",
+    "name": "GraphQL Introspection & Schema Extraction",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-003",
+    "name": "API Authentication Fingerprinting",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-004",
+    "name": "HTTP Method Enumeration on REST APIs",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-16"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-005",
+    "name": "API Error Message Analysis & Stack Traces",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-209"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-006",
+    "name": "Rate Limiting & Throttling Reconnaissance",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-799"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-007",
+    "name": "OpenAPI / Swagger Documentation Discovery",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-008",
+    "name": "API Versioning Enumeration (v1, v2, v3, beta, dev)",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-16"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-009",
+    "name": "CORS Policy & Preflight Response Inspection",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-info-010",
+    "name": "Mass Assignment Property Discovery via GET/OPTIONS",
+    "domain": "api",
+    "severity": "information",
+    "cwe": [
+      "CWE-915"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\information.ts"
+  },
+  {
+    "id": "api-low-001",
+    "name": "Broken Object Level Authorization (BOLA/IDOR)",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-639"
+    ],
+    "cve": [],
+    "xp": "150",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-002",
+    "name": "Sensitive Data Exposure in API Responses (Over-fetching)",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "140",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-003",
+    "name": "JWT Algorithm Confusion (None Algorithm)",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [
+      "CVE-2015-9235"
+    ],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-004",
+    "name": "API Rate Limiting Header Bypass",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-307"
+    ],
+    "cve": [],
+    "xp": "180",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-005",
+    "name": "Mass Assignment \u2014 Privilege Escalation",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-915"
+    ],
+    "cve": [],
+    "xp": "175",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-006",
+    "name": "Unrestricted API Key Scoping",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-269"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-007",
+    "name": "JSON Parameter Pollution (JPP)",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-235"
+    ],
+    "cve": [],
+    "xp": "145",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-low-008",
+    "name": "API Endpoint Path Confusion",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "155",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "web-low-009",
+    "name": "Autocomplete Enabled on Sensitive Input Fields",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-522",
+      "CWE-524"
+    ],
+    "cve": [],
+    "xp": "95",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "api-low-010",
+    "name": "Content-Type Switching Attack",
+    "domain": "api",
+    "severity": "low",
+    "cwe": [
+      "CWE-436"
+    ],
+    "cve": [],
+    "xp": "140",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-001",
+    "name": "Broken Function Level Authorization (BFLA)",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-285"
+    ],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-002",
+    "name": "JWT RS256 to HS256 Algorithm Confusion",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [
+      "CVE-2016-5431"
+    ],
+    "xp": "420",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-003",
+    "name": "Server-Side Request Forgery (SSRF) via API",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [
+      "CVE-2019-11580"
+    ],
+    "xp": "450",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-004",
+    "name": "GraphQL Query Batching Attack (DoS & Brute Force)",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-799"
+    ],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-005",
+    "name": "REST API Improper Assets Management",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-16"
+    ],
+    "cve": [],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-006",
+    "name": "JSON Web Encryption (JWE) Weak Key Exchange",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-326"
+    ],
+    "cve": [],
+    "xp": "400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-007",
+    "name": "WebSockets Unauthenticated Framing",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "410",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-008",
+    "name": "gRPC Unauthenticated Reflection Service",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "430",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-009",
+    "name": "SOAP Action Spoofing & XXE Injection",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-436"
+    ],
+    "cve": [],
+    "xp": "440",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-med-010",
+    "name": "OAuth 2.0 State Parameter Omission (CSRF)",
+    "domain": "api",
+    "severity": "medium",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "450",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-001",
+    "name": "GraphQL SQL Injection via Nested Queries",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-002",
+    "name": "API Command Injection via Webhook Callbacks",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-78"
+    ],
+    "cve": [],
+    "xp": "620",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-003",
+    "name": "GraphQL Circular Query Denial of Service",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-004",
+    "name": "Insecure JWT Key ID (kid) Path Traversal",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "610",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-005",
+    "name": "gRPC Authentication Token Injection",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [],
+    "xp": "630",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-006",
+    "name": "REST to Internal RMI/JMX Deserialization",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [
+      "CVE-2015-4852"
+    ],
+    "xp": "650",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-007",
+    "name": "Server-Side Prototype Pollution in Node.js APIs",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-1321"
+    ],
+    "cve": [],
+    "xp": "640",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-high-008",
+    "name": "BOLA to Full Account Takeover via Password Reset API",
+    "domain": "api",
+    "severity": "high",
+    "cwe": [
+      "CWE-639"
+    ],
+    "cve": [],
+    "xp": "650",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-001",
+    "name": "OAuth 2.0 Authorization Code Interception",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [
+      "CVE-2019-3778"
+    ],
+    "xp": "1000",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-002",
+    "name": "API Gateway Authentication Bypass via Header Injection",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "1100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-003",
+    "name": "GraphQL Batch Query Resource Exhaustion (DoSLocker)",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "1050",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-004",
+    "name": "AWS API Gateway IMDSv1 SSRF Exfiltration",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [],
+    "xp": "1250",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-005",
+    "name": "JWT Key Confusion (JKU Header Injection)",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "1300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "api-crit-006",
+    "name": "gRPC Pre-Auth Remote Code Execution",
+    "domain": "api",
+    "severity": "critical",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [
+      "CVE-2021-3618"
+    ],
+    "xp": "1400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\api\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-001",
+    "name": "AWS Asset Enumeration via CloudTrail",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-002",
+    "name": "S3 Bucket Discovery (via DNS, cert transparency)",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-003",
+    "name": "Azure Subscription & Tenant Enumeration",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-004",
+    "name": "GCP Project Recon",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-005",
+    "name": "IAM Policy Auditing",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-006",
+    "name": "EC2 Instance Metadata API Discovery (IMDSv1/v2)",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-007",
+    "name": "Cloud Storage OSINT (public bucket search)",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "net-cloud-info-008",
+    "name": "Security Group Misconfiguration Detection",
+    "domain": "cloud",
+    "severity": "information",
+    "cwe": [],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-001",
+    "name": "Public S3 Bucket Read Access",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-002",
+    "name": "GCS Public Bucket Listing",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-003",
+    "name": "Azure Blob Storage Anonymous Access",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-004",
+    "name": "CloudFront Misconfiguration (origin access)",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-005",
+    "name": "Route53 Subdomain Takeover",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-006",
+    "name": "EC2 IMDSv1 Instance Metadata Exposure",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-007",
+    "name": "Lambda Function Environment Variable Leakage",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-low-008",
+    "name": "RDS Public Snapshot Exposure",
+    "domain": "cloud",
+    "severity": "low",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-001",
+    "name": "SSRF to IMDSv1 Credential Theft",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-002",
+    "name": "S3 Bucket Write Access (file upload)",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-003",
+    "name": "IAM Privilege Enumeration (enumerate own perms)",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-004",
+    "name": "Cognito Identity Pool Misconfiguration",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-005",
+    "name": "API Gateway Key Exposure in Source",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-006",
+    "name": "ECR Public Registry Image Pull",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-007",
+    "name": "SQS/SNS Policy Misconfiguration",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-med-008",
+    "name": "Terraform State File Exposure (secrets in tfstate)",
+    "domain": "cloud",
+    "severity": "medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-001",
+    "name": "SSRF to IMDSv1 Full AWS Credential Theft",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-002",
+    "name": "ECS Task Role Credential Theft",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-003",
+    "name": "Lambda RCE via Insecure Deserialization",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-004",
+    "name": "EC2 User-Data Secrets Extraction",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-005",
+    "name": "Kubernetes RBAC Misconfiguration",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-006",
+    "name": "EKS Worker Node Credential Theft",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-007",
+    "name": "Azure Managed Identity Abuse",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-high-008",
+    "name": "GCP Service Account Key Exposure",
+    "domain": "cloud",
+    "severity": "high",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-001",
+    "name": "Capital One Breach Simulation (SSRF+IMDSv1)",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-002",
+    "name": "Full S3 Bucket Data Exfiltration",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-003",
+    "name": "IAM Privilege Escalation to Admin",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-004",
+    "name": "Cross-Account Role Assumption (confused deputy)",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-005",
+    "name": "Full Cloud Account Takeover Chain",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "cloud-crit-006",
+    "name": "Kubernetes Cluster Takeover (etcd exposure)",
+    "domain": "cloud",
+    "severity": "critical",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\cloud\\labs.ts"
+  },
+  {
+    "id": "mob-crit-001",
+    "name": "Remote Code Execution via WebView Universal File Access",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-749"
+    ],
+    "cve": [
+      "CVE-2012-6636"
+    ],
+    "xp": "900",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-002",
+    "name": "SQL Injection in Mobile Backend API",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "850",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-003",
+    "name": "Authentication Token Theft via Exported ContentProvider",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-926"
+    ],
+    "cve": [],
+    "xp": "880",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-004",
+    "name": "Arbitrary Code Execution via Unsafe Android Deserialization",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [],
+    "xp": "920",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-005",
+    "name": "iOS URL Scheme Hijacking for OAuth Account Takeover",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "900",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-006",
+    "name": "Unencrypted API Credential Storage \u2014 Full Account Takeover",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-256"
+    ],
+    "cve": [],
+    "xp": "950",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-007",
+    "name": "Janus APK Signature Bypass (CVE-2017-13156)",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [
+      "CVE-2017-13156"
+    ],
+    "xp": "930",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-008",
+    "name": "StrandHogg 2.0 \u2014 Android Multi-Window Task Hijacking",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-285"
+    ],
+    "cve": [
+      "CVE-2020-0096"
+    ],
+    "xp": "940",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-009",
+    "name": "MITD \u2014 Man-in-the-Disk Attack (External Storage)",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-494"
+    ],
+    "cve": [],
+    "xp": "950",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-crit-010",
+    "name": "Stagefright \u2014 Android Media Framework RCE (CVE-2015-1538)",
+    "domain": "mobile",
+    "severity": "critical",
+    "cwe": [
+      "CWE-122"
+    ],
+    "cve": [
+      "CVE-2015-1538",
+      "CVE-2015-1539",
+      "CVE-2015-3824",
+      "CVE-2015-3864"
+    ],
+    "xp": "1000",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\critical.ts"
+  },
+  {
+    "id": "mob-high-001",
+    "name": "Hardcoded Credentials & API Keys in APK",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-798"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-002",
+    "name": "Dynamic Code Loading Exploitation",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-494"
+    ],
+    "cve": [],
+    "xp": "580",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-003",
+    "name": "Memory Scraping for Cryptographic Secrets",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-316"
+    ],
+    "cve": [],
+    "xp": "560",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-004",
+    "name": "WebView Remote Code Execution via File Access",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-749"
+    ],
+    "cve": [
+      "CVE-2012-6636"
+    ],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-005",
+    "name": "Man-in-the-Middle via Custom TrustManager",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-295"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-006",
+    "name": "Frida Runtime Injection for Credential Theft",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-94"
+    ],
+    "cve": [],
+    "xp": "580",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-007",
+    "name": "Intent Redirection to Private Components",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-926"
+    ],
+    "cve": [],
+    "xp": "570",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-008",
+    "name": "Side-Channel Attack via Auto-Complete Cache",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "520",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-009",
+    "name": "Keystore Key Extraction via Backup (Android)",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-522"
+    ],
+    "cve": [],
+    "xp": "560",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-high-010",
+    "name": "iOS App Transport Security (ATS) Bypass",
+    "domain": "mobile",
+    "severity": "high",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "540",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\high.ts"
+  },
+  {
+    "id": "mob-info-001",
+    "name": "APK Decompilation & Asset Extraction",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-002",
+    "name": "Android Manifest Permission Analysis",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-276"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-003",
+    "name": "Mobile Traffic Interception (HTTP Proxy Setup)",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-004",
+    "name": "iOS Plist File Sensitive Data Analysis",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-005",
+    "name": "Exported Activity & Intent Filter Discovery",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-926"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-006",
+    "name": "SQLite Database File Extraction (Non-Encrypted)",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-007",
+    "name": "SharedPreferences Sensitive Data Exposure",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-008",
+    "name": "Firebase Realtime Database Misconfiguration",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-732"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-009",
+    "name": "Log Output Sensitive Data Leakage (Logcat)",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-532"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-010",
+    "name": "App-Level Network Security Configuration Audit",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-011",
+    "name": "Android allowBackup \u2014 ADB Data Extraction",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-530"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-012",
+    "name": "SSL Pinning Detection",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-297"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-013",
+    "name": "Hardcoded Debug Endpoints & Test Credentials",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-798"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-014",
+    "name": "Mobile App Version Fingerprinting",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "50",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-info-015",
+    "name": "TLS Certificate Enumeration on Mobile API",
+    "domain": "mobile",
+    "severity": "information",
+    "cwe": [
+      "CWE-295",
+      "CWE-327"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\information.ts"
+  },
+  {
+    "id": "mob-low-001",
+    "name": "Unprotected Broadcast Receiver (Intent Injection)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-925"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-002",
+    "name": "Tapjacking \u2014 Overlay Attack",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-1021"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-003",
+    "name": "Clipboard Data Exposure (Sensitive Copy/Paste)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-004",
+    "name": "External Storage Sensitive Data Write",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-005",
+    "name": "Screenshot Capture Vulnerability (FLAG_SECURE Missing)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-359"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-006",
+    "name": "Insecure Deep Link Handling (Unvalidated URI Scheme)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "125",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-007",
+    "name": "Weak Local Authentication (PIN/Pattern Bypass)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [],
+    "xp": "140",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-008",
+    "name": "Insecure Session Token in Mobile API URL",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-598"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-009",
+    "name": "Weak Cryptographic Algorithm (MD5/SHA1 for Sensitive Data)",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-327"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-low-010",
+    "name": "NFC Data Eavesdropping & Replay",
+    "domain": "mobile",
+    "severity": "low",
+    "cwe": [
+      "CWE-311"
+    ],
+    "cve": [],
+    "xp": "135",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\low.ts"
+  },
+  {
+    "id": "mob-med-001",
+    "name": "WebView JavaScript Interface Injection",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-749"
+    ],
+    "cve": [
+      "CVE-2012-6636"
+    ],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-002",
+    "name": "SSL Pinning Bypass via Frida Runtime Hook",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-297"
+    ],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-003",
+    "name": "Root/Jailbreak Detection Bypass",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-656"
+    ],
+    "cve": [],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-004",
+    "name": "Content Provider SQL Injection (Android)",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-005",
+    "name": "Task Hijacking (Android Activity Stack Manipulation)",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-285"
+    ],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-006",
+    "name": "Unencrypted Sensitive Data in SQLite (Mobile)",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-007",
+    "name": "Insecure Biometric Authentication Bypass",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [],
+    "xp": "420",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-008",
+    "name": "iOS Keychain Item Accessibility Weakness",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-009",
+    "name": "OAuth Token Theft via Mobile Redirect URI Hijacking",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "450",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "mob-med-010",
+    "name": "Insecure Cryptography \u2014 Hardcoded IV in AES-CBC",
+    "domain": "mobile",
+    "severity": "medium",
+    "cwe": [
+      "CWE-329"
+    ],
+    "cve": [],
+    "xp": "420",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\mobile\\medium.ts"
+  },
+  {
+    "id": "net-ext-med-001",
+    "name": "SMB Relay \u2014 NTLM Credential Capture & Relay",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "480",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-med-002",
+    "name": "SNMP v1/v2c Community String Brute Force",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-521"
+    ],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-med-003",
+    "name": "DNS Zone Transfer (AXFR) Attack",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-med-004",
+    "name": "BGP Route Hijacking via Prefix Injection",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-med-005",
+    "name": "VPN Split Tunneling \u2014 Traffic Interception",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "420",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-med-006",
+    "name": "OSPF Route Injection (Unauthenticated)",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "460",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-high-001",
+    "name": "PrintNightmare \u2014 Windows Print Spooler RCE (CVE-2021-34527)",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-269"
+    ],
+    "cve": [
+      "CVE-2021-34527",
+      "CVE-2021-1675"
+    ],
+    "xp": "650",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-high-002",
+    "name": "Zerologon \u2014 Netlogon Privilege Escalation (CVE-2020-1472)",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-330"
+    ],
+    "cve": [
+      "CVE-2020-1472"
+    ],
+    "xp": "750",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-high-003",
+    "name": "Fortinet SSL-VPN Path Traversal \u2014 Credential Exposure (CVE-2018-13379)",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [
+      "CVE-2018-13379"
+    ],
+    "xp": "680",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-high-004",
+    "name": "Log4Shell in Network Infrastructure (CVE-2021-44228)",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-917"
+    ],
+    "cve": [
+      "CVE-2021-44228"
+    ],
+    "xp": "720",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-crit-001",
+    "name": "PetitPotam \u2014 NTLM Relay to Active Directory CS (CVE-2021-36942)",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [
+      "CVE-2021-36942"
+    ],
+    "xp": "950",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-ext-crit-002",
+    "name": "Cisco IOS XE Web UI Auth Bypass RCE (CVE-2023-20198)",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-306"
+    ],
+    "cve": [
+      "CVE-2023-20198",
+      "CVE-2023-20273"
+    ],
+    "xp": "1000",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\ext.ts"
+  },
+  {
+    "id": "net-info-001",
+    "name": "Nmap Port Scanning Fundamentals",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-002",
+    "name": "Service Version & Banner Detection",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-003",
+    "name": "OS Fingerprinting via TCP/IP Stack Analysis",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-004",
+    "name": "Network Topology Mapping & Route Discovery",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-005",
+    "name": "SNMP Enumeration & Community String Discovery",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200",
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-006",
+    "name": "NetBIOS & SMB Enumeration",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-007",
+    "name": "ICMP Network Discovery & Ping Sweeping",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-008",
+    "name": "FTP Anonymous Access Detection",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-287",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-009",
+    "name": "Network Traffic Analysis with Wireshark",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "90",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-info-010",
+    "name": "Shodan & Censys Internet Asset Discovery",
+    "domain": "network",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "90",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\information.ts"
+  },
+  {
+    "id": "net-low-001",
+    "name": "Anonymous FTP Login & File Access",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-287"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-002",
+    "name": "Default SNMP Community String Exploitation",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-521",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-003",
+    "name": "Telnet Cleartext Credential Interception",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-319",
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-004",
+    "name": "Default Router Credential Access",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-521",
+      "CWE-1188"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-005",
+    "name": "NFS Share Exposure & Unauthorized Mount",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-732",
+      "CWE-284"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-006",
+    "name": "DNS Zone Transfer Exploitation",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-007",
+    "name": "Redis Unauthenticated Access",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-306"
+    ],
+    "cve": [
+      "CVE-2022-0543"
+    ],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-008",
+    "name": "MongoDB Unauthenticated Access",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-306"
+    ],
+    "cve": [
+      "CVE-2017-20094"
+    ],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-009",
+    "name": "TFTP Unauthenticated File Access",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-306"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-low-010",
+    "name": "RPC Endpoint Enumeration",
+    "domain": "network",
+    "severity": "low",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-001",
+    "name": "ARP Spoofing & Man-in-the-Middle Attack",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "175",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-002",
+    "name": "LLMNR & NBT-NS Poisoning with Responder",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "180",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-003",
+    "name": "SMB Relay Attack (NTLMv2 Relay)",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-294"
+    ],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-004",
+    "name": "DNS Cache Poisoning (Kaminsky Attack)",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290",
+      "CWE-330"
+    ],
+    "cve": [
+      "CVE-2008-1447"
+    ],
+    "xp": "190",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-005",
+    "name": "SSL Stripping Attack",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-311",
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "190",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-006",
+    "name": "Pass-the-Hash via SMB",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-522",
+      "CWE-294"
+    ],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-007",
+    "name": "IPv6 Neighbor Discovery Spoofing",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-008",
+    "name": "VLAN Hopping via Switch Spoofing",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-284"
+    ],
+    "cve": [],
+    "xp": "195",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-009",
+    "name": "Rogue DHCP Server Attack",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "195",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-med-010",
+    "name": "Kerberoasting \u2014 SPN Hash Capture & Offline Cracking",
+    "domain": "network",
+    "severity": "medium",
+    "cwe": [
+      "CWE-522"
+    ],
+    "cve": [],
+    "xp": "220",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-001",
+    "name": "MS08-067 NetAPI Remote Code Execution",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-119"
+    ],
+    "cve": [
+      "CVE-2008-4250"
+    ],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-002",
+    "name": "EternalBlue SMBv1 Remote Code Execution",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-119"
+    ],
+    "cve": [
+      "CVE-2017-0144",
+      "CVE-2017-0145"
+    ],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-003",
+    "name": "BlueKeep RDP Remote Code Execution",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-416"
+    ],
+    "cve": [
+      "CVE-2019-0708"
+    ],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-004",
+    "name": "Zerologon Privilege Escalation",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-330"
+    ],
+    "cve": [
+      "CVE-2020-1472"
+    ],
+    "xp": "370",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-005",
+    "name": "PrintNightmare Windows Print Spooler RCE",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-269"
+    ],
+    "cve": [
+      "CVE-2021-1675",
+      "CVE-2021-34527"
+    ],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-006",
+    "name": "SMBGhost Remote Code Execution",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-190"
+    ],
+    "cve": [
+      "CVE-2020-0796"
+    ],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-007",
+    "name": "PetitPotam NTLM Relay to ADCS",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [
+      "CVE-2021-36942"
+    ],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-high-008",
+    "name": "Pass-the-Ticket \u2014 Kerberos TGT Abuse",
+    "domain": "network",
+    "severity": "high",
+    "cwe": [
+      "CWE-522"
+    ],
+    "cve": [],
+    "xp": "340",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-001",
+    "name": "WannaCry Ransomware Kill Chain Simulation",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-119"
+    ],
+    "cve": [
+      "CVE-2017-0144",
+      "CVE-2017-0145"
+    ],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-002",
+    "name": "Domain Controller Full Compromise via DCSync",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-269"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-003",
+    "name": "Golden Ticket \u2014 Permanent Domain Persistence",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-522"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-004",
+    "name": "MS03-026 MSRPC DCOM Buffer Overflow (Blaster Worm)",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-119"
+    ],
+    "cve": [
+      "CVE-2003-0352"
+    ],
+    "xp": "480",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-005",
+    "name": "Full Network Compromise Chain \u2014 Scan to Domain Admin",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-119",
+      "CWE-522",
+      "CWE-269"
+    ],
+    "cve": [
+      "CVE-2017-0144",
+      "CVE-2020-1472"
+    ],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "net-crit-006",
+    "name": "NoPac \u2014 Sam-the-Admin Domain Escalation",
+    "domain": "network",
+    "severity": "critical",
+    "cwe": [
+      "CWE-290",
+      "CWE-269"
+    ],
+    "cve": [
+      "CVE-2021-42278",
+      "CVE-2021-42287"
+    ],
+    "xp": "520",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\network\\labs.ts"
+  },
+  {
+    "id": "web-crit-001",
+    "name": "Log4j Remote Code Execution (Log4Shell - 2021)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-502",
+      "CWE-917"
+    ],
+    "cve": [
+      "CVE-2021-44228",
+      "CVE-2021-45046"
+    ],
+    "xp": "1000",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-002",
+    "name": "Apache Struts OGNL Injection (Equifax Breach - 2017)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-20"
+    ],
+    "cve": [
+      "CVE-2017-5638"
+    ],
+    "xp": "1100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-003",
+    "name": "Exchange Server Pre-Auth RCE Chain (ProxyLogon - 2021)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-918",
+      "CWE-22"
+    ],
+    "cve": [
+      "CVE-2021-26855",
+      "CVE-2021-27065"
+    ],
+    "xp": "1200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-004",
+    "name": "Spring4Shell \u2014 Spring Framework RCE (2022)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-94"
+    ],
+    "cve": [
+      "CVE-2022-22965"
+    ],
+    "xp": "1150",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-005",
+    "name": "MOVEit Transfer SQLi & Exfiltration (Cl0p Campaign - 2023)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [
+      "CVE-2023-34362"
+    ],
+    "xp": "1300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-006",
+    "name": "XZ Utils Open Source Supply Chain Backdoor (2024)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-506"
+    ],
+    "cve": [
+      "CVE-2024-3094"
+    ],
+    "xp": "1400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-007",
+    "name": "Heartbleed OpenSSL Memory Exposure (2014)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-126"
+    ],
+    "cve": [
+      "CVE-2014-0160"
+    ],
+    "xp": "950",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-008",
+    "name": "Shellshock Bash Environment Command Injection (2014)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-78"
+    ],
+    "cve": [
+      "CVE-2014-6271"
+    ],
+    "xp": "980",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-009",
+    "name": "ImageTragick \u2014 ImageMagick Command Injection (2016)",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-78"
+    ],
+    "cve": [
+      "CVE-2016-3714"
+    ],
+    "xp": "960",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-crit-010",
+    "name": "PHP Object Injection to Remote Code Execution",
+    "domain": "web",
+    "severity": "critical",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [],
+    "xp": "1050",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\critical.ts"
+  },
+  {
+    "id": "web-high-001",
+    "name": "SQL Injection \u2014 Classic Error-Based",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [
+      "CVE-2023-34362",
+      "CVE-2022-22963"
+    ],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-002",
+    "name": "SQL Injection \u2014 Blind (Boolean & Time-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "550",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-003",
+    "name": "OS Command Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-78"
+    ],
+    "cve": [
+      "CVE-2021-22986",
+      "CVE-2022-22947"
+    ],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-004",
+    "name": "Server-Side Template Injection (SSTI)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-94"
+    ],
+    "cve": [
+      "CVE-2019-11043"
+    ],
+    "xp": "580",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-005",
+    "name": "Unrestricted File Upload \u2014 Code Execution",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-434"
+    ],
+    "cve": [
+      "CVE-2022-26134",
+      "CVE-2021-22205"
+    ],
+    "xp": "620",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-006",
+    "name": "Server-Side Request Forgery (SSRF)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [
+      "CVE-2019-1003000"
+    ],
+    "xp": "590",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-007",
+    "name": "Local File Inclusion (LFI) to RCE",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-98",
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "610",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-008",
+    "name": "XML External Entity (XXE) Processing",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-611"
+    ],
+    "cve": [],
+    "xp": "590",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-009",
+    "name": "Insecure Object Deserialization",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [
+      "CVE-2015-4852"
+    ],
+    "xp": "630",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-010",
+    "name": "NoSQL Injection (MongoDB Authentication Bypass)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-943"
+    ],
+    "cve": [],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high.ts"
+  },
+  {
+    "id": "web-high-ext-001",
+    "name": "SQL Injection (Second Order)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-002",
+    "name": "ASP.NET Tracing Enabled",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-215"
+    ],
+    "cve": [],
+    "xp": "280",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-003",
+    "name": "LDAP Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-90"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-004",
+    "name": "XPath Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-643"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-005",
+    "name": "HTTP PUT Method Enabled",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-650"
+    ],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-006",
+    "name": "Out-of-Band Resource Load (HTTP)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-007",
+    "name": "File Path Manipulation",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "cve": [],
+    "xp": "290",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-008",
+    "name": "PHP Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-009",
+    "name": "Server-Side JavaScript Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-010",
+    "name": "Perl Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-011",
+    "name": "Ruby Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-012",
+    "name": "Python Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-013",
+    "name": "Expression Language Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-917"
+    ],
+    "cve": [
+      "CVE-2010-1870",
+      "CVE-2013-2251"
+    ],
+    "xp": "340",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-014",
+    "name": "Unidentified Code Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "290",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-015",
+    "name": "SSI Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-97"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-016",
+    "name": "React Server Components Remote Code Execution",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-95"
+    ],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-017",
+    "name": "HTTP Request Smuggling",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-444"
+    ],
+    "cve": [],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-018",
+    "name": "Client-Side Desync",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-444"
+    ],
+    "cve": [],
+    "xp": "370",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-019",
+    "name": "Web Cache Poisoning",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-020",
+    "name": "HTTP Response Header Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-113"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-021",
+    "name": "Client-Side Template Injection",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-022",
+    "name": "Cross-Site Scripting (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-023",
+    "name": "Cross-Site Scripting (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-024",
+    "name": "JWT Signature Not Verified",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-025",
+    "name": "JWT None Algorithm Attack",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-327"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-026",
+    "name": "JWT Self-Signed JWK Header Attack",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-027",
+    "name": "JWT Weak HMAC Secret",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-521"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-028",
+    "name": "JWT Arbitrary JKU Header Attack",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-029",
+    "name": "JWT Arbitrary X5U Header Attack",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-030",
+    "name": "Cleartext Submission of Password",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "280",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-031",
+    "name": "External Service Interaction (HTTP Exploitation)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [],
+    "xp": "340",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-032",
+    "name": "ASP.NET ViewState Without MAC Enabled",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-347"
+    ],
+    "cve": [],
+    "xp": "340",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-033",
+    "name": "Serialized Object in HTTP Message",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-502"
+    ],
+    "cve": [],
+    "xp": "360",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-034",
+    "name": "JavaScript Injection (DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-035",
+    "name": "JavaScript Injection (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-036",
+    "name": "JavaScript Injection (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-037",
+    "name": "WebSocket URL Poisoning (DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-038",
+    "name": "WebSocket URL Poisoning (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "310",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-039",
+    "name": "WebSocket URL Poisoning (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "330",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-040",
+    "name": "Local File Path Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-041",
+    "name": "Local File Path Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-042",
+    "name": "Local File Path Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-043",
+    "name": "Flash Cross-Domain Policy Misconfiguration",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "280",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-044",
+    "name": "Silverlight Cross-Domain Policy Misconfiguration",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "270",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-high-ext-045",
+    "name": "JWT Private Key Disclosed",
+    "domain": "web",
+    "severity": "high",
+    "cwe": [
+      "CWE-321"
+    ],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\high_ext.ts"
+  },
+  {
+    "id": "web-info-001",
+    "name": "DNS Enumeration & Subdomain Discovery",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-002",
+    "name": "WHOIS & Domain Registrar Information Leakage",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-003",
+    "name": "HTTP Response Header Analysis",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-004",
+    "name": "Web Server Banner Grabbing",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-005",
+    "name": "Google Dorking & Advanced Search OSINT",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-006",
+    "name": "Directory Listing & robots.txt Enumeration",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-548",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-007",
+    "name": "JavaScript Source Code Analysis",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200",
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-008",
+    "name": "SSL/TLS Certificate & Configuration Analysis",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-295",
+      "CWE-326"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-009",
+    "name": "Wayback Machine & Web Archive Recon",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-010",
+    "name": "Technology Stack Fingerprinting",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-011",
+    "name": "Web Application Firewall (WAF) Detection & Bypass Recon",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-012",
+    "name": "Email Header & SMTP Configuration Analysis",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-013",
+    "name": "HTML Source Code & Comment Analysis",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200",
+      "CWE-540"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-014",
+    "name": "HTTP Methods Enumeration (OPTIONS/TRACE)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [
+      "CVE-2004-2320"
+    ],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-015",
+    "name": "Shodan & Censys Web Asset Passive Recon",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information.ts"
+  },
+  {
+    "id": "web-info-ext-001",
+    "name": "Broken Access Control (Detection)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-284",
+      "CWE-285"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-002",
+    "name": "Client-Side Prototype Pollution",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-1321"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-003",
+    "name": "External Service Interaction (DNS)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-918"
+    ],
+    "cve": [],
+    "xp": "90",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-004",
+    "name": "External Service Interaction (SMTP)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-93"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-005",
+    "name": "Referer-Dependent Response",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-807"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-006",
+    "name": "Spoofable Client IP Address",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-007",
+    "name": "User Agent-Dependent Response",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-807"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-008",
+    "name": "Cross-Domain POST Request",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-009",
+    "name": "Long Redirection Response",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-010",
+    "name": "Duplicate Cookies Set",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-539"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-011",
+    "name": "Input Returned in Response (Stored)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-012",
+    "name": "Input Returned in Response (Reflected)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-013",
+    "name": "Suspicious Input Transformation (Reflected)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-014",
+    "name": "Suspicious Input Transformation (Stored)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-015",
+    "name": "Request URL Override",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-290"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-016",
+    "name": "Path-Relative Style Sheet Import",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-017",
+    "name": "Content Security Policy: Allowlisted Script Resources",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-018",
+    "name": "Content Security Policy: Allows Untrusted Script Execution",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-019",
+    "name": "Content Security Policy: Allows Untrusted Style Execution",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-020",
+    "name": "Content Security Policy: Malformed Syntax",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-021",
+    "name": "Content Security Policy: Allows Clickjacking",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-1021"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-022",
+    "name": "Content Security Policy: Allows Form Hijacking",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-023",
+    "name": "Content Security Policy: Not Enforced",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-024",
+    "name": "GraphQL Endpoint Found",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-025",
+    "name": "GraphQL Endpoint Discovered",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-026",
+    "name": "Cross-Origin Resource Sharing (Passive Detection)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-027",
+    "name": "Cross-Domain Referer Leakage",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-598"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-028",
+    "name": "Cross-Domain Script Include",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-829"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-029",
+    "name": "File Upload Functionality",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-434"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-030",
+    "name": "Denial of Service via DOM Manipulation",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-031",
+    "name": "Denial of Service via Reflected DOM Manipulation",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-032",
+    "name": "HTML5 Web Message Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-033",
+    "name": "HTML5 Web Message Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-034",
+    "name": "HTML5 Web Message Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "85",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-035",
+    "name": "HTML5 Storage Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-036",
+    "name": "HTML5 Storage Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-037",
+    "name": "HTML5 Storage Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-038",
+    "name": "Link Manipulation (Reflected)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-039",
+    "name": "Link Manipulation (Stored)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-040",
+    "name": "DOM Data Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-041",
+    "name": "DOM Data Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-042",
+    "name": "DOM Data Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-043",
+    "name": "Backup File Exposure",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-530"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-044",
+    "name": "Email Addresses Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-045",
+    "name": "Private IP Addresses Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-046",
+    "name": "Social Security Numbers Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "75",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-047",
+    "name": "Credit Card Numbers Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-048",
+    "name": "Private Key Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-321"
+    ],
+    "cve": [],
+    "xp": "90",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-049",
+    "name": "JSON Web Key Set (JWKS) Disclosed",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "80",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-050",
+    "name": "OpenAPI Definition Found (Active Scan)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "70",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-051",
+    "name": "OpenAPI Definition Found (Passive Scan)",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-052",
+    "name": "Cacheable HTTPS Response",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-524"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-053",
+    "name": "Base64-Encoded Data in Parameter",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-311"
+    ],
+    "cve": [],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-054",
+    "name": "Multiple Content Types Specified",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-436"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-055",
+    "name": "HTML Does Not Specify Charset",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-056",
+    "name": "HTML Uses Unrecognized Charset",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "55",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-057",
+    "name": "Mixed Content",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "65",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-info-ext-058",
+    "name": "HTTP/2 Support Detection",
+    "domain": "web",
+    "severity": "information",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [
+      "CVE-2023-44487"
+    ],
+    "xp": "60",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\information_ext.ts"
+  },
+  {
+    "id": "web-low-001",
+    "name": "Missing Security Headers (X-Frame-Options, CSP, HSTS)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-1021",
+      "CWE-319",
+      "CWE-693"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-002",
+    "name": "HTTP TRACE Method Enabled (Cross-Site Tracing - XST)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-16",
+      "CWE-200"
+    ],
+    "cve": [
+      "CVE-2004-2320"
+    ],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-003",
+    "name": "Verbose Error Messages & Stack Trace Leakage",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-209",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-004",
+    "name": "Cookie Without Secure & HttpOnly Flags",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-1004",
+      "CWE-614"
+    ],
+    "cve": [],
+    "xp": "105",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-005",
+    "name": "Clickjacking via Missing X-Frame-Options",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-1021"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-006",
+    "name": "Username Enumeration via Login & Password Reset",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-204",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-007",
+    "name": "Insecure HTTP Communication (Missing HTTPS Redirect)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-008",
+    "name": "Weak Password Policy Enforcement",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-521"
+    ],
+    "cve": [],
+    "xp": "105",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-010",
+    "name": "Sensitive Parameters Exposed in GET Request URLs",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-598",
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "105",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low.ts"
+  },
+  {
+    "id": "web-low-ext-001",
+    "name": "Vulnerable JavaScript Dependency",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-1035"
+    ],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-002",
+    "name": "Open Redirection (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-003",
+    "name": "Open Redirection (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-004",
+    "name": "Client-Side XPath Injection (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-643"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-005",
+    "name": "Client-Side XPath Injection (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-643"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-006",
+    "name": "Client-Side XPath Injection (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-643"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-007",
+    "name": "Client-Side JSON Injection (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-74"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-008",
+    "name": "Client-Side JSON Injection (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-74"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-009",
+    "name": "Client-Side JSON Injection (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-74"
+    ],
+    "cve": [],
+    "xp": "125",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-010",
+    "name": "GraphQL Introspection Enabled",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-011",
+    "name": "GraphQL Suggestions Enabled",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-200"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-012",
+    "name": "GraphQL Content Type Not Validated",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-013",
+    "name": "CORS: Unencrypted Origin Trusted",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "125",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-014",
+    "name": "CORS: All Subdomains Trusted",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-015",
+    "name": "Cookie Scoped to Parent Domain",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-1275"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-016",
+    "name": "Cookie Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-565"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-017",
+    "name": "Cookie Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-565"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-018",
+    "name": "Cookie Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-565"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-019",
+    "name": "Ajax Request Header Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-020",
+    "name": "Ajax Request Header Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-021",
+    "name": "Ajax Request Header Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "125",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-022",
+    "name": "Denial of Service (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-400"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-023",
+    "name": "Link Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-024",
+    "name": "Link Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-025",
+    "name": "Link Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "125",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-026",
+    "name": "Client-Side HTTP Parameter Pollution (Reflected)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-235"
+    ],
+    "cve": [],
+    "xp": "115",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-027",
+    "name": "Client-Side HTTP Parameter Pollution (Stored)",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-235"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-028",
+    "name": "Source Code Disclosure",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-540"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-029",
+    "name": "Content Type Incorrectly Stated",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-436"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-030",
+    "name": "Content Type Not Specified",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-116"
+    ],
+    "cve": [],
+    "xp": "110",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-031",
+    "name": "Unencrypted Communications",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-low-ext-032",
+    "name": "HTTP Strict Transport Security Not Enforced",
+    "domain": "web",
+    "severity": "low",
+    "cwe": [
+      "CWE-319"
+    ],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\low_ext.ts"
+  },
+  {
+    "id": "web-med-001",
+    "name": "Reflected Cross-Site Scripting (XSS)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "160",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-002",
+    "name": "Stored Cross-Site Scripting (XSS)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "175",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-003",
+    "name": "DOM-Based Cross-Site Scripting (DOM XSS)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-79"
+    ],
+    "cve": [],
+    "xp": "180",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-004",
+    "name": "Cross-Site Request Forgery (CSRF)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-352"
+    ],
+    "cve": [],
+    "xp": "170",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-005",
+    "name": "Open Redirect Vulnerability",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "140",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-006",
+    "name": "HTML Injection",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-80"
+    ],
+    "cve": [],
+    "xp": "130",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-007",
+    "name": "Insecure Direct Object Reference (IDOR)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-639",
+      "CWE-284"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-008",
+    "name": "Path Traversal / Directory Traversal",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-22"
+    ],
+    "cve": [
+      "CVE-1999-0012"
+    ],
+    "xp": "190",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-009",
+    "name": "HTTP Parameter Pollution (HPP)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-235"
+    ],
+    "cve": [],
+    "xp": "165",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-010",
+    "name": "CORS Misconfiguration (Arbitrary Origin Allowed)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-942"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium.ts"
+  },
+  {
+    "id": "web-med-ext-001",
+    "name": "XML Injection",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-91"
+    ],
+    "cve": [],
+    "xp": "175",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-002",
+    "name": "ASP.NET Debugging Enabled",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-215"
+    ],
+    "cve": [],
+    "xp": "165",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-003",
+    "name": "SMTP Header Injection",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-93"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-004",
+    "name": "Password Returned in Later Response",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-005",
+    "name": "SQL Statement in Request Parameter",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-89"
+    ],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-006",
+    "name": "XML Entity Expansion (Billion Laughs)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-776"
+    ],
+    "cve": [],
+    "xp": "195",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-007",
+    "name": "Open Redirection (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "190",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-008",
+    "name": "Web Cache Deception",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-524"
+    ],
+    "cve": [],
+    "xp": "225",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-009",
+    "name": "TLS Cookie Without Secure Flag",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-614"
+    ],
+    "cve": [],
+    "xp": "190",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-010",
+    "name": "Session Token in URL",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-598"
+    ],
+    "cve": [],
+    "xp": "185",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-011",
+    "name": "Password Value Set in Cookie",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-312"
+    ],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-012",
+    "name": "Document Domain Manipulation (DOM-Based)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "210",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-013",
+    "name": "Document Domain Manipulation (Reflected DOM-Based)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "210",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-014",
+    "name": "Document Domain Manipulation (Stored DOM-Based)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-346"
+    ],
+    "cve": [],
+    "xp": "220",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-015",
+    "name": "CSS Injection (Reflected)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-74"
+    ],
+    "cve": [],
+    "xp": "215",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-016",
+    "name": "CSS Injection (Stored)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-74"
+    ],
+    "cve": [],
+    "xp": "225",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-017",
+    "name": "Form Action Hijacking",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "215",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-018",
+    "name": "Form Action Hijacking (Stored)",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-601"
+    ],
+    "cve": [],
+    "xp": "225",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-019",
+    "name": "Database Connection String Disclosed",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-209"
+    ],
+    "cve": [],
+    "xp": "230",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "web-med-ext-020",
+    "name": "TLS Certificate Issues",
+    "domain": "web",
+    "severity": "medium",
+    "cwe": [
+      "CWE-295"
+    ],
+    "cve": [],
+    "xp": "210",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/redteam/pentesting\\web\\medium_ext.ts"
+  },
+  {
+    "id": "SYS-1971-001",
+    "name": "Creeper \u2014 First Self-Replicating Program",
+    "domain": "Unknown",
+    "severity": "Beginner",
+    "cwe": [],
+    "cve": [],
+    "xp": "100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "SYS-1972-001",
+    "name": "Anderson Report \u2014 First Documented Penetration Testing",
+    "domain": "Unknown",
+    "severity": "Beginner",
+    "cwe": [],
+    "cve": [],
+    "xp": "120",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "SYS-1974-001",
+    "name": "Confused Deputy Problem",
+    "domain": "Unknown",
+    "severity": "Easy",
+    "cwe": [],
+    "cve": [],
+    "xp": "150",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "NET-1978-001",
+    "name": "Password Cracking \u2014 Earliest UNIX /etc/passwd",
+    "domain": "Unknown",
+    "severity": "Easy",
+    "cwe": [],
+    "cve": [],
+    "xp": "180",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "NET-1988-001",
+    "name": "Morris Worm \u2014 First Major Internet Worm",
+    "domain": "Unknown",
+    "severity": "Easy",
+    "cwe": [],
+    "cve": [],
+    "xp": "220",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-1994-001",
+    "name": "HTTP Basic Authentication Bypass",
+    "domain": "Unknown",
+    "severity": "Easy",
+    "cwe": [],
+    "cve": [],
+    "xp": "200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-1996-001",
+    "name": "Cross-Site Scripting (XSS) \u2014 Origins",
+    "domain": "Unknown",
+    "severity": "Easy",
+    "cwe": [],
+    "cve": [],
+    "xp": "250",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-1998-001",
+    "name": "SQL Injection \u2014 The Classic",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2000-001",
+    "name": "Directory Traversal / Path Traversal",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2004-001",
+    "name": "CSRF \u2014 Cross-Site Request Forgery",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "350",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2014-001",
+    "name": "Heartbleed \u2014 OpenSSL Memory Leak",
+    "domain": "Unknown",
+    "severity": "Hard",
+    "cwe": [],
+    "cve": [],
+    "xp": "600",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2021-001",
+    "name": "Log4Shell \u2014 Log4j RCE",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1000",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2024-001",
+    "name": "XZ Utils Backdoor \u2014 Supply Chain Attack",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1200",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2026-001",
+    "name": "Latest CVE \u2014 2026",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2005-001",
+    "name": "Local File Inclusion (LFI)",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "320",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2007-001",
+    "name": "XXE \u2014 XML External Entity Injection",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2008-001",
+    "name": "SSRF \u2014 Server-Side Request Forgery",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "400",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2010-001",
+    "name": "Insecure Deserialization",
+    "domain": "Unknown",
+    "severity": "Hard",
+    "cwe": [],
+    "cve": [],
+    "xp": "500",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "NET-2014-002",
+    "name": "Shellshock \u2014 Bash Remote Code Execution",
+    "domain": "Unknown",
+    "severity": "Hard",
+    "cwe": [],
+    "cve": [],
+    "xp": "650",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2016-001",
+    "name": "Broken Authentication \u2014 JWT None Algorithm",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "420",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2017-001",
+    "name": "Apache Struts RCE \u2014 Equifax Breach",
+    "domain": "Unknown",
+    "severity": "Hard",
+    "cwe": [],
+    "cve": [],
+    "xp": "700",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2018-001",
+    "name": "IDOR \u2014 Insecure Direct Object Reference",
+    "domain": "Unknown",
+    "severity": "Medium",
+    "cwe": [],
+    "cve": [],
+    "xp": "380",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2021-002",
+    "name": "ProxyLogon \u2014 Microsoft Exchange RCE",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1100",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2022-001",
+    "name": "Spring4Shell \u2014 Spring Framework RCE",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1050",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  },
+  {
+    "id": "WEB-2023-001",
+    "name": "MOVEit Transfer SQLi \u2014 Mass Data Breach",
+    "domain": "Unknown",
+    "severity": "Insane",
+    "cwe": [],
+    "cve": [],
+    "xp": "1300",
+    "status": "PARTIALLY IMPLEMENTED",
+    "source": "src/lib/data/vulnerabilities.ts"
+  }
+]

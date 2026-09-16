@@ -1,5 +1,5 @@
 // ============================================================
-// HP Labs — Smart Detector Type System
+// HP Labs  Smart Detector Type System
 // All types used by the Smart Detector engine and adapters
 // ============================================================
 
@@ -7,7 +7,7 @@ import type { Severity, DomainId } from "@/lib/data/types";
 
 /** A vulnerability record as produced by a source adapter */
 export interface DetectorVulnerability {
-  /** Globally unique canonical ID — stable across runs */
+  /** Globally unique canonical ID  stable across runs */
   canonicalId: string;
   /** Human-readable vulnerability name */
   name: string;

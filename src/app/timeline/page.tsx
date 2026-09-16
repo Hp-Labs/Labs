@@ -154,7 +154,7 @@ export default function TimelinePage() {
                   fontWeight: 700,
                 }}
               >
-                1947 → PRESENT
+                1947  PRESENT
               </span>
             </div>
 
@@ -262,7 +262,7 @@ export default function TimelinePage() {
             />
             <input
               type="text"
-              placeholder="Search vulnerabilities, CVEs, or years…"
+              placeholder="Search vulnerabilities, CVEs, or years"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -576,7 +576,7 @@ export default function TimelinePage() {
                                   fontFamily: "monospace",
                                 }}
                               >
-                                Reference ↗
+                                Reference 
                               </a>
                             )}
                           </div>

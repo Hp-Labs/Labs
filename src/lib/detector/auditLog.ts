@@ -1,5 +1,5 @@
 // ============================================================
-// HP Labs — Detector Audit Log
+// HP Labs  Detector Audit Log
 // Internal audit log structure for admin/developer use only.
 // NEVER expose this data to normal users.
 // ============================================================

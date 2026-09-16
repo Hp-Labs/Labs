@@ -1,19 +1,19 @@
 // ============================================================
-// HpLabs — Red Team Module Index
+// HpLabs  Red Team Module Index
 // Central registry for all Red Team sub-modules & domains
 // ============================================================
 
 import type { RedTeamModule, SubDomain } from "../types";
 import type { Lab, Severity, DomainId } from "../types";
 
-// ─── Web Pentesting ──────────────────────────────────────────
+//  Web Pentesting 
 export { WEB_INFORMATION_LABS } from "./pentesting/web/information";
 export { WEB_LOW_LABS }         from "./pentesting/web/low";
 export { WEB_MEDIUM_LABS }      from "./pentesting/web/medium";
 export { WEB_HIGH_LABS }        from "./pentesting/web/high";
 export { WEB_CRITICAL_LABS }    from "./pentesting/web/critical";
 
-// ─── Web Pentesting Extended (Burp Suite Catalogue) ──────────
+//  Web Pentesting Extended (Burp Suite Catalogue) 
 export { WEB_INFORMATION_EXT_LABS } from "./pentesting/web/information_ext";
 export { WEB_LOW_EXT_LABS }         from "./pentesting/web/low_ext";
 export { WEB_MEDIUM_EXT_LABS }      from "./pentesting/web/medium_ext";
@@ -30,7 +30,7 @@ import { WEB_LOW_EXT_LABS }         from "./pentesting/web/low_ext";
 import { WEB_MEDIUM_EXT_LABS }      from "./pentesting/web/medium_ext";
 import { WEB_HIGH_EXT_LABS }        from "./pentesting/web/high_ext";
 
-// ─── API Pentesting ──────────────────────────────────────────
+//  API Pentesting 
 export { API_INFORMATION_LABS }                                      from "./pentesting/api/information";
 export { API_LOW_LABS, API_MEDIUM_LABS, API_HIGH_LABS, API_CRITICAL_LABS } from "./pentesting/api/labs";
 export { API_EXT_LABS }                                              from "./pentesting/api/ext";
@@ -39,7 +39,7 @@ import { API_INFORMATION_LABS }                                      from "./pen
 import { API_LOW_LABS, API_MEDIUM_LABS, API_HIGH_LABS, API_CRITICAL_LABS } from "./pentesting/api/labs";
 import { API_EXT_LABS }                                              from "./pentesting/api/ext";
 
-// ─── Network Pentesting ──────────────────────────────────────
+//  Network Pentesting 
 export { NETWORK_INFORMATION_LABS }                                                            from "./pentesting/network/information";
 export { NETWORK_LOW_LABS, NETWORK_MEDIUM_LABS, NETWORK_HIGH_LABS, NETWORK_CRITICAL_LABS }    from "./pentesting/network/labs";
 export { NETWORK_EXT_LABS }                                                                    from "./pentesting/network/ext";
@@ -48,7 +48,7 @@ import { NETWORK_INFORMATION_LABS }                                             
 import { NETWORK_LOW_LABS, NETWORK_MEDIUM_LABS, NETWORK_HIGH_LABS, NETWORK_CRITICAL_LABS }    from "./pentesting/network/labs";
 import { NETWORK_EXT_LABS }                                                                    from "./pentesting/network/ext";
 
-// ─── Mobile Pentesting ───────────────────────────────────────
+//  Mobile Pentesting 
 export { MOBILE_INFORMATION_LABS } from "./pentesting/mobile/information";
 export { MOBILE_LOW_LABS }         from "./pentesting/mobile/low";
 export { MOBILE_MEDIUM_LABS }      from "./pentesting/mobile/medium";
@@ -61,17 +61,17 @@ import { MOBILE_MEDIUM_LABS }      from "./pentesting/mobile/medium";
 import { MOBILE_HIGH_LABS }        from "./pentesting/mobile/high";
 import { MOBILE_CRITICAL_LABS }    from "./pentesting/mobile/critical";
 
-// ─── Cloud Pentesting ────────────────────────────────────────
+//  Cloud Pentesting 
 export { CLOUD_INFORMATION_LABS, CLOUD_LOW_LABS, CLOUD_MEDIUM_LABS, CLOUD_HIGH_LABS, CLOUD_CRITICAL_LABS } from "./pentesting/cloud/labs";
 
 import { CLOUD_INFORMATION_LABS, CLOUD_LOW_LABS, CLOUD_MEDIUM_LABS, CLOUD_HIGH_LABS, CLOUD_CRITICAL_LABS } from "./pentesting/cloud/labs";
 
-// ─── Active Directory Pentesting ─────────────────────────────
+//  Active Directory Pentesting 
 export { AD_INFORMATION_LABS, AD_LOW_LABS, AD_MEDIUM_LABS, AD_HIGH_LABS, AD_CRITICAL_LABS } from "./pentesting/ad/labs";
 
 import { AD_INFORMATION_LABS, AD_LOW_LABS, AD_MEDIUM_LABS, AD_HIGH_LABS, AD_CRITICAL_LABS } from "./pentesting/ad/labs";
 
-// ─── Aggregated exports ──────────────────────────────────────
+//  Aggregated exports 
 export const ALL_WEB_LABS: Lab[] = [
   ...WEB_INFORMATION_LABS,
   ...WEB_INFORMATION_EXT_LABS,
@@ -135,7 +135,7 @@ export const ALL_LABS: Lab[] = [
   ...ALL_AD_LABS,
 ];
 
-// ─── Domain resolver ─────────────────────────────────────────
+//  Domain resolver 
 export function getLabsByDomainAndSeverity(
   domain: DomainId,
   severity: Severity
@@ -203,14 +203,14 @@ export function getLabById(id: string): Lab | undefined {
   return ALL_LABS.find((l) => l.id === id);
 }
 
-// ─── Pentesting sub-domains ───────────────────────────────────
+//  Pentesting sub-domains 
 export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "web",
     name: "Web Pentesting",
-    icon: "🌐",
+    icon: "",
     description:
-      "Web application security from recon to critical RCE. Every vulnerability 1990–2026 — OWASP Top 10, logic flaws, injection, auth bypass, modern frameworks.",
+      "Web application security from recon to critical RCE. Every vulnerability 19902026  OWASP Top 10, logic flaws, injection, auth bypass, modern frameworks.",
     status: "available",
     labCounts: {
       information: WEB_INFORMATION_LABS.length + WEB_INFORMATION_EXT_LABS.length,
@@ -223,7 +223,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "api",
     name: "API Pentesting",
-    icon: "🔌",
+    icon: "",
     description:
       "REST, GraphQL, SOAP, gRPC security. BOLA, mass assignment, JWT attacks, OAuth exploitation, SSRF via API endpoints.",
     status: "available",
@@ -238,9 +238,9 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "network",
     name: "Network Pentesting",
-    icon: "🕸️",
+    icon: "",
     description:
-      "Layer 2–7 attacks. Port scanning, service enumeration, protocol attacks — from Morris Worm (1988) to EternalBlue (2017) to SMBGhost (2020).",
+      "Layer 27 attacks. Port scanning, service enumeration, protocol attacks  from Morris Worm (1988) to EternalBlue (2017) to SMBGhost (2020).",
     status: "available",
     labCounts: {
       information: NETWORK_INFORMATION_LABS.length + NETWORK_EXT_LABS.filter(l => l.severity === "information").length,
@@ -253,7 +253,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "cloud",
     name: "Cloud Pentesting",
-    icon: "☁️",
+    icon: "",
     description:
       "AWS, GCP, Azure misconfig exploitation. S3 exposure, IAM privilege escalation, SSRF to metadata, container escape, Capital One breach simulation.",
     status: "available",
@@ -268,7 +268,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "active-directory",
     name: "Active Directory",
-    icon: "🏛️",
+    icon: "",
     description:
       "Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound, DCSync, Golden Ticket, ADCS ESC1-8, Zerologon, full domain takeover.",
     status: "available",
@@ -283,7 +283,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "mobile",
     name: "Mobile Pentesting",
-    icon: "📱",
+    icon: "",
     description:
       "Android and iOS application security. APK analysis, SSL pinning bypass, root detection bypass, insecure storage, Frida dynamic instrumentation. OWASP MASVS v2 complete coverage.",
     status: "available",
@@ -298,7 +298,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "wireless",
     name: "Wireless Pentesting",
-    icon: "📡",
+    icon: "",
     description:
       "WPA2 cracking, PMKID attack, Evil Twin AP, WPS PIN brute force, Deauth attacks, Captive portal bypass, 802.11 protocol analysis.",
     status: "coming_soon",
@@ -307,7 +307,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "iot",
     name: "IoT Pentesting",
-    icon: "🔧",
+    icon: "",
     description:
       "Firmware extraction & analysis, UART/JTAG interfaces, default credentials, MQTT/CoAP exploitation, hardware hacking fundamentals.",
     status: "coming_soon",
@@ -316,7 +316,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "ot-ics",
     name: "OT/ICS Pentesting",
-    icon: "🏭",
+    icon: "",
     description:
       "Modbus, DNP3, Profinet protocol attacks. SCADA system testing, HMI exploitation, PLC logic manipulation, industrial network attacks.",
     status: "coming_soon",
@@ -325,7 +325,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "kubernetes",
     name: "Kubernetes Security",
-    icon: "⚙️",
+    icon: "",
     description:
       "K8s RBAC misconfig, pod escape, service account token abuse, etcd exposure, privileged container escape, cluster takeover.",
     status: "coming_soon",
@@ -334,7 +334,7 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   {
     id: "container",
     name: "Container Security",
-    icon: "🐳",
+    icon: "",
     description:
       "Docker socket escape, privileged container abuse, volume mount attacks, registry poisoning, Dockerfile security scanning.",
     status: "coming_soon",
@@ -342,12 +342,12 @@ export const PENTESTING_SUBDOMAINS: SubDomain[] = [
   },
 ];
 
-// ─── Red Team top-level modules ───────────────────────────────
+//  Red Team top-level modules 
 export const RED_TEAM_MODULES: RedTeamModule[] = [
   {
     id: "pentesting",
     name: "Pentesting",
-    icon: "🎯",
+    icon: "",
     description:
       "End-to-end penetration testing across Web, API, Network, Cloud, Active Directory, Mobile, Wireless, IoT, OT/ICS, Kubernetes, and Container environments.",
     status: "available",
@@ -356,7 +356,7 @@ export const RED_TEAM_MODULES: RedTeamModule[] = [
   {
     id: "red-team-ops",
     name: "Red Team Operations",
-    icon: "🔴",
+    icon: "",
     description:
       "Full adversary simulation. C2 frameworks (Cobalt Strike, Havoc, Sliver), persistence, defense evasion, lateral movement, OPSEC.",
     status: "coming_soon",
@@ -364,7 +364,7 @@ export const RED_TEAM_MODULES: RedTeamModule[] = [
   {
     id: "exploit-dev",
     name: "Exploit Development",
-    icon: "💥",
+    icon: "",
     description:
       "Buffer overflows, format strings, heap exploitation, ROP chains, kernel exploits. From basic stack smashing to modern bypass techniques.",
     status: "coming_soon",
@@ -372,7 +372,7 @@ export const RED_TEAM_MODULES: RedTeamModule[] = [
   {
     id: "reverse-engineering",
     name: "Reverse Engineering",
-    icon: "🔍",
+    icon: "",
     description:
       "Binary analysis, Ghidra/IDA disassembly, GDB dynamic analysis, malware reverse engineering, CTF-style RE challenges.",
     status: "coming_soon",
@@ -380,7 +380,7 @@ export const RED_TEAM_MODULES: RedTeamModule[] = [
   {
     id: "social-engineering",
     name: "Social Engineering",
-    icon: "🎭",
+    icon: "",
     description:
       "Phishing simulation, vishing, pretexting, physical security, badge cloning, OSINT-driven targeting campaigns.",
     status: "coming_soon",

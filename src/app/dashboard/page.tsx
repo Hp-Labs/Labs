@@ -1,34 +1,31 @@
 "use client";
 
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   Target, Lock, ChevronRight, Zap, Trophy, Flame, TrendingUp,
-  Terminal, ArrowRight, Bell,
-} from "lucide-react";
+  Terminal, ArrowRight, Bell, Activity, Award } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth";
 import { getRank, getNextRank } from "@/lib/data/types";
 import { ALL_WEB_LABS, ALL_API_LABS } from "@/lib/data/redteam";
 
 const DOMAIN_CATEGORIES = [
-  { id: "red-team", name: "Red Team", icon: "🎯", description: "Pentesting, Exploit Dev, Red Team Ops, Reverse Engineering, Social Engineering", status: "available" as const, href: "/red-team", subCount: "15+ domains", labCount: `${ALL_WEB_LABS.length + ALL_API_LABS.length}+ labs`, color: "var(--hp-primary)", glow: "rgba(191,95,255,0.06)", border: "rgba(191,95,255,0.25)" },
-  { id: "blue-team", name: "Blue Team", icon: "🛡️", description: "SOC Analysis, Threat Hunting, Incident Response, SIEM, Log Analysis", status: "coming_soon" as const, href: "#", subCount: "10+ domains", labCount: "200+ labs", color: "#60a5fa", glow: "rgba(96,165,250,0.06)", border: "rgba(96,165,250,0.2)" },
-  { id: "forensics", name: "Forensics & DFIR", icon: "🔬", description: "Digital Forensics, Malware Analysis, Memory Forensics, Network Forensics", status: "coming_soon" as const, href: "#", subCount: "8+ domains", labCount: "150+ labs", color: "#34d399", glow: "rgba(52,211,153,0.06)", border: "rgba(52,211,153,0.2)" },
-  { id: "grc", name: "GRC & Compliance", icon: "📋", description: "ISO 27001, NIST CSF, SOC 2, GDPR, PCI-DSS", status: "coming_soon" as const, href: "#", subCount: "6+ domains", labCount: "100+ labs", color: "#fbbf24", glow: "rgba(251,191,36,0.06)", border: "rgba(251,191,36,0.2)" },
-  { id: "threat-intel", name: "Threat Intelligence", icon: "🕵️", description: "OSINT, CTI, Dark Web Monitoring, Threat Actor Profiling", status: "coming_soon" as const, href: "#", subCount: "5+ domains", labCount: "80+ labs", color: "#f97316", glow: "rgba(249,115,22,0.06)", border: "rgba(249,115,22,0.2)" },
-  { id: "cloud-security", name: "Cloud Security", icon: "☁️", description: "AWS, GCP, Azure misconfigurations, IAM, S3, Serverless", status: "coming_soon" as const, href: "#", subCount: "3 platforms", labCount: "120+ labs", color: "#a78bfa", glow: "rgba(167,139,250,0.06)", border: "rgba(167,139,250,0.2)" },
+  { id: "red-team", name: "Red Team", icon: "", description: "Pentesting, Exploit Dev, Red Team Ops, Reverse Engineering, Social Engineering", status: "available" as const, href: "/red-team", subCount: "15+ domains", labCount: `${ALL_WEB_LABS.length + ALL_API_LABS.length}+ labs`, color: "var(--hp-primary)", glow: "rgba(191,95,255,0.06)", border: "rgba(191,95,255,0.25)" },
+  { id: "blue-team", name: "Blue Team", icon: "", description: "SOC Analysis, Threat Hunting, Incident Response, SIEM, Log Analysis", status: "coming_soon" as const, href: "#", subCount: "10+ domains", labCount: "200+ labs", color: "#60a5fa", glow: "rgba(96,165,250,0.06)", border: "rgba(96,165,250,0.2)" },
+  { id: "forensics", name: "Forensics & DFIR", icon: "", description: "Digital Forensics, Malware Analysis, Memory Forensics, Network Forensics", status: "coming_soon" as const, href: "#", subCount: "8+ domains", labCount: "150+ labs", color: "#34d399", glow: "rgba(52,211,153,0.06)", border: "rgba(52,211,153,0.2)" },
+  { id: "grc", name: "GRC & Compliance", icon: "", description: "ISO 27001, NIST CSF, SOC 2, GDPR, PCI-DSS", status: "coming_soon" as const, href: "#", subCount: "6+ domains", labCount: "100+ labs", color: "#fbbf24", glow: "rgba(251,191,36,0.06)", border: "rgba(251,191,36,0.2)" },
+  { id: "threat-intel", name: "Threat Intelligence", icon: "", description: "OSINT, CTI, Dark Web Monitoring, Threat Actor Profiling", status: "coming_soon" as const, href: "#", subCount: "5+ domains", labCount: "80+ labs", color: "#f97316", glow: "rgba(249,115,22,0.06)", border: "rgba(249,115,22,0.2)" },
+  { id: "cloud-security", name: "Cloud Security", icon: "", description: "AWS, GCP, Azure misconfigurations, IAM, S3, Serverless", status: "coming_soon" as const, href: "#", subCount: "3 platforms", labCount: "120+ labs", color: "#a78bfa", glow: "rgba(167,139,250,0.06)", border: "rgba(167,139,250,0.2)" },
 ];
 
-const RECENT_NOTIFICATIONS = [
-  { id: 1, text: "New lab added: Log4Shell (CVE-2021-44228) — Critical", time: "2h ago" },
-  { id: 2, text: "Web Pentesting — Medium tier unlocks at 2,000 XP", time: "1d ago" },
-  { id: 3, text: "Blue Team module launching Q2 2026", time: "3d ago" },
-];
+
 
 export default function DashboardPage() {
   const router = useRouter();
+  const [notifications, setNotifications] = useState<any[]>([]);
+  useEffect(() => { fetch('/api/notifications').then(r => r.json()).then(d => { if(d.success) setNotifications(d.data.map((n: any) => ({ id: n.id, text: n.message, time: new Date(n.created_at).toLocaleDateString() }))) }).catch(console.error); }, []);
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
@@ -51,7 +48,25 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-[var(--hp-bg)]" suppressHydrationWarning>
       <Navbar />
-      <div className="pt-24 pb-20 px-6 lg:px-12 max-w-[1440px] mx-auto">
+      <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {user.hasExpiredCollab && (
+          <div className="mb-6 bg-red-900/20 border border-red-500/30 rounded-xl p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-red-500/20 rounded-lg text-red-400">
+                <Target size={20} />
+              </div>
+              <div>
+                <h3 className="text-white font-bold text-sm">Your sponsored/collaboration access has expired.</h3>
+                <p className="text-[var(--hp-text-muted)] text-xs mt-0.5">Your progress is saved, but advanced labs are locked.</p>
+              </div>
+            </div>
+            <Link href="/premium" className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-lg transition-colors">
+              View Plans
+            </Link>
+          </div>
+        )}
+
         <div className="mb-8 relative overflow-hidden rounded-2xl border border-[var(--hp-primary)] bg-[var(--hp-card-bg)]">
           <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 100% 50%, rgba(191,95,255,0.08), transparent)" }} />
           <div className="p-6 relative">
@@ -66,6 +81,18 @@ export default function DashboardPage() {
                   <span className={`text-sm font-semibold ${rank.color}`}>{rank.icon} {rank.rank}</span>
                   <span className="text-[var(--hp-text-muted)] opacity-50 text-xs">•</span>
                   <span className="text-xs text-[var(--hp-text-muted)] font-mono">{user.xp.toLocaleString()} XP</span>
+                  <span className="text-[var(--hp-text-muted)] opacity-50 text-xs">•</span>
+                  <span className="text-xs text-[var(--hp-text-muted)] font-mono uppercase">
+                    Plan: <span className={user.plan !== 'FREE' ? 'text-[var(--hp-primary)] font-bold' : ''}>{user.plan || 'FREE'}</span>
+                  </span>
+                  {user.plan !== 'FREE' && user.premiumUntil && (
+                    <>
+                      <span className="text-[var(--hp-text-muted)] opacity-50 text-xs">•</span>
+                      <span className="text-xs text-[var(--hp-text-muted)] font-mono">
+                        Expires: {new Date(user.premiumUntil).toLocaleDateString()}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <div className="mt-3 w-64 max-w-full">
                   <div className="flex justify-between text-[10px] font-mono text-[var(--hp-text-muted)] mb-1">
@@ -102,7 +129,7 @@ export default function DashboardPage() {
                 Security Domains
               </h2>
               <span className="text-[10px] font-mono text-[var(--hp-text-muted)]">
-                {DOMAIN_CATEGORIES.filter(d => d.status === "available").length} available · {DOMAIN_CATEGORIES.filter(d => d.status === "coming_soon").length} coming soon
+                {DOMAIN_CATEGORIES.filter(d => d.status === "available").length} available  {DOMAIN_CATEGORIES.filter(d => d.status === "coming_soon").length} coming soon
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -119,7 +146,8 @@ export default function DashboardPage() {
                 Notifications
               </h2>
               <div className="space-y-2.5">
-                {RECENT_NOTIFICATIONS.map((n) => (
+                {notifications.length === 0 && <div className="text-[11px] text-[var(--hp-text-muted)]">No new notifications</div>}
+                {notifications.map((n: any) => (
                   <div key={n.id} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-[var(--hp-primary)]" />
                     <div>
@@ -138,14 +166,34 @@ export default function DashboardPage() {
               </h2>
               <div className="space-y-1.5">
                 {[
-                  { label: "Web Pentesting", href: "/red-team/pentesting/web", emoji: "🌐" },
-                  { label: "API Pentesting", href: "/red-team/pentesting/api", emoji: "🔌" },
-                  { label: "Timeline 1947–Present", href: "/timeline", emoji: "📅" },
-                  { label: "Leaderboard", href: "/leaderboard", emoji: "🏆" },
-                  { label: "Certifications", href: "/certifications", emoji: "🎓" },
+                  { label: "Web Pentesting", href: "/red-team/pentesting/web", emoji: "" },
+                  { label: "API Pentesting", href: "/red-team/pentesting/api", emoji: "" },
+                  { label: "Timeline 1947Present", href: "/timeline", emoji: "" },
+                  { label: "Leaderboard", href: "/leaderboard", emoji: "" },
+                  { label: "Certifications", href: "/certifications", emoji: "" },
                 ].map(({ label, href, emoji }) => (
                   <Link key={href} href={href} className="flex items-center gap-2 px-3 py-2 rounded-lg border border-[var(--hp-border)] hover:border-[var(--hp-border-hover)] hover:bg-[var(--hp-primary)]/5 transition-all group">
                     <span className="text-sm">{emoji}</span>
+                    <span className="text-xs text-[var(--hp-text-muted)] group-hover:text-[var(--hp-text)] transition-colors flex-1">{label}</span>
+                    <ChevronRight size={11} className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-primary)] transition-colors" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="lab-card rounded-2xl p-4 mb-4">
+              <h2 className="text-sm font-semibold text-[var(--hp-text)] flex items-center gap-2 mb-3">
+                <Lock size={13} className="text-[var(--hp-primary)]" />
+                Account & Support
+              </h2>
+              <div className="space-y-1.5">
+                {[
+                  { label: "Active Sessions", href: "/profile", icon: Activity },
+                  { label: "Achievements", href: "/profile", icon: Trophy },
+                  { label: "Help & Support", href: "/support", icon: Zap },
+                ].map(({ label, href, icon: Icon }) => (
+                  <Link key={label} href={href} className="flex items-center gap-2 px-3 py-2 rounded-lg border border-[var(--hp-border)] hover:border-[var(--hp-border-hover)] hover:bg-[var(--hp-primary)]/5 transition-all group">
+                    <Icon size={14} className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-primary)]" />
                     <span className="text-xs text-[var(--hp-text-muted)] group-hover:text-[var(--hp-text)] transition-colors flex-1">{label}</span>
                     <ChevronRight size={11} className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-primary)] transition-colors" />
                   </Link>
@@ -160,12 +208,12 @@ export default function DashboardPage() {
               </h2>
               <div className="space-y-2">
                 {[
-                  { label: "Web — Information", key: "web-information", total: ALL_WEB_LABS.filter(l => l.severity === "information").length },
-                  { label: "Web — Low", key: "web-low", total: ALL_WEB_LABS.filter(l => l.severity === "low").length },
-                  { label: "Web — Medium", key: "web-medium", total: ALL_WEB_LABS.filter(l => l.severity === "medium").length },
-                  { label: "API — Information", key: "api-information", total: ALL_API_LABS.filter(l => l.severity === "information").length },
+                  { label: "Web  Information", key: "web-information", total: ALL_WEB_LABS.filter(l => l.severity === "information").length },
+                  { label: "Web  Low", key: "web-low", total: ALL_WEB_LABS.filter(l => l.severity === "low").length },
+                  { label: "Web  Medium", key: "web-medium", total: ALL_WEB_LABS.filter(l => l.severity === "medium").length },
+                  { label: "API  Information", key: "api-information", total: ALL_API_LABS.filter(l => l.severity === "information").length },
                 ].map(({ label, key, total }) => {
-                  const done = (user.completedLevels[key] || []).length;
+                  const done = (user?.completedLevels?.[key] || []).length;
                   const pct = total > 0 ? (done / total) * 100 : 0;
                   return (
                     <div key={key}>
@@ -184,6 +232,32 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      <footer className="py-8 border-t border-[var(--hp-border)] mt-auto bg-[var(--hp-bg)]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-3">
+            <span className="text-lg font-bold tracking-tight text-[var(--hp-text)] font-mono">HpLabs</span>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <a 
+              href="https://buymeacoffee.com/manivarma3p" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center transition-transform hover:scale-105 opacity-90 hover:opacity-100"
+              title="Support HpLabs - Buy Me a Coffee"
+            >
+              <img 
+                src="https://cdn.brandfetch.io/idlFAkJfur/w/192/h/192/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1690821080412" 
+                alt="Buy Me A Coffee" 
+                className="h-10 w-auto rounded-lg"
+              />
+            </a>
+            <div className="text-[var(--hp-text-muted)] text-sm">
+              &copy; {new Date().getFullYear()} HpLabs. From <a href="https://hackerplus.in" target="_blank" rel="noopener noreferrer" className="text-[var(--hp-primary)] hover:underline">HackerPlus</a>.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -222,3 +296,5 @@ function DomainCard({ cat }: { cat: typeof DOMAIN_CATEGORIES[0] }) {
   );
   return isAvailable ? <Link href={cat.href} className="block h-full">{inner}</Link> : <div className="h-full">{inner}</div>;
 }
+
+

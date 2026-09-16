@@ -1,0 +1,443 @@
+--- hardcoded_otp ---
+src\app\api\auth\session\route.ts:12: id: "HP-00000000",
+src\app\api\auth\session\route.ts:15: phone: "0000000000",
+src\app\api\labs\[id]\activity\route.ts:16: // We allow "HP-00000000" to proceed since auth is mocked.
+src\app\api\labs\[id]\activity\route.ts:17: return { userId: "HP-00000000", authSessionId };
+src\app\api\labs\[id]\activity\route.ts:30: const userId = bodyUserId || "HP-00000000";
+src\app\api\support\escalate\route.ts:36: if (!serverUser && userId === "HP-00000000") {
+src\app\api\support\escalate\route.ts:37: serverUser = { id: "HP-00000000", username: "hacker_guest", email: "guest@hplabs.io", phone: "0000000000", isPremium: false };
+src\app\partner-activate\page.tsx:277: placeholder="000000"
+src\app\profile\page.tsx:72: <span className="font-mono text-white">{user?.id || "HP-00000000"}</span>
+src\lib\auth.tsx:176: id: "HP-00000000",
+src\lib\auth.tsx:179: phone: "0000000000",
+src\lib\auth.tsx:293: if (code === storedCode || code === "123456" || code === "639102" || code === "482910") {
+src\lib\data\redteam\pentesting\web\low.ts:182: description: "Applications that accept short, trivial, or easily guessable passwords (like '123456', 'password', or single-character passwords) without enforcing complexity or length rules leave user accounts vulnerable to rapid brute-force attacks.",
+src\lib\services\otpStore.ts:33: const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+src\lib\services\partnerOtpStore.ts:41: const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+--- admin_bypass ---
+src\middleware.ts:5: // SEC-12: Basic protection for admin UI routes (BYPASSED)
+src\app\admin\vuln-pipeline\page.tsx:639: <input type="text" value={tags} onChange={e => setTags(e.target.value)} style={inputStyle} placeholder="e.g. injection, auth-bypass" />
+src\app\api\labs\[id]\activity\route.ts:15: const authSessionId = match ? match[1].trim() : "bypass-session";
+src\app\api\labs\[id]\activity\route.ts:26: // Since auth is bypassed, we parse userId from body, or fallback to guest-bypass
+src\app\api\labs\[id]\activity\route.ts:31: const authSessionId = "bypass-session";
+src\app\api\partner\activate\route.ts:16: // There is NO way to bypass the cap by modifying the request —
+src\app\api\partner\activate\route.ts:53: // ── 3. SERVER-SIDE CAP — cannot be bypassed by client ────
+src\app\api\premium\create-checkout-session\route.ts:42: // Hardcode webhook URL for testing to bypass string interpolation issues in script inject
+src\app\api\support\escalate\route.ts:35: // Fallback for guest-bypass
+src\app\certifications\page.tsx:27: "Comprehensive web application security certification covering OWASP Top 10, injection attacks, authentication bypass, XSS, SSRF, and business logic flaws.",
+src\app\red-team\pentesting\[domain]\page.tsx:256: {severity === "high" && "Severe vulnerabilities with direct impact — RCE, SQLi, advanced bypass"}
+src\app\red-team\pentesting\[domain]\[severity]\[level]\page.tsx:55: // Strict Unlock Authorization Check — prevents URL bypass glitches
+src\lib\data\historicalVulnerabilities.ts:121: description: "AT&T long-distance trunk lines used in-band signaling where a 2600 Hz audio tone signaled trunk line disconnect, allowing callers to enter operator mode and bypass billing.",
+src\lib\data\historicalVulnerabilities.ts:129: impact: "Unauthenticated toll bypass and administrative trunk line takeover across international telecommunication networks.",
+src\lib\data\historicalVulnerabilities.ts:341: title: "Bypass Authentication Syntax",
+src\lib\data\historicalVulnerabilities.ts:646: realWorldExample: "Crafted HTTP POST request to Ivanti web gateway bypassing authentication middleware.",
+src\lib\data\historicalVulnerabilities.ts:734: name: "DeepSeek-R1 Indirect Prompt Injection & Guardrail Bypass",
+src\lib\data\historicalVulnerabilities.ts:745: impact: "Bypass of safety alignment, system prompt extraction, and unintended tool call execution.",
+src\lib\data\historicalVulnerabilities.ts:788: description: "Flaw in Kubernetes RBAC token validation allowing unprivileged pod service account tokens to escalate permissions to cluster-admin scope via API server field validation bypass.",
+src\lib\data\historicalVulnerabilities.ts:897: impact: "Real-time zero-day authentication bypass and elevated data disclosure.",
+src\lib\data\vulnerabilities.ts:173: "Foundation of privilege escalation, CSRF, and authorization bypass. Any time a high-privilege process acts on behalf of a lower-privilege one without proper validation, a confused deputy exists.",
+src\lib\data\vulnerabilities.ts:327: name: "HTTP Basic Authentication Bypass",
+src\lib\data\vulnerabilities.ts:459: "SQL Injection was first formally documented by Jeff Forristal in 1998 (Phrack Magazine). It occurs when user input is directly concatenated into SQL queries without sanitization. An attacker can manipulate the query logic to bypass authentication, dump databases, or execute OS commands.",
+src\lib\data\vulnerabilities.ts:461: "Authentication bypass, full database dump, data deletion, server takeover via xp_cmdshell (MSSQL).",
+src\lib\data\vulnerabilities.ts:482: title: "Bypass Authentication",
+src\lib\data\vulnerabilities.ts:483: description: "Use classic SQLi to bypass the login.",
+src\lib\data\vulnerabilities.ts:504: tags: ["sqli", "sql-injection", "database", "authentication-bypass", "owasp-top-10"],
+src\lib\data\vulnerabilities.ts:540: title: "Bypass Filters",
+src\lib\data\vulnerabilities.ts:894: "Remote Code Execution, authentication bypass, privilege escalation, DoS.",
+src\lib\data\vulnerabilities.ts:947: "JSON Web Tokens (JWT) with the 'none' algorithm attack allows attackers to forge tokens without a valid signature. Some JWT libraries (pre-2016 versions) accept 'alg: none' tokens as valid, bypassing authentication entirely. Simple to exploit — just change the algorithm and strip the signature.",
+src\lib\data\vulnerabilities.ts:948: impact: "Complete authentication bypass. Impersonate any user including admins.",
+src\lib\data\vulnerabilities.ts:959: tags: ["jwt", "authentication-bypass", "web", "api", "token-forgery"],
+src\lib\data\vulnerabilities.ts:1085: "Unauthenticated SQLi → authentication bypass → data exfiltration. Mass exploitation by Cl0p ransomware gang.",
+src\lib\data\redteam\index.ts:213: "Web application security from recon to critical RCE. Every vulnerability 1990–2026 — OWASP Top 10, logic flaws, injection, auth bypass, modern frameworks.",
+src\lib\data\redteam\index.ts:288: "Android and iOS application security. APK analysis, SSL pinning bypass, root detection bypass, insecure storage, Frida dynamic instrumentation. OWASP MASVS v2 complete coverage.",
+src\lib\data\redteam\index.ts:303: "WPA2 cracking, PMKID attack, Evil Twin AP, WPS PIN brute force, Deauth attacks, Captive portal bypass, 802.11 protocol analysis.",
+src\lib\data\redteam\index.ts:369: "Buffer overflows, format strings, heap exploitation, ROP chains, kernel exploits. From basic stack smashing to modern bypass techniques.",
+src\lib\data\redteam\pentesting\ad\labs.ts:320: description: "You will test the Domain Controller for a common misconfiguration: allowing anonymous LDAP binds. If enabled, an attacker can query the directory for users, groups, and policies without providing any credentials. This completely bypasses the need for initial access to begin reconnaissance.",
+src\lib\data\redteam\pentesting\ad\labs.ts:905: description: "You have compromised the NTLM hash of a machine account (or service account). You will use this hash to create a forged Kerberos Service Ticket (a 'Silver Ticket'). This ticket grants you administrative access to the specific service (e.g., CIFS/SMB) on that machine, bypassing the Domain Controller entirely for authentication.",
+src\lib\data\redteam\pentesting\ad\labs.ts:1034: history: "Discovered in late 2021, the NoPac attack chain is a brilliant abuse of Kerberos logic. It bypasses the PAC (Privilege Attribute Certificate) verification. Because any user can typically add up to 10 machines to a domain, this attack can be executed by almost any compromised account.",
+src\lib\data\redteam\pentesting\ad\labs.ts:1237: impact: "Provides the attacker with a universal password to access any account in the domain, bypassing password changes.",
+src\lib\data\redteam\pentesting\ad\labs.ts:1292: description: "In a hybrid environment, you will compromise the on-premises server running Azure AD Connect. This service synchronizes on-prem AD with Azure AD (Entra ID). You will abuse its highly privileged AD service account to extract password hashes directly from the on-prem Domain Controller, effectively bypassing normal DCSync detections.",
+src\lib\data\redteam\pentesting\api\ext.ts:16: description: "API responses often include rate limiting headers (X-RateLimit-Limit, X-RateLimit-Remaining, Retry-After) that reveal quota limits, reset windows, and enforcement mechanisms. This information guides brute force, DoS, and bypass attempts.",
+src\lib\data\redteam\pentesting\api\ext.ts:17: history: "Rate limiting became standard API practice post-2014 following mass credential stuffing attacks. RFC 6585 standardized 429 responses. Header enumeration is a prerequisite for rate limit bypass attacks.",
+src\lib\data\redteam\pentesting\api\ext.ts:25: impact: "Reveals rate limiting parameters enabling precise bypass attacks and brute force calibration.",
+src\lib\data\redteam\pentesting\api\ext.ts:30: { step: 3, title: "Submit Flag", description: "Find flag in rate limit bypass response.", command: "curl -s https://<TARGET>/api/v1/flag -H 'X-Forwarded-For: 127.0.0.2' -H 'Authorization: Bearer <token>'", hint: "Flag returned when rate limit bypass is demonstrated." },
+src\lib\data\redteam\pentesting\api\ext.ts:63: name: "GraphQL Query Depth Limit Bypass (Nested Introspection)",
+src\lib\data\redteam\pentesting\api\ext.ts:64: shortName: "GraphQL Depth Bypass",
+src\lib\data\redteam\pentesting\api\ext.ts:137: description: "API endpoints backed by MongoDB process JSON request bodies where operators like $gt, $ne, $where can be injected via parameter names. This bypasses authentication, extracts data, or enables server-side JavaScript execution.",
+src\lib\data\redteam\pentesting\api\ext.ts:146: impact: "Authentication bypass, data extraction, and in some cases server-side JavaScript execution via MongoDB operator injection.",
+src\lib\data\redteam\pentesting\api\ext.ts:154: xpReward: 400, timeLimitMinutes: 90, tags: ["api", "nosql-injection", "mongodb", "authentication-bypass"],
+src\lib\data\redteam\pentesting\api\information.ts:68: impact: "Guides targeted authentication bypass attacks.",
+src\lib\data\redteam\pentesting\api\information.ts:187: { step: 2, title: "Compare Security Controls", description: "Check if `/v1` lacks authentication required in `/v2`.", command: "curl -s http://<TARGET_DOMAIN>/api/v1/users", hint: "Check for authorization bypass." },
+src\lib\data\redteam\pentesting\api\labs.ts:69: realWorldExample: "Multiple banking and healthcare APIs suffered JWT none-algorithm bypasses between 2015–2020.",
+src\lib\data\redteam\pentesting\api\labs.ts:80: name: "API Rate Limiting Header Bypass",
+src\lib\data\redteam\pentesting\api\labs.ts:81: shortName: "Rate Limit Header Bypass",
+src\lib\data\redteam\pentesting\api\labs.ts:82: description: "Rate limiters relying on client-supplied IP headers (`X-Forwarded-For`, `X-Real-IP`) can be bypassed by rotating the header value on each request.",
+src\lib\data\redteam\pentesting\api\labs.ts:91: impact: "Bypasses rate limiting for brute-force attacks.",
+src\lib\data\redteam\pentesting\api\labs.ts:92: realWorldExample: "Zoom (2020): /signin rate limits were bypassed using X-Forwarded-For header rotation.",
+src\lib\data\redteam\pentesting\api\labs.ts:96: { step: 3, title: "Submit Flag", description: "Brute force admin login with header rotation to get flag.", command: "curl -H 'X-Forwarded-For: 10.0.0.2' http://<TARGET_DOMAIN>/api/v1/login -d 'user=admin&pass=admin123'", hint: "Returns flag." }
+src\lib\data\redteam\pentesting\api\labs.ts:99: xpReward: 180, timeLimitMinutes: 90, tags: ["api", "rate-limit", "header-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\api\labs.ts:151: description: "Submitting duplicate keys in JSON request bodies (`{\"role\":\"user\", \"role\":\"admin\"}`) causes backends to process the second key, bypassing validation checks.",
+src\lib\data\redteam\pentesting\api\labs.ts:160: impact: "Bypasses input sanitizers that only check the first instance of a JSON key.",
+src\lib\data\redteam\pentesting\api\labs.ts:161: realWorldExample: "Node.js JSON parsers accepting duplicate keys enabled WAF bypasses on JSON endpoints.",
+src\lib\data\redteam\pentesting\api\labs.ts:174: description: "Exploiting path normalization discrepancies (`/api/v1/user/..;admin/data`) to bypass reverse proxy authorization rules and reach protected internal API routes.",
+src\lib\data\redteam\pentesting\api\labs.ts:175: history: "Path traversal in reverse proxies (Nginx, Tomcat, Envoy) became a major authorization bypass vector in microservice setups.",
+src\lib\data\redteam\pentesting\api\labs.ts:183: impact: "Bypasses gateway authorization rules to reach restricted internal endpoints.",
+src\lib\data\redteam\pentesting\api\labs.ts:187: { step: 2, title: "Verify Access", description: "Confirm access to restricted admin endpoint.", command: "curl -s http://<TARGET_DOMAIN>/api/v1/..;admin/flag", hint: "Bypasses proxy ACL." },
+src\lib\data\redteam\pentesting\api\labs.ts:191: xpReward: 155, timeLimitMinutes: 50, tags: ["api", "path-traversal", "proxy-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\api\labs.ts:197: description: "Bypassing security filters by substituting HTTP verbs (e.g. `POST` → `GET` or `HEAD`) when authorization controls are configured to inspect specific verbs only.",
+src\lib\data\redteam\pentesting\api\labs.ts:198: history: "HTTP verb tampering has been documented since Java EE security constraint bypasses in 2008.",
+src\lib\data\redteam\pentesting\api\labs.ts:207: realWorldExample: "Security rules restricting POST /admin/delete were bypassed by submitting GET /admin/delete.",
+src\lib\data\redteam\pentesting\api\labs.ts:220: description: "APIs expecting `application/json` can sometimes be tricked into parsing `application/x-www-form-urlencoded` or `text/plain`, bypassing WAF rules that only inspect JSON content.",
+src\lib\data\redteam\pentesting\api\labs.ts:221: history: "Content-Type switching emerged as a standard WAF bypass technique for API endpoints in 2017.",
+src\lib\data\redteam\pentesting\api\labs.ts:229: impact: "Bypasses JSON-specific WAF rules and body sanitizers.",
+src\lib\data\redteam\pentesting\api\labs.ts:230: realWorldExample: "A WAF blocking SQL injection in JSON payloads was bypassed by sending form-urlencoded data with `Content-Type: text/plain`.",
+src\lib\data\redteam\pentesting\api\labs.ts:233: { step: 2, title: "Bypass Body Inspection", description: "Send payload under mismatched content type.", command: "curl -X POST http://<TARGET_DOMAIN>/api/v1/login -H 'Content-Type: application/x-www-form-urlencoded' -d '{\"user\":\"admin\"}'", hint: "Backend parses payload." },
+src\lib\data\redteam\pentesting\api\labs.ts:237: xpReward: 140, timeLimitMinutes: 40, tags: ["api", "content-type", "waf-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\api\labs.ts:279: realWorldExample: "Multiple banking and enterprise APIs were vulnerable to authentication bypass via public key HMAC signing.",
+src\lib\data\redteam\pentesting\api\labs.ts:314: description: "GraphQL allows batching multiple queries into a single HTTP POST request (`[{\"query\":...}, {\"query\":...}]`). Attackers send thousands of login or OTP verification attempts in a single request, bypassing rate limiters.",
+src\lib\data\redteam\pentesting\api\labs.ts:323: impact: "Bypasses rate limiting for rapid password or OTP cracking.",
+src\lib\data\redteam\pentesting\api\labs.ts:324: realWorldExample: "Shopify bug bounty: Researchers demonstrated batching 1,000 password checks in 1 HTTP request to bypass login throttling.",
+src\lib\data\redteam\pentesting\api\labs.ts:345: impact: "Bypasses security controls by targeting unpatched staging/dev API endpoints.",
+src\lib\data\redteam\pentesting\api\labs.ts:539: description: "Manipulating the `kid` (Key ID) header parameter in a JWT to point to a known file on the filesystem (e.g. `/dev/null` or static assets) whose contents are known, allowing signature verification bypass using that file's contents as HMAC secret.",
+src\lib\data\redteam\pentesting\api\labs.ts:548: impact: "Signature verification bypass, enabling token forgery for any account.",
+src\lib\data\redteam\pentesting\api\labs.ts:562: description: "Injecting gRPC request metadata headers (`authorization`, `x-user-id`) to bypass upstream API gateway authentication checks.",
+src\lib\data\redteam\pentesting\api\labs.ts:574: { step: 1, title: "Send Spoofed gRPC Metadata", description: "Pass `x-user-id: 1` in gRPC metadata.", command: "grpcurl -plaintext -H 'x-user-id: 1' <TARGET_DOMAIN>:50051 UserService.GetAdminData", hint: "Bypasses auth check." },
+src\lib\data\redteam\pentesting\api\labs.ts:578: xpReward: 630, timeLimitMinutes: 110, tags: ["api", "grpc", "metadata", "auth-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\api\labs.ts:616: impact: "Global property override, authentication bypass, or RCE in Node.js API backends.",
+src\lib\data\redteam\pentesting\api\labs.ts:678: name: "API Gateway Authentication Bypass via Header Injection",
+src\lib\data\redteam\pentesting\api\labs.ts:679: shortName: "API Gateway Auth Bypass",
+src\lib\data\redteam\pentesting\api\labs.ts:692: { step: 1, title: "Inject Gateway Internal Header", description: "Send request with `X-User-Role: admin` header.", command: "curl -H 'X-User-Role: admin' -H 'X-User-Id: 1' http://<TARGET_DOMAIN>/api/v1/admin/dashboard", hint: "Bypasses authentication middleware." },
+src\lib\data\redteam\pentesting\api\labs.ts:696: xpReward: 1100, timeLimitMinutes: 180, tags: ["api", "gateway", "auth-bypass", "header-injection"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\api\labs.ts:702: description: "Exploiting GraphQL field aliases to execute 10,000+ complex queries in a single HTTP POST request payload, bypassing rate limits and completely locking the database pool.",
+src\lib\data\redteam\pentesting\api\labs.ts:714: { step: 1, title: "Construct Aliased Query Payload", description: "Send 100 aliased queries in single POST.", command: "curl -X POST http://<TARGET_DOMAIN>/graphql -H 'Content-Type: application/json' -d '{\"query\":\"{a:user(id:1){name} b:user(id:2){name} c:user(id:3){name}}\"}'", hint: "Bypasses request-based rate limits." },
+src\lib\data\redteam\pentesting\api\labs.ts:756: realWorldExample: "Enterprise identity providers accepting untrusted `jku` header URLs suffered site-wide authentication bypasses.",
+src\lib\data\redteam\pentesting\api\labs.ts:763: xpReward: 1300, timeLimitMinutes: 180, tags: ["api", "jwt", "jku", "auth-bypass", "critical"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\cloud\labs.ts:458: description: "This lab highlights a misconfiguration where a CloudFront CDN is used, but the underlying origin (like an S3 bucket) is still directly accessible. You will bypass the CDN's intended security controls by accessing the origin directly. This demonstrates the necessity of implementing Origin Access Control (OAC). You will use DNS tools to uncover the origin infrastructure.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:459: history: "A common mistake when deploying CDNs is forgetting to restrict access to the origin server, rendering WAFs or geo-restrictions applied at the CDN level useless. This 'origin bypass' technique is a staple in web application and cloud infrastructure testing.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:467: impact: "Bypass of CDN-level security controls (like WAF), allowing direct access to backend resources.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:468: realWorldExample: "Attackers bypassed a company's WAF by finding the direct IP of the origin server and exploiting a vulnerability there.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:473: "Step 4: Access the origin directly, bypassing the CloudFront domain.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:621: description: "This lab requires you to identify and exploit a Server-Side Request Forgery (SSRF) vulnerability in a web application to access the EC2 Instance Metadata Service. Unlike the low-level lab, you must craft the specific payload to bypass application filters. You will retrieve the IAM role credentials and use them to access restricted resources. This simulates a more realistic attack scenario.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:635: "Step 3: Craft a payload to bypass basic URL filtering and reach 169.254.169.254.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:758: impact: "Allows attackers to bypass authentication and consume API resources, potentially leading to data breaches or financial loss.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:880: description: "This advanced lab requires exploiting a complex SSRF vulnerability to reach the IMDSv1 endpoint and steal highly privileged credentials. You must bypass internal network controls and web application firewalls. Once obtained, you will use the credentials to demonstrate full administrative access over the AWS environment.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:893: "Step 2: Bypass WAF rules using alternate IP representations.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:1152: "Step 2: Exploit the SSRF flaw to bypass external access controls.",
+src\lib\data\redteam\pentesting\cloud\labs.ts:1235: description: "You will exploit a 'confused deputy' vulnerability to assume a role in a completely different AWS account. You will find a role in the target account that trusts an external entity (like a SaaS provider) without using an ExternalId. You will then use the third-party service to assume the role on your behalf, bypassing intended access controls.",
+src\lib\data\redteam\pentesting\mobile\critical.ts:162: name: "Janus APK Signature Bypass (CVE-2017-13156)",
+src\lib\data\redteam\pentesting\mobile\critical.ts:163: shortName: "Janus Signature Bypass",
+src\lib\data\redteam\pentesting\mobile\critical.ts:173: impact: "Malicious code executes with full permissions of a legitimate signed application — bypassing signature verification and security controls.",
+src\lib\data\redteam\pentesting\mobile\critical.ts:182: xpReward: 930, timeLimitMinutes: 120, tags: ["mobile", "android", "janus", "signature-bypass", "cve-2017-13156"],
+src\lib\data\redteam\pentesting\mobile\high.ts:114: description: "Apps implementing X509TrustManager with empty checkServerTrusted() and checkClientTrusted() methods — or returning null from getAcceptedIssuers() — trust any TLS certificate including self-signed, expired, and attacker-issued certificates. This enables full MitM without bypassing certificate pinning.",
+src\lib\data\redteam\pentesting\mobile\high.ts:139: description: "Frida scripts hook into the target application's authentication methods to intercept plaintext credentials at the point they are submitted — before encryption, after decryption, or at network transmission. This bypasses TLS and local encryption.",
+src\lib\data\redteam\pentesting\mobile\high.ts:148: impact: "Plaintext credentials intercepted at the application layer before encryption — bypassing TLS pinning, custom encryption, and device-level protections.",
+src\lib\data\redteam\pentesting\mobile\high.ts:164: description: "When an exported Activity processes an Intent containing embedded Intents (forwarding pattern) without validating the embedded target, attackers supply intents targeting private Activities — bypassing Android's component export restrictions and launching internal-only screens.",
+src\lib\data\redteam\pentesting\mobile\high.ts:173: impact: "Private Activities launched without direct access, bypassing authentication screens, reaching admin panels, and accessing sensitive functionality restricted to internal use.",
+src\lib\data\redteam\pentesting\mobile\high.ts:213: shortName: "Keystore Backup Bypass",
+src\lib\data\redteam\pentesting\mobile\high.ts:236: name: "iOS App Transport Security (ATS) Bypass",
+src\lib\data\redteam\pentesting\mobile\high.ts:237: shortName: "iOS ATS Bypass",
+src\lib\data\redteam\pentesting\mobile\high.ts:247: impact: "ATS bypass allows plaintext HTTP traffic and weak TLS to production API endpoints — exposing session tokens and sensitive data to network-adjacent attackers.",
+src\lib\data\redteam\pentesting\mobile\high.ts:251: { step: 2, title: "Test Cleartext Traffic", description: "Verify HTTP traffic is accepted.", command: "# Intercept HTTP requests in Burp\n# Replace HTTPS URLs with HTTP in intercepted requests", hint: "If app accepts HTTP responses, ATS is disabled or bypassed." },
+src\lib\data\redteam\pentesting\mobile\high.ts:252: { step: 3, title: "Configure MitM", description: "Use ATS bypass to intercept traffic.", command: "# Set device proxy to mitmproxy/Burp\n# ATS bypass allows full TLS interception without CA install on iOS 14+", hint: "NSAllowsArbitraryLoads bypasses certificate validation entirely." },
+src\lib\data\redteam\pentesting\mobile\high.ts:256: xpReward: 540, timeLimitMinutes: 90, tags: ["mobile", "ios", "ats", "app-transport-security", "tls-bypass"],
+src\lib\data\redteam\pentesting\mobile\information.ts:123: impact: "Exported components allow third-party apps to trigger application functionality, bypass authentication screens, or access sensitive data without user consent.",
+src\lib\data\redteam\pentesting\mobile\information.ts:285: description: "SSL/TLS certificate pinning prevents man-in-the-middle interception by validating the server certificate against a pinned hash or public key. Detecting whether an app implements pinning is the prerequisite step before attempting bypass.",
+src\lib\data\redteam\pentesting\mobile\information.ts:295: realWorldExample: "Security researchers identify pinning implementation by inspecting OkHttp, TrustKit, or network_security_config before choosing the appropriate bypass technique.",
+src\lib\data\redteam\pentesting\mobile\information.ts:318: impact: "Hardcoded test credentials provide direct authentication bypasses. Debug endpoints expose internal API functionality without production security controls.",
+src\lib\data\redteam\pentesting\mobile\information.ts:319: realWorldExample: "Researchers found hardcoded admin credentials in a major IoT companion app — username 'admin', password 'admin1234' — granting access to all customer accounts.",
+src\lib\data\redteam\pentesting\mobile\information.ts:358: history: "TLS enumeration has been standard in network pentesting since the 1990s. Mobile-specific TLS weaknesses became prominent as apps bypassed system TLS settings using custom TrustManagers.",
+src\lib\data\redteam\pentesting\mobile\low.ts:24: realWorldExample: "An SMS receiver in a banking app was exported without permission, allowing any app to fake SMS verification codes and bypass OTP authentication.",
+src\lib\data\redteam\pentesting\mobile\low.ts:158: name: "Weak Local Authentication (PIN/Pattern Bypass)",
+src\lib\data\redteam\pentesting\mobile\low.ts:159: shortName: "Local Auth Bypass",
+src\lib\data\redteam\pentesting\mobile\low.ts:160: description: "Apps implementing custom local PIN or pattern authentication without binding to cryptographic keys (Android Keystore) are vulnerable to offline bypass — the PIN hash can be extracted and compared without interacting with the app's UI.",
+src\lib\data\redteam\pentesting\mobile\low.ts:161: history: "Weak local authentication bypass has been documented in MASVS-AUTH since 2015. Cryptographic key binding to local auth is the recommended mitigation.",
+src\lib\data\redteam\pentesting\mobile\low.ts:169: impact: "Local authentication bypassed without user knowledge, granting access to encrypted app sections protected only by PIN/pattern.",
+src\lib\data\redteam\pentesting\mobile\low.ts:174: { step: 3, title: "Submit Flag", description: "Access the flag screen using the bypassed PIN.", command: "# Enter cracked PIN in app to access protected area", hint: "Flag displayed after successful PIN entry." },
+src\lib\data\redteam\pentesting\mobile\low.ts:177: xpReward: 140, timeLimitMinutes: 60, tags: ["mobile", "android", "local-auth", "pin-bypass"],
+src\lib\data\redteam\pentesting\mobile\medium.ts:37: name: "SSL Pinning Bypass via Frida Runtime Hook",
+src\lib\data\redteam\pentesting\mobile\medium.ts:38: shortName: "SSL Pinning Bypass",
+src\lib\data\redteam\pentesting\mobile\medium.ts:40: history: "Frida was created by Ole André Vadla Ravnås in 2012. Mobile SSL pinning bypass scripts became standard in mobile pentesting by 2015, with the release of objection and frida-universal-unpinner.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:49: realWorldExample: "Security researchers routinely bypass SSL pinning in mobile banking apps using frida-universal-unpinner to inspect private API endpoints and authentication flows.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:57: xpReward: 380, timeLimitMinutes: 90, tags: ["mobile", "frida", "ssl-pinning-bypass", "dynamic-instrumentation"],
+src\lib\data\redteam\pentesting\mobile\medium.ts:62: name: "Root/Jailbreak Detection Bypass",
+src\lib\data\redteam\pentesting\mobile\medium.ts:63: shortName: "Root Detection Bypass",
+src\lib\data\redteam\pentesting\mobile\medium.ts:64: description: "Mobile apps detecting rooted/jailbroken devices implement various checks — binary presence (/sbin/su), package names (com.noshufou.android.su), build property checks. These can be bypassed using Frida hooks, Magisk modules, or direct binary manipulation.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:65: history: "Root detection has been an arms race since Android rooting became widespread in 2010. Each detection method spawns a bypass — SafetyNet (2016) → Magisk Hide → Play Integrity API (2023).",
+src\lib\data\redteam\pentesting\mobile\medium.ts:73: impact: "Root detection bypass enables access to restricted app functionality, security audit mode, and allows running pentest tools on the target app.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:74: realWorldExample: "Banking apps requiring non-rooted devices were bypassed using Magisk Hide, allowing testers to access the full banking UI and test all functionality on rooted test devices.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:79: { step: 4, title: "Submit Flag", description: "Access flag in restricted screen.", command: "# Flag displayed on dashboard after bypassing root detection", hint: "Flag visible in the app's main dashboard." },
+src\lib\data\redteam\pentesting\mobile\medium.ts:82: xpReward: 360, timeLimitMinutes: 90, tags: ["mobile", "root-detection", "bypass", "frida"],
+src\lib\data\redteam\pentesting\mobile\medium.ts:162: name: "Insecure Biometric Authentication Bypass",
+src\lib\data\redteam\pentesting\mobile\medium.ts:163: shortName: "Biometric Auth Bypass",
+src\lib\data\redteam\pentesting\mobile\medium.ts:164: description: "Biometric authentication that doesn't bind a cryptographic key to the biometric authentication result can be bypassed — the app checks a boolean 'authenticated' flag rather than a cryptographic proof. Frida hooks return the authenticated callback without actual biometric verification.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:173: impact: "Biometric authentication bypassed without fingerprint or face enrollment, granting access to biometric-protected app sections.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:174: realWorldExample: "Multiple mobile banking apps using BiometricPrompt without CryptoObject binding were bypassed with simple Frida hooks returning the onAuthenticationSucceeded callback.",
+src\lib\data\redteam\pentesting\mobile\medium.ts:177: { step: 2, title: "Hook Authentication Callback", description: "Frida script to trigger success callback.", command: "frida -U -f <package> --no-pause -l biometric_bypass.js\n# biometric_bypass.js triggers onAuthenticationSucceeded manually", hint: "Call the callback directly without biometric interaction." },
+src\lib\data\redteam\pentesting\mobile\medium.ts:178: { step: 3, title: "Submit Flag", description: "Access protected screen after bypass.", command: "# Flag displayed on biometric-protected dashboard", hint: "Flag visible after biometric bypass succeeds." },
+src\lib\data\redteam\pentesting\mobile\medium.ts:181: xpReward: 420, timeLimitMinutes: 90, tags: ["mobile", "android", "biometric", "auth-bypass", "frida"],
+src\lib\data\redteam\pentesting\network\ext.ts:290: name: "Cisco IOS XE Web UI Auth Bypass RCE (CVE-2023-20198)",
+src\lib\data\redteam\pentesting\network\ext.ts:291: shortName: "Cisco IOS XE Auth Bypass",
+src\lib\data\redteam\pentesting\network\ext.ts:292: description: "CVE-2023-20198 is a CVSS 10.0 authentication bypass in Cisco IOS XE Web UI — allowing unauthenticated remote attackers to create a new admin-level user account on affected devices. Combined with CVE-2023-20273 (command injection), full RCE is achieved on Cisco network infrastructure.",
+src\lib\data\redteam\pentesting\network\ext.ts:305: { step: 2, title: "Create Backdoor Admin User (CVE-2023-20198)", description: "Exploit auth bypass to create admin.", command: "curl -k -X POST 'https://<TARGET>/webui/logoutconfirm.html?logon_hash=1' -d 'username=attacker&password=Attacker1234!'", hint: "Specific endpoint bypasses auth and creates user." },
+src\lib\data\redteam\pentesting\network\ext.ts:310: xpReward: 1000, timeLimitMinutes: 90, tags: ["network", "cisco", "ios-xe", "auth-bypass", "cve-2023-20198"],
+src\lib\data\redteam\pentesting\network\information.ts:139: { step: 2, title: "TCP Traceroute", description: "Use TCP SYN packets to bypass ICMP-blocking firewalls.", command: "nmap --traceroute -sS <TARGET_IP>", hint: "Nmap's traceroute works through most firewalls that block ICMP." },
+src\lib\data\redteam\pentesting\network\information.ts:252: { step: 4, title: "ICMP Timestamp Request", description: "Use ICMP timestamp to bypass ping-blocking firewalls.", command: "nmap -PP <TARGET_IP>", hint: "-PP sends ICMP Timestamp requests. Some firewalls block Echo but allow Timestamp." },
+src\lib\data\redteam\pentesting\network\labs.ts:66: impact: "Complete credential capture for any device using Telnet, allowing full authentication bypass and lateral movement to the target device.",
+src\lib\data\redteam\pentesting\network\labs.ts:411: realWorldExample: "Red teams regularly use IPv6 attacks to bypass IPv4-only security monitoring. In an environment where IPv4 MITM triggers IDS alerts, the same attack over IPv6 goes undetected.",
+src\lib\data\redteam\pentesting\network\labs.ts:604: history: "PrintNightmare was accidentally disclosed publicly as a PoC before Microsoft could patch it in June 2021. The vulnerability affected all Windows versions. Despite patches, new bypasses were discovered repeatedly. The Print Spooler service was finally recommended to be disabled on DCs and non-printing servers.",
+src\lib\data\redteam\pentesting\network\labs.ts:831: description: "NoPac combines two AD vulnerabilities: CVE-2021-42278 (sAMAccountName spoofing) and CVE-2021-42287 (Kerberos PAC bypass). Any standard domain user can spoof a Domain Controller's computer name, then request a service ticket using PAC bypass, ultimately obtaining a Domain Admin TGS ticket — complete domain compromise from a regular user account.",
+src\lib\data\redteam\pentesting\network\labs.ts:840: impact: "Any domain user can escalate to domain admin in seconds — bypassing all privilege requirements and Active Directory security boundaries without any additional conditions.",
+src\lib\data\redteam\pentesting\network\labs.ts:844: { step: 2, title: "Run NoPac/Sam-the-Admin", description: "Execute the full NoPac attack chain.", command: "python3 noPac.py <DOMAIN>/<USER>:<PASS> -dc-ip <DC_IP> -dc-host <DC_HOSTNAME> -shell --impersonate administrator", hint: "noPac.py automates sAMAccountName spoofing + PAC bypass for a shell." },
+src\lib\data\redteam\pentesting\web\critical.ts:73: { step: 2, title: "Trigger ProxyLogon SSRF", description: "Send backend cookie SSRF payload.", hint: "Bypasses authentication." },
+src\lib\data\redteam\pentesting\web\critical.ts:119: { step: 2, title: "Inject SQL in Session Header", description: "Inject SQL into session headers.", hint: "Bypasses auth check." },
+src\lib\data\redteam\pentesting\web\high.ts:14: description: "Classic SQL Injection inserts malicious SQL code into user-controlled input, interfering with database queries. Error-based techniques use database error messages to extract data — enabling full database dumps, authentication bypass, file operations, and sometimes OS command execution.",
+src\lib\data\redteam\pentesting\web\high.ts:23: impact: "Dump entire database, bypass authentication, read/write files on the server filesystem.",
+src\lib\data\redteam\pentesting\web\high.ts:121: { step: 2, title: "Bypass Extension Restrictions", description: "Try `.phtml`, `.php5`, `.pHp`.", hint: "Bypass extension blacklist." },
+src\lib\data\redteam\pentesting\web\high.ts:131: description: "SSRF allows an attacker to induce the server-side application to make HTTP requests to an arbitrary domain or internal system. SSRF can be used to scan internal networks, access cloud metadata endpoints (e.g. AWS IMDS `169.254.169.254`), and bypass internal firewalls.",
+src\lib\data\redteam\pentesting\web\high.ts:222: name: "NoSQL Injection (MongoDB Authentication Bypass)",
+src\lib\data\redteam\pentesting\web\high.ts:224: description: "NoSQL Injection occurs when user input is passed into NoSQL query objects (like MongoDB operator queries) without sanitization. Passing MongoDB operator objects like `{\"$ne\": null}` in JSON payloads can bypass authentication or extract database data.",
+src\lib\data\redteam\pentesting\web\high.ts:233: impact: "Authentication bypass, full data extraction from MongoDB collections.",
+src\lib\data\redteam\pentesting\web\high.ts:238: { step: 3, title: "Submit the Flag", description: "Bypass auth to retrieve flag from admin endpoint.", hint: "The flag is returned upon admin session creation." }
+src\lib\data\redteam\pentesting\web\high.ts:241: xpReward: 600, timeLimitMinutes: 110, tags: ["nosql", "mongodb", "injection", "auth-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\web\high_ext.ts:16: history: "Second-order SQL injection was documented by David Litchfield in 2004. It bypasses input-time filtering because the malicious payload is stored as legitimate data and only executes when retrieved for a secondary database operation.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:22: impact: "Full database compromise including data exfiltration, authentication bypass, and potentially OS command execution — identical to first-order SQLi but with a delayed trigger.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:28: { step: 4, title: "Submit Flag", description: "Use second-order SQLi to bypass authentication or extract the flag.", hint: "The stored payload executes in the password change query — use it to access the admin account." },
+src\lib\data\redteam\pentesting\web\high_ext.ts:59: description: "LDAP injection occurs when user-supplied input is incorporated into LDAP queries without proper sanitization, allowing attackers to manipulate LDAP filter logic to bypass authentication, enumerate directory users, or extract sensitive directory data.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:66: impact: "Authentication bypass, user enumeration, extraction of sensitive directory attributes including hashed passwords and group memberships.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:67: realWorldExample: "Enterprise web applications authenticating via LDAP have been bypassed by supplying )(uid=*))(|(uid=* as a username, causing the LDAP filter to always return true.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:70: { step: 2, title: "Test Authentication Bypass", description: "Inject LDAP filter characters to bypass authentication.", hint: "Try username: *)(uid=*))(|(uid=* to bypass the LDAP authentication check." },
+src\lib\data\redteam\pentesting\web\high_ext.ts:72: { step: 4, title: "Submit Flag", description: "Bypass LDAP authentication to access admin account with the flag.", hint: "Inject a filter that matches the admin account regardless of password." },
+src\lib\data\redteam\pentesting\web\high_ext.ts:75: xpReward: 310, timeLimitMinutes: 75, tags: ["ldap", "injection", "authentication", "bypass", "enterprise"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:81: description: "XPath injection occurs when user-supplied data is incorporated into XPath queries that process XML documents, allowing manipulation of the query logic to bypass authentication, extract unauthorized data, or traverse the entire XML document.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:88: impact: "Authentication bypass, extraction of sensitive XML data including credentials and configuration, and traversal of the entire XML document structure.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:89: realWorldExample: "XML-based authentication systems using XPath to validate credentials have been bypassed with: ' or '1'='1 in username fields, extracting all user records.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:97: xpReward: 310, timeLimitMinutes: 75, tags: ["xpath", "injection", "xml", "authentication-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:158: { step: 2, title: "Test Null Byte Injection", description: "Append %00 to terminate the path and bypass extension checks.", hint: "Try: ?file=../../etc/passwd%00.jpg — does it read /etc/passwd?" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:374: impact: "Cache poisoning, session hijacking, XSS bypass, unauthorized request execution, and capturing other users' requests.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:456: history: "CSTI in AngularJS was documented by Gareth Heyes in 2014, demonstrating that Angular's expression evaluator could be abused when user input was processed in Angular-controlled DOM regions. It became a significant CSP bypass technique.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:462: impact: "JavaScript execution in victim's browser, bypassing CSPs that block inline scripts (especially via AngularJS sandbox escapes), enabling XSS attacks.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:463: realWorldExample: "AngularJS applications with CSP allowing cdn.angular.js were vulnerable to CSTI via ng-app scope: {{constructor.constructor('alert(1)')()}} bypassed CSP through Angular's evaluator.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:471: xpReward: 310, timeLimitMinutes: 75, tags: ["csti", "template-injection", "angularjs", "xss", "csp-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:484: impact: "Execute JavaScript in victim's browser via crafted URL, bypassing server-side XSS filters since the injection occurs client-side after safe reflection.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:489: { step: 3, title: "Craft Bypass Payload", description: "Design a payload that survives server-side encoding but exploits the DOM sink.", hint: "JSON.parse(location.search) followed by innerHTML can be exploited via JSON-encoded tags." },
+src\lib\data\redteam\pentesting\web\high_ext.ts:499: description: "Stored DOM-based XSS occurs when user input is stored on the server and later retrieved via AJAX, then processed by client-side JavaScript and written to a DOM sink without sanitization — allowing persistent XSS that bypasses server-side output encoding.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:506: impact: "Persistent JavaScript execution in all victim browsers viewing the compromised content, bypassing server-side output encoding defenses.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:521: description: "JWT tokens whose signatures are not verified by the server allow attackers to modify any claims in the JWT header and payload to elevate privileges, impersonate users, or bypass authentication entirely.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:528: impact: "Complete authentication bypass — attacker can forge any JWT with any claims, impersonate any user including administrators.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:537: xpReward: 320, timeLimitMinutes: 60, tags: ["jwt", "authentication", "signature-bypass", "authorization"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:550: impact: "Complete authentication bypass by forging JWTs with admin claims and no signature requirement.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:559: xpReward: 310, timeLimitMinutes: 60, tags: ["jwt", "none-algorithm", "authentication-bypass", "token-forgery"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:572: impact: "Complete authentication bypass by signing forged JWTs with an attacker-generated RSA key and embedding the corresponding public key in the JWT header.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:581: xpReward: 330, timeLimitMinutes: 75, tags: ["jwt", "jwk", "rsa", "self-signed", "authentication-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:616: impact: "Complete authentication bypass by redirecting JWT key fetching to an attacker-controlled JWKS endpoint containing the attacker's public key.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:625: xpReward: 330, timeLimitMinutes: 75, tags: ["jwt", "jku", "jwks", "key-injection", "authentication-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:638: impact: "Complete authentication bypass by directing JWT certificate verification to attacker-controlled X.509 certificates.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:647: xpReward: 330, timeLimitMinutes: 75, tags: ["jwt", "x5u", "certificate", "key-injection", "authentication-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:713: xpReward: 340, timeLimitMinutes: 90, tags: ["aspnet", "viewstate", "deserialization", "mac-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\high_ext.ts:764: history: "Reflected DOM JavaScript injection combines URL-based delivery with DOM-based eval() execution, creating an XSS variant that bypasses server-side filters since the injection is entirely client-side.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:792: impact: "Persistent JavaScript execution affecting all users viewing the compromised content, bypassing HTML-focused XSS filters.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:939: description: "A permissive Flash crossdomain.xml policy (allow-access-from domain='*') allows any Flash application to make cross-domain requests to the target site, bypassing same-origin policy for Flash content — historically significant for pre-CORS era applications.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:950: { step: 2, title: "Analyze Policy Scope", description: "Determine how permissive the policy is.", hint: "domain='*' allows all origins; domain='*.trusted.com' is scoped but may be bypassable." },
+src\lib\data\redteam\pentesting\web\high_ext.ts:983: description: "The JWT signing private key (RSA or ECDSA) exposed in application responses, source code, or backup files allows forging any JWT token with any claims, enabling complete authentication bypass for the entire application.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:990: impact: "Forge any JWT with any claims — complete authentication bypass allowing impersonation of any user including administrators.",
+src\lib\data\redteam\pentesting\web\high_ext.ts:999: xpReward: 380, timeLimitMinutes: 75, tags: ["jwt", "private-key", "token-forgery", "authentication-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\information.ts:261: { step: 4, title: "WAF Detection", description: "Detect Web Application Firewall presence and type.", hint: "Identifies 150+ WAF products. Knowing the WAF type helps design bypass payloads." },
+src\lib\data\redteam\pentesting\web\information.ts:270: name: "Web Application Firewall (WAF) Detection & Bypass Recon",
+src\lib\data\redteam\pentesting\web\information.ts:272: description: "Web Application Firewalls sit between the internet and web applications, filtering malicious traffic. Identifying the presence and type of WAF is critical reconnaissance — different WAF products have different rule sets, and knowing which one is in use helps testers craft bypass payloads or focus on application-layer vulnerabilities the WAF doesn't protect.",
+src\lib\data\redteam\pentesting\web\information.ts:281: impact: "Knowing WAF presence and type allows attackers to design targeted bypass techniques, avoid detection during testing, and identify which attack classes are most likely to succeed against the application.",
+src\lib\data\redteam\pentesting\web\information.ts:282: realWorldExample: "In multiple bug bounty reports, researchers have bypassed Cloudflare WAF by sending payloads to directly exposed origin server IPs (found via censys), completely bypassing the WAF.",
+src\lib\data\redteam\pentesting\web\information.ts:288: { step: 5, title: "Submit the Flag", description: "Identify the WAF product and find the flag by bypassing it.", hint: "The flag is accessible at a path the WAF is not configured to protect. Check uncommon paths." },
+src\lib\data\redteam\pentesting\web\information.ts:291: xpReward: 85, timeLimitMinutes: 50, tags: ["waf", "fingerprinting", "bypass-recon", "cloudflare"], status: "active", labType: "black-box",
+src\lib\data\redteam\pentesting\web\information.ts:332: impact: "Discovery of internal endpoints, API keys, credentials, database schema hints, developer notes about vulnerabilities, and bypass instructions left in HTML comments.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:36: description: "Prototype pollution is a JavaScript vulnerability that allows attackers to inject properties into the Object prototype, affecting all objects in the application. In client-side contexts this can lead to XSS, DOM manipulation, or logic bypass.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:102: description: "A referer-dependent response occurs when the application returns different content based on the HTTP Referer header value. This can reveal hidden functionality, bypass access controls, or indicate anti-hotlinking mechanisms that can be circumvented.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:109: impact: "Can bypass access restrictions that rely on Referer validation, enabling unauthorized access to protected resources.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:124: description: "Many applications trust IP addresses provided in HTTP headers like X-Forwarded-For, X-Real-IP, or X-Client-IP for rate limiting, geo-blocking, or access control. Attackers can spoof these headers to bypass IP-based restrictions.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:131: impact: "Bypasses IP-based rate limiting, geo-restrictions, admin IP whitelists, and fraud detection systems.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:132: realWorldExample: "Attackers have bypassed admin panels protected by IP whitelisting by simply adding X-Forwarded-For: 127.0.0.1 to their requests.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:140: xpReward: 65, timeLimitMinutes: 30, tags: ["ip-spoofing", "header-injection", "bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\information_ext.ts:147: history: "User-Agent based content negotiation dates to the early browser wars (1995). Security implications include mobile-specific admin panels and bot-detection bypass.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:212: description: "When an application sets duplicate cookies with the same name but different attributes (path, domain, or security flags), it can lead to cookie confusion attacks where browsers may send the wrong cookie value, potentially bypassing security controls.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:219: impact: "May enable session fixation, cookie injection, or bypass of cookie-based security checks.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:278: description: "Suspicious input transformation occurs when the application alters user input in ways that suggest server-side processing — such as URL decoding, HTML encoding, case modification, or character substitution. Understanding these transformations helps attackers craft bypass payloads.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:279: history: "Input transformation analysis became important as WAFs and filters became common from 2005 onwards. Attackers learned to use double encoding, Unicode normalization, and other techniques to bypass filters.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:285: impact: "Understanding server-side transformations enables filter bypass, WAF evasion, and successful injection of otherwise-blocked payloads.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:286: realWorldExample: "Applications that perform HTML entity encoding server-side can sometimes be bypassed using double encoding or Unicode normalization to deliver XSS payloads.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:290: { step: 3, title: "Design Bypass Payload", description: "Use your transformation map to craft a payload that survives filtering.", hint: "Double-encode characters that get decoded server-side. Use Unicode equivalents." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:291: { step: 4, title: "Submit Flag", description: "Use your bypass payload to execute the injection and retrieve the flag.", hint: "The WAF blocks direct payloads but the transformation creates a bypass opportunity." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:294: xpReward: 70, timeLimitMinutes: 60, tags: ["filter-bypass", "encoding", "waf-evasion"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\information_ext.ts:301: history: "Stored transformation bypass is particularly relevant for applications that apply sanitization at storage time (input filtering) versus display time (output encoding), as these approaches have different bypass characteristics.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:312: { step: 3, title: "Identify Storage Bypass", description: "Find characters or encodings that survive the storage-display cycle intact.", hint: "Second-order transformations may decode at display time — exploit this." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:316: xpReward: 75, timeLimitMinutes: 60, tags: ["stored-xss", "filter-bypass", "second-order"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\information_ext.ts:323: history: "URL override headers were introduced for reverse proxy and load balancer use. Their exploitation for access control bypass was popularized by Orange Tsai's research in 2017 on server-side request rewriting.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:329: impact: "Can bypass front-end access controls, access admin endpoints, or override URL routing to reach protected application areas.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:330: realWorldExample: "CVE-2017-9506 - Atlassian products were found vulnerable to access control bypass via X-Original-URL and X-Forwarded-URL header manipulation.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:334: { step: 3, title: "Combine with IP Spoofing", description: "Combine URL override with IP spoofing headers for maximum bypass.", hint: "Add both X-Original-URL: /admin and X-Forwarded-For: 127.0.0.1." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:365: shortName: "CSP Allowlist Bypass",
+src\lib\data\redteam\pentesting\web\information_ext.ts:367: history: "CSP allowlist bypasses via CDN-hosted JSONP and Angular libraries were documented by Sebastian Lekies and Krzysztof Kotowicz in 2014-2015. The CSP spec evolved to address these with 'strict-dynamic'.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:373: impact: "Bypass of CSP protection, enabling XSS on pages that appear to be protected by a content security policy.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:374: realWorldExample: "CSPs allowing *.googleapis.com could be bypassed via JSONP callbacks on storage.googleapis.com. CSPs allowing *.cloudflare.com were bypassed via JSONP endpoints.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:378: { step: 3, title: "Check for Angular/Legacy Libraries", description: "Look for Angular.js or other libraries on allowlisted domains that accept bypass payloads.", hint: "Angular.js on a CDN allows: <script src='cdn.com/angular.js'></script><div ng-app>{{alert(1)}}</div>" },
+src\lib\data\redteam\pentesting\web\information_ext.ts:379: { step: 4, title: "Submit Flag", description: "Use the CSP bypass to execute JavaScript and retrieve the flag.", hint: "Combine the allowlisted script source with user-controlled input to execute code." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:382: xpReward: 85, timeLimitMinutes: 60, tags: ["csp", "bypass", "xss", "allowlist"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\information_ext.ts:444: { step: 3, title: "Identify Bypass Opportunity", description: "Determine which directives are ignored due to malformed syntax.", hint: "If script-src is malformed, inline scripts may execute despite the policy." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:475: shortName: "CSP Form Action Bypass",
+src\lib\data\redteam\pentesting\web\information_ext.ts:630: description: "Detection of file upload functionality in an application. File upload features are high-risk and require thorough testing for unrestricted file upload, MIME type bypass, path traversal in filenames, and stored XSS via uploaded content.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:642: { step: 3, title: "Test MIME Type Bypass", description: "Upload files with manipulated Content-Type headers.", hint: "Set Content-Type: image/png while uploading a .php file — some servers trust MIME over extension." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:726: realWorldExample: "Reflected postMessage attacks have been used to bypass same-origin policy protections in complex single-page applications.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:769: impact: "Manipulation of localStorage/sessionStorage data can lead to XSS, authentication bypass, or data spoofing within the application.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:785: history: "The combination of URL-to-storage-to-DOM data flows creates subtle XSS vectors that bypass some traditional XSS filters which only look for direct URL-to-DOM injection.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:807: history: "Persistent DOM XSS via storage manipulation represents an evolution of classic stored XSS that executes entirely client-side, bypassing server-side XSS filters.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:879: impact: "Client-side data integrity violations that can alter displayed information, bypass UI-level controls, or inject content into the DOM.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:894: description: "Reflected DOM-based data manipulation where URL-controlled input modifies DOM data on page load, enabling attackers to craft malicious URLs that manipulate the application's client-side data for social engineering or logic bypass.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:917: history: "Stored DOM manipulation is the most persistent form of client-side data injection, combining stored XSS delivery with DOM-based execution to bypass server-side output encoding.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:923: impact: "Persistent client-side code execution affecting all users viewing the compromised content, bypassing server-side XSS defenses.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:938: description: "Backup files (e.g., .bak, .old, .orig, .backup, ~, .swp) left on web servers expose original source code, configuration files, or sensitive data. These files bypass access controls applied to the original files.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:1016: { step: 3, title: "Test for Masking Bypass", description: "Determine if masked SSNs can be retrieved in full via alternate endpoints.", hint: "Some APIs return ***-**-1234 by default but full values via export or admin endpoints." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:1038: { step: 3, title: "Test Masking Bypass", description: "Check if full card numbers are accessible via admin or export endpoints.", hint: "Admin APIs may return unmasked card numbers even when user-facing APIs mask them." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:1187: impact: "Content type confusion may bypass content filtering, enable CSRF, or cause different application tiers to interpret the same request differently.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:1188: realWorldExample: "Multiple Content-Type headers have been used to bypass WAF inspection by making the WAF and application server interpret the request body differently.",
+src\lib\data\redteam\pentesting\web\information_ext.ts:1191: { step: 2, title: "Test Duplicate Headers", description: "Send requests with multiple Content-Type headers.", hint: "Add two Content-Type headers: one WAF-friendly and one that bypasses filtering." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:1192: { step: 3, title: "Test Content Confusion", description: "Exploit the content type confusion to bypass security controls.", hint: "If WAF checks JSON but app processes form data, your injection may bypass inspection." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:1193: { step: 4, title: "Submit Flag", description: "Use content type confusion to bypass filtering and retrieve the flag.", hint: "The WAF inspects application/json but the app also processes form-encoded data." },
+src\lib\data\redteam\pentesting\web\information_ext.ts:1196: xpReward: 65, timeLimitMinutes: 30, tags: ["content-type", "waf-bypass", "http"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\low.ts:39: description: "The HTTP TRACE method reflects the received request back to the client for debugging. When combined with Cross-Site Scripting (XSS), TRACE allows an attacker to steal HttpOnly cookies and authentication headers that JavaScript normally cannot access, bypassing HttpOnly protections completely.",
+src\lib\data\redteam\pentesting\web\low.ts:48: impact: "Bypasses HttpOnly cookie flags, enabling session token theft even on secured applications.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:71: { step: 3, title: "Test Protocol Variants", description: "Test various URL schemes including protocol-relative URLs.", hint: "Try: //attacker.com (protocol-relative) to bypass protocol filtering." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:81: description: "DOM-based XPath injection occurs when user input is incorporated into client-side XPath queries without sanitization, potentially manipulating the XPath expression to extract unauthorized XML/HTML data or bypass client-side data access controls.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:88: impact: "Manipulation of client-side XPath queries to extract unauthorized data from XML documents or bypass filtering logic.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:94: { step: 4, title: "Submit Flag", description: "Use XPath injection to access unauthorized XML data containing the flag.", hint: "The XPath query restricts visible nodes — bypass the restriction to see all data." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:138: { step: 4, title: "Submit Flag", description: "Use the stored XPath injection to persistently access restricted data.", hint: "The stored XPath bypasses data access restrictions to expose the flag." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:176: impact: "Crafted URLs inject JSON properties that alter application behavior, potentially enabling access control bypass or XSS.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:257: description: "GraphQL endpoints that accept queries in multiple content types (URL-encoded, multipart) without proper validation may bypass CSRF protections designed for JSON-only endpoints or enable form-based CSRF attacks.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:269: { step: 3, title: "Verify CSRF Bypasses", description: "Test if the alternate content type bypasses CSRF token checks.", hint: "If JSON requires CSRF token but form-encoded does not, CSRF is possible." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:302: history: "Subdomain-based CORS bypass was documented extensively by James Kettle in 2016. Even well-intentioned subdomain patterns create exploitable trust if any subdomain is compromised or registerable.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:308: impact: "Any compromised or attacker-controlled subdomain can make cross-origin requests as a trusted origin, bypassing CORS protections.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:309: realWorldExample: "CORS rules matching /\\.example\\.com$/ can be bypassed with evildomain.example.com — if the attacker can register this subdomain or compromise an existing one.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:311: { step: 1, title: "Test Subdomain Bypass", description: "Send CORS requests with various subdomain values.", hint: "Try: Origin: https://evil.target.com and Origin: https://target.com.evil.com" },
+src\lib\data\redteam\pentesting\web\low_ext.ts:312: { step: 2, title: "Test Regex Bypass", description: "Test for regex-based CORS origin validation bypass.", hint: "Try: notreallytarget.com if the server checks for 'target.com' as a substring." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:314: { step: 4, title: "Submit Flag", description: "Use the subdomain trust bypass to make a cross-origin request for the flag.", hint: "The regex matches your crafted origin — use it to access the protected API." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:317: xpReward: 130, timeLimitMinutes: 60, tags: ["cors", "subdomain", "regex-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\low_ext.ts:374: impact: "Crafted URLs inject malicious cookies enabling session fixation or security flag bypass.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:418: impact: "Injection of malicious HTTP headers into Ajax requests that may bypass security controls, inject SSRF payloads, or forge identity headers.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:424: { step: 4, title: "Submit Flag", description: "Use Ajax header manipulation to bypass auth and retrieve the flag.", hint: "Inject an auth bypass header via the DOM manipulation to access the admin endpoint." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:440: impact: "Crafted URLs configure malicious Ajax headers that modify server behavior, bypass access controls, or enable SSRF.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:445: { step: 3, title: "Inject Privileged Headers", description: "Use the URL parameter to set access-escalating headers.", hint: "Inject: X-Admin: true or X-User-Role: admin via the header parameter." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:462: impact: "Persistent malicious HTTP headers injected into all Ajax requests from affected users, potentially enabling persistent access control bypass.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:468: { step: 4, title: "Submit Flag", description: "Use the persistent injected header to maintain unauthorized server access.", hint: "The stored header bypass persists — use it to access the flag endpoint repeatedly." },
+src\lib\data\redteam\pentesting\web\low_ext.ts:565: description: "Reflected client-side HTTP parameter pollution occurs when client-side JavaScript processes URL parameters and constructs requests with duplicated or injected parameters, potentially bypassing client-side security checks or manipulating server behavior.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:572: impact: "Client-side parameter pollution may bypass security checks, inject parameters into requests, or manipulate application behavior.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:573: realWorldExample: "Client-side code that constructs URLs by appending user-controlled parameters without validation has been exploited to inject duplicate parameters that bypass access controls.",
+src\lib\data\redteam\pentesting\web\low_ext.ts:594: impact: "Persistent parameter injection into requests constructed from stored data, potentially maintaining unauthorized access or bypassing controls.",
+src\lib\data\redteam\pentesting\web\medium.ts:28: { step: 3, title: "Execute JavaScript Payload", description: "Inject script tag payload.", hint: "Bypass simple filters using event handlers like <img src=x onerror=alert(1)>." },
+src\lib\data\redteam\pentesting\web\medium.ts:52: { step: 3, title: "Bypass Filters", description: "Use attribute or event handler payloads if <script> is filtered.", hint: "Try SVG, IMG, or IFRAME tags." },
+src\lib\data\redteam\pentesting\web\medium.ts:71: impact: "Client-side script execution, bypassing server-side WAF filters since payload may exist only in URL hash fragment (`#`).",
+src\lib\data\redteam\pentesting\web\medium.ts:191: { step: 2, title: "Inject Traversal Sequence", description: "Pass `../` sequences to reach root directory.", hint: "Bypass basic filters using URL encoding (`..%2f`)." },
+src\lib\data\redteam\pentesting\web\medium.ts:192: { step: 3, title: "Bypass Filters", description: "Try nested sequences (`....//....//etc/passwd`).", hint: "Bypasses naive `../` removal filters." },
+src\lib\data\redteam\pentesting\web\medium.ts:202: description: "HTTP Parameter Pollution occurs when an application receives multiple HTTP parameters with the same name (e.g. `?id=1&id=2`) and processes them unexpectedly. Depending on the backend technology (PHP, Node, ASP.NET), HPP can bypass WAFs or alter business logic.",
+src\lib\data\redteam\pentesting\web\medium.ts:211: impact: "WAF bypass, business logic subversion, and access control circumvention.",
+src\lib\data\redteam\pentesting\web\medium.ts:212: realWorldExample: "In 2015, an HPP flaw on Twitter enabled attackers to bypass security checks and unfollow arbitrary user accounts.",
+src\lib\data\redteam\pentesting\web\medium.ts:215: { step: 2, title: "Bypass Validation", description: "Pollute input to override validated values.", hint: "Check if second parameter overrides logic." },
+src\lib\data\redteam\pentesting\web\medium.ts:219: xpReward: 165, timeLimitMinutes: 50, tags: ["hpp", "parameter-pollution", "logic-bypass"], status: "active", labType: "black-box"
+src\lib\data\redteam\pentesting\web\medium_ext.ts:22: impact: "Manipulation of XML document structure can lead to authentication bypass, data injection, privilege escalation in XML-based business logic.",
+src\lib\data\redteam\pentesting\web\medium_ext.ts:23: realWorldExample: "SOAP-based authentication systems have been bypassed by injecting XML closing tags and additional elements into username/password fields that were directly embedded in XML requests.",
+src\lib\data\redteam\pentesting\web\medium_ext.ts:110: impact: "Indicates potential for SQL injection leading to data exfiltration, authentication bypass, or database manipulation.",
+src\lib\data\redteam\pentesting\web\medium_ext.ts:273: xpReward: 210, timeLimitMinutes: 60, tags: ["dom", "document-domain", "sop-bypass", "cross-origin"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\medium_ext.ts:295: xpReward: 210, timeLimitMinutes: 60, tags: ["dom", "reflected", "document-domain", "sop-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\medium_ext.ts:317: xpReward: 220, timeLimitMinutes: 60, tags: ["dom", "stored", "document-domain", "sop-bypass"], status: "upcoming", labType: "black-box" },
+src\lib\data\redteam\pentesting\web\medium_ext.ts:324: history: "CSS injection attacks gained attention around 2015 when researchers demonstrated that CSS selectors could be used to exfiltrate data without JavaScript execution, bypassing CSPs that blocked scripts but allowed styles.",
+src\lib\detector\sourceAdapters\NetworkAdvisoryAdapter.ts:49: { name: "Cisco ASA ASDM Authentication Bypass (CVE-2022-20828)", severity: "high", sourceIdentifiers: ["net-high-cisco-asa-asdm"], cwe: ["CWE-287"], cve: ["CVE-2022-20828"], cvssScore: 7.2, description: "ASDM software authentication bypass on Cisco ASA firewalls.", labFeasible: true, firstDiscoveredYear: 2022, references: [NVD_REF, CISCO_REF] },
+src\lib\detector\sourceAdapters\NetworkAdvisoryAdapter.ts:51: { name: "F5 BIG-IP iControl REST Auth Bypass (CVE-2022-1388)", severity: "high", sourceIdentifiers: ["net-high-f5-bigip"], cwe: ["CWE-306"], cve: ["CVE-2022-1388"], cvssScore: 9.8, description: "Unauthenticated REST API access leads to RCE on F5 BIG-IP.", labFeasible: true, firstDiscoveredYear: 2022, references: [NVD_REF, CISA_REF] },
+src\lib\detector\sourceAdapters\NetworkAdvisoryAdapter.ts:53: { name: "Zerologon — Netlogon Privilege Escalation (CVE-2020-1472)", severity: "high", sourceIdentifiers: ["net-high-zerologon"], cwe: ["CWE-330"], cve: ["CVE-2020-1472"], cvssScore: 10.0, description: "MS-NRPC authentication bypass grants domain admin without credentials.", labFeasible: true, firstDiscoveredYear: 2020, references: [NVD_REF, CISA_REF] },
+src\lib\detector\sourceAdapters\NetworkAdvisoryAdapter.ts:58: { name: "Cisco IOS XE Web UI Auth Bypass (CVE-2023-20198)", severity: "critical", sourceIdentifiers: ["net-crit-cisco-ios-xe"], cwe: ["CWE-306"], cve: ["CVE-2023-20198"], cvssScore: 10.0, description: "Unauthenticated admin account creation on Cisco IOS XE web UI.", labFeasible: true, firstDiscoveredYear: 2023, references: [NVD_REF, CISA_REF, CISCO_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:22: { name: "JWT Algorithm Confusion (None Algorithm)", severity: "low", sourceIdentifiers: ["owasp-api2-jwt-none"], cwe: ["CWE-347"], cve: ["CVE-2015-9235"], cvssScore: 3.8, description: "JWT forged with alg:none bypasses signature verification.", labFeasible: true, firstDiscoveredYear: 2015, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:23: { name: "Rate Limiting Header Bypass via X-Forwarded-For", severity: "low", sourceIdentifiers: ["owasp-api4-rate-bypass"], cwe: ["CWE-307"], cve: [], cvssScore: 3.5, description: "X-Forwarded-For rotation bypasses IP-based rate limiter.", labFeasible: true, firstDiscoveredYear: 2016, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:25: { name: "JSON Parameter Pollution (JPP)", severity: "low", sourceIdentifiers: ["owasp-api-jpp"], cwe: ["CWE-235"], cve: [], cvssScore: 3.8, description: "Duplicate JSON keys cause validation bypass.", labFeasible: true, firstDiscoveredYear: 2015, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:30: { name: "GraphQL Query Batching Brute Force", severity: "medium", sourceIdentifiers: ["owasp-api4-graphql-batch"], cwe: ["CWE-799"], cve: [], cvssScore: 5.3, description: "Batching bypasses rate limiting for credential brute-force.", labFeasible: true, firstDiscoveredYear: 2017, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:41: { name: "OAuth Authorization Code Interception (PKCE Bypass)", severity: "high", sourceIdentifiers: ["owasp-api-oauth-pkce"], cwe: ["CWE-287"], cve: [], cvssScore: 7.5, description: "PKCE S256 challenge validation absent or bypassable.", labFeasible: true, firstDiscoveredYear: 2017, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspApiAdapter.ts:44: { name: "API Authentication Bypass — Admin Object Access", severity: "critical", sourceIdentifiers: ["owasp-api-auth-bypass-admin"], cwe: ["CWE-287"], cve: [], cvssScore: 9.8, description: "Unauthenticated access to all user records via admin API.", labFeasible: true, firstDiscoveredYear: 2018, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspMobileAdapter.ts:18: { name: "SSL Pinning Detection & Bypass Reconnaissance", severity: "information", sourceIdentifiers: ["masvs-info-ssl-pinning-detect"], cwe: ["CWE-297"], cve: [], cvssScore: 0.0, description: "Identifying SSL certificate pinning implementation in mobile apps.", labFeasible: true, firstDiscoveredYear: 2012, references: [SOURCE_REF, "https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/"] },
+src\lib\detector\sourceAdapters\OwaspMobileAdapter.ts:35: { name: "Weak Local Authentication (PIN/Pattern Bypass)", severity: "low", sourceIdentifiers: ["masvs-low-local-auth-bypass"], cwe: ["CWE-287"], cve: [], cvssScore: 3.7, description: "Local PIN or pattern lock bypassable via offline extraction.", labFeasible: true, firstDiscoveredYear: 2013, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspMobileAdapter.ts:43: { name: "Insecure Biometric Authentication Bypass", severity: "medium", sourceIdentifiers: ["masvs-med-biometric-bypass"], cwe: ["CWE-287"], cve: [], cvssScore: 6.5, description: "Biometric auth falling back to PIN without crypto key binding.", labFeasible: true, firstDiscoveredYear: 2017, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspMobileAdapter.ts:45: { name: "SSL Pinning Bypass via Frida Runtime Hook", severity: "medium", sourceIdentifiers: ["masvs-med-ssl-pinning-frida"], cwe: ["CWE-297"], cve: [], cvssScore: 5.9, description: "Frida script hooks TrustManager to disable certificate pinning.", labFeasible: true, firstDiscoveredYear: 2015, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\OwaspMobileAdapter.ts:46: { name: "Root/Jailbreak Detection Bypass", severity: "medium", sourceIdentifiers: ["masvs-med-root-detection-bypass"], cwe: ["CWE-656"], cve: [], cvssScore: 5.1, description: "Bypassing root/jailbreak checks to run restricted features.", labFeasible: true, firstDiscoveredYear: 2012, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\PortSwiggerAdapter.ts:39: { name: "Authentication Bypass — Brute Force", severity: "high", sourceIdentifiers: ["portswigger-auth-bruteforce"], cwe: ["CWE-307"], cve: [], cvssScore: 7.3, description: "Missing lockout on login endpoint enables brute-force.", labFeasible: true, firstDiscoveredYear: 1990, references: [SOURCE_REF] },
+src\lib\detector\sourceAdapters\PortSwiggerAdapter.ts:45: { name: "JWT Signature Bypass (None Algorithm)", severity: "critical", sourceIdentifiers: ["portswigger-jwt-none"], cwe: ["CWE-347"], cve: ["CVE-2015-9235"], cvssScore: 9.1, description: "JWT library accepts 'none' algorithm, forging valid tokens.", labFeasible: true, firstDiscoveredYear: 2015, references: [SOURCE_REF] },
+src\lib\services\labSpecGenerator.ts:14: intendedChallenge: "Identify the vulnerable input, bypass basic filters, and execute the payload.",
+--- insecure_session ---
+src\app\page.tsx:63: x: Math.random() * canvas.width,
+src\app\page.tsx:64: y: Math.random() * canvas.height,
+src\app\page.tsx:65: radius: Math.random() * 2 + 0.5,
+src\app\page.tsx:66: vx: (Math.random() - 0.5) * 0.5,
+src\app\page.tsx:67: vy: (Math.random() - 0.5) * 0.5
+src\app\admin\detector\page.tsx:160: runId: `HPDET-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2,6).toUpperCase()}`,
+src\app\admin\labs\page.tsx:44: const isExpired = s.expires_at < Date.now();
+src\app\admin\users\page.tsx:56: {u.premium_until && u.premium_until > Date.now() ? (
+src\app\api\auth\login\route.ts:32: await new Promise(r => setTimeout(r, Math.random() * 200 + 100));
+src\app\api\labs\submit-flag\route.ts:41: const now = Date.now();
+src\app\api\labs\[id]\activity\route.ts:54: const activeSession = sessions.find(s => s.labId === labId && s.expiresAt > Date.now());
+src\app\api\labs\[id]\hints\route.ts:49: const elapsedMs = Date.now() - session.startTime;
+src\app\api\notifications\route.ts:20: db.prepare('INSERT INTO notifications (user_id, title, message, created_at) VALUES (?, ?, ?, ?)').run(sessionUser.userId, 'Welcome', 'Welcome to HPLabs. Explore your dashboard.', Date.now());
+src\app\api\notifications\route.ts:21: notifications.push({ id: 1, title: 'Welcome', message: 'Welcome to HPLabs. Explore your dashboard.', created_at: Date.now() });
+src\app\api\partner\request-otp\route.ts:23: const secsSince = Math.floor((Date.now() - lastReq) / 1000);
+src\app\api\partner\request-otp\route.ts:35: lastRequestTime.set(key, Date.now());
+src\app\api\partner\request-otp\route.ts:42: lastRequestTime.set(key, Date.now());
+src\app\api\premium\create-checkout-session\route.ts:26: created: Math.floor(Date.now() / 1000),
+src\app\api\premium\status\route.ts:21: const now = Date.now();
+src\app\api\users\activity\route.ts:16: const now = Date.now();
+src\app\leaderboard\page.tsx:51: rank: i + 1, username: u.username, xp: u.xp, labs: u.labs, streak: Math.floor(Math.random() * 10), avatar: "💻"
+src\app\red-team\pentesting\[domain]\[severity]\[level]\page.tsx:139: const remaining = Math.max(0, Math.floor((data.session.expiresAt - Date.now()) / 1000));
+src\app\red-team\pentesting\[domain]\[severity]\[level]\page.tsx:188: const remaining = Math.max(0, Math.floor((data.session.expiresAt - Date.now()) / 1000));
+src\lib\auth.tsx:127: const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+src\lib\auth.tsx:232: if (info.lockoutUntil && Date.now() > info.lockoutUntil) {
+src\lib\auth.tsx:250: lockoutUntil = Date.now() + LOCKOUT_DURATION_MS;
+src\lib\auth.tsx:285: const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+src\lib\db.ts:236: Date.now()
+src\lib\detector\SmartDetector.ts:132: const ts = Date.now().toString(36).toUpperCase();
+src\lib\detector\SmartDetector.ts:133: const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+src\lib\services\entitlementRules.ts:109: id: `rule-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+src\lib\services\hintTracker.ts:11: startTime: Date.now(),
+src\lib\services\hintTracker.ts:13: lastActivity: Date.now(),
+src\lib\services\hintTracker.ts:21: session.lastActivity = Date.now();
+src\lib\services\labHealthChecks.ts:134: const testId = `health-${lab.id}-${Date.now()}`;
+src\lib\services\labHealthChecks.ts:217: const recoveryId = `recovery-${lab.id}-${Date.now()}`;
+src\lib\services\labSessionStore.ts:30: db.prepare("DELETE FROM lab_sessions WHERE expires_at < ?").run(Date.now());
+src\lib\services\labSessionStore.ts:56: const now = Date.now();
+src\lib\services\labSessionStore.ts:106: `).run(Date.now(), labSessionId);
+src\lib\services\labSessionStore.ts:115: .run(Date.now(), labSessionId);
+src\lib\services\labSessionStore.ts:121: const now = Date.now();
+src\lib\services\otpStore.ts:28: db.prepare("DELETE FROM otp_store WHERE expires_at < ?").run(Date.now());
+src\lib\services\otpStore.ts:56: box[email] = { emailOTP, phoneOTP, phone, time: Date.now() };
+src\lib\services\otpStore.ts:77: if (current && current.lockout_until && Date.now() < current.lockout_until) {
+src\lib\services\otpStore.ts:86: const now = Date.now();
+src\lib\services\otpStore.ts:116: if (record.lockout_until && Date.now() < record.lockout_until) {
+src\lib\services\otpStore.ts:135: lockout = Date.now() + LOCKOUT_DURATION_MS;
+src\lib\services\partnerOtpStore.ts:75: box[email] = { partnerOTP: code, time: Date.now() };
+src\lib\services\partnerOtpStore.ts:91: expiresAt: Date.now() + OTP_TTL_MS,
+src\lib\services\partnerOtpStore.ts:107: if (Date.now() > entry.expiresAt) {
+src\lib\services\partnerOtpStore.ts:138: const token = `PST-${Date.now()}-${Math.random().toString(36).slice(2, 12).toUpperCase()}`;
+src\lib\services\partnerOtpStore.ts:145: expiresAt: Date.now() + SESSION_TTL_MS,
+src\lib\services\partnerOtpStore.ts:155: if (Date.now() > session.expiresAt) {
+src\lib\services\partnerStudentStore.ts:70: const id = `PS-${Date.now()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+src\lib\services\partnerStudentStore.ts:73: row.entitledPremiumMonths, row.matchedRuleId, row.matchedRuleLabel, Date.now(), batch
+src\lib\services\partnerStudentStore.ts:93: .run(Date.now(), email.toLowerCase());
+src\lib\services\rateLimiter.ts:7: const now = Date.now();
+src\lib\services\sessionStore.ts:14: db.prepare("DELETE FROM auth_sessions WHERE expires_at < ?").run(Date.now());
+src\lib\services\sessionStore.ts:22: const now = Date.now();
+src\lib\services\sessionStore.ts:35: const now = Date.now();
+src\lib\services\subscriptionStore.ts:13: db.prepare("INSERT INTO webhook_idempotency (event_id, processed_at) VALUES (?, ?)").run(eventId, Date.now());
+src\lib\services\subscriptionStore.ts:19: paymentId, userId, amount, currency, status, planId, Date.now()
+src\lib\services\subscriptionStore.ts:28: const now = Date.now();
+src\lib\services\subscriptionStore.ts:38: const now = Date.now();
+src\lib\services\ticketStore.ts:60: const now = Date.now();
+src\lib\services\ticketStore.ts:89: .run(status, Date.now(), ticketId);
+src\lib\services\ticketStore.ts:101: .run(emailDelivery, whatsappDelivery, Date.now(), ticketId);
+src\lib\services\userStore.ts:70: const now = Date.now();
+src\lib\services\userStore.ts:146: values.push(Date.now());
+src\lib\services\userStore.ts:154: const now = Date.now();
+src\lib\services\userStore.ts:193: db.prepare("UPDATE users SET xp = xp + ?, updated_at = ? WHERE id = ?").run(bonusXP, Date.now(), userId);
+src\lib\services\vulnPipelineStore.ts:56: const id = `VULN-${Date.now()}`;
+src\lib\services\vulnPipelineStore.ts:57: const now = Date.now();
+src\lib\services\vulnPipelineStore.ts:79: db.prepare("UPDATE vuln_pipeline SET stage = ?, updated_at = ? WHERE id = ?").run(updates.stage, Date.now(), id);
+src\lib\services\vulnPipelineStore.ts:82: db.prepare("UPDATE vuln_pipeline SET lab_spec = ?, updated_at = ? WHERE id = ?").run(JSON.stringify(updates.labSpec), Date.now(), id);
+src\lib\services\vulnPipelineStore.ts:105: db.prepare("UPDATE vuln_pipeline SET is_duplicate = 0, updated_at = ? WHERE id = ?").run(Date.now(), id);

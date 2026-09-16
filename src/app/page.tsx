@@ -1,13 +1,13 @@
 'use client';
+import { Activity, ArrowRight, Award, BookOpen, CheckCircle2, ChevronRight, ClipboardCheck, Cloud, Code, Cpu, Database, ExternalLink, Lock, Menu, Microscope, Network, Play, Radar, Search, Server, Shield, Sword, Target, Terminal, X, Zap } from 'lucide-react';
+
+
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { 
-  Terminal, Shield, Target, Search, BookOpen, Cloud, Database, Network, Server,
-  Lock, Zap, Award, Activity, Code, Cpu, ChevronRight, CheckCircle2, Play,
-  Menu, X, ExternalLink
-} from 'lucide-react';
+
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { SecurityMonitor } from '@/components/SecurityMonitor';
 
 // deterministic random for matrix rain initial positions
 const seededRand = (seed: number) => {
@@ -100,6 +100,7 @@ export default function LandingPage() {
     { name: 'Features', href: '#features' },
     { name: 'Timeline', href: '#features' }, // Usually maps to a timeline section, linking to features for now
     { name: 'Domains', href: '#domains' },
+      { name: 'Public Hub', href: '/public' },
     { name: 'Pricing', href: '#xp' }, // Mapping to XP for now
   ];
 
@@ -133,7 +134,7 @@ export default function LandingPage() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-[var(--hp-bg)]/80 backdrop-blur-md border-b border-[var(--hp-border)] py-3' : 'bg-transparent py-5'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/hplabs-logo.png"
@@ -142,7 +143,7 @@ export default function LandingPage() {
             />
             <div className="flex flex-col">
               <span className="text-xl font-extrabold tracking-tight text-[var(--hp-text)] font-mono glow-text">HpLabs</span>
-              <span className="text-[10px] text-[var(--hp-text-muted)] font-mono leading-none">by HackerPlus</span>
+              <span className="text-[10px] text-[var(--hp-text-muted)] font-mono leading-none">From HackerPlus</span>
             </div>
           </Link>
 
@@ -157,12 +158,8 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Link href="/login" className="px-5 py-2.5 text-sm font-medium text-[var(--hp-text)] border border-[var(--hp-border-hover)] rounded-md hover:bg-[var(--hp-primary)]/10 hover:border-[#bf5fff] transition-all">
-                Login
-              </Link>
-              <Link href="/register" className="px-5 py-2.5 text-sm font-medium text-white dark:text-[#06030c] bg-[var(--hp-primary)] hover:bg-[var(--hp-secondary)] rounded-md transition-all shadow-[0_0_8px_rgba(191,95,255,0.3)] hover:shadow-[0_0_15px_rgba(224,64,251,0.5)] font-bold">
-                Start Free
-              </Link>
+              <Link href="/dashboard" className="px-5 py-2.5 text-sm font-medium text-[var(--hp-text)] border border-[var(--hp-border-hover)] rounded-md hover:bg-[var(--hp-primary)]/10 hover:border-[#bf5fff] transition-all">Open App</Link>
+              <Link href="/dashboard" className="px-5 py-2.5 text-sm font-medium text-white dark:text-[#06030c] bg-[var(--hp-primary)] hover:bg-[var(--hp-secondary)] rounded-md transition-all shadow-[0_0_8px_rgba(191,95,255,0.3)] hover:shadow-[0_0_15px_rgba(224,64,251,0.5)] font-bold">Open App</Link>
             </div>
           </div>
 
@@ -182,12 +179,8 @@ export default function LandingPage() {
             ))}
             <div className="flex flex-col gap-3 mt-2">
               <div className="flex justify-center mb-2"><ThemeToggle /></div>
-              <Link href="/login" className="px-5 py-3 text-center text-sm font-medium text-[var(--hp-text)] border border-[var(--hp-border-hover)] rounded-md hover:bg-[var(--hp-primary)]/10">
-                Login
-              </Link>
-              <Link href="/register" className="px-5 py-3 text-center text-sm font-medium text-white dark:text-[#06030c] bg-[var(--hp-primary)] rounded-md font-bold">
-                Start Free
-              </Link>
+              <Link href="/dashboard" className="px-5 py-3 text-center text-sm font-medium text-[var(--hp-text)] border border-[var(--hp-border-hover)] rounded-md hover:bg-[var(--hp-primary)]/10">Open App</Link>
+              <Link href="/dashboard" className="px-5 py-3 text-center text-sm font-medium text-white dark:text-[#06030c] bg-[var(--hp-primary)] rounded-md font-bold">Open App</Link>
             </div>
           </div>
         )}
@@ -206,26 +199,21 @@ export default function LandingPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <div className="flex flex-col items-center gap-3 mb-6">
             <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--hp-border)] bg-[var(--hp-primary)]/10 text-[var(--hp-secondary)] text-sm font-mono tracking-wider font-semibold animate-float">
-              1947 — FIRST DOCUMENTED COMPUTER BUG
+              1947  FIRST DOCUMENTED COMPUTER BUG
             </div>
-            <a href="https://hackerplus.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[var(--hp-card-bg)] border border-[var(--hp-border)] text-sm font-medium text-[var(--hp-text-muted)] hover:text-[var(--hp-primary)] hover:border-[var(--hp-primary)] transition-all">
-              <ExternalLink size={14} />
-              Developed by HackerPlus.in
-            </a>
+            
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-[var(--hp-text)] mb-4 tracking-tight leading-tight">
+          <h1 className="text-5xl md:text-5xl font-extrabold text-[var(--hp-text)] mb-4 tracking-tight leading-tight">
             Hack Real IPs.<br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--hp-primary)] to-[#e040fb]">Master Every Vulnerability.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            From early computer bugs to modern CVEs — master vulnerabilities, attack vectors, exploitation techniques, and real-world security research.
+            From early computer bugs to modern CVEs  master vulnerabilities, attack vectors, exploitation techniques, and real-world security research.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
-            <Link href="/register" className="w-full sm:w-auto px-8 py-4 bg-[var(--hp-primary)] text-white dark:text-[#06030c] font-bold rounded-md hover:bg-[var(--hp-secondary)] transition-all shadow-[0_0_8px_rgba(191,95,255,0.3)] hover:shadow-[0_0_15px_rgba(224,64,251,0.5)] flex items-center justify-center gap-2">
-              <Terminal size={20} />
-              Start Hacking Free
-            </Link>
+            <Link href="/dashboard" className="w-full sm:w-auto px-8 py-4 bg-[var(--hp-primary)] text-white dark:text-[#06030c] font-bold rounded-md hover:bg-[var(--hp-secondary)] transition-all shadow-[0_0_8px_rgba(191,95,255,0.3)] hover:shadow-[0_0_15px_rgba(224,64,251,0.5)] flex items-center justify-center gap-2">
+              <Terminal size={20} />Open App</Link>
             <Link href="#features" className="w-full sm:w-auto px-8 py-4 bg-transparent text-[var(--hp-text)] font-semibold rounded-md border border-[var(--hp-border-hover)] hover:bg-[var(--hp-primary)]/10 transition-all flex items-center justify-center gap-2">
               <Play size={20} />
               Watch Demo
@@ -239,7 +227,7 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col items-center">
               <span className="text-3xl font-bold text-[var(--hp-text)] mb-1">79+</span>
-              <span className="text-sm text-slate-400 font-mono">Years (1947–Present)</span>
+              <span className="text-sm text-slate-400 font-mono">Years (1947Present)</span>
             </div>
             <div className="flex flex-col items-center">
               <span className="text-3xl font-bold text-[var(--hp-text)] mb-1">5</span>
@@ -255,7 +243,7 @@ export default function LandingPage() {
 
       {/* What is HpLabs Section */}
       <section id="features" className="py-24 relative z-10 bg-[var(--hp-bg)]">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[var(--hp-text)] mb-4">
               What is <span className="text-[var(--hp-primary)]">HpLabs?</span>
@@ -265,9 +253,9 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: <Network className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Real IP Labs', desc: 'No sandboxed browser VMs. Activate a lab → get a real IP → hack with your own Kali/Parrot Linux.' },
-              { icon: <Activity className="text-[var(--hp-primary)] mb-4" size={36} />, title: '1947–Present Timeline', desc: 'Every vulnerability discovered from early computer bugs to present day. Grace Hopper bug → Log4Shell → latest 2026 exploits.' },
-              { icon: <Award className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Severity Progression', desc: 'Information → Low → Medium → High → Critical. XP gates ensure you master fundamentals before advanced exploits.' },
+              { icon: <Network className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Real IP Labs', desc: 'No sandboxed browser VMs. Activate a lab  get a real IP  hack with your own Kali/Parrot Linux.' },
+              { icon: <Activity className="text-[var(--hp-primary)] mb-4" size={36} />, title: '1947Present Timeline', desc: 'Every vulnerability discovered from early computer bugs to present day. Grace Hopper bug  Log4Shell  latest 2026 exploits.' },
+              { icon: <Award className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Severity Progression', desc: 'Information  Low  Medium  High  Critical. XP gates ensure you master fundamentals before advanced exploits.' },
               { icon: <Lock className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Unique Flags', desc: 'Every user gets a different flag hash. Copy-paste writeups don\'t work here. You have to understand the exploit.' },
               { icon: <Search className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'CVE/CWE/MITRE Mapped', desc: 'Every lab has CVE references, CWE classification, and MITRE ATT&CK technique mapping for real-world context.' },
               { icon: <Cloud className="text-[var(--hp-primary)] mb-4" size={36} />, title: 'Multi-Domain', desc: 'Web, API, Network, Cloud, Mobile, Active Directory, Wireless, IoT, OT/ICS, Kubernetes, Container security.' },
@@ -296,79 +284,85 @@ export default function LandingPage() {
           <div className="space-y-2">
             {[
               {
-                id: 'red-team', icon: '🎯', name: 'Red Team',
+                id: 'red-team', icon: <Sword className="text-red-500" size={24} />, name: 'Red Team',
                 modules: [
                   {
-                    id: 'pentesting', icon: '🕵️', name: 'Pentesting',
+                    id: 'pentesting', icon: '', name: 'Pentesting',
                     subs: [
-                      { icon: '🌐', name: 'Web Pentesting' },
-                      { icon: '🔌', name: 'API Security' },
-                      { icon: '🌐', name: 'Network Pentesting' },
-                      { icon: '📱', name: 'Mobile Pentesting' },
-                      { icon: '☁️', name: 'Cloud Pentesting' },
-                      { icon: '🐳', name: 'Container / Docker' },
-                      { icon: '⚓', name: 'Kubernetes' },
-                      { icon: '🏢', name: 'Active Directory' },
-                      { icon: '📡', name: 'Wireless Security' },
-                      { icon: '🏭', name: 'OT / ICS / SCADA' },
-                      { icon: '🔗', name: 'IoT Security' },
+                      { icon: '', name: 'Web Pentesting' },
+                      { icon: '', name: 'API Security' },
+                      { icon: '', name: 'Network Pentesting' },
+                      { icon: '', name: 'Mobile Pentesting' },
+                      { icon: '', name: 'Cloud Pentesting' },
+                      { icon: '', name: 'Container / Docker' },
+                      { icon: '', name: 'Kubernetes' },
+                      { icon: '', name: 'Active Directory' },
+                      { icon: '', name: 'Wireless Security' },
+                      { icon: '', name: 'OT / ICS / SCADA' },
+                      { icon: '', name: 'IoT Security' },
                     ]
                   },
-                  { id: 'exploit', icon: '💥', name: 'Exploit Development', subs: [] },
-                  { id: 'redops', icon: '🔴', name: 'Red Team Ops', subs: [] },
-                  { id: 'reverse', icon: '⚙️', name: 'Reverse Engineering', subs: [] },
-                  { id: 'social', icon: '🎭', name: 'Social Engineering', subs: [] },
+                  { id: 'exploit', icon: '', name: 'Exploit Development', subs: [] },
+                  { id: 'redops', icon: '', name: 'Red Team Ops', subs: [] },
+                  { id: 'reverse', icon: '', name: 'Reverse Engineering', subs: [] },
+                  { id: 'social', icon: '', name: 'Social Engineering', subs: [] },
                 ]
               },
               {
-                id: 'blue-team', icon: '🛡️', name: 'Blue Team',
+                id: 'blue-team', icon: <Shield className="text-blue-500" size={24} />, name: 'Blue Team',
                 modules: [
-                  { id: 'soc', icon: '📊', name: 'SOC Analysis', subs: [] },
-                  { id: 'threathunt', icon: '🔎', name: 'Threat Hunting', subs: [] },
-                  { id: 'incident', icon: '🚨', name: 'Incident Response', subs: [] },
-                  { id: 'siem', icon: '📈', name: 'SIEM & Log Analysis', subs: [] },
+                  { id: 'soc', icon: '', name: 'SOC Analysis', subs: [] },
+                  { id: 'threathunt', icon: '', name: 'Threat Hunting', subs: [] },
+                  { id: 'incident', icon: '', name: 'Incident Response', subs: [] },
+                  { id: 'siem', icon: '', name: 'SIEM & Log Analysis', subs: [] },
                 ]
               },
               {
-                id: 'forensics', icon: '🔬', name: 'Forensics & DFIR',
+                id: 'forensics', icon: <Microscope className="text-purple-500" size={24} />, name: 'Forensics & DFIR',
                 modules: [
-                  { id: 'dfir', icon: '💾', name: 'Digital Forensics', subs: [] },
-                  { id: 'malware', icon: '🦠', name: 'Malware Analysis', subs: [] },
-                  { id: 'memforen', icon: '🧠', name: 'Memory Forensics', subs: [] },
-                  { id: 'netforen', icon: '🌐', name: 'Network Forensics', subs: [] },
+                  { id: 'dfir', icon: '', name: 'Digital Forensics', subs: [] },
+                  { id: 'malware', icon: '', name: 'Malware Analysis', subs: [] },
+                  { id: 'memforen', icon: '', name: 'Memory Forensics', subs: [] },
+                  { id: 'netforen', icon: '', name: 'Network Forensics', subs: [] },
                 ]
               },
               {
-                id: 'grc', icon: '📋', name: 'GRC & Compliance',
+                id: 'grc', icon: <ClipboardCheck className="text-teal-500" size={24} />, name: 'GRC & Compliance',
                 modules: [
-                  { id: 'iso', icon: '📜', name: 'ISO 27001', subs: [] },
-                  { id: 'nist', icon: '🏛️', name: 'NIST CSF', subs: [] },
-                  { id: 'soc2', icon: '✅', name: 'SOC 2', subs: [] },
-                  { id: 'gdpr', icon: '🔐', name: 'GDPR / PCI-DSS', subs: [] },
+                  { id: 'iso', icon: '', name: 'ISO 27001', subs: [] },
+                  { id: 'nist', icon: '', name: 'NIST CSF', subs: [] },
+                  { id: 'soc2', icon: '', name: 'SOC 2', subs: [] },
+                  { id: 'gdpr', icon: '', name: 'GDPR / PCI-DSS', subs: [] },
                 ]
               },
               {
-                id: 'threat-intel', icon: '🕵️', name: 'Threat Intelligence',
+                id: 'threat-intel', icon: <Radar className="text-orange-500" size={24} />, name: 'Threat Intelligence',
                 modules: [
-                  { id: 'osint', icon: '🌍', name: 'OSINT', subs: [] },
-                  { id: 'cti', icon: '🧩', name: 'Cyber Threat Intelligence', subs: [] },
-                  { id: 'darkweb', icon: '🌑', name: 'Dark Web Monitoring', subs: [] },
-                  { id: 'ioc', icon: '🔍', name: 'IOC Analysis', subs: [] },
+                  { id: 'osint', icon: '', name: 'OSINT', subs: [] },
+                  { id: 'cti', icon: '', name: 'Cyber Threat Intelligence', subs: [] },
+                  { id: 'darkweb', icon: '', name: 'Dark Web Monitoring', subs: [] },
+                  { id: 'ioc', icon: '', name: 'IOC Analysis', subs: [] },
                 ]
               },
               {
-                id: 'cloud', icon: '☁️', name: 'Cloud Security',
+                id: 'cloud', icon: <Cloud className="text-sky-400" size={24} />, name: 'Cloud Security',
                 modules: [
-                  { id: 'aws', icon: '🟠', name: 'AWS Security', subs: [] },
-                  { id: 'gcp', icon: '🔵', name: 'GCP Security', subs: [] },
-                  { id: 'azure', icon: '🔷', name: 'Azure Security', subs: [] },
+                  { id: 'aws', icon: '', name: 'AWS Security', subs: [] },
+                  { id: 'gcp', icon: '', name: 'GCP Security', subs: [] },
+                  { id: 'azure', icon: '', name: 'Azure Security', subs: [] },
                 ]
+              },
+              {
+                id: 'hardware', icon: <Cpu className="text-emerald-500" size={24} />, name: 'Hardware Hacking',
+                isDirectLink: true,
+                href: '/hardware',
+                modules: []
               },
             ].map((domain) => {
               const isOpen = expandedDomain === domain.id;
               return (
                 <div key={domain.id} className="rounded-xl overflow-hidden border border-[var(--hp-border)] bg-[var(--hp-card-bg)]">
-                  {/* Domain row — clickable */}
+                  {/* Domain row  clickable */}
                   <button
                     type="button"
                     onClick={() => toggleDomain(domain.id)}
@@ -379,10 +373,10 @@ export default function LandingPage() {
                       <span className="font-bold text-[var(--hp-text)] text-base">{domain.name}</span>
                       <span className="text-[11px] text-[var(--hp-text-muted)] font-mono">{domain.modules.length} modules</span>
                     </div>
-                    <span className="text-[var(--hp-primary)] text-lg font-bold transition-transform duration-200" style={{ display: 'inline-block', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>›</span>
+                    <span className="text-[var(--hp-primary)] text-lg font-bold transition-transform duration-200" style={{ display: 'inline-block', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}></span>
                   </button>
 
-                  {/* Modules — shown when domain expanded */}
+                  {/* Modules  shown when domain expanded */}
                   {isOpen && (
                     <div className="border-t border-[var(--hp-border)] divide-y divide-[var(--hp-border)]/50">
                       {domain.modules.map((mod) => {
@@ -399,11 +393,11 @@ export default function LandingPage() {
                               <span className="text-base shrink-0">{mod.icon}</span>
                               <span className="text-sm font-medium text-[var(--hp-text)] flex-1">{mod.name}</span>
                               {mod.subs.length > 0 && (
-                                <span className="text-[var(--hp-text-muted)] text-sm transition-transform duration-200" style={{ display: 'inline-block', transform: modOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>›</span>
+                                <span className="text-[var(--hp-text-muted)] text-sm transition-transform duration-200" style={{ display: 'inline-block', transform: modOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}></span>
                               )}
                             </button>
 
-                            {/* Sub-domains — shown when module expanded */}
+                            {/* Sub-domains  shown when module expanded */}
                             {mod.subs.length > 0 && modOpen && (
                               <div className="pb-2">
                                 {mod.subs.map((sub, si) => (
@@ -426,8 +420,8 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href="/register" className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold text-white transition-all hover:scale-105" style={{ background: 'linear-gradient(135deg, #7c3aed, #bf5fff)', boxShadow: '0 0 30px rgba(191,95,255,0.3)' }}>
-              Start Hacking — It&apos;s Free
+            <Link href="/dashboard" className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold text-white transition-all hover:scale-105" style={{ background: 'linear-gradient(135deg, #7c3aed, #bf5fff)', boxShadow: '0 0 30px rgba(191,95,255,0.3)' }}>
+              Open App
             </Link>
           </div>
         </div>
@@ -466,19 +460,103 @@ export default function LandingPage() {
       </section>
 
 
+      
+      
+
+
+      
+
+
+      {/* Ecosystem / HackerPlus Section */}
+      <section className="relative py-24 z-10 bg-[var(--hp-bg)] border-t border-[var(--hp-border)] overflow-hidden">
+        {/* Ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[300px] bg-[var(--hp-primary)]/5 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-mono mb-4">The <span className="text-[var(--hp-primary)]">HackerPlus</span> Ecosystem</h2>
+            <p className="text-[var(--hp-text-muted)] max-w-2xl mx-auto">
+              HpLabs is just the beginning. Explore our complete cybersecurity training environment.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* HackerPlus Card */}
+            <div className="relative group p-8 rounded-2xl bg-[var(--hp-card-bg)] border border-[var(--hp-border)] hover:border-[var(--hp-primary)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,255,65,0.1)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--hp-primary)]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)] flex items-center justify-center mb-6 group-hover:border-[var(--hp-primary)]/50 transition-colors">
+                  <Shield className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-primary)] transition-colors" size={24} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 font-mono">HackerPlus</h3>
+                <p className="text-[var(--hp-text-muted)] mb-6 text-sm leading-relaxed">
+                  The parent platform behind HpLabs. HackerPlus is India's premier cybersecurity training and services ecosystem, offering professional courses, certifications, and top-tier security services for organizations.
+                </p>
+                <a 
+                  href="https://hackerplus.in" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[var(--hp-text)] hover:text-[var(--hp-primary)] transition-colors"
+                >
+                  Visit HackerPlus.in <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* HPVuln Card */}
+            <div className="relative group p-8 rounded-2xl bg-[var(--hp-card-bg)] border border-[var(--hp-border)] hover:border-[var(--hp-cyan)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,255,255,0.1)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--hp-cyan)]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-[var(--hp-bg-2)] border border-[var(--hp-border)] flex items-center justify-center mb-6 group-hover:border-[var(--hp-cyan)]/50 transition-colors">
+                  <Target className="text-[var(--hp-text-muted)] group-hover:text-[var(--hp-cyan)] transition-colors" size={24} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 font-mono">HPVuln Target</h3>
+                <p className="text-[var(--hp-text-muted)] mb-6 text-sm leading-relaxed">
+                  Want to test your skills in the wild? Try HPVuln, our completely free, intentionally vulnerable web application. Anyone can legally pentest this site to practice real-world exploits safely.
+                </p>
+                <a 
+                  href="https://hpvuln.in" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[var(--hp-text)] hover:text-[var(--hp-cyan)] transition-colors"
+                >
+                  Hack HPVuln.in <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 border-t border-[var(--hp-border)] bg-[var(--hp-bg)] relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
             <img src="/hplabs-logo.png" alt="HpLabs Logo" className="w-8 h-8 object-contain drop-shadow-[0_0_10px_var(--hp-primary)]" />
             <span className="text-xl font-bold tracking-tight text-[var(--hp-text)] font-mono">HpLabs</span>
           </div>
           
-          <div className="text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} HpLabs. Built by <a href="https://hackerplus.in" target="_blank" rel="noopener noreferrer" className="text-[var(--hp-primary)] hover:underline">HackerPlus team</a>.
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <a 
+              href="https://buymeacoffee.com/manivarma3p" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center transition-transform hover:scale-105 opacity-90 hover:opacity-100"
+              title="Support HpLabs - Buy Me a Coffee"
+            >
+              <img 
+                src="https://cdn.brandfetch.io/idlFAkJfur/w/192/h/192/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1690821080412" 
+                alt="Buy Me A Coffee" 
+                className="h-10 w-auto rounded-lg"
+              />
+            </a>
+            <div className="text-slate-400 text-sm">
+              &copy; {new Date().getFullYear()} HpLabs. From <a href="https://hackerplus.in" target="_blank" rel="noopener noreferrer" className="text-[var(--hp-primary)] hover:underline">HackerPlus</a>.
+            </div>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+

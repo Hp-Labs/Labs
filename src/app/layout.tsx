@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "HpLabs — Cybersecurity Training Labs by HackerPlus",
+  title: "HpLabs  Cybersecurity Training Labs From HackerPlus",
   description: "Master cybersecurity through real IP-based labs covering early computer bugs to modern CVEs. Use your own Parrot/Kali Linux. No browser VMs. Just real hacking.",
   keywords: ["cybersecurity labs", "penetration testing", "ethical hacking", "web pentesting", "red team", "HackerPlus", "hplabs"],
   authors: [{ name: "HackerPlus", url: "https://hackerplus.in" }],
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     apple: "/hplabs-logo.png",
   },
   openGraph: {
-    title: "HpLabs — Real IP Cybersecurity Labs",
+    title: "HpLabs  Real IP Cybersecurity Labs",
     description: "Hack real IPs. From early computer bugs to modern CVEs. Powered by HackerPlus.",
     type: "website",
     images: ["/hplabs-logo.png"],
@@ -48,3 +48,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+

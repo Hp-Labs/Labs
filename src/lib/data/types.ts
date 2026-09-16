@@ -1,5 +1,5 @@
 // ============================================================
-// HpLabs — Core Type System
+// HpLabs  Core Type System
 // All data types used across the platform
 // ============================================================
 
@@ -29,6 +29,20 @@ export interface MethodologyStep {
   note?: string;
 }
 
+
+export type ReproductionStatus = "verified" | "failed" | "untested";
+export type CompatibilityStatus = "compatible" | "needs-update" | "broken";
+
+export interface LabFreshness {
+  sourceVulnerability: string;
+  labVersion: string;
+  targetVersion: string;
+  lastValidationDate: string;
+  reproductionStatus: ReproductionStatus;
+  compatibilityStatus: CompatibilityStatus;
+  needsReview: boolean;
+}
+
 export interface Lab {
   id: string;            // e.g. "web-low-001"
   level: number;         // sequential within severity+domain
@@ -48,7 +62,7 @@ export interface Lab {
   cvssScore?: number;
   cvssVector?: string;
   cwe: string[];              // e.g. ["CWE-79"]
-  cveExamples?: string[];     // legacy field — use cve going forward
+  cveExamples?: string[];     // legacy field  use cve going forward
   cve?: string[];             // e.g. ["CVE-2022-1234"]
   owaspMapping: string[];     // e.g. ["A03:2021 - Injection"]
   mitreMapping: string[];     // e.g. ["T1190 - Exploit Public-Facing Application"]
@@ -74,6 +88,9 @@ tags: string[];
 addedDate?: string;   // Optional for legacy labs
 labType?: string;     // e.g. "vulnerability", "boss", "assessment"
 status: LabStatus;
+  freshness?: LabFreshness;
+  targetRequiredForHpVuln?: boolean;
+  hpVulnIntegrationId?: string;
 }
 
 // Severity unlock requirements
@@ -140,7 +157,7 @@ export const SEVERITY_CONFIG: Record<
     bg: "bg-green-400/10",
     border: "border-green-400/30",
     glow: "rgba(74,222,128,0.15)",
-    cvssRange: "0.1–3.9",
+    cvssRange: "0.13.9",
   },
   medium: {
     label: "Medium",
@@ -148,7 +165,7 @@ export const SEVERITY_CONFIG: Record<
     bg: "bg-yellow-400/10",
     border: "border-yellow-400/30",
     glow: "rgba(250,204,21,0.15)",
-    cvssRange: "4.0–6.9",
+    cvssRange: "4.06.9",
   },
   high: {
     label: "High",
@@ -156,7 +173,7 @@ export const SEVERITY_CONFIG: Record<
     bg: "bg-orange-400/10",
     border: "border-orange-400/30",
     glow: "rgba(251,146,60,0.15)",
-    cvssRange: "7.0–8.9",
+    cvssRange: "7.08.9",
   },
   critical: {
     label: "Critical",
@@ -164,7 +181,7 @@ export const SEVERITY_CONFIG: Record<
     bg: "bg-red-400/10",
     border: "border-red-400/30",
     glow: "rgba(248,113,113,0.2)",
-    cvssRange: "9.0–10.0",
+    cvssRange: "9.010.0",
   },
 };
 
@@ -187,13 +204,13 @@ export interface RedTeamModule {
   subDomains?: SubDomain[];
 }
 
-// Unique flag generation (client-side simulation — wire to backend in production)
+// Unique flag generation (client-side simulation  wire to backend in production)
 export function generateUniqueFlag(
   userId: string,
   labId: string,
   sessionSalt: string
 ): string {
-  // Simple hash simulation — replace with crypto HMAC in backend
+  // Simple hash simulation  replace with crypto HMAC in backend
   const raw = `${userId}::${labId}::${sessionSalt}`;
   let hash = 0;
   for (let i = 0; i < raw.length; i++) {
@@ -208,12 +225,12 @@ export function generateUniqueFlag(
 
 // XP to Rank mapping
 export const XP_TO_RANK = [
-  { rank: "Script Kiddie", minXP: 0,     icon: "💻", color: "text-[var(--hp-text-muted)]" },
-  { rank: "Apprentice",    minXP: 500,   icon: "🔍", color: "text-violet-400" },
-  { rank: "Hacker",        minXP: 2000,  icon: "🎯", color: "text-[var(--hp-primary)]" },
-  { rank: "Elite Hacker",  minXP: 5000,  icon: "⚡", color: "text-fuchsia-400" },
-  { rank: "Red Teamer",    minXP: 10000, icon: "🔴", color: "text-orange-400" },
-  { rank: "Legend",        minXP: 25000, icon: "💀", color: "text-red-400" },
+  { rank: "Script Kiddie", minXP: 0,     icon: "", color: "text-[var(--hp-text-muted)]" },
+  { rank: "Apprentice",    minXP: 500,   icon: "", color: "text-violet-400" },
+  { rank: "Hacker",        minXP: 2000,  icon: "", color: "text-[var(--hp-primary)]" },
+  { rank: "Elite Hacker",  minXP: 5000,  icon: "", color: "text-fuchsia-400" },
+  { rank: "Red Teamer",    minXP: 10000, icon: "", color: "text-orange-400" },
+  { rank: "Legend",        minXP: 25000, icon: "", color: "text-red-400" },
 ];
 
 

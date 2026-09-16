@@ -1,8 +1,8 @@
 // ============================================================
-// HP Labs — Domain Registry
+// HP Labs  Domain Registry
 // Configuration-driven source of truth for all active and
 // future pentesting domains. The Smart Detector reads this
-// at runtime — never hardcodes domain names.
+// at runtime  never hardcodes domain names.
 // ============================================================
 
 import type { DomainId, Severity } from "@/lib/data/types";
@@ -34,7 +34,7 @@ export interface DomainConfig {
   notificationEnabled: boolean;
 }
 
-// ─── ACTIVE DOMAINS (currently launched) ─────────────────────
+//  ACTIVE DOMAINS (currently launched) 
 
 const ACTIVE_DOMAINS: DomainConfig[] = [
   {
@@ -51,11 +51,11 @@ const ACTIVE_DOMAINS: DomainConfig[] = [
       "rce", "lfi", "rfi", "xxe", "ssti", "request-smuggling", "cache-poisoning",
     ],
     severityMapping: {
-      information: "CVSS 0.0 — Passive recon, fingerprinting",
-      low: "CVSS 0.1–3.9 — Low-impact disclosure",
-      medium: "CVSS 4.0–6.9 — Significant but limited impact",
-      high: "CVSS 7.0–8.9 — Significant impact, partial system control",
-      critical: "CVSS 9.0–10.0 — Full system compromise",
+      information: "CVSS 0.0  Passive recon, fingerprinting",
+      low: "CVSS 0.13.9  Low-impact disclosure",
+      medium: "CVSS 4.06.9  Significant but limited impact",
+      high: "CVSS 7.08.9  Significant impact, partial system control",
+      critical: "CVSS 9.010.0  Full system compromise",
     },
     sourceAdapters: [
       {
@@ -97,11 +97,11 @@ const ACTIVE_DOMAINS: DomainConfig[] = [
       "injection", "deserialization", "information-disclosure",
     ],
     severityMapping: {
-      information: "CVSS 0.0 — API fingerprinting, schema recon",
-      low: "CVSS 0.1–3.9",
-      medium: "CVSS 4.0–6.9",
-      high: "CVSS 7.0–8.9",
-      critical: "CVSS 9.0–10.0",
+      information: "CVSS 0.0  API fingerprinting, schema recon",
+      low: "CVSS 0.13.9",
+      medium: "CVSS 4.06.9",
+      high: "CVSS 7.08.9",
+      critical: "CVSS 9.010.0",
     },
     sourceAdapters: [
       {
@@ -143,11 +143,11 @@ const ACTIVE_DOMAINS: DomainConfig[] = [
       "deep-link", "intent", "backup", "permissions", "clipboard",
     ],
     severityMapping: {
-      information: "CVSS 0.0 — Passive mobile recon",
-      low: "CVSS 0.1–3.9",
-      medium: "CVSS 4.0–6.9",
-      high: "CVSS 7.0–8.9",
-      critical: "CVSS 9.0–10.0",
+      information: "CVSS 0.0  Passive mobile recon",
+      low: "CVSS 0.13.9",
+      medium: "CVSS 4.06.9",
+      high: "CVSS 7.08.9",
+      critical: "CVSS 9.010.0",
     },
     sourceAdapters: [
       {
@@ -198,11 +198,11 @@ const ACTIVE_DOMAINS: DomainConfig[] = [
       "protocol-weakness", "credential-attack", "relay", "mitm",
     ],
     severityMapping: {
-      information: "CVSS 0.0 — Passive network recon",
-      low: "CVSS 0.1–3.9",
-      medium: "CVSS 4.0–6.9",
-      high: "CVSS 7.0–8.9",
-      critical: "CVSS 9.0–10.0",
+      information: "CVSS 0.0  Passive network recon",
+      low: "CVSS 0.13.9",
+      medium: "CVSS 4.06.9",
+      high: "CVSS 7.08.9",
+      critical: "CVSS 9.010.0",
     },
     sourceAdapters: [
       {
@@ -233,7 +233,7 @@ const ACTIVE_DOMAINS: DomainConfig[] = [
   },
 ];
 
-// ─── FUTURE DOMAINS (not yet launched — DO NOT ENABLE) ────────
+//  FUTURE DOMAINS (not yet launched  DO NOT ENABLE) 
 
 const FUTURE_DOMAINS: DomainConfig[] = [
   {
@@ -326,7 +326,7 @@ const FUTURE_DOMAINS: DomainConfig[] = [
   },
 ];
 
-// ─── Unified registry ─────────────────────────────────────────
+//  Unified registry 
 
 export const DOMAIN_REGISTRY: DomainConfig[] = [
   ...ACTIVE_DOMAINS,
