@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import { AlertTriangle, Terminal, Home } from 'lucide-react';
+import { AlertTriangle, Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[var(--hp-bg)] text-[var(--hp-text)] flex flex-col font-sans">
-      <Navbar />
       <main className="flex-1 max-w-2xl mx-auto w-full p-6 flex items-center justify-center">
         <div className="text-center space-y-6">
           <div className="flex justify-center mb-4">
@@ -37,4 +35,3 @@ export default function NotFound() {
     </div>
   );
 }
-
