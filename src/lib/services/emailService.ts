@@ -374,3 +374,5 @@ export function getLabCompletionEmail(username: string, labName: string, xpAward
     <p>Keep hacking to climb the leaderboard and unlock new tiers!</p>
   `, '<a href="https://hplabs.in/labs" class="cta-button">Next Lab →</a>');
 }
+
+

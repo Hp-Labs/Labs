@@ -35,13 +35,13 @@ export async function POST(req: NextRequest) {
     const row = db.prepare("SELECT id FROM users WHERE email = ? OR username = ?").get(normIdentifier, normIdentifier) as any;
 
     if (!row) {
-      return NextResponse.json({ success: false, message: 'Invalid credentials' }, { status: 401 });
+      return NextResponse.json({ success: false, message: 'Please create an account first' }, { status: 401 });
     }
 
     const user = getUserById(row.id);
 
     if (!user || !user.passwordHash || !user.passwordSalt) {
-      return NextResponse.json({ success: false, message: 'Invalid credentials' }, { status: 401 });
+      return NextResponse.json({ success: false, message: 'Please create an account first' }, { status: 401 });
     }
 
     // 3.5 Block admin from normal login portal
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 
     if (!verifyPassword(password, user.passwordHash, user.passwordSalt)) {
       logSecurityEvent({ eventType: "login_failed_bad_password", userId: user.id, ip, severity: "warn" });
-      return NextResponse.json({ success: false, message: 'Invalid credentials' }, { status: 401 });
+      return NextResponse.json({ success: false, message: 'Please create an account first' }, { status: 401 });
     }
 
     // 4. Check if account is suspended
@@ -79,7 +79,14 @@ export async function POST(req: NextRequest) {
     const mfaRequired = isSuperAdmin || user.mfaEnabled;
     const sessionUser = { ...safeUser, mfaVerified: !mfaRequired };
 
-    const sessionToken = createSession(sessionUser);
+    // Skip direct session creation. Generate Login OTP.
+    import('@/lib/services/otpStore').then(({ generateAndStoreLoginOTP }) => {
+      generateAndStoreLoginOTP(user.email);
+    });
+
+    return NextResponse.json({ success: true, requiresVerification: true, type: 'login', email: user.email });
+
+    const sessionToken = ''; // Unreachable
 
     const res = NextResponse.json({ 
       success: true, 
@@ -107,3 +114,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: 'Server error' }, { status: 500 });
   }
 }
+

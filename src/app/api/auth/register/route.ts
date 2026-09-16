@@ -49,7 +49,8 @@ export async function POST(req: NextRequest) {
     const normPhone = phone ? phone.trim() : "";
 
     if (normEmail.length > 255 || !isValidEmail(normEmail)) {
-      return NextResponse.json({ success: false, message: 'Invalid or disposable email address' }, { status: 400 });
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normEmail)) return NextResponse.json({ success: false, message: 'Invalid email address' }, { status: 400 });
+      return NextResponse.json({ success: false, message: 'Temporary emails are not allowed' }, { status: 400 });
     }
     if (normEmail === 'info@hackerplus.in') {
       return NextResponse.json({ success: false, message: 'Registration for this email is blocked' }, { status: 403 });
@@ -63,7 +64,16 @@ export async function POST(req: NextRequest) {
 
     // 3. Database Uniqueness Check
     if (getUserByEmail(normEmail)) {
-      return NextResponse.json({ success: false, message: 'An account with this email already exists' }, { status: 400 });
+      return NextResponse.json({ success: false, message: 'Account already created, please login' }, { status: 400 });
+    }
+
+    // 3.5 Phone Number Limit Check
+    if (normPhone) {
+      const db = require('@/lib/db').getDb();
+      const row = db.prepare('SELECT count(*) as count FROM users WHERE phone = ?').get(normPhone);
+      if (row && row.count >= 3) {
+        return NextResponse.json({ success: false, message: 'Maximum 3 accounts are allowed per phone number' }, { status: 400 });
+      }
     }
 
     // 4. Create Unverified User
@@ -94,3 +104,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: 'Server error' }, { status: 500 });
   }
 }
+

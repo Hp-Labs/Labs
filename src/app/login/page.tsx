@@ -27,7 +27,11 @@ export default function LoginPage() {
       const data = await res.json();
       if (!res.ok || !data.success) {
         if (data.requiresVerification) {
-          router.replace(`/verify-email?email=${encodeURIComponent(email)}`);
+          if (data.type === 'login') {
+            router.replace(`/verify-login?email=${encodeURIComponent(data.email || email)}`);
+          } else {
+            router.replace(`/verify-email?email=${encodeURIComponent(email)}`);
+          }
           return;
         }
         setError(data.message || 'Login failed. Invalid credentials.');
@@ -139,3 +143,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

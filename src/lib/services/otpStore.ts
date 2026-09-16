@@ -231,3 +231,27 @@ export function deleteOTPRecord(email: string): void {
   const db = getDb();
   db.prepare("DELETE FROM otp_store WHERE identifier = ?").run(email.toLowerCase());
 }
+export function generateAndStoreLoginOTP(email: string): string {
+  pruneExpiredOTPs();
+  const db = getDb();
+  const id = 'login_' + email.toLowerCase();
+  const emailOTP = generateSecureAlphanumericOTP(6);
+  const emailOTPHash = hashOTP(emailOTP);
+  const now = Date.now();
+  
+  db.prepare(
+      INSERT OR REPLACE INTO otp_store (identifier, email_otp, phone_otp, phone, created_at, expires_at, attempts, lockout_until)
+      VALUES (?, ?, ?, ?, ?, ?, 0, NULL)
+  ).run(id, emailOTPHash, '', '', now, now + OTP_TTL_MS);
+
+  import('@/lib/services/emailService').then(({ sendEmail, getOTPVerificationEmail }) => {
+    sendEmail({
+      to: email,
+      subject: 'HPLabs - Your Login Verification Code',
+      html: getOTPVerificationEmail(emailOTP),
+      idempotencyKey: "loginotp_\_\"
+    });
+  }).catch(e => console.error("Failed to send login OTP email:", e));
+
+  return emailOTP;
+}

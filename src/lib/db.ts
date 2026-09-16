@@ -15,7 +15,7 @@ import Database from "better-sqlite3";
 import path from "path";
 import fs from "fs";
 
-const DB_PATH = path.join(process.cwd(), "data", "hplabs.db");
+const DB_PATH = process.env.VERCEL ? "/tmp/hplabs.db" : path.join(process.cwd(), "data", "hplabs.db");
 
 // Ensure the data directory exists
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
@@ -380,3 +380,4 @@ export function logSecurityEvent(opts: {
     // Never let audit logging crash the app
   }
 }
+
