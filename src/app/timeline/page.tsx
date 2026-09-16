@@ -51,7 +51,19 @@ const DECADES = [
   { label: "2020s+", start: 2020, end: 2030 },
 ];
 
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth";
+
 export default function TimelinePage() {
+  const router = useRouter();
+  const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !user) router.push(/login);
+  }, [user, isLoading, router]);
+
+  if (isLoading || !user) return <div className="min-h-screen bg-[var(--hp-bg)] flex items-center justify-center"><div className="text-[var(--hp-primary)] font-mono animate-pulse">Verifying Identity...</div></div>;
+
   const [activeDecade, setActiveDecade] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [catalog, setCatalog] = useState(() => getCombinedVulnerabilityCatalog());
@@ -606,3 +618,4 @@ export default function TimelinePage() {
     </div>
   );
 }
+

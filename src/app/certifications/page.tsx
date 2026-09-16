@@ -213,7 +213,20 @@ function ProgressBar({ value, color }: { value: number; color: string }) {
   );
 }
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth";
+
 export default function CertificationsPage() {
+  const router = useRouter();
+  const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !user) router.push(/login);
+  }, [user, isLoading, router]);
+
+  if (isLoading || !user) return <div className="min-h-screen bg-[var(--hp-bg)] flex items-center justify-center"><div className="text-[var(--hp-primary)] font-mono animate-pulse">Verifying Identity...</div></div>;
+
   const [verifyInputs, setVerifyInputs] = useState<Record<string, string>>({});
   const [verifyResults, setVerifyResults] = useState<Record<string, "valid" | "invalid" | null>>({});
 
@@ -945,3 +958,4 @@ export default function CertificationsPage() {
     </div>
   );
 }
+

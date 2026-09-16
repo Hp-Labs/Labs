@@ -10,7 +10,14 @@ import { RED_TEAM_MODULES } from "@/lib/data/redteam";
 import { useAuth } from "@/lib/auth";
 
 export default function RedTeamPage() {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !user) router.push(/login);
+  }, [user, isLoading, router]);
+
+  if (isLoading || !user) return <div className="min-h-screen bg-[var(--hp-bg)] flex items-center justify-center"><div className="text-[var(--hp-primary)] font-mono animate-pulse">Verifying Identity...</div></div>;
+
   const isAdmin = user?.email === 'info@hackerplus.in' && (user as any)?.loggedInViaAdminPortal === true;
 
   // All modules that normally only show "Coming Soon" for users, but UNLOCKED for admin
@@ -176,6 +183,7 @@ function ModuleCard({
     </div>
   );
 }
+
 
 
 

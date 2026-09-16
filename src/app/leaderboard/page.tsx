@@ -61,9 +61,16 @@ function XpBar({ xp }: { xp: number }) {
   );
 }
 
+import { useRouter } from "next/navigation";
+
 export default function LeaderboardPage() {
+  const router = useRouter();
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !user) router.push(/login);
+  }, [user, isLoading, router]);
   const CURRENT_USER = user?.username;
   const [rankedUsers, setRankedUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -191,3 +198,4 @@ export default function LeaderboardPage() {
     </div>
   );
 }
+
