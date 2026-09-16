@@ -8,8 +8,11 @@ import Navbar from "@/components/Navbar";
 import { RED_TEAM_MODULES } from "@/lib/data/redteam";
 
 import { useAuth } from "@/lib/auth";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RedTeamPage() {
+  const router = useRouter();
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
@@ -183,6 +186,7 @@ function ModuleCard({
     </div>
   );
 }
+
 
 
 
