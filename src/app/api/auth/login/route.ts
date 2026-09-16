@@ -6,7 +6,7 @@ import { logSecurityEvent, getDb } from '@/lib/db';
 export async function POST(req: NextRequest) {
   try {
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
-    if (!consumeRateLimit(\login_ip_\\, 20, 15 * 60 * 1000)) {
+    if (!consumeRateLimit(`login_ip_${ip}`, 20, 15 * 60 * 1000)) {
       logSecurityEvent({ eventType: "login_ip_bruteforce", ip, severity: "warn" });
       return NextResponse.json({ success: false, message: 'Too many login attempts from this IP. Try again in 15 minutes.' }, { status: 429 });
     }
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
     const normIdentifier = emailOrUsername.trim().toLowerCase();
 
-    if (!consumeRateLimit(\login_acc_\\, 5, 15 * 60 * 1000)) {
+    if (!consumeRateLimit(`login_acc_${normIdentifier}`, 5, 15 * 60 * 1000)) {
       logSecurityEvent({ eventType: "login_acc_bruteforce", details: { identifier: normIdentifier }, ip, severity: "warn" });
       return NextResponse.json({ success: false, message: 'Too many failed attempts for this account. Try again in 15 minutes.' }, { status: 429 });
     }
