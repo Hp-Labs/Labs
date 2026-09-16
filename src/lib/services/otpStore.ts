@@ -239,17 +239,17 @@ export function generateAndStoreLoginOTP(email: string): string {
   const emailOTPHash = hashOTP(emailOTP);
   const now = Date.now();
   
-  db.prepare(
+  db.prepare(`
       INSERT OR REPLACE INTO otp_store (identifier, email_otp, phone_otp, phone, created_at, expires_at, attempts, lockout_until)
       VALUES (?, ?, ?, ?, ?, ?, 0, NULL)
-  ).run(id, emailOTPHash, '', '', now, now + OTP_TTL_MS);
+  `).run(id, emailOTPHash, '', '', now, now + OTP_TTL_MS);
 
   import('@/lib/services/emailService').then(({ sendEmail, getOTPVerificationEmail }) => {
     sendEmail({
       to: email,
       subject: 'HPLabs - Your Login Verification Code',
       html: getOTPVerificationEmail(emailOTP),
-      idempotencyKey: "loginotp_\_\"
+      idempotencyKey: `loginotp_${id}_${now}`
     });
   }).catch(e => console.error("Failed to send login OTP email:", e));
 
